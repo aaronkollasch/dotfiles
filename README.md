@@ -1,5 +1,12 @@
 # Dotfiles
 
+<!--toc:start-->
+- [Dotfiles](#dotfiles)
+  - [Installation](#installation)
+    - [macOS installation](#macos-installation)
+  - [Testing](#testing)
+<!--toc:end-->
+
 See also:
 - https://github.com/geerlingguy/dotfiles
 - https://github.com/mathiasbynens/dotfiles
@@ -21,6 +28,13 @@ git submodule init && git submodule update
 Then run the correct install script for your system, e.g.
 ```shell
 ./install_linux.sh
+```
+
+### macOS installation
+```shell
+./private/mac/install_deps
+./mac/osx
+./install_mac.sh
 ```
 
 ## Testing

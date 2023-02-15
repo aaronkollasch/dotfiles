@@ -16,7 +16,7 @@ source bash/functions.sh || retval=$?
 touch "$HOME"/.hushlogin
 
 install_link "$SCRIPT_DIR"/bash/bashrc "$HOME"/.bashrc || retval=$?
-install_link "$SCRIPT_DIR"/private/mac/inputrc "$HOME"/.inputrc || retval=$?
+install_link "$SCRIPT_DIR"/mac/inputrc "$HOME"/.inputrc || retval=$?
 install_link "$SCRIPT_DIR"/pymol/pymolrc "$HOME"/.pymolrc || retval=$?
 install_link "$SCRIPT_DIR"/git/gitconfig_mac "$HOME"/.gitconfig || retval=$?
 
