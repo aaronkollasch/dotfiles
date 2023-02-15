@@ -32,13 +32,10 @@ declare -A files_map
 for key in "${!files[@]}"; do file="${files[$key]/#\.\//}"; files_map["$file"]="$key"; done
 declare -a examples=(
   bin/b3sum-recursive
-  osx
+  mac/osx
   run_tests.sh
   install_common.sh
   tests/test-shellcheck.sh
-  mac/install_deps
-  ubuntu/save_apt.sh
-  "mac/Application Support/BBEdit/Preview Filters/GitHubFlavoredMarkdown.sh"
 )
 for file in "${examples[@]}"; do
   [[ -n "${files_map[$file]}" ]] || { printf '%s not found\n' "$file"; retval=1; }
