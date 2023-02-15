@@ -156,6 +156,9 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>fm",      function()
         vim.lsp.buf.format({ async = true })
     end,                                                                { desc = "[F]or[M]at (async)", unpack(bufopts) })
+    vim.keymap.set("n", "<leader>fmt",      function()
+        vim.lsp.buf.format({ async = true })
+    end,                                                                { desc = "[F]or[M]a[T] (async)", unpack(bufopts) })
     -- enable <c-j> and <c-k> arrow keys
     vim.keymap.set("i", "<c-x><c-j>", "<c-x><c-n>", bufopts)
     vim.keymap.set("i", "<c-x><c-k>", "<c-x><c-p>", bufopts)
@@ -202,6 +205,9 @@ lsp.configure("lua_ls", {
         vim.keymap.set("n", "<leader>fm", function()
             require("stylua-nvim").format_file()
         end, { desc = "[F]or[M]at (async)", unpack(bufopts) })
+        vim.keymap.set("n", "<leader>fmt", function()
+            require("stylua-nvim").format_file()
+        end, { desc = "[F]or[M]a[T] (async)", unpack(bufopts) })
     end,
     settings = {
         Lua = {
