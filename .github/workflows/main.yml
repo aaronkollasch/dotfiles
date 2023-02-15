@@ -1,0 +1,80 @@
+---
+name: CI
+
+# Controls when the action will run.
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  # don't trigger on push
+  # push:
+  #   branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+  # Run once per week
+  schedule:
+    - cron: '30 5 * * 6'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  tests:
+    name: "run_tests ${{ matrix.job.target }} (${{ matrix.job.os }})"
+    runs-on: "${{ matrix.job.os }}"
+
+    strategy:
+      fail-fast: false
+      matrix:
+        job:
+          - { target: aarch64-unknown-linux-gnu   , os: ubuntu-latest, use-cross: true }
+          # - { target: arm-unknown-linux-gnueabihf , os: ubuntu-20.04, use-cross: true }
+          # - { target: arm-unknown-linux-musleabihf, os: ubuntu-20.04, use-cross: true }
+          # - { target: i686-pc-windows-msvc        , os: windows-2019                  }
+          # - { target: i686-unknown-linux-gnu      , os: ubuntu-20.04, use-cross: true }
+          # - { target: i686-unknown-linux-musl     , os: ubuntu-20.04, use-cross: true }
+          - { target: x86_64-apple-darwin         , os: macos-latest                   }
+          # - { target: x86_64-pc-windows-gnu       , os: windows-2019                  }
+          # - { target: x86_64-pc-windows-msvc      , os: windows-2019                  }
+          - { target: x86_64-unknown-linux-gnu    , os: ubuntu-latest, use-cross: true }
+          # - { target: x86_64-unknown-linux-musl   , os: ubuntu-20.04, use-cross: true }
+
+    steps:
+      - name: Checkout source code
+        uses: "actions/checkout@v3"
+        with:
+          submodules: 'recursive'
+
+      - name: Install prerequisites
+        run: |
+          case ${{ matrix.job.target }} in
+            aarch64-unknown-linux-*) sudo apt-get -y update ; sudo apt-get -y install fd-find shellcheck vim bat zsh ;;
+            x86_64-unknown-linux-*) sudo apt-get -y update ; sudo apt-get -y install fd-find shellcheck vim bat zsh ;;
+            x86_64-apple-darwin) env HOMEBREW_NO_AUTO_UPDATE=1 brew install fd shellcheck macvim bash awk bat coreutils less ;;
+          esac
+
+      - name: Setup python
+        uses: "actions/setup-python@v4"
+        with:
+          python-version: "3.10"
+
+      - name: Install python dependencies
+        run: |
+          set -xe
+          python -VV
+          python -m site
+          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install --upgrade black
+
+      - name: Run install scripts
+        run: |
+          case ${{ matrix.job.target }} in
+            aarch64-unknown-linux-*) ./install_server.sh ;;
+            x86_64-unknown-linux-*) ./install_linux.sh ;;
+            x86_64-apple-darwin) ./install_mac.sh ;;
+          esac
+
+      - name: Run tests
+        run: |
+          pwd
+          ./run_tests.sh
