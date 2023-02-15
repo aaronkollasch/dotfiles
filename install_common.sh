@@ -58,9 +58,9 @@ install_link ../../"$SCRIPT_DIR"/vivid/theme "$HOME"/.config/vivid/theme || retv
 install_link ../"$SCRIPT_DIR"/starship/starship.toml "$HOME"/.config/starship.toml || retval=$?
 
 create_dir "$HOME"/.ssh && chmod 700 "$HOME"/.ssh || retval=$?
-install_link ../"$SCRIPT_DIR"/ssh/config "$HOME"/.ssh/config || retval=$?
-install_link ../"$SCRIPT_DIR"/ssh/known_hosts "$HOME"/.ssh/known_hosts || retval=$?
-install_link ../"$SCRIPT_DIR"/ssh/known_hosts2 "$HOME"/.ssh/known_hosts2 || retval=$?
+install_link ../"$SCRIPT_DIR"/private/ssh/config "$HOME"/.ssh/config || retval=$?
+install_link ../"$SCRIPT_DIR"/private/ssh/known_hosts "$HOME"/.ssh/known_hosts || retval=$?
+install_link ../"$SCRIPT_DIR"/private/ssh/known_hosts2 "$HOME"/.ssh/known_hosts2 || retval=$?
 
 install_link ../"$SCRIPT_DIR"/wezterm "$HOME"/.config/wezterm || retval=$?
 
