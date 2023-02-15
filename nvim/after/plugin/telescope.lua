@@ -26,7 +26,6 @@ vim.keymap.set("n", "<leader>pw",       builtin.grep_string,    { desc = "[P]roj
 vim.keymap.set("n", "<leader>rg",       builtin.live_grep,      { desc = "[R]ip[G]rep" })
 
 vim.keymap.set("n", "<leader>pb",       builtin.buffers,        { desc = "[P]roject [B]uffers" })
-vim.keymap.set("n", "<leader><space>",  builtin.buffers,        { desc = "[ ] Find existing buffers" })
 vim.keymap.set("n", "<leader>/",        builtin.current_buffer_fuzzy_find,
                                                                 { desc = "[/] Fuzzily search in current buffer" })
 

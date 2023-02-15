@@ -30,7 +30,7 @@ vim.keymap.set("n", "J", "mzJ`z")
 -- make Y = yy, not y$
 -- for ergonomics and consistency with S, V, and <leader>Y
 -- see https://vi.stackexchange.com/a/6135
-vim.keymap.del("n", "Y")
+vim.keymap.set("n", "Y", "yy")
 
 -- Alt-Backspace to delete word in insert mode
 vim.keymap.set("i", "<M-BS>", '<Esc>vb"_c')
@@ -51,8 +51,21 @@ vim.keymap.set(
     { desc = "[S]ubstitute current word" }
 )
 
--- <leader>x to make current file executable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make file e[X]ecutable" })
+-- <leader>x to execute line, <leader><leader>x to execute file
+vim.cmd([[
+" Map execute this line
+function! s:executor() abort
+  if &ft == 'lua'
+    call execute(printf(":lua %s", getline(".")))
+  elseif &ft == 'vim'
+    exe getline(">")
+  endif
+endfunction
+nnoremap <leader>x :call <SID>executor()<CR>
+vnoremap <leader>x :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
+" Execute this file
+nnoremap <leader><leader>x :call ak#save_and_exec()<CR>
+]])
 
 -- <leader>b keys to change buffers
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { silent = true, desc = "[B]uffer [N]ext" })
