@@ -1,0 +1,8 @@
+#!/bin/sh
+# Usage:
+# rclone_mount <rclone_remote> <mount_dir> <rclone_args>
+
+remote="$1"
+mount_dir="$2"
+shift 2
+mkdir -p "$mount_dir/$remote" && rclone mount "$@" "$remote:/" "$mount_dir/$remote/" && rmdir "$mount_dir/$remote"

@@ -1,0 +1,7 @@
+#!/bin/bash
+# https://stackoverflow.com/questions/5277467/how-can-i-clean-my-git-folder-cleaned-up-my-project-directory-but-git-is-sti
+git rev-list --objects --all |
+ while read -r sha1 fname
+ do
+ echo -e "$(git cat-file -s "$sha1")\t$sha1\t$fname"
+ done | pv -l | sort -n

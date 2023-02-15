@@ -1,0 +1,66 @@
+#!/bin/bash
+# https://unix.stackexchange.com/questions/4105/how-do-i-count-all-the-files-recursively-through-directories
+
+COUNT_FILES=0
+DEPTH=1
+REVERSE=""
+PARAMS=""
+
+while (( "$#" )); do
+  case "$1" in
+    -h|--help)
+      echo "dus [-f|--count-files] [-r|--reverse] [-d|--depth DEPTH] <dir>"
+      exit
+      ;;
+    -f|--count-files)
+      COUNT_FILES=1
+      shift
+      ;;
+    -r|--reverse)
+      REVERSE="yes"
+      shift
+      ;;
+    -d|--depth)
+      if [[ -n "$2" ]] && [[ "${2:0:1}" != "-" ]]; then
+        DEPTH="$2"
+        shift 2
+      else
+        echo "Error: Argument for $1 is missing" >&2
+        exit 1
+      fi
+      ;;
+    -*) # unsupported flags
+      echo "Error: Unsupported flag $1" >&2
+      exit 1
+      ;;
+    *) # preserve positional arguments
+      PARAMS="$PARAMS $1"
+      shift
+      ;;
+  esac
+done
+
+# set positional arguments in their proper place
+eval set -- "$PARAMS"
+
+if [ $# -eq 0 ]; then
+  echo "dus [-f|--count-files] [-r|--reverse] [-d|--depth DEPTH] <dir>"
+  exit
+fi
+
+if command -v fd &>/dev/null; then
+  if [[ "$COUNT_FILES" -eq 1 ]]; then
+    fd -HI --max-depth "$DEPTH" --type d '.' "$1" | while read -r dir
+    do fd -HI --type f '.' "$dir" | wc -l | tr -d '\n'; printf "\t%s\n" "$dir"; done | sort -n ${REVERSE:+"-r"}
+  else
+    du -h -d "$DEPTH" "$1" | sort -h ${REVERSE:+"-r"}
+  fi
+else
+  if [[ "$COUNT_FILES" -eq 1 ]]; then
+    find "$1" -maxdepth "$DEPTH" -type d | while read -r dir
+    do find "$dir" -type f | wc -l | tr -d '\n'; printf "\t%s\n" "$dir"; done | sort -n ${REVERSE:+"-r"}
+  else
+    du -h -d "$DEPTH" "$1" | sort -h ${REVERSE:+"-r"}
+  fi
+fi
+

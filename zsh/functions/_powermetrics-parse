@@ -1,0 +1,12 @@
+#compdef powermetrics-parse
+
+_powermetrics-parse() {
+    _arguments -s -S \
+        "(-h --help)"{-h,--help}"[show help]" \
+        "(-o --output)"{-o,--output}"[output statistics to a csv]:output csv file:_files" \
+        "-v[version of powermetrics log]:(1 2)" \
+        "(-n --max-lines)"{-n,--max-lines}"[stop processing after N lines]" \
+        "(-m --min-percent)"{-m,--min-percent}"[minimum percent of entries for each program]" \
+        "--max-output-lines[show top N processes in output]" \
+        "1::filename:_files"
+}

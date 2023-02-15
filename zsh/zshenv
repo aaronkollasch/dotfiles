@@ -1,0 +1,5 @@
+skip_global_compinit=1
+export TERMINFO_DIRS="$TERMINFO_DIRS:$HOME/.local/share/terminfo"
+export PAGER="${PAGER:-less -sq}"
+export BAT_PAGER="${BAT_PAGER:-less -iqRFXx4 --mouse}"
+export DELTA_PAGER="${DELTA_PAGER:-less -iqRFXx4}"

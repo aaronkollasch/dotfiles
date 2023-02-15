@@ -1,0 +1,10 @@
+#!/bin/bash
+log_path="${1:-$HOME/log/gds-jitouch.log}"
+# while true; do github-download-stats -owner aaronkollasch -repo jitouch | grep -A 4 "2.82.0" | awk -v OFS='\n' '{a[NR]=$0} END{print a[1] a[NR-1]}' | sed "s/^/$(date +%Y-%m-%dT%H:%M:%S" "%Z) /" | tee -a gds-jitouch.log; sleep 3600; done
+# github-download-stats -owner aaronkollasch -repo jitouch -json | jq '.releases[] | .name as $name | (.assets[] | select(.name == "Install-Jitouch.pkg")) | .download_count as $count | {$name, $count}'
+# while true; do
+#     # github-download-stats -owner aaronkollasch -repo jitouch -json | jq -c '.releases[] |= (.name as $name | (.assets[] | select(.name == "Install-Jitouch.pkg")) | .download_count as $count | {$name, $count}) | {date: (now | strftime("%Y-%m-%dT%H:%M:%SZ"))} + .' | tee -a "$log_path" | jq -c
+#     github-download-stats -owner aaronkollasch -repo jitouch -json | jq -c '.releases[] |= ({name: .name, count: .total_downloads}) | {date: (now | strftime("%Y-%m-%dT%H:%M:%SZ"))} + .' | tee -a "$log_path" | jq -c
+#     sleep 21600
+# done
+github-download-stats -owner aaronkollasch -repo jitouch -json | jq -c '.releases[] |= ({name: .name, count: .total_downloads}) | {date: (now | strftime("%Y-%m-%dT%H:%M:%SZ"))} + .' | tee -a "$log_path" | jq -c

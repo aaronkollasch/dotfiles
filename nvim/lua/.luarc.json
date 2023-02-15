@@ -1,0 +1,33 @@
+{
+    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "Lua.workspace.library": [
+        "/Users/aaron/.vim",
+        "/Users/aaron/.vim/plugged/vim-sleuth",
+        "/Users/aaron/.vim/plugged/vim-fugitive",
+        "/Users/aaron/.vim/plugged/vim-just",
+        "/Users/aaron/.vim/plugged/vim-commentary",
+        "/Users/aaron/.vim/plugged/fzf",
+        "/Users/aaron/.vim/plugged/fzf.vim",
+        "/Users/aaron/.vim/plugged/dash.vim",
+        "/Users/aaron/.vim/plugged/edge",
+        "/Users/aaron/.vim/plugged/vim-airline",
+        "/Users/aaron/.vim/plugged/vim-airline-themes",
+        "/Users/aaron/.vim/plugged/vim-bufkill",
+        "/Users/aaron/.vim/plugged/vim-tmux-navigator",
+        "/Users/aaron/.vim/plugged/python-syntax",
+        "/Users/aaron/.vim/plugged/vim-qml",
+        "/Users/aaron/.config/nvim",
+        "/Users/aaron/.local/share/nvim/site",
+        "/Users/aaron/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+        "/Users/aaron/.local/share/nvim/site/pack/packer/start/mason.nvim",
+        "/Users/aaron/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+        "/Users/aaron/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+        "/Users/aaron/.local/share/nvim/site/pack/packer/start/packer.nvim",
+        "/opt/homebrew/Cellar/neovim/0.8.1/share/nvim/runtime",
+        "/opt/homebrew/Cellar/neovim/0.8.1/lib/nvim",
+        "/Users/aaron/.vim/plugged/vim-just/after",
+        "/Users/aaron/.vim/plugged/edge/after",
+        "/Users/aaron/.vim/after",
+        "${3rd}/luassert/library"
+    ]
+}

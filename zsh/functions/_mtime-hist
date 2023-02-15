@@ -1,0 +1,10 @@
+#compdef mtime-hist
+
+_mtime-hist() {
+    _arguments \
+        "(-h --help)"{-h,--help}"[print help and exit]" \
+        "(-g --granularity)"{-g,--granularity}"[show dates with a given precision]:granularity:(seconds minutes hours days months years)" \
+        "(-r --reverse)"{-r,--reverse}"[reverse sort order]" \
+        "(-c --count)"{-c,--count}"[sort by count rather than time]" \
+        "*::filename:_files"
+}

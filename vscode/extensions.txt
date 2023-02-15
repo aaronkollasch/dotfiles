@@ -1,0 +1,13 @@
+1Password.op-vscode
+dbaeumer.vscode-eslint
+EditorConfig.EditorConfig
+golang.go
+ms-python.python
+ms-toolsai.jupyter
+ms-toolsai.jupyter-keymap
+ms-toolsai.jupyter-renderers
+rokoroku.vscode-theme-darcula
+rust-lang.rust
+sdras.night-owl
+timonwong.shellcheck
+vscodevim.vim

@@ -1,0 +1,1 @@
+../../vim/syntax/known_hosts.vim

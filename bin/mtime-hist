@@ -1,0 +1,76 @@
+#!/bin/bash
+# Display a sorted, binned list of modification times for paths provided as arguments.
+# example:
+# mtime_hist hours ./*
+
+granularity="hours"
+sort_flags=()
+sort_by_count=false
+
+while (( "$#" )); do
+  case "$1" in
+    -h|--help)
+      echo "mtime_hist [-g granularity] [-r|--reverse] [file1] [file2] ..."
+      exit
+      ;;
+    -g|--granularity)
+      if [[ -n "$2" ]] && [[ "${2:0:1}" != "-" ]]; then
+        if echo "$2" | grep -q -E 'seconds|minutes|hours|days|months|years'; then
+          granularity="$2"
+          shift 2
+        else
+          echo "Error: No granularity provided for $1" >&2
+          exit 1
+        fi
+      else
+        echo "Error: Argument for $1 is missing" >&2
+        exit 1
+      fi
+      ;;
+    -r|--reverse)
+      sort_flags+=("-r")
+      shift
+      ;;
+    -c|--count)
+      sort_by_count=true
+      shift
+      ;;
+    -*) # unsupported flags
+      echo "Error: Unsupported flag $1" >&2
+      exit 1
+      ;;
+    *) # don't parse arguments after last flag
+      break
+      ;;
+  esac
+done
+
+if [[ "$granularity" == "seconds" ]]; then
+  date_format="%Y-%m-%d %H:%M:%S"
+elif [[ "$granularity" == "minutes" ]]; then
+  date_format="%Y-%m-%d %H:%M"
+elif [[ "$granularity" == "hours" ]]; then
+  date_format="%Y-%m-%d %H:00"
+elif [[ "$granularity" == "days" ]]; then
+  date_format="%Y-%m-%d"
+elif [[ "$granularity" == "months" ]]; then
+  date_format="%Y-%m"
+elif [[ "$granularity" == "years" ]]; then
+  date_format="%Y"
+fi
+
+paths=("$@")
+if [[ "${#paths}" == 0 ]]; then
+  paths=()
+  while IFS='' read -r line; do paths+=("$line"); done < <(find . -maxdepth 1 -type f)
+fi
+if [[ "${#paths}" == 0 ]]; then
+  echo "No files found"
+  exit 1
+fi
+
+if [[ "$OSTYPE" == darwin* ]]; then
+  stat -f "%Sm" -t "$date_format" "${paths[@]}" | sort "${sort_flags[@]}" | uniq -c | if [ "$sort_by_count" = true ]; then sort -n "${sort_flags[@]}"; else cat; fi
+else
+  stat -c %Y "${paths[@]}" | sed 's/^/@/' | date -f "-" +"$date_format" | sort "${sort_flags[@]}" | uniq -c | if [ "$sort_by_count" = true ]; then sort -n "${sort_flags[@]}"; else cat; fi
+fi

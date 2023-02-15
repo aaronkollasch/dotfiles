@@ -1,0 +1,6 @@
+#!/bin/bash
+if (( $# == 0 )) ; then
+  column -s, -t < /dev/stdin | less -#10 -N -S
+else
+  column -s, -t < "$1" | less -#10 -N -S
+fi

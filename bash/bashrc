@@ -1,0 +1,64 @@
+# export PS1="[\[\033[1;35m\]\#\[\033[0;35m\]:\!\[\033[0m\]@\[\033[31m\]\t\[\033[0m\]]: \[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[0m\]\$ "
+# export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+alias ls='ls -GFh'
+
+export HISTCONTROL=ignoreboth:erasedups
+
+alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
+
+#. ~/.git-completion.bash
+command -v op &>/dev/null && source <(op completion bash)
+
+# fzf init
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
+
+export PATH="/Users/aaron/bin:/usr/local/sbin:$PATH"
+# export PATH="/Users/aaron/anaconda3/envs/home/bin:$PATH"
+export TERMINFO_DIRS="$TERMINFO_DIRS:$HOME/.local/share/terminfo"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/aaron/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/aaron/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/aaron/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/aaron/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# remove tox conda environments
+[[ -f ~/.conda/environments.txt ]] && sed -i'' -e '/\.tox/d' ~/.conda/environments.txt
+
+# added by Anaconda3 5.0.0 installer
+# export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+# export PATH=$HOME/meme/bin:$PATH 
+# export PATH="/Users/aaron/anaconda3/bin:$PATH"
+# PATH=$PATH:/opt/metasploit-framework/bin
+# export PATH=$PATH:/opt/metasploit-framework/bin
+
+GPG_TTY=$(tty)
+export GPG_TTY
+
+function nohist {
+    set +o history
+}
+
+# Starship init
+command -v zoxide &>/dev/null && eval "$(starship init bash)"
+
+# zoxide init
+if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init bash)"
+    alias cd="z"
+    alias zz="z -"
+fi
+
+# iTerm init
+source ~/.iterm2_shell_integration.bash
+

@@ -1,0 +1,9 @@
+#compdef b3sum-recursive
+
+_b3sum-recursive() {
+    _arguments \
+        "(-f --checksum-file)"{-f,--checksum-file}"[file to store checksums]:file:_files" \
+        "(-c --check-only)"{-c,--check-only}"[run check and exit]" \
+        "(-h --help)"{-h,--help}"[print help and exit]" \
+        "1::directory:_files -/"
+}

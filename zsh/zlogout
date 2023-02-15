@@ -1,0 +1,14 @@
+#if [ -n "$SSH_AUTH_SOCK" ] ; then
+#  eval `/usr/bin/ssh-agent -k`
+#  eval `rm $SSH_ENV`
+#fi
+
+# unset tmux-resurrect if tmux-continuum is on and logging out of last pane in last window in last session
+if [ -n "$TMUX" ] &&
+    [[ "$(tmux show-option -g "@continuum-restore" 2>/dev/null)" == "@continuum-restore on" ]] &&
+    [[ $(($(tmux list-sessions | wc -l))) == 1 ]] &&
+    [[ $(($(tmux list-windows | wc -l))) == 1 ]] &&
+    [[ $(($(tmux list-panes | wc -l))) == 1 ]] &&
+    [ -h "$HOME/.tmux/resurrect/last" ]; then
+  unlink "$HOME/.tmux/resurrect/last"
+fi

@@ -1,0 +1,49 @@
+{
+    "window.autoDetectColorScheme": true,
+    "workbench.colorTheme": "Darcula",
+    "workbench.preferredDarkColorTheme": "Darcula",
+    "workbench.preferredLightColorTheme": "Night Owl Light (No Italics)",
+    "terminal.integrated.fontFamily": "Hack Nerd Font",
+    "vim.easymotion": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": false,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+      {
+        "before": ["j", "j"],
+        "after": ["<Esc>"]
+      }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+      {
+        "before": ["<leader>", "d"],
+        "after": ["d", "d"]
+      },
+      {
+        "before": ["<C-n>"],
+        "commands": [":nohl"]
+      },
+      {
+        "before": ["<CR>"],
+        "commands": [":nohl"]
+      },
+      {
+        "before": ["K"],
+        "commands": ["lineBreakInsert"],
+        "silent": true
+      }
+    ],
+    "vim.handleKeys": {
+      "<C-a>": false,
+      "<C-f>": false
+    },
+    "vim.leader": "<space>",
+    "editor.lineNumbers": "relative",
+    "editor.mouseWheelScrollSensitivity": 0.7,
+    "workbench.list.mouseWheelScrollSensitivity": 0.7,
+    "terminal.integrated.mouseWheelScrollSensitivity": 0.7,
+    "vim.visualstar": true,
+    "vim.whichwrap": "",
+    "vim.vimrc.enable": true
+}

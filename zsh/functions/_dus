@@ -1,0 +1,10 @@
+#compdef dus dus-rs=dus
+
+_dus() {
+    _arguments \
+        "(-f --count-files)"{-f,--count-files}"[count files instead of bytes]" \
+        "(-r --reverse)"{-r,--reverse}"[reverse sort order]" \
+        "(-d --depth)"{-d,--depth}"[count recursively up to this depth]:depth:(1 2 3 4 5 6 7 8 9)" \
+        "(-h --help)"{-h,--help}"[print help and exit]" \
+        "1::filename:_files"
+}

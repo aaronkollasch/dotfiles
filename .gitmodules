@@ -1,0 +1,24 @@
+[submodule "private"]
+	path = private
+	url = https://github.com/aaronkollasch/dotfiles-private
+[submodule "zsh/repos/zsh-autocomplete"]
+	path = zsh/repos/zsh-autocomplete
+	url = https://github.com/marlonrichert/zsh-autocomplete.git
+[submodule "zsh/repos/fzf"]
+	path = zsh/repos/fzf
+	url = https://github.com/junegunn/fzf
+[submodule "zsh/repos/conda-zsh-completion"]
+	path = zsh/repos/conda-zsh-completion
+	url = https://github.com/conda-incubator/conda-zsh-completion
+[submodule "zsh/repos/zsh-bash-completions-fallback"]
+	path = zsh/repos/zsh-bash-completions-fallback
+	url = https://github.com/aaronkollasch/zsh-bash-completions-fallback
+[submodule "tests/vim/syntax/vim-syntax-legend"]
+	path = tests/vim/syntax/vim-syntax-legend
+	url = https://github.com/aaronkollasch/vim-syntax-legend
+[submodule "bin/repos/terminal-colors"]
+	path = bin/repos/terminal-colors
+	url = https://github.com/eikenb/terminal-colors
+[submodule "bat/themes/sublime-darkula"]
+	path = bat/themes/sublime-darkula
+	url = https://github.com/gkjoyes/sublime-darkula

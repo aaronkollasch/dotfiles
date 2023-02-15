@@ -1,0 +1,72 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = Aaron Kollasch
+	email = aaron@kollasch.dev
+	signingkey = F813CAE853E39883
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true
+[pull]
+	ff = only
+[diff]
+	colorMoved = default
+[merge]
+	conflictstyle = diff3
+
+[interactive]
+#LIGHT
+#	diffFilter = "delta --color-only --features=\"interactive lightmode\""
+#DARK
+	diffFilter = "delta --color-only --features=\"interactive darkmode\""
+
+[delta]
+#LIGHT
+#	features = decorations lightmode
+#DARK
+	features = decorations darkmode
+	navigate = true
+
+[delta "interactive"]
+	keep-plus-minus-markers = false
+
+[delta "decorations"]
+	commit-decoration-style = blue ol
+	commit-style = raw
+	#file-style = omit
+	hunk-header-decoration-style = blue box
+	hunk-header-file-style = red
+	hunk-header-line-number-style = "#067a00"
+	hunk-header-style = file line-number syntax
+
+[delta "lightmode"]
+	light = true
+	dark = false
+	syntax-theme = OneHalfLight
+	map-styles = bold purple => syntax "#f7c5f7", bold cyan => syntax "#9fd8fb"
+	plus-emph-style = syntax "#b1eda7"
+
+[delta "darkmode"]
+	light = false
+	dark = true
+	syntax-theme = OneHalfDark
+	map-styles = bold purple => syntax indigo, bold cyan => syntax darkblue
+	plus-emph-style = syntax "#004000"
+
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+	pager = "if [ $COLUMNS -ge 150 ]; then delta --side-by-side; else delta; fi"
+[init]
+	templatedir = ~/.git_template
+	defaultBranch = main
+[filter "alwaysdark"]
+	clean = "~/.dotfiles/git/alwaysdark-clean.sh"
+	smudge = "~/.dotfiles/git/alwaysdark-smudge.sh"
+[alias]
+	logtree = "!fn() { git log --oneline --decorate --graph --all; }; fn"
+	logtreea = "!fn() { git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all; }; fn"

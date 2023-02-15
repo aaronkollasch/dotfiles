@@ -1,0 +1,53 @@
+# # uncomment to profile zshrc
+# # see https://stackoverflow.com/questions/5014823/how-can-i-profile-a-bash-shell-script-slow-startup
+# exec 3>&2 2> >( tee /tmp/sample-$$.log |
+#      /opt/homebrew/bin/gsed -u 's/^.*$/now/' |
+#      /opt/homebrew/bin/gdate -f - +%s.%N >/tmp/sample-$$.tim)
+# set -x
+
+case "$(uname -s)" in
+    Darwin)
+        source "$HOME/.dotfiles/zsh/config.d/mac.zsh"
+        ;;
+
+    Linux)
+        source "$HOME/.dotfiles/zsh/config.d/linux.zsh"
+        ;;
+esac
+source "$HOME/.dotfiles/zsh/config.d/autocomplete.zsh"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$("$HOME/mambaforge/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "$HOME/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "$HOME/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="$HOME/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "$HOME/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "$HOME/mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
+source "$HOME/.dotfiles/zsh/config.d/languages.zsh"
+source "$HOME/.dotfiles/zsh/config.d/options.zsh"
+source "$HOME/.dotfiles/zsh/config.d/aliases.zsh"
+source "$HOME/.dotfiles/zsh/config.d/prompt.zsh"
+source "$HOME/.dotfiles/zsh/config.d/term.zsh"
+
+# # uncomment to profile zshrc
+# set +x
+# exec 2>&3 3>&-
+# paste <(
+#     while read tim ;do
+#         crt=000000000$((${tim//.}-10#0$last))
+#         printf "%12.9f\n" ${crt:0:${#crt}-9}.${crt:${#crt}-9}
+#         last=${tim//.}
+#       done < /tmp/sample-$$.tim
+#   ) <(cat /tmp/sample-$$.log | cut -b 1-200)

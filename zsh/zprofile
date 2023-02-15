@@ -1,0 +1,11 @@
+source "$HOME/.dotfiles/zsh/config.d/path.zsh"
+case "$(uname -s)" in
+    Darwin)
+        source "$HOME/.dotfiles/zsh/config.d/mac.profile.zsh"
+        ;;
+
+    Linux)
+        source "$HOME/.dotfiles/zsh/config.d/linux.profile.zsh"
+        ;;
+esac
+source "$HOME/.dotfiles/zsh/config.d/languages.profile.zsh"

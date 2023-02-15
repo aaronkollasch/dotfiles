@@ -1,0 +1,155 @@
+{
+  "Key Mappings": {
+    "0xf702-0x300000-0x0": {
+      "Version": 0,
+      "Action": 2,
+      "Text": "",
+      "Label": ""
+    },
+    "0xf700-0x300000-0x0": {
+      "Version": 0,
+      "Action": 7,
+      "Text": "",
+      "Label": ""
+    },
+    "0x4a-0x60000-0x26": {
+      "Version": 1,
+      "Action": 21,
+      "Text": "",
+      "Label": ""
+    },
+    "0xd-0x100000-0x24": {
+      "Version": 1,
+      "Action": 13,
+      "Text": "",
+      "Label": ""
+    },
+    "0x7c-0x120000-0x2a": {
+      "Version": 1,
+      "Action": 29,
+      "Text": "1F091D12-9AA2-4BC8-B7D4-C221341A657F",
+      "Label": ""
+    },
+    "0x9-0x40000-0x0": {
+      "Version": 0,
+      "Action": 0,
+      "Text": "",
+      "Label": ""
+    },
+    "0x48-0x60000-0x4": {
+      "Version": 1,
+      "Action": 18,
+      "Text": "",
+      "Label": ""
+    },
+    "0xf72d-0x100000-0x0": {
+      "Version": 0,
+      "Action": 8,
+      "Text": "",
+      "Label": ""
+    },
+    "0xf72b-0x100000-0x0": {
+      "Version": 0,
+      "Action": 4,
+      "Text": "",
+      "Label": ""
+    },
+    "0x19-0x60000-0x0": {
+      "Version": 0,
+      "Action": 2,
+      "Text": "",
+      "Label": ""
+    },
+    "0x4b-0x60000-0x28": {
+      "Version": 1,
+      "Action": 20,
+      "Text": "",
+      "Label": ""
+    },
+    "0xf72d-0x20000-0x0": {
+      "Version": 0,
+      "Action": 8,
+      "Text": "",
+      "Label": ""
+    },
+    "0xf703-0x300000-0x0": {
+      "Version": 0,
+      "Action": 0,
+      "Text": "",
+      "Label": ""
+    },
+    "0x5f-0x60000-0x1b": {
+      "Version": 1,
+      "Action": 28,
+      "Text": "1F091D12-9AA2-4BC8-B7D4-C221341A657F",
+      "Label": ""
+    },
+    "0xf703-0x320000-0x0": {
+      "Version": 0,
+      "Action": 34,
+      "Text": "",
+      "Label": ""
+    },
+    "0xf72c-0x20000-0x0": {
+      "Version": 0,
+      "Action": 9,
+      "Text": "",
+      "Label": ""
+    },
+    "0x4c-0x60000-0x25": {
+      "Version": 1,
+      "Action": 19,
+      "Text": "",
+      "Label": ""
+    },
+    "0x7c-0x60000-0x2a": {
+      "Version": 1,
+      "Action": 29,
+      "Text": "1F091D12-9AA2-4BC8-B7D4-C221341A657F",
+      "Label": ""
+    },
+    "0x5f-0x120000-0x1b": {
+      "Version": 1,
+      "Action": 28,
+      "Text": "1F091D12-9AA2-4BC8-B7D4-C221341A657F",
+      "Label": ""
+    },
+    "0xf729-0x100000-0x0": {
+      "Version": 0,
+      "Action": 5,
+      "Text": "",
+      "Label": ""
+    },
+    "0x22-0x60000-0x27": {
+      "Version": 1,
+      "Action": 28,
+      "Text": "1F091D12-9AA2-4BC8-B7D4-C221341A657F",
+      "Label": ""
+    },
+    "0xf72c-0x100000-0x0": {
+      "Version": 0,
+      "Action": 9,
+      "Text": "",
+      "Label": ""
+    },
+    "0x25-0x60000-0x17": {
+      "Version": 1,
+      "Action": 29,
+      "Text": "1F091D12-9AA2-4BC8-B7D4-C221341A657F",
+      "Label": ""
+    },
+    "0xf702-0x320000-0x0": {
+      "Version": 0,
+      "Action": 33,
+      "Text": "",
+      "Label": ""
+    },
+    "0xf701-0x300000-0x0": {
+      "Version": 0,
+      "Action": 6,
+      "Text": "",
+      "Label": ""
+    }
+  },
+  "Touch Bar Items": {}
+}

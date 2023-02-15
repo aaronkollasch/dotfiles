@@ -1,0 +1,6 @@
+#compdef csview tsview=csview csview-hyperbackup=csview
+
+_csview() {
+    _arguments \
+        "1::filename:_files"
+}

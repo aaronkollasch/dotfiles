@@ -1,0 +1,17 @@
+channels:
+  - pytorch
+  - bioconda
+  - conda-forge
+  - defaults
+ssl_verify: true
+pinned_packages:
+  - conda-forge::scipy
+  - conda-forge::blas
+  - conda-forge::curl
+  - conda-forge::python
+  - conda-forge::ipython
+create_default_packages:
+  - pip
+  - blas=*=openblas
+  - scipy
+auto_activate_base: false

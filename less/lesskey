@@ -1,0 +1,6 @@
+#command
+h          left-scroll
+l          right-scroll
+^E         back-scroll
+#env
+LESS_TERMCAP_vb=

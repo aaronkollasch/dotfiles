@@ -1,0 +1,82 @@
+#!/bin/bash
+HASH_EXE=b3sum
+CHECKSUM_FILE="checksums.$HASH_EXE.txt"
+CHECK_ONLY=""
+PARAMS=""
+
+while (( "$#" )); do
+  case "$1" in
+    -h|--help)
+      echo "b3sum-recursive [-f|--checksum-file <FILE>] [-c|--check-only] [dir]"
+      exit
+      ;;
+    -f|--checksum-file)
+      if [[ -n "$2" ]] && [[ "${2:0:1}" != "-" ]]; then
+        CHECKSUM_FILE="$2"
+        shift 2
+      else
+        echo "Error: Argument for $1 is missing" >&2
+        exit 1
+      fi
+      ;;
+    -c|--check-only)
+      CHECK_ONLY="yes"
+      shift 1
+      ;;
+    -*) # unsupported flags
+      echo "Error: Unsupported flag $1" >&2
+      exit 1
+      ;;
+    *) # preserve positional arguments
+      PARAMS="$PARAMS $1"
+      shift
+      ;;
+  esac
+done
+
+# set positional arguments in their proper place
+eval set -- "$PARAMS"
+
+if [ $# -eq 0 ]; then
+  DIR=.
+else
+  DIR="$1"
+fi
+
+HIDDEN_FILE='.*'
+MS_TEMP_FILE='~\$*'
+EXCLUDE_FILE="$(basename "$CHECKSUM_FILE")"
+FIND_ARGS=(
+  -type f
+  -not -name "$HIDDEN_FILE"
+  -not -name "$MS_TEMP_FILE"
+  -not -name "$EXCLUDE_FILE"
+)
+
+if [[ -f "$CHECKSUM_FILE" ]]; then
+  "$HASH_EXE" -c "$CHECKSUM_FILE" | pv -l -s "$(wc -l < "$CHECKSUM_FILE")" | grep -v ": OK$"
+  result="${PIPESTATUS[0]}"
+  if [[ "$result" -eq 0 ]]; then
+    echo "Check passed"
+    if [[ "$CHECK_ONLY" == "yes" ]]; then
+      exit "$result"
+    fi
+    new_files="$(comm -13 <(cut -d' ' -f3- "$CHECKSUM_FILE" | sort) <(find "$DIR" "${FIND_ARGS[@]}" | sort))"
+    if [[ -n "$new_files" ]]; then
+      echo "Adding new files"
+      echo "$new_files" | tr '\n' '\0' | tee >(xargs -0 "$HASH_EXE" >> "$CHECKSUM_FILE") | tr '\0' '\n'
+    fi
+    exit $?
+  else
+    echo "Check failed"
+    exit "$result"
+  fi
+else
+  if [[ "$CHECK_ONLY" == "yes" ]]; then
+    echo "Checksum file $CHECKSUM_FILE not found"
+    exit 1
+  fi
+  echo "Creating new $CHECKSUM_FILE"
+  find "$DIR" "${FIND_ARGS[@]}" -exec "$HASH_EXE" {} \; | pv -l > "$CHECKSUM_FILE"
+  exit "${PIPESTATUS[0]}"
+fi

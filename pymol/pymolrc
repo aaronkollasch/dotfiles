@@ -1,0 +1,2 @@
+# save fetched PDB files here
+set fetch_path, /Users/aaron/Research/pymol/

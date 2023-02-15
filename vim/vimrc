@@ -1,0 +1,390 @@
+scriptencoding utf-8
+"--------------------------------------------------------------------------
+" General settings
+"--------------------------------------------------------------------------
+set nocompatible        " Use Vim defaults (much better!)
+set expandtab
+set shiftwidth=4
+set tabstop=4 softtabstop=4
+set hidden
+set list
+set listchars=tab:▸\ ,trail:·
+set number relativenumber
+set noerrorbells
+set belloff=all
+set scrolloff=4
+set sidescrolloff=4
+set incsearch
+set nowrap
+set noswapfile
+set undodir=~/.vim/undodir
+set undofile
+set signcolumn=yes
+set laststatus=2        " always show airline status bar
+set bs=indent,eol,start " allow backspacing over everything in insert mode
+"set ai                 " always set autoindenting on
+"set backup             " keep a backup file
+set viminfo='20,\"50    " read/write a .viminfo file, don't store more
+                        " than 50 lines of registers
+set history=10000       " keep 10000 lines of command line history
+"set ruler              " show the cursor position all the time
+"set whichwrap+=<,>,h,l,[,]
+set synmaxcol=10000
+set ttimeout ttimeoutlen=50
+set wildmode=longest:full,full
+set wildmenu
+if v:version >= 900 || has("patch-8.2-4325")
+  set wildoptions=pum
+endif
+set complete=.,w,b,u,t,i,kspell
+
+" map <Esc><BS> to <t_BS>
+exec "set t_BS=\e"
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+  " press <CR> to hide search results
+  nnoremap <CR> :noh<CR><CR>:<backspace>
+endif
+
+filetype plugin indent on
+"set clipboard=unnamedplus
+set encoding=utf-8
+
+if !has('nvim')
+  set ttymouse=xterm2
+endif
+set mouse=a
+
+" use term gui colors
+if has('termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+" enable italic fonts https://github.com/sainnhe/gruvbox-material/issues/5#issuecomment-729586348
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
+" disable bold in cool-retro-term
+if $LC_TERMINAL == "cool-retro-term"
+  set t_md=
+endif
+" allow correct indentation when pasting in tmux https://vi.stackexchange.com/a/28284
+if &term =~ "screen" || &term =~ "tmux"
+  let &t_BE = "\e[?2004h"
+  let &t_BD = "\e[?2004l"
+  exec "set t_PS=\e[200~"
+  exec "set t_PE=\e[201~"
+endif
+
+"--------------------------------------------------------------------------
+" Key maps
+"--------------------------------------------------------------------------
+
+let mapleader = " "
+
+" open Ex
+nnoremap <silent> <leader>pv :Ex<cr>
+
+" Reselect visual selection after indenting
+vnoremap <silent> < <gv
+vnoremap <silent> > >gv
+
+" Move cursor to middle of screen after C-d and C-u
+nnoremap <silent> <C-S-d> <C-u>zz
+nnoremap <silent> <C-d> <C-d>zz
+nnoremap <silent> <C-u> <C-u>zz
+nnoremap <silent> <C-e> <C-u>zz
+
+" move cursor to center of screen when searching, and expand folds
+nnoremap <silent> n nzzzv
+nnoremap <silent> N Nzzzv
+
+" move highlighted blocks of text with J/K
+vnoremap <silent> J :m<Space>'>+1<CR>gv=gv
+vnoremap <silent> K :m<Space>'<-2<CR>gv=gv
+
+" make cursor stay in place when using J
+nnoremap <silent> J mzJ`z
+
+" Alt-Backspace to delete word in insert mode
+inoremap <silent> <M-BS>    <Esc>vb"_c
+inoremap <silent> <t_BS>    <Esc>vb"_c
+cnoremap <silent> <M-BS>    <C-w>
+cnoremap <silent> <t_BS>    <C-w>
+
+" <leader>y to yank to system clipboard
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+Y
+vnoremap <leader>Y "+Y
+
+" <leader>d to delete to void register
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" <leader>s to begin replacement with current word
+nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+" <leader>p to replace with register
+nmap <Leader>p  <Plug>ReplaceWithRegisterOperator
+nmap <Leader>pp <Plug>ReplaceWithRegisterLine
+xmap <Leader>p  <Plug>ReplaceWithRegisterVisual
+nmap <Leader>v  "+<Plug>ReplaceWithRegisterOperator
+nmap <Leader>vv "+<Plug>ReplaceWithRegisterLine
+xmap <Leader>v  "+<Plug>ReplaceWithRegisterVisual
+
+" <leader>x to make current file executable
+nnoremap <silent> <leader>x <cmd>!chmod<space>+x<space>%<CR>
+
+" <leader>b keys to change buffers
+nnoremap <silent> <leader>bn :bnext<CR>
+nnoremap <silent> <leader>bp :bprevious<CR>
+
+" <leader>u to show undotree
+nnoremap <silent> <leader>u :UndotreeToggle<CR>
+
+" Emacs-style keymaps
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+inoremap <C-A> <Home>
+inoremap <C-E> <End>
+
+"--------------------------------------------------------------------------
+" IDE key maps
+"--------------------------------------------------------------------------
+
+if has('ide')
+  " mappings and options that exist only in IdeaVim
+  " https://towardsdatascience.com/the-essential-ideavim-remaps-291d4cd3971b
+  """ Navigation
+  nnoremap <c-\> :action SplitVertically<CR>
+  nnoremap <c--> :action SplitHorizontally<CR>
+  nnoremap <c-=> :action Unsplit<CR>
+  nnoremap <c-m> :action MoveEditorToOppositeTabGroup<CR>
+
+  sethandler <c-j> a:vim
+  sethandler <c-k> a:vim
+  nnoremap <c-h> <c-w>h
+  nnoremap <c-l> <c-w>l
+  nnoremap <c-j> <c-w>j
+  nnoremap <c-k> <c-w>k
+
+  " telescope-like mappings
+  map <leader>pf <Action>(GotoFile)
+  map <leader>ps <Action>(FindInPath)
+  map <leader>rg <Action>(FindInPath)
+  map <leader>pw <Action>(FindUsages)
+  map <leader>fh <Action>(RecentFiles)
+  " map <leader>b <Action>(Switcher)
+
+  " IdeaVim Lsp mappings
+  map <leader>n <Action>(GotoNextError)
+  map <leader>N <Action>(GotoPreviousError)
+  sethandler <S-Space> a:vim
+  map <S-Space>N <Action>(GotoPreviousError)
+  map ]d <Action>(GotoNextError)
+  map [d <Action>(GotoPreviousError)
+  map gD <Action>(GotoDeclaration)
+  map gd <Action>(GotoDeclaration)
+  map gi <Action>(GotoImplementation)
+  map gr <Action>(GotoReferences)
+  map <leader>D <Action>(GotoTypeDeclaration)
+  map <leader>rn <Action>(RenameElement)
+  map <leader>ci <Action>(CallHierarchy)
+  map <leader>co <Action>(CallHierarchy)
+  map <leader>ch <Action>(CallHierarchy)
+
+  if &ide =~? 'intellij idea'
+    if &ide =~? 'community'
+      " some mappings and options for IntelliJ IDEA Community Edition
+    elseif &ide =~? 'ultimate'
+      " some mappings and options for IntelliJ IDEA Ultimate Edition
+    endif
+  elseif &ide =~? 'pycharm'
+    " PyCharm specific mappings and options
+  endif
+else
+  " some mappings for Vim
+  nnoremap <silent> <C-f> :Files<CR>
+  nnoremap <silent> <C-p> :Files<CR>
+  nnoremap <silent> <Leader>pb :Buffers<CR>
+  nnoremap <silent> <Leader><Space> :Buffers<CR>
+  nnoremap <silent> <Leader>pf :FZF<CR>
+  nnoremap <silent> <Leader>fh :History<CR>
+  cnoremap <silent> <C-f> :History:<CR>
+  nmap <silent> <leader>K <Plug>DashSearch
+
+  " Navigation
+  noremap <silent> <C-h> :<C-U>TmuxNavigateLeft<cr>
+  noremap <silent> <C-j> :<C-U>TmuxNavigateDown<cr>
+  noremap <silent> <C-k> :<C-U>TmuxNavigateUp<cr>
+  noremap <silent> <C-l> :<C-U>TmuxNavigateRight<cr>
+  noremap <silent> <C-\> :vsplit<cr>
+  noremap <silent> <C-_> :split<cr>
+endif
+
+"--------------------------------------------------------------------------
+" Plugins
+"--------------------------------------------------------------------------
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'rizzatti/dash.vim'
+Plug 'sainnhe/edge'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'aaronkollasch/vim-bufkill'
+Plug 'christoomey/vim-tmux-navigator'
+let g:tmux_navigator_no_wrap = 1
+let g:tmux_navigator_no_mappings = 1
+Plug 'mbbill/undotree'
+let g:undotree_SetFocusWhenToggle = 1
+Plug 'inkarkat/vim-ReplaceWithRegister'
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = 60
+let g:highlightedyank_highlight_in_visual = 0
+
+" textobjects, see https://github.com/kana/vim-textobj-user/wiki
+Plug 'kana/vim-textobj-user'       " textobj library
+Plug 'kana/vim-textobj-line'       " al/il for the current line
+Plug 'kana/vim-textobj-indent'     " ai/ii for a block of similarly indented lines / aI/iI for a block of lines with the same indentation
+Plug 'kana/vim-textobj-entire'     " ae/ie for the entire region of the current buffer
+Plug 'sgur/vim-textobj-parameter'  " a,/i, for an argument to a function
+Plug 'glts/vim-textobj-comment'    " ac/ic for a comment
+
+"language support
+Plug 'vim-python/python-syntax'
+let g:python_highlight_all = 1
+let g:python_highlight_operators = 0
+Plug 'peterhoeg/vim-qml'
+Plug 'NoahTheDuke/vim-just'
+
+call plug#end()
+
+"--------------------------------------------------------------------------
+" Theme
+"--------------------------------------------------------------------------
+
+let g:edge_transparent_background = 1
+let g:edge_enable_italic = 1
+let g:edge_better_performance = 1
+
+"LIGHT
+" set background=light
+"DARK
+ set background=dark
+if $LC_TERMINAL == "cool-retro-term"
+  set background=dark
+  let g:edge_enable_italic = 0
+  let g:edge_disable_italic_comment = 1
+endif
+if &background ==# 'light'
+  " let g:edge_colors_override = {
+  "         \ 'black':      ['#dde2e7',   '253'],
+  "         \ 'bg0':        ['#fafafa',   '231'],
+  "         \ 'bg1':        ['#eef1f4',   '255'],
+  "         \ 'bg2':        ['#e8ebf0',   '254'],
+  "         \ 'bg3':        ['#e8ebf0',   '253'],
+  "         \ 'bg4':        ['#dde2e7',   '253'],
+  "         \ 'bg_grey':    ['#bcc5cf',   '246'],
+  "         \ 'bg_red':     ['#e17373',   '167'],
+  "         \ 'diff_red':   ['#f6e4e4',   '217'],
+  "         \ 'bg_green':   ['#76af6f',   '107'],
+  "         \ 'diff_green': ['#e5eee4',   '150'],
+  "         \ 'bg_blue':    ['#6996e0',   '68'],
+  "         \ 'diff_blue':  ['#e3eaf6',   '153'],
+  "         \ 'bg_purple':  ['#bf75d6',   '134'],
+  "         \ 'diff_yellow':['#f0ece2',   '183'],
+  "         \ 'fg':         ['#4b505b',   '240'], = lch(34% 7 269deg)  >> lch(10% 7 269deg)  = 171c25
+  "         \ 'red':        ['#d05858',   '167'],
+  "         \ 'yellow':     ['#be7e05',   '172'],
+  "         \ 'green':      ['#608e32',   '107'], = lch(54% 51 124deg) >> lch(48% 60 124deg) = 407506
+  "         \ 'cyan':       ['#3a8b84',   '73'],  = lch(53% 27 189deg) >> lch(44% 40 189deg) = 007971
+  "         \ 'blue':       ['#5079be',   '68'],  = lch(50% 41 272deg) >> lch(44% 50 272deg) = 276abc
+  "         \ 'purple':     ['#b05ccc',   '134'], = lch(53% 65 317deg) >> lch(48% 72 317deg) = a64ac7
+  "         \ 'grey':       ['#8790a0',   '245'], = lch(59% 10 265deg) >> lch(52% 11 265deg) = 737d8f
+  "         \ 'grey_dim':   ['#bac3cb',   '249'],
+  "         \ 'none':       ['NONE',      'NONE']
+  "         \ } "}}}
+  let g:edge_colors_override = {
+        \ 'fg': ['#171c25', '235'],
+        \ 'green': ['#407506', '71'],
+        \ 'cyan': ['#007971', '73'],
+        \ 'blue': ['#276abc', '68'],
+        \ 'purple': ['#a64ac7', '134'],
+        \ 'grey': ['#737d8f', '243'],
+        \ 'bg4': ['#bac3cb', '249'],
+        \ }
+  colorscheme edge
+  " 76af6f = oklch(69.82% 0.109 141.77) >> oklch(86.2% 0.165 141.77)  = 8fec84
+  call edge#highlight('Search', ['#000000', '0'], ['#8fec84', '119'])
+  " 6996e0 = oklch(67.24% 0.121 259.96) >> oklch(81.0% 0.165 259.96) ~= 9dc2ff
+  call edge#highlight('IncSearch', ['#000000', '0'], ['#9dc2ff', '81'])
+else
+  let g:edge_colors_override = {
+        \ 'bg4': ['#535c6a', '240'],
+        \ }
+  colorscheme edge
+  " a0c980 = oklch(78.86% 0.108 132.28) >> oklch(51.8% 0.167 132.28) ~= 467800
+  call edge#highlight('Search', ['#FFFFFF', '1'], ['#467800', '28'])
+  " 6cb6eb = oklch(74.89% 0.107 241.3)  >> oklch(55.5% 0.167 241.3)  ~= 007ab7
+  call edge#highlight('IncSearch', ['#FFFFFF', '1'], ['#007ab7', '27'])
+endif
+
+" use built-in fg color for Normal
+highlight Normal guibg=NONE ctermbg=NONE
+
+" highlight TSVariable as Normal
+highlight! link TSParameter Normal
+highlight! link TSParameterReference Normal
+highlight! link TSVariable Normal
+highlight! link TSVariableBuiltin Red
+
+" make cursor line number brighter
+set cursorline
+highlight CursorLine ctermbg=NONE guibg=NONE
+
+" set highlightedyank coloring
+highlight! link HighlightedyankRegion IncSearch
+
+let g:airline_theme = 'edge'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+if $LC_TERMINAL == "cool-retro-term"
+  let g:airline_symbols = {}
+  let g:airline_powerline_fonts = 0
+  let g:airline_left_alt_sep = '»'
+  let g:airline_left_sep = ''
+  let g:airline_right_alt_sep = '«'
+  let g:airline_right_sep = ''
+  let g:airline_symbols.linenr = '␊'
+  let g:airline_symbols.branch = '⎇'
+  let g:airline_symbols.paste = 'ρ'
+  let g:airline_symbols.readonly = '∥'
+  let g:airline_symbols.whitespace = 'Ξ'
+  au User AirlineAfterInit let g:airline_section_z
+    \ = airline#section#create([g:airline_section_z,]).' '
+endif
+
+
+"--------------------------------------------------------------------------
+" Augroups
+"--------------------------------------------------------------------------
+
+augroup StripHistory
+  au!
+  au VimEnter,CmdLineLeave *  echom histdel(":", '\m^\(w\|wq\|qa\?!\?\|b[npw]\)$')
+augroup END

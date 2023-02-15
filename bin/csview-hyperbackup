@@ -1,0 +1,8 @@
+#!/bin/bash
+if command -v xsv &>/dev/null; then
+  sed "s/ Bytes,/B,/g;s/ KB,/KB,/g;s/ MB,/MB,/g;s/ GB,/GB,/g" <({ [[ "$1" == *.zip ]] && unzip -p "$1"; } || cat "$1") | \
+    tr -d '\r' | sort -t"," -k3,3 -s -h -r | awk -F"," -v OFS="," '{print $1,$4,$3,$2}' | xsv table | less -#10 -N -S
+else
+  sed "s/ Bytes,/B,/g;s/ KB,/KB,/g;s/ MB,/MB,/g;s/ GB,/GB,/g" <({ [[ "$1" == *.zip ]] && unzip -p "$1"; } || cat "$1") | \
+    tr -d '\r' | sort -t"," -k3,3 -s -h -r | awk -F"," -v OFS="," '{print $1,$4,$3,$2}' | column -s, -t | less -#10 -N -S
+fi
