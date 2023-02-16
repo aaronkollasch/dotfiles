@@ -19,6 +19,7 @@ create_dir "$HOME"/.vim/undodir || retval=$?
 [ -e "$HOME"/.vim/autoload/plug.vim ] || { curl -fLso "$HOME"/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim && echo "Installed vim-plug" || retval=$?; }
 find vim -mindepth 1 -maxdepth 1 -type d -print | while read -r dir; do install_link "../$SCRIPT_DIR/$dir" "$HOME/.$dir" || retval=$?; done
 
+create_dir "$HOME"/.config/nvim/ || retval=$?
 install_link ../../"$SCRIPT_DIR"/nvim/init.lua "$HOME"/.config/nvim/init.lua || retval=$?
 find nvim -mindepth 1 -maxdepth 1 -type d -print | while read -r dir; do install_link "../../$SCRIPT_DIR/$dir" "$HOME/.config/$dir" || retval=$?; done
 
