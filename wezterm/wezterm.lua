@@ -563,6 +563,10 @@ local mouse_bindings = {
         action = act.CompleteSelection("Clipboard"),
     },
 }
+local bypass_mouse_reporting_modifiers = 'SHIFT'
+if wezterm.target_triple:contains("-apple-darwin") then
+    bypass_mouse_reporting_modifiers = 'ALT'
+end
 
 ----------
 -- MISC --
@@ -595,6 +599,7 @@ return {
     key_tables = key_tables,
     send_composed_key_when_left_alt_is_pressed = true,
     mouse_bindings = mouse_bindings,
+    bypass_mouse_reporting_modifiers = bypass_mouse_reporting_modifiers,
     color_schemes = color_schemes,
     color_scheme = color_scheme,
     scrollback_lines = 10000,
