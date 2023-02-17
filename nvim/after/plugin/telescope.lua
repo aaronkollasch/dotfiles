@@ -43,6 +43,7 @@ vim.keymap.set("n", "<leader>f;",       builtin.commands,       { desc = "[F]ind
 vim.keymap.set("n", "<leader>fb",       builtin.builtin,        { desc = "[F]ind [B]uiltin pickers" })
 vim.keymap.set("n", "<leader>fr",       builtin.registers,      { desc = "[F]ind [R]egisters" })
 vim.keymap.set("n", "<leader>fj",       builtin.jumplist,       { desc = "[F]ind [J]umps" })
+vim.keymap.set("n", "<leader>fq",       builtin.quickfix,       { desc = "[F]ind [Q]uickfix" })
 
 vim.keymap.set("n", "<leader>fp",       builtin.pickers,        { desc = "[F]ind [P]ickers to resume" })
 vim.keymap.set("n", "<leader>rf",       builtin.resume,         { desc = "[R]esume last [F]ind" })
