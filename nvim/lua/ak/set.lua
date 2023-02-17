@@ -33,3 +33,5 @@ vim.opt.updatetime = 50
 vim.opt.wildmode = "longest:full,full"
 
 vim.opt.complete = ".,w,b,u,t,i,kspell"
+
+vim.opt.cmdheight = 0
