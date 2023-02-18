@@ -71,6 +71,11 @@ nnoremap <leader><leader>x :call ak#save_and_exec()<CR>
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { silent = true, desc = "[B]uffer [N]ext" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { silent = true, desc = "[B]uffer [P]revious" })
 
+-- <leader>n keys to jump
+vim.keymap.set("n", "<leader>n",  "]",  { desc = "Next,     alias of ]", remap = true })
+vim.keymap.set("n", "<leader>N",  "[",  { desc = "Previous, alias of [", remap = true })
+vim.keymap.set("n", "<S-Space>N", "[",  { desc = "Previous, alias of [", remap = true })
+
 -- <leader><number> to move to window
 for i = 1, 6 do
     local lhs = "<Leader>" .. i

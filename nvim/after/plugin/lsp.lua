@@ -122,9 +122,6 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>e",  vim.diagnostic.open_float, { desc = "Open LSP float", unpack(opts) })
 vim.keymap.set("n", "[d",         vim.diagnostic.goto_prev,  { desc = "Previous diagnostic", unpack(opts) })
 vim.keymap.set("n", "]d",         vim.diagnostic.goto_next,  { desc = "Next diagnostic", unpack(opts) })
-vim.keymap.set("n", "<leader>n",  vim.diagnostic.goto_next,  { desc = "[N]ext diagnostic", unpack(opts) })
-vim.keymap.set("n", "<leader>N",  vim.diagnostic.goto_prev,  { desc = "Previous diagnostic", unpack(opts) })
-vim.keymap.set("n", "<S-Space>N", vim.diagnostic.goto_prev,  { desc = "Previous diagnostic", unpack(opts) })
 vim.keymap.set("n", "<leader>q",  builtin.diagnostics,       { desc = "Show diagnostics", unpack(opts) })
 
 -- Use an on_attach function to only map the following keys

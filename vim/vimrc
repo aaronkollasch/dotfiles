@@ -144,6 +144,11 @@ nnoremap <silent> <leader>x <cmd>!chmod<space>+x<space>%<CR>
 nnoremap <silent> <leader>bn :bnext<CR>
 nnoremap <silent> <leader>bp :bprevious<CR>
 
+" <leader>n keys to jump
+map <leader>n  ]
+map <leader>N  [
+map <S-Space>N [
+
 " <leader>u to show undotree
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 
