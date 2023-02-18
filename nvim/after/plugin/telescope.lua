@@ -1,10 +1,15 @@
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
+local previewers = require("telescope.previewers")
+local pickers = require("telescope.pickers")
+local sorters = require("telescope.sorters")
+local finders = require("telescope.finders")
 
 -- add line numbers to preview
-vim.cmd "autocmd User TelescopePreviewerLoaded setlocal number"
+vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
 
+-- custom previewers
 local project_files = function()
     local opts = {} -- define here if you want to define something
     vim.fn.system("git rev-parse --is-inside-work-tree")
@@ -15,6 +20,74 @@ local project_files = function()
     end
 end
 
+local changed_on_branch = function()
+    pickers
+        .new({
+            results_title = "Modified in current directory",
+            finder = finders.new_oneshot_job({
+                "git",
+                "diff",
+                "--name-only",
+                "--diff-filter=ACMR",
+                "--relative",
+                "HEAD",
+            }),
+            sorter = sorters.get_fuzzy_file(),
+            previewer = previewers.new_termopen_previewer({
+                get_command = function(entry)
+                    return {
+                        "git",
+                        "-c",
+                        "core.pager=delta",
+                        "-c",
+                        "delta.side-by-side=false",
+                        "diff",
+                        "--diff-filter=ACMR",
+                        "--relative",
+                        "HEAD",
+                        "--",
+                        entry.value,
+                    }
+                end,
+            }),
+        })
+        :find()
+end
+
+local changed_on_root = function()
+    local rel_path = string.gsub(vim.fn.system("git rev-parse --show-cdup"), '^%s*(.-)%s*$', '%1')
+    if vim.v.shell_error ~= 0 then
+        return
+    end
+    pickers
+        .new({
+            results_title = "Modified on current branch",
+            finder = finders.new_oneshot_job({
+                "git",
+                "diff",
+                "--name-only",
+                "HEAD",
+            }),
+            sorter = sorters.get_fuzzy_file(),
+            previewer = previewers.new_termopen_previewer({
+                get_command = function(entry)
+                    return {
+                        "git",
+                        "-c",
+                        "core.pager=delta",
+                        "-c",
+                        "delta.side-by-side=false",
+                        "diff",
+                        "HEAD",
+                        "--",
+                        rel_path .. entry.value,
+                    }
+                end,
+            }),
+        })
+        :find()
+end
+-- picker keymaps
 vim.keymap.set("n", "<leader>pf",       builtin.find_files,     { desc = "[P]roject [F]iles" })
 vim.keymap.set("n", "<leader>pg",       builtin.git_files,      { desc = "[P]roject [G]itfiles" })
 vim.keymap.set("n", "<C-p>",            project_files,          { desc = "Find project files" })
@@ -25,10 +98,17 @@ end,                                                            { desc = "[P]roj
 vim.keymap.set("n", "<leader>pw",       builtin.grep_string,    { desc = "[P]roject search current [W]ord" })
 vim.keymap.set("n", "<leader>rg",       builtin.live_grep,      { desc = "[R]ip[G]rep" })
 
+-- git
+vim.keymap.set("n", "<leader>pm",       changed_on_branch,      { desc = "[P]roject [M]odified files" })
+vim.keymap.set("n", "<leader>gd",       changed_on_root,        { desc = "[G]it [D]iff" })
+vim.keymap.set("n", "<leader>ga",       builtin.git_status,     { desc = "[G]it [A]dd" })
+
+-- buffers
 vim.keymap.set("n", "<leader>pb",       builtin.buffers,        { desc = "[P]roject [B]uffers" })
 vim.keymap.set("n", "<leader>/",        builtin.current_buffer_fuzzy_find,
                                                                 { desc = "[/] Fuzzily search in current buffer" })
 
+-- f-keymaps
 vim.keymap.set("n", "<leader>fh",       builtin.oldfiles,       { desc = "[F]ile [H]istory" })
 vim.keymap.set("n", "<leader>fl",       function()
     builtin.oldfiles({ cwd_only = true })
@@ -49,6 +129,8 @@ vim.keymap.set("n", "<leader>fp",       builtin.pickers,        { desc = "[F]ind
 vim.keymap.set("n", "<leader>rf",       builtin.resume,         { desc = "[R]esume last [F]ind" })
 
 vim.keymap.set("c", "<C-f>",            builtin.command_history, { desc = "Search command history" })
+
+-- options
 
 -- jump file pickers to line with colon
 -- https://www.youtube.com/watch?v=X35yfs3yvKw&t=443s
@@ -90,6 +172,10 @@ local find_file_config = {
 
 require("telescope").setup({
     defaults = {
+        set_env = {
+            LESS = "",
+            DELTA_PAGER = "less",
+        },
         -- Default configuration for telescope goes here:
         -- config_key = value,
         mappings = {
