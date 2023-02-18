@@ -83,6 +83,9 @@ return require("packer").startup(function(use, use_rocks)
         requires = { "kyazdani42/nvim-web-devicons", opt = true },
     })
 
+    -- statuscolumn
+    use("lewis6991/gitsigns.nvim")
+
     -- tree view
     use({
         "nvim-neo-tree/neo-tree.nvim",
