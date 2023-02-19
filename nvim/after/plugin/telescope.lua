@@ -92,10 +92,8 @@ vim.keymap.set("n", "<leader>pf",       builtin.find_files,     { desc = "[P]roj
 vim.keymap.set("n", "<leader>pg",       builtin.git_files,      { desc = "[P]roject [G]itfiles" })
 vim.keymap.set("n", "<C-p>",            project_files,          { desc = "Find project files" })
 vim.keymap.set("n", "<C-f>",            builtin.find_files,     { desc = "Find project files" })
-vim.keymap.set("n", "<leader>ps",       function()
-    builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end,                                                            { desc = "[P]roject [S]earch" })
-vim.keymap.set("n", "<leader>pw",       builtin.grep_string,    { desc = "[P]roject search current [W]ord" })
+vim.keymap.set("n", "<leader>*",        builtin.grep_string,    { desc = "Project search current word" })
+vim.keymap.set("n", "<leader>#",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>rg",       builtin.live_grep,      { desc = "[R]ip[G]rep" })
 
 -- git
