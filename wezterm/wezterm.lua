@@ -394,6 +394,10 @@ local keys = {
         mods = "OPT",
         action = act.SendKey({ key = "f", mods = "ALT" }),
     },
+    -- passthrough C-- and C-= modifiers
+    { key = "=", mods = "CTRL", action = act.DisableDefaultAssignment },
+    { key = "-", mods = "CTRL", action = act.DisableDefaultAssignment },
+    { key = "0", mods = "CTRL", action = act.DisableDefaultAssignment },
 }
 
 if wezterm.target_triple:contains("-apple-darwin") then

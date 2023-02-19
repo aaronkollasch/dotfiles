@@ -168,6 +168,7 @@ if has('ide')
   """ Navigation
   nnoremap <c-\> :action SplitVertically<CR>
   nnoremap <c--> :action SplitHorizontally<CR>
+  nnoremap <c-'> :action SplitHorizontally<CR>
   nnoremap <c-=> :action Unsplit<CR>
   nnoremap <c-m> :action MoveEditorToOppositeTabGroup<CR>
 
@@ -228,8 +229,13 @@ else
   noremap <silent> <C-j> :<C-U>TmuxNavigateDown<cr>
   noremap <silent> <C-k> :<C-U>TmuxNavigateUp<cr>
   noremap <silent> <C-l> :<C-U>TmuxNavigateRight<cr>
+  noremap <silent> <leader>\ :vsplit<cr>
   noremap <silent> <C-\> :vsplit<cr>
+  noremap <silent> <leader>- :split<cr>
+  noremap <silent> <C--> :split<cr>
   noremap <silent> <C-_> :split<cr>
+  noremap <silent> <C-'> :split<cr>
+  noremap <silent> <leader>= :ZoomToggle<cr>
 endif
 
 "--------------------------------------------------------------------------
@@ -252,6 +258,7 @@ Plug 'aaronkollasch/vim-bufkill'
 Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_wrap = 1
 let g:tmux_navigator_no_mappings = 1
+Plug 'markstory/vim-zoomwin'
 Plug 'mbbill/undotree'
 let g:undotree_SetFocusWhenToggle = 1
 Plug 'inkarkat/vim-ReplaceWithRegister'

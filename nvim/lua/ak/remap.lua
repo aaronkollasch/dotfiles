@@ -88,5 +88,11 @@ vim.keymap.set("c", "<C-A>", "<Home>")
 vim.keymap.set("c", "<C-E>", "<End>")
 
 -- window splitting
+vim.keymap.set("n", "<leader>\\", ":vsplit<CR>", { silent = true, desc = "Split Vertically" })
 vim.keymap.set("n", "<C-\\>", ":vsplit<CR>", { silent = true, desc = "Split Vertically" })
-vim.keymap.set("n", "<C-_>", ":split<CR>", { silent = true, desc = "Split Vertically" })
+vim.keymap.set("n", "<leader>-", ":split<CR>", { silent = true, desc = "Split Horizontally" })
+vim.keymap.set("n", "<C-->", ":split<CR>", { silent = true, desc = "Split Horizontally" })
+vim.keymap.set("n", "<C-_>", ":split<CR>", { silent = true, desc = "Split Horizontally" })
+vim.keymap.set("n", "<C-'>", ":split<CR>", { silent = true, desc = "Split Horizontally" })
+vim.keymap.set("n", "<leader>=", ":ZoomToggle<CR>", { silent = true, desc = "Toggle window zoom" })
+vim.keymap.set("n", "<C-=>", ":ZoomToggle<CR>", { silent = true, desc = "Toggle window zoom" })
