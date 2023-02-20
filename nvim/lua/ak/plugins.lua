@@ -108,7 +108,7 @@ return require("packer").startup(function(use, use_rocks)
     -- splits management / tmux compatibility
     use("mrjones2014/smart-splits.nvim") -- replaces christoomey/vim-tmux-navigator
     use("aaronkollasch/vim-bufkill")
-    use("markstory/vim-zoomwin") -- <leader>z to zoom
+    use("markstory/vim-zoomwin") -- <leader>z to zoom, see also troydm/zoomwintab.vim
 
     -- hints
     use({

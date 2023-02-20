@@ -189,21 +189,21 @@ if has('ide')
   " map <leader>b <Action>(Switcher)
 
   " IdeaVim Lsp mappings
-  map <leader>n <Action>(GotoNextError)
-  map <leader>N <Action>(GotoPreviousError)
-  sethandler <S-Space> a:vim
-  map <S-Space>N <Action>(GotoPreviousError)
-  map ]d <Action>(GotoNextError)
-  map [d <Action>(GotoPreviousError)
-  map gD <Action>(GotoDeclaration)
-  map gd <Action>(GotoDeclaration)
-  map gi <Action>(GotoImplementation)
-  map gr <Action>(GotoReferences)
-  map <leader>D <Action>(GotoTypeDeclaration)
-  map <leader>rn <Action>(RenameElement)
-  map <leader>ci <Action>(CallHierarchy)
-  map <leader>co <Action>(CallHierarchy)
-  map <leader>ch <Action>(CallHierarchy)
+  map        <leader>n  <Action>(GotoNextError)
+  map        <leader>N  <Action>(GotoPreviousError)
+  sethandler <S-Space>  a:vim
+  map        <S-Space>N <Action>(GotoPreviousError)
+  map        ]d         <Action>(GotoNextError)
+  map        [d         <Action>(GotoPreviousError)
+  map        gD         <Action>(GotoDeclaration)
+  map        gd         <Action>(GotoDeclaration)
+  map        gi         <Action>(GotoImplementation)
+  map        gr         <Action>(GotoReferences)
+  map        <leader>D  <Action>(GotoTypeDeclaration)
+  map        <leader>rn <Action>(RenameElement)
+  map        <leader>ci <Action>(CallHierarchy)
+  map        <leader>co <Action>(CallHierarchy)
+  map        <leader>ch <Action>(CallHierarchy)
 
   if &ide =~? 'intellij idea'
     if &ide =~? 'community'
@@ -216,27 +216,28 @@ if has('ide')
   endif
 else
   " some mappings for Vim
-  nnoremap <silent> <C-f> :Files<CR>
-  nnoremap <silent> <C-p> :Files<CR>
-  nnoremap <silent> <Leader>pb :Buffers<CR>
+  nnoremap <silent> <C-f>           :Files<CR>
+  nnoremap <silent> <C-p>           :Files<CR>
+  nnoremap <silent> <Leader>pb      :Buffers<CR>
   nnoremap <silent> <Leader><Space> :Buffers<CR>
-  nnoremap <silent> <Leader>pf :FZF<CR>
-  nnoremap <silent> <Leader>fh :History<CR>
-  cnoremap <silent> <C-f> :History:<CR>
-  nmap <silent> <leader>K <Plug>DashSearch
+  nnoremap <silent> <Leader>pf      :FZF<CR>
+  nnoremap <silent> <Leader>fh      :History<CR>
+  cnoremap <silent> <C-f>           :History:<CR>
+  nmap     <silent> <leader>K       <Plug>DashSearch
 
-  " Navigation
-  noremap <silent> <C-h> :<C-U>TmuxNavigateLeft<cr>
-  noremap <silent> <C-j> :<C-U>TmuxNavigateDown<cr>
-  noremap <silent> <C-k> :<C-U>TmuxNavigateUp<cr>
-  noremap <silent> <C-l> :<C-U>TmuxNavigateRight<cr>
-  noremap <silent> <leader>\ :vsplit<cr>
-  noremap <silent> <C-\> :vsplit<cr>
-  noremap <silent> <leader>- :split<cr>
-  noremap <silent> <C--> :split<cr>
-  noremap <silent> <C-_> :split<cr>
-  noremap <silent> <C-'> :split<cr>
+  " Navigation and splitting
+  noremap <silent> <C-h>     :<C-U>TmuxNavigateLeft<cr>
+  noremap <silent> <C-j>     :<C-U>TmuxNavigateDown<cr>
+  noremap <silent> <C-k>     :<C-U>TmuxNavigateUp<cr>
+  noremap <silent> <C-l>     :<C-U>TmuxNavigateRight<cr>
+  noremap <silent> <leader>\ :bel vsplit<cr>
+  noremap <silent> <C-\>     :bel vsplit<cr>
+  noremap <silent> <leader>- :bel split<cr>
+  noremap <silent> <C-->     :bel split<cr>
+  noremap <silent> <C-_>     :bel split<cr>
+  noremap <silent> <C-'>     :bel split<cr>
   noremap <silent> <leader>= :ZoomToggle<cr>
+  noremap <silent> <C-=>     :ZoomToggle<cr>
 endif
 
 "--------------------------------------------------------------------------
