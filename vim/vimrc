@@ -87,7 +87,7 @@ endif
 let mapleader = " "
 
 " open Ex
-nnoremap <silent> <leader>pv :Ex<cr>
+nnoremap <silent> <leader>lv :Ex<cr>
 
 " Reselect visual selection after indenting
 vnoremap <silent> < <gv
@@ -180,8 +180,8 @@ if has('ide')
   nnoremap <c-k> <c-w>k
 
   " telescope-like mappings
-  map <leader>pf <Action>(GotoFile)
-  map <leader>ps <Action>(FindInPath)
+  map <leader>lf <Action>(GotoFile)
+  map <leader>ls <Action>(FindInPath)
   map <leader>rg <Action>(FindInPath)
   map <leader>*  <Action>(FindUsages)
   map <leader>#  <Action>(FindUsages)
@@ -218,9 +218,10 @@ else
   " some mappings for Vim
   nnoremap <silent> <C-f>           :Files<CR>
   nnoremap <silent> <C-p>           :Files<CR>
-  nnoremap <silent> <Leader>pb      :Buffers<CR>
+  nnoremap <silent> <Leader>lb      :Buffers<CR>
   nnoremap <silent> <Leader><Space> :Buffers<CR>
-  nnoremap <silent> <Leader>pf      :FZF<CR>
+  nnoremap <silent> <Leader>lf      :FZF<CR>
+  nnoremap <silent> <Leader>lg      :GFiles<CR>
   nnoremap <silent> <Leader>fh      :History<CR>
   cnoremap <silent> <C-f>           :History:<CR>
   nmap     <silent> <leader>K       <Plug>DashSearch

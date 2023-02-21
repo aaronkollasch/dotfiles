@@ -44,10 +44,10 @@ table.insert(file_renderers[3].content, 3, {
     zindex = 10,
 })
 
--- map <leader>pt to ":Neotree reveal toggle<cr>"
-vim.keymap.set("n", "<leader>pt", function()
+-- map <leader>lt to ":Neotree reveal toggle<cr>"
+vim.keymap.set("n", "<leader>lt", function()
     require("neo-tree.command").execute({
         reveal = true,
         toggle = true,
     })
-end, { desc = "[P]roject [T]ree" })
+end, { desc = "[L]ocal  [T]ree" })

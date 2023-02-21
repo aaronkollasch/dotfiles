@@ -116,7 +116,13 @@ return require("packer").startup(function(use, use_rocks)
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
-            require("which-key").setup({})
+            require("which-key").setup({
+                operators = {
+                    gc = "Comments",
+                    ["<space>p"] = "Paste",
+                    ["<space>v"] = "Paste",
+                }
+            })
         end,
     })
 

@@ -88,21 +88,22 @@ local changed_on_root = function()
         :find()
 end
 -- picker keymaps
-vim.keymap.set("n", "<leader>pf",       builtin.find_files,     { desc = "[P]roject [F]iles" })
-vim.keymap.set("n", "<leader>pg",       builtin.git_files,      { desc = "[P]roject [G]itfiles" })
+vim.keymap.set("n", "<leader>lf",       builtin.find_files,     { desc = "[L]ocate [F]iles" })
+vim.keymap.set("n", "<leader>lg",       builtin.git_files,      { desc = "[L]ocate [G]itfiles" })
 vim.keymap.set("n", "<C-p>",            project_files,          { desc = "Find project files" })
 vim.keymap.set("n", "<C-f>",            builtin.find_files,     { desc = "Find project files" })
 vim.keymap.set("n", "<leader>*",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>#",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>rg",       builtin.live_grep,      { desc = "[R]ip[G]rep" })
+vim.keymap.set("n", "<leader>ls",       builtin.live_grep,      { desc = "[L]ocal  [S]earch" })
 
 -- git
-vim.keymap.set("n", "<leader>pm",       changed_on_branch,      { desc = "[P]roject [M]odified files" })
+vim.keymap.set("n", "<leader>gm",       changed_on_branch,      { desc = "[G]it [M]odified files" })
 vim.keymap.set("n", "<leader>gd",       changed_on_root,        { desc = "[G]it [D]iff" })
 vim.keymap.set("n", "<leader>ga",       builtin.git_status,     { desc = "[G]it [A]dd" })
 
 -- buffers
-vim.keymap.set("n", "<leader>pb",       builtin.buffers,        { desc = "[P]roject [B]uffers" })
+vim.keymap.set("n", "<leader>lb",       builtin.buffers,        { desc = "[L]oaded [B]uffers" })
 vim.keymap.set("n", "<leader>/",        builtin.current_buffer_fuzzy_find,
                                                                 { desc = "[/] Fuzzily search in current buffer" })
 
@@ -119,7 +120,8 @@ vim.keymap.set("n", "<leader>fk",       builtin.keymaps,        { desc = "[F]ind
 vim.keymap.set("n", "<leader>fo",       builtin.vim_options,    { desc = "[F]ind [O]ptions" })
 vim.keymap.set("n", "<leader>f;",       builtin.commands,       { desc = "[F]ind [;] Commands" })
 vim.keymap.set("n", "<leader>fb",       builtin.builtin,        { desc = "[F]ind [B]uiltin pickers" })
-vim.keymap.set("n", "<leader>fr",       builtin.registers,      { desc = "[F]ind [R]egisters" })
+vim.keymap.set("n", "<leader>f\"",      builtin.registers,      { desc = "[F]ind [\"] registers" })
+vim.keymap.set("n", "<leader>f'",       builtin.marks,          { desc = "[F]ind ['] marks" })
 vim.keymap.set("n", "<leader>fj",       builtin.jumplist,       { desc = "[F]ind [J]umps" })
 vim.keymap.set("n", "<leader>fq",       builtin.quickfix,       { desc = "[F]ind [Q]uickfix" })
 
