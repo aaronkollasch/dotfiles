@@ -7,10 +7,10 @@ vim.keymap.set("n", "<leader>lv", vim.cmd.Ex, { desc = "[L]ocal  [V]iew" })
 vim.keymap.set("n", "<CR>", ":noh<CR><CR>:<backspace>")
 
 -- Move cursor to middle of screen after C-d and C-u
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "<C-S-d>", "<C-u>zz")
-vim.keymap.set("n", "<C-e>", "<C-u>zz")
+vim.keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz")
+vim.keymap.set({ "n", "v" }, "<C-u>", "<C-u>zz")
+vim.keymap.set({ "n", "v" }, "<C-S-d>", "<C-u>zz")
+vim.keymap.set({ "n", "v" }, "<C-e>", "<C-u>zz")
 
 -- move cursor to center of screen when searching, and expand folds
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next result (expand folds)" })

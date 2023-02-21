@@ -98,6 +98,10 @@ nnoremap <silent> <C-S-d> <C-u>zz
 nnoremap <silent> <C-d> <C-d>zz
 nnoremap <silent> <C-u> <C-u>zz
 nnoremap <silent> <C-e> <C-u>zz
+vnoremap <silent> <C-S-d> <C-u>zz
+vnoremap <silent> <C-d> <C-d>zz
+vnoremap <silent> <C-u> <C-u>zz
+vnoremap <silent> <C-e> <C-u>zz
 
 " move cursor to center of screen when searching, and expand folds
 nnoremap <silent> n nzzzv
