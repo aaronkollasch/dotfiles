@@ -1,10 +1,13 @@
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
+local make_entry = require "telescope.make_entry"
 local previewers = require("telescope.previewers")
 local pickers = require("telescope.pickers")
+local utils = require("telescope.utils")
 local sorters = require("telescope.sorters")
 local finders = require("telescope.finders")
+local Path = require("plenary.path")
 
 -- add line numbers to preview
 vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
@@ -55,7 +58,7 @@ local changed_on_branch = function()
 end
 
 local changed_on_root = function()
-    local rel_path = string.gsub(vim.fn.system("git rev-parse --show-cdup"), '^%s*(.-)%s*$', '%1')
+    local rel_path = string.gsub(vim.fn.system("git rev-parse --show-cdup"), "^%s*(.-)%s*$", "%1")
     if vim.v.shell_error ~= 0 then
         return
     end
@@ -87,6 +90,131 @@ local changed_on_root = function()
         })
         :find()
 end
+
+local get_current_buf_line = function(winnr)
+      local lnum = vim.api.nvim_win_get_cursor(winnr)[1]
+      return vim.trim(vim.api.nvim_buf_get_lines(vim.api.nvim_win_get_buf(winnr), lnum - 1, lnum, false)[1])
+end
+
+local changed_in_selection = function(opts)
+    -- git.bcommits from
+    -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/builtin/__git.lua
+    -- similar to fzf.vim Bcommits command
+    -- see: https://github.com/junegunn/fzf.vim/blob/dc71692255b62d1f67dc55c8e51ab1aa467b1d46/autoload/fzf/vim.vim#L1278
+    local conf = require("telescope.config").values
+
+    opts = vim.F.if_nil(opts, {})
+    if opts.cwd then
+        opts.cwd = vim.fn.expand(opts.cwd)
+    else
+        opts.cwd = vim.loop.cwd()
+    end
+    opts.bufnr = opts.bufnr or vim.api.nvim_get_current_buf()
+    opts.winnr = opts.winnr or vim.api.nvim_get_current_win()
+    opts.current_line = (opts.current_file == nil) and get_current_buf_line(opts.winnr) or nil
+    opts.current_file = vim.F.if_nil(opts.current_file, vim.api.nvim_buf_get_name(opts.bufnr))
+    opts.entry_maker = vim.F.if_nil(opts.entry_maker, make_entry.gen_from_git_commits(opts))
+
+    -- get visual selection
+    -- from https://github.com/b3nj5m1n/kommentary/blob/3a80117148c6798972bb69414423311ab151d368/lua/kommentary/init.lua#LL95C9-L96C43
+    -- potentially update with https://github.com/neovim/neovim/pull/13896
+    local line_number_start = vim.fn.line("v")
+    local line_number_end = vim.fn.line(".")
+    local line_range = string.format(
+        "%d,%d:%s",
+        line_number_start,
+        line_number_end,
+        Path:new(opts.current_file):make_relative(opts.cwd)
+    )
+    print(vim.inspect(line_range))
+
+    local git_command = {
+        "git",
+        "log",
+        "--pretty=oneline",
+        "--abbrev-commit",
+        "--no-patch",
+        "-L",
+        line_range,
+        -- "--exclude",
+    }
+    pickers
+        .new(opts, {
+            prompt_title = "Git BCommits",
+            finder = finders.new_oneshot_job(
+                git_command,
+                -- vim.tbl_flatten {
+                --     git_command,
+                --     opts.current_file,
+                -- },
+                opts
+            ),
+            previewer = {
+                previewers.git_commit_diff_to_parent.new(opts),
+                previewers.git_commit_diff_to_head.new(opts),
+                previewers.git_commit_diff_as_was.new(opts),
+                previewers.git_commit_message.new(opts),
+            },
+            sorter = conf.file_sorter(opts),
+            attach_mappings = function()
+                actions.select_default:replace(actions.git_checkout_current_buffer)
+                local transfrom_file = function()
+                    return opts.current_file and Path:new(opts.current_file):make_relative(opts.cwd) or ""
+                end
+
+                local get_buffer_of_orig = function(selection)
+                    local value = selection.value .. ":" .. transfrom_file()
+                    local content = utils.get_os_command_output({ "git", "--no-pager", "show", value }, opts.cwd)
+
+                    local bufnr = vim.api.nvim_create_buf(false, true)
+                    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, content)
+                    vim.api.nvim_buf_set_name(bufnr, "Original")
+                    return bufnr
+                end
+
+                local vimdiff = function(selection, command)
+                    local ft = vim.bo.filetype
+                    vim.cmd("diffthis")
+
+                    local bufnr = get_buffer_of_orig(selection)
+                    vim.cmd(string.format("%s %s", command, bufnr))
+                    vim.bo.filetype = ft
+                    vim.cmd("diffthis")
+
+                    vim.api.nvim_create_autocmd("WinClosed", {
+                        buffer = bufnr,
+                        nested = true,
+                        once = true,
+                        callback = function()
+                            vim.api.nvim_buf_delete(bufnr, { force = true })
+                        end,
+                    })
+                end
+
+                actions.select_vertical:replace(function(prompt_bufnr)
+                    actions.close(prompt_bufnr)
+                    local selection = action_state.get_selected_entry()
+                    vimdiff(selection, "leftabove vert sbuffer")
+                end)
+
+                actions.select_horizontal:replace(function(prompt_bufnr)
+                    actions.close(prompt_bufnr)
+                    local selection = action_state.get_selected_entry()
+                    vimdiff(selection, "belowright sbuffer")
+                end)
+
+                actions.select_tab:replace(function(prompt_bufnr)
+                    actions.close(prompt_bufnr)
+                    local selection = action_state.get_selected_entry()
+                    vim.cmd("tabedit " .. transfrom_file())
+                    vimdiff(selection, "leftabove vert sbuffer")
+                end)
+                return true
+            end,
+        })
+        :find()
+end
+
 -- picker keymaps
 vim.keymap.set("n", "<leader>lf",       builtin.find_files,     { desc = "[L]ocate [F]iles" })
 vim.keymap.set("n", "<leader>lg",       builtin.git_files,      { desc = "[L]ocate [G]itfiles" })
@@ -101,6 +229,9 @@ vim.keymap.set("n", "<leader>ls",       builtin.live_grep,      { desc = "[L]oca
 vim.keymap.set("n", "<leader>gm",       changed_on_branch,      { desc = "[G]it [M]odified files" })
 vim.keymap.set("n", "<leader>gd",       changed_on_root,        { desc = "[G]it [D]iff" })
 vim.keymap.set("n", "<leader>ga",       builtin.git_status,     { desc = "[G]it [A]dd" })
+vim.keymap.set("n", "<leader>gl",       builtin.git_commits,    { desc = "[G]it [L]og" })
+vim.keymap.set("n", "<leader>gh",       builtin.git_bcommits,   { desc = "[G]it buffer [H]istory" })
+vim.keymap.set("v", "<leader>gh",       changed_in_selection,   { desc = "[G]it buffer [H]istory" })
 
 -- buffers
 vim.keymap.set("n", "<leader>lb",       builtin.buffers,        { desc = "[L]oaded [B]uffers" })

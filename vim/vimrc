@@ -233,6 +233,11 @@ else
   nnoremap <silent> <Leader>f;      :Commands<CR>
   nnoremap <silent> <Leader>f'      :Marks<CR>
 
+  " g-keymaps
+  nnoremap <silent> <Leader>gl      :Commits<CR>
+  nnoremap <silent> <Leader>gh      :BCommits<CR>
+  vnoremap <silent> <Leader>gh      :BCommits<CR>
+
   " Navigation and splitting
   noremap <silent> <C-h>     :<C-U>TmuxNavigateLeft<cr>
   noremap <silent> <C-j>     :<C-U>TmuxNavigateDown<cr>
