@@ -57,6 +57,7 @@ return require("packer").startup(function(use, use_rocks)
     use("NoahTheDuke/vim-just")
     use("ckipp01/stylua-nvim")
     use("folke/neodev.nvim")
+    use("aaronkollasch/vim-known_hosts")
 
     -- additional info sources
     use("rizzatti/dash.vim")

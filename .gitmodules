@@ -13,9 +13,6 @@
 [submodule "zsh/repos/zsh-bash-completions-fallback"]
 	path = zsh/repos/zsh-bash-completions-fallback
 	url = https://github.com/aaronkollasch/zsh-bash-completions-fallback
-[submodule "tests/vim/syntax/vim-syntax-legend"]
-	path = tests/vim/syntax/vim-syntax-legend
-	url = https://github.com/aaronkollasch/vim-syntax-legend
 [submodule "bin/repos/terminal-colors"]
 	path = bin/repos/terminal-colors
 	url = https://github.com/eikenb/terminal-colors

@@ -299,6 +299,7 @@ let g:python_highlight_all = 1
 let g:python_highlight_operators = 0
 Plug 'peterhoeg/vim-qml'
 Plug 'NoahTheDuke/vim-just'
+Plug 'aaronkollasch/vim-known_hosts'
 
 call plug#end()
 
