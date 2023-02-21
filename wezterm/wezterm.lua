@@ -86,7 +86,7 @@ local color_schemes = {
 }
 
 -- https://wezfurlong.org/wezterm/config/lua/wezterm.gui/get_appearance.html
-function scheme_for_appearance(appearance)
+local function scheme_for_appearance(appearance)
     if appearance:find("Dark") then
         return "Custom Dark"
     else
@@ -470,7 +470,12 @@ if wezterm.target_triple:contains("-apple-darwin") then
             }),
         },
     }
-    for i, binding in pairs(mac_keys) do
+    for _, binding in pairs(mac_keys) do
+        table.insert(keys, binding)
+    end
+elseif wezterm.target_triple:contains("-linux-gnu") then
+    local linux_keys = {}
+    for _, binding in pairs(linux_keys) do
         table.insert(keys, binding)
     end
 end
@@ -567,9 +572,9 @@ local mouse_bindings = {
         action = act.CompleteSelection("Clipboard"),
     },
 }
-local bypass_mouse_reporting_modifiers = 'SHIFT'
+local bypass_mouse_reporting_modifiers = "SHIFT"
 if wezterm.target_triple:contains("-apple-darwin") then
-    bypass_mouse_reporting_modifiers = 'ALT'
+    bypass_mouse_reporting_modifiers = "ALT"
 end
 
 ----------
