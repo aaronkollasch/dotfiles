@@ -222,9 +222,16 @@ else
   nnoremap <silent> <Leader><Space> :Buffers<CR>
   nnoremap <silent> <Leader>lf      :FZF<CR>
   nnoremap <silent> <Leader>lg      :GFiles<CR>
-  nnoremap <silent> <Leader>fh      :History<CR>
   cnoremap <silent> <C-f>           :History:<CR>
+  nnoremap <silent> <Leader>/       :BLines<CR>
   nmap     <silent> <leader>K       <Plug>DashSearch
+
+  " f-keymaps
+  nnoremap <silent> <Leader>fh      :History<CR>
+  nnoremap <silent> <Leader>f/      :Helptags<CR>
+  nnoremap <silent> <Leader>fk      :Maps<CR>
+  nnoremap <silent> <Leader>f;      :Commands<CR>
+  nnoremap <silent> <Leader>f'      :Marks<CR>
 
   " Navigation and splitting
   noremap <silent> <C-h>     :<C-U>TmuxNavigateLeft<cr>
