@@ -91,12 +91,32 @@ local changed_on_root = function()
         :find()
 end
 
+local commits_in_project = function()
+    return builtin.git_commits({
+        git_command = {
+            "git",
+            "log",
+            "--format=%h%d %s (%cr)",
+        }
+    })
+end
+
+local commits_in_buffer = function()
+    return builtin.git_bcommits({
+        git_command = {
+            "git",
+            "log",
+            "--format=%h%d %s (%cr)",
+        }
+    })
+end
+
 local get_current_buf_line = function(winnr)
       local lnum = vim.api.nvim_win_get_cursor(winnr)[1]
       return vim.trim(vim.api.nvim_buf_get_lines(vim.api.nvim_win_get_buf(winnr), lnum - 1, lnum, false)[1])
 end
 
-local changed_in_selection = function(opts)
+local commits_in_selection = function(opts)
     -- git.bcommits from
     -- https://github.com/nvim-telescope/telescope.nvim/blob/master/lua/telescope/builtin/__git.lua
     -- similar to fzf.vim Bcommits command
@@ -131,8 +151,7 @@ local changed_in_selection = function(opts)
     local git_command = {
         "git",
         "log",
-        "--pretty=oneline",
-        "--abbrev-commit",
+        "--format=%h%d %s (%cr)",
         "--no-patch",
         "-L",
         line_range,
@@ -229,9 +248,9 @@ vim.keymap.set("n", "<leader>ls",       builtin.live_grep,      { desc = "[L]oca
 vim.keymap.set("n", "<leader>gm",       changed_on_branch,      { desc = "[G]it [M]odified files" })
 vim.keymap.set("n", "<leader>gd",       changed_on_root,        { desc = "[G]it [D]iff" })
 vim.keymap.set("n", "<leader>ga",       builtin.git_status,     { desc = "[G]it [A]dd" })
-vim.keymap.set("n", "<leader>gl",       builtin.git_commits,    { desc = "[G]it [L]og" })
-vim.keymap.set("n", "<leader>gh",       builtin.git_bcommits,   { desc = "[G]it buffer [H]istory" })
-vim.keymap.set("v", "<leader>gh",       changed_in_selection,   { desc = "[G]it buffer [H]istory" })
+vim.keymap.set("n", "<leader>gl",       commits_in_project,     { desc = "[G]it [L]og" })
+vim.keymap.set("n", "<leader>gh",       commits_in_buffer,      { desc = "[G]it buffer [H]istory" })
+vim.keymap.set("v", "<leader>gh",       commits_in_selection,   { desc = "[G]it buffer [H]istory" })
 
 -- buffers
 vim.keymap.set("n", "<leader>lb",       builtin.buffers,        { desc = "[L]oaded [B]uffers" })
