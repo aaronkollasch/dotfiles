@@ -288,6 +288,7 @@ vim.keymap.set("n", "<leader>fj",       builtin.jumplist,       { desc = "[F]ind
 vim.keymap.set("n", "<leader>fq",       builtin.quickfix,       { desc = "[F]ind [Q]uickfix" })
 
 vim.keymap.set("n", "<leader>fp",       builtin.pickers,        { desc = "[F]ind [P]ickers to resume" })
+vim.keymap.set("n", "<leader>fr",       builtin.pickers,        { desc = "[F]ind pickers to [R]esume" })
 vim.keymap.set("n", "<leader>rf",       builtin.resume,         { desc = "[R]esume last [F]ind" })
 
 vim.keymap.set("c", "<C-f>",            builtin.command_history, { desc = "Search command history" })
