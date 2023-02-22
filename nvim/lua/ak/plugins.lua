@@ -64,7 +64,9 @@ return require("packer").startup(function(use, use_rocks)
     use({ "mrjones2014/op.nvim", run = "make install" })
 
     -- Fuzzy Finder (files, lsp, etc)
-    use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } })
+    -- use({ "nvim-telescope/telescope.nvim", branch = "0.1.x", requires = { "nvim-lua/plenary.nvim" } })
+    -- use({ "~/Github/telescope.nvim", requires = { "nvim-lua/plenary.nvim" } })
+    use({ "aaronkollasch/telescope.nvim", branch = "visual-bcommit-filter", requires = { "nvim-lua/plenary.nvim" } })
 
     -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
     use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable("make") == 1 })
