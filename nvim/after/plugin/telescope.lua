@@ -349,6 +349,8 @@ require("telescope").setup({
                 ["<C-j>"] = "move_selection_next",
                 ["<C-k>"] = "move_selection_previous",
                 ["<C-e>"] = "preview_scrolling_up",
+                ["<C-s>"] = "cycle_previewers_next",
+                ["<C-a>"] = "cycle_previewers_prev",
             },
         },
         cache_picker = {
