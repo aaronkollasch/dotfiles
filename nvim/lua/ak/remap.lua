@@ -83,9 +83,11 @@ for i = 1, 6 do
     vim.keymap.set("n", lhs, rhs, { desc = "Move to Window " .. i })
 end
 
--- Emacs-style keymaps
+-- tcsh-style keymaps
 vim.keymap.set("c", "<C-A>", "<Home>")
 vim.keymap.set("c", "<C-E>", "<End>")
+vim.keymap.set({"c", "i", "n", "v"}, "<M-b>", "<S-Left>")
+vim.keymap.set({"c", "i", "n", "v"}, "<M-f>", "<S-Right>")
 
 -- window splitting
 vim.keymap.set("n", "<leader>\\", ":bel vsplit<CR>", { silent = true, desc = "Split Vertically" })
