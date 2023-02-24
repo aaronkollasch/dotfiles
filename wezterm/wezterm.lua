@@ -255,16 +255,20 @@ local ssh_domains = {
 ----------
 -- KEYS --
 ----------
+local default_clipboard = "Clipboard"
+if wezterm.target_triple:contains("-linux-gnu") then
+    default_clipboard = "PrimarySelection"
+end
 local keys = {
     {
         key = "c",
         mods = "CTRL|ALT",
-        action = act.CopyTo("ClipboardAndPrimarySelection"),
+        action = act.CopyTo(default_clipboard),
     },
     {
         key = "v",
         mods = "CTRL|ALT",
-        action = act.PasteFrom("Clipboard"),
+        action = act.PasteFrom(default_clipboard),
     },
     {
         key = "t",
@@ -516,14 +520,14 @@ local mouse_bindings = {
     {
         event = { Up = { streak = 1, button = "Left" } },
         mods = "NONE",
-        action = act.CompleteSelectionOrOpenLinkAtMouseCursor("Clipboard"),
+        action = act.CompleteSelectionOrOpenLinkAtMouseCursor(default_clipboard),
         -- NOTE: the default action is:
         -- action=wezterm.action{CompleteSelectionOrOpenLinkAtMouseCursor="PrimarySelection"},
     },
     {
         event = { Down = { streak = 1, button = "Middle" } },
         mods = "NONE",
-        action = act.PasteFrom("Clipboard"),
+        action = act.PasteFrom(default_clipboard),
     },
     -- use ALT to select and ignore mouse mode
     {
@@ -563,13 +567,13 @@ local mouse_bindings = {
     {
         event = { Up = { streak = 1, button = "Left" } },
         mods = "ALT",
-        action = act.CompleteSelection("Clipboard"),
+        action = act.CompleteSelection(default_clipboard),
     },
     {
         event = { Up = { streak = 1, button = "Left" } },
         mods = "ALT",
         mouse_reporting = true,
-        action = act.CompleteSelection("Clipboard"),
+        action = act.CompleteSelection(default_clipboard),
     },
 }
 local bypass_mouse_reporting_modifiers = "SHIFT"
