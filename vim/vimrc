@@ -8,12 +8,15 @@ set shiftwidth=4
 set tabstop=4 softtabstop=4
 set hidden
 set list
-set listchars=tab:▸\ ,trail:·
+set listchars=tab:▸\ ,trail:·,extends:>,precedes:<
 set number relativenumber
 set noerrorbells
 set belloff=all
 set scrolloff=4
 set sidescrolloff=4
+set breakindent
+set breakindentopt=list:-1
+set showbreak=↳\ 
 set incsearch
 set nowrap
 set noswapfile

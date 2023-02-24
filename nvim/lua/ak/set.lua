@@ -21,10 +21,14 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.list = true
-vim.opt.listchars = { trail = "·", tab = "▸ " }
+vim.opt.listchars = { trail = "·", tab = "▸ ", extends = ">", precedes = "<" }
 
 vim.opt.scrolloff = 4
 vim.opt.sidescrolloff = 4
+
+vim.opt.breakindent = true
+vim.opt.breakindentopt = "list:-1"
+vim.opt.showbreak = "↳ "
 
 vim.opt.signcolumn = "yes"
 if vim.version().minor >= 9 then
