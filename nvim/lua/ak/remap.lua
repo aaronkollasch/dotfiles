@@ -24,8 +24,10 @@ vim.cmd([[ vnoremap > >gv ]])
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- make cursor stay in place when using J
+-- make cursor stay in place when using J, y, and Y
 vim.keymap.set("n", "J", "mzJ`z")
+vim.cmd([[ vnoremap <expr>y "my\"" . v:register . "y`y" ]])
+vim.cmd([[ vnoremap <expr>Y "my\"" . v:register . "Y`y" ]])
 
 -- make Y = yy, not y$
 -- for ergonomics and consistency with S, V, and <leader>Y

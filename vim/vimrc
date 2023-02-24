@@ -114,8 +114,10 @@ nnoremap <silent> N Nzzzv
 vnoremap <silent> J :m<Space>'>+1<CR>gv=gv
 vnoremap <silent> K :m<Space>'<-2<CR>gv=gv
 
-" make cursor stay in place when using J
+" make cursor stay in place when using J, y, and Y
 nnoremap <silent> J mzJ`z
+vnoremap <expr>y "my\"" . v:register . "y`y"
+vnoremap <expr>Y "my\"" . v:register . "Y`y"
 
 " Alt-Backspace to delete word in insert mode
 inoremap <silent> <M-BS>    <Esc>vb"_c
