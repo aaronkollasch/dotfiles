@@ -84,7 +84,8 @@ alias gl2=gll2
 alias gnew='git log HEAD@{1}..HEAD@{0}' # Show commits since last pull, see http://blogs.atlassian.com/2014/10/advanced-git-aliases/
 alias gwc='git whatchanged'
 alias glt='git log --oneline --decorate --graph --all'
-alias glta="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
+alias glta="git log --graph --pretty='%C(auto)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)<%an>%Creset %C(cyan)(%cr)%Creset' --all"
+alias glla="git log --graph --pretty='%C(auto)%h%Creset -%C(auto)%d%Creset %s %C(bold blue)<%an>%Creset %C(cyan)(%cr)%Creset' --all"
 
 # ls-files
 alias gu='git ls-files . --exclude-standard --others' # Show untracked files
