@@ -16,6 +16,7 @@ elif command -v fzf &>/dev/null; then
   source ~/.dotfiles/zsh/repos/fzf/shell/completion.zsh
 fi
 [[ -v functions[fzf-history-widget] ]] && bindkey -M viins '^R' fzf-history-widget
+[[ -v functions[fzf-history-widget] ]] && bindkey -M vicmd '^R' redo
 
 # auto-completion
 fpath=(~/.dotfiles/zsh/functions $fpath)

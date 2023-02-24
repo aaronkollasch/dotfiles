@@ -46,6 +46,9 @@ bindkey -M viins '^[[3~' delete-char # delete forward in wezterm
 bindkey -M viins '^[d' kill-word
 bindkey -M viins '^[[3;3~' kill-word  # alt-delete to delete word in wezterm
 bindkey -M vicmd '^?' backward-delete-char  # can use backspace from vicmd mode
+bindkey -M viins '^xh' _complete_help
+bindkey -M viins '^x^h' _complete_help
+bindkey -M viins '^x?' _complete_debug
 
 # key timeout
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
