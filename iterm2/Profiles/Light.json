@@ -1,4 +1,11 @@
 {
+  "Ansi 5 Color" : {
+    "Red Component" : 0.79022186994552612,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.78154844045639038,
+    "Alpha Component" : 1,
+    "Green Component" : 0.18891248106956482
+  },
   "Working Directory" : "\/Users\/aaron",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
@@ -17,6 +24,7 @@
     "Green Component" : 0.98757272958755493
   },
   "Use Italic Font" : true,
+  "Use libtickit protocol" : false,
   "Foreground Color" : {
     "Red Component" : 0.7810397744178772,
     "Color Space" : "sRGB",
@@ -53,9 +61,10 @@
     "slogin",
     "telnet"
   ],
+  "Non-ASCII Ligatures" : false,
   "Scrollback Lines" : 0,
   "Scrollback in Alternate Screen" : false,
-  "Draw Powerline Glyphs" : false,
+  "Draw Powerline Glyphs" : true,
   "Status Bar Layout" : {
     "components" : [
       {
@@ -177,8 +186,9 @@
     "Green Component" : 1
   },
   "Unlimited Scrollback" : true,
-  "Custom Command" : "No",
+  "Allow modifyOtherKeys" : true,
   "AWDS Tab Option" : "No",
+  "Custom Command" : "No",
   "Keyboard Map" : {
     "0xf728-0x80000" : {
       "Text" : "d",
@@ -453,7 +463,7 @@
     "Green Component" : 0.58615916967391968
   },
   "Window Type" : 0,
-  "Use Bright Bold" : true,
+  "Use Bright Bold" : false,
   "Has Hotkey" : false,
   "Cursor Text Color" : {
     "Red Component" : 0.99999600648880005,
@@ -473,7 +483,6 @@
   "Disable Smcup Rmcup" : false,
   "Name" : "Light",
   "Blinking Cursor" : false,
-  "Guid" : "1F091D12-9AA2-4BC8-B7D4-C221341A657F",
   "Ansi 1 Color" : {
     "Red Component" : 0.789775550365448,
     "Color Space" : "sRGB",
@@ -481,6 +490,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.10676553100347519
   },
+  "Guid" : "1F091D12-9AA2-4BC8-B7D4-C221341A657F",
   "Ansi 8 Color" : {
     "Red Component" : 0.40781760215759277,
     "Color Space" : "sRGB",
@@ -554,8 +564,8 @@
     "Green Component" : 0.14843845367431641
   },
   "Screen" : -1,
-  "Initial Use Transparency" : true,
   "AWDS Window Option" : "No",
+  "Initial Use Transparency" : true,
   "Bound Hosts" : [
 
   ],
@@ -569,13 +579,7 @@
   },
   "Columns" : 200,
   "Visual Bell" : true,
+  "ASCII Ligatures" : false,
   "Custom Directory" : "Advanced",
-  "Thin Strokes" : 1,
-  "Ansi 5 Color" : {
-    "Red Component" : 0.79022186994552612,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.78154844045639038,
-    "Alpha Component" : 1,
-    "Green Component" : 0.18891248106956482
-  }
+  "Thin Strokes" : 1
 }
