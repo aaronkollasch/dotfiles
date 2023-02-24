@@ -54,9 +54,11 @@ command -v zoxide &>/dev/null && eval "$(starship init bash)"
 
 # zoxide init
 if command -v zoxide &>/dev/null; then
-    eval "$(zoxide init bash)"
-    alias cd="z"
-    alias zz="z -"
+    eval "$(zoxide init bash --cmd j)"
+    alias cd="j"
+    alias jj="j -"
+else
+    alias j="cd"
 fi
 
 # iTerm init
