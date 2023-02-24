@@ -17,8 +17,8 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "Next result (expand folds)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous result (expand folds)" })
 
 -- Reselect visual selection after indenting
-vim.cmd([[ vnoremap < <gv ]])
-vim.cmd([[ vnoremap > >gv ]])
+vim.keymap.set('v', '<', '<gv')
+vim.keymap.set('v', '>', '>gv')
 
 -- move highlighted blocks of text with J/K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -92,8 +92,8 @@ end
 -- tcsh-style keymaps
 vim.keymap.set("c", "<C-A>", "<Home>")
 vim.keymap.set("c", "<C-E>", "<End>")
-vim.keymap.set({"c", "i", "n", "v"}, "<M-b>", "<S-Left>")
-vim.keymap.set({"c", "i", "n", "v"}, "<M-f>", "<S-Right>")
+vim.keymap.set({ "c", "i", "n", "v" }, "<M-b>", "<S-Left>")
+vim.keymap.set({ "c", "i", "n", "v" }, "<M-f>", "<S-Right>")
 
 -- window splitting
 vim.keymap.set("n", "<leader>\\", ":bel vsplit<CR>", { silent = true, desc = "Split Vertically" })
