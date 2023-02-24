@@ -1519,11 +1519,7 @@ function _op_plugin_run {
     ;;
   esac
 
-  case "$line[1]" in
-  gh)
-    _gh
-    ;;
-  esac
+  _dispatch "$curcontext" "$line[1]"
 }
 
 function _op_read {
