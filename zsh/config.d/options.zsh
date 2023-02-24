@@ -36,16 +36,18 @@ select-word-style bash
 # vim mode
 bindkey -v
 unsetopt BEEP
-bindkey -M viins '^[^?' backward-kill-word  # alt-delete to delete word
+bindkey -M viins '^[^?' backward-kill-word # alt-backspace to delete word
 bindkey -M viins '^A' beginning-of-line
 bindkey -M viins '^E' end-of-line
-bindkey -M viins '^[b' backward-word
-bindkey -M viins '^[f' forward-word
-bindkey -M viins '^D' delete-char
-bindkey -M viins '^[[3~' delete-char # delete forward in wezterm
-bindkey -M viins '^[d' kill-word
-bindkey -M viins '^[[3;3~' kill-word  # alt-delete to delete word in wezterm
-bindkey -M vicmd '^?' backward-delete-char  # can use backspace from vicmd mode
+bindkey -M viins '^[b' backward-word       # alt-left
+bindkey -M viins '^[f' forward-word        # alt-right
+bindkey -M viins '^[[1;2D' backward-word   # shift-left
+bindkey -M viins '^[[1;2C' forward-word    # shift-right
+bindkey -M viins '^D' delete-char          # delete forward char
+bindkey -M viins '^[[3~' delete-char       # delete forward char in wezterm
+bindkey -M viins '^[d' kill-word           # alt-delete to delete forward word
+bindkey -M viins '^[[3;3~' kill-word       # alt-delete to delete forward word in wezterm
+bindkey -M vicmd '^?' backward-delete-char # can use backspace from vicmd mode
 bindkey -M viins '^xh' _complete_help
 bindkey -M viins '^x^h' _complete_help
 bindkey -M viins '^x?' _complete_debug
