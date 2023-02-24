@@ -119,6 +119,10 @@ nnoremap <silent> J mzJ`z
 vnoremap <expr>y "my\"" . v:register . "y`y"
 vnoremap <expr>Y "my\"" . v:register . "Y`y"
 
+" move by terminal rows, not lines, unless a count is provided
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
 " Alt-Backspace to delete word in insert mode
 inoremap <silent> <M-BS>    <Esc>vb"_c
 inoremap <silent> <t_BS>    <Esc>vb"_c

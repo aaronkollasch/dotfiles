@@ -29,6 +29,10 @@ vim.keymap.set("n", "J", "mzJ`z")
 vim.cmd([[ vnoremap <expr>y "my\"" . v:register . "y`y" ]])
 vim.cmd([[ vnoremap <expr>Y "my\"" . v:register . "Y`y" ]])
 
+-- move by terminal rows, not lines, unless a count is provided
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
 -- make Y = yy, not y$
 -- for ergonomics and consistency with S, V, and <leader>Y
 -- see https://vi.stackexchange.com/a/6135
