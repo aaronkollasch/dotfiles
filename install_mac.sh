@@ -27,22 +27,7 @@ create_dir "$HOME"/.1password || retval=$?
 install_link "$HOME"/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock "$HOME"/.1password/agent.sock "Installed 1password agent alias" || retval=$?
 
 if [[ -e "$HOME/$SCRIPT_DIR/private" ]]; then
-  create_dir "$HOME"/Library/LaunchAgents || retval=$?
-  install_copy "$HOME"/"$SCRIPT_DIR"/private/mac/LaunchAgents/user/com.jitouch.Jitouch.plist "$HOME"/Library/LaunchAgents/com.jitouch.Jitouch.plist "Installed Jitouch LaunchAgent" || retval=$?
-
-  create_dir "$HOME"/Library/Containers/com.barebones.bbedit/Data/Library/Preferences || retval=$?
-  install_copy "$HOME/$SCRIPT_DIR"/private/mac/Application\ Support/BBEdit/Setup/BBEdit\ Preferences\ Sync.plist "$HOME"/Library/Containers/com.barebones.bbedit/Data/Library/Preferences/com.barebones.bbedit.plist "Installed BBEdit preferences" && defaults read com.barebones.bbedit >/dev/null || retval=$?
-  install_link "$HOME/$SCRIPT_DIR"/private/mac/Application\ Support/BBEdit "$HOME"/Library/Application\ Support/BBEdit "Installed BBEdit support folder" || retval=$?
-
-  install_copy "$HOME/$SCRIPT_DIR"/private/mac/Preferences/com.surteesstudios.Bartender.plist "$HOME"/Library/Preferences/com.surteesstudios.Bartender.plist "Installed Bartender preferences" && defaults read com.surteesstudios.Bartender >/dev/null || retval=$?
-  install_link "$HOME/$SCRIPT_DIR"/private/mac/Application\ Support/Bartender "$HOME"/Library/Application\ Support/Bartender "Installed Bartender application support folder" || retval=$?
-
-  install_copy "$HOME/$SCRIPT_DIR"/private/mac/Preferences/com.commandqapp.CommandQ.plist "$HOME"/Library/Preferences/com.commandqapp.CommandQ.plist "Installed CommandQ preferences" && defaults read com.commandqapp.CommandQ >/dev/null || retval=$?
-
-  install_copy "$HOME/$SCRIPT_DIR"/private/mac/Preferences/com.runningwithcrayons.Alfred.plist "$HOME"/Library/Preferences/com.runningwithcrayons.Alfred.plist "Installed Alfred plist" && defaults read com.runningwithcrayons.Alfred >/dev/null || retval=$?
-  install_copy "$HOME/$SCRIPT_DIR"/private/mac/Preferences/com.runningwithcrayons.Alfred-Preferences.plist "$HOME"/Library/Preferences/com.runningwithcrayons.Alfred-Preferences.plist "Installed Alfred-Preferences plist" && defaults read com.runningwithcrayons.Alfred-Preferences >/dev/null || retval=$?
-
-  install_copy "$HOME/$SCRIPT_DIR"/private/mac/Preferences/com.jitouch.Jitouch.plist "$HOME"/Library/Preferences/com.jitouch.Jitouch.plist "Installed Jitouch preferences" && defaults read com.jitouch.Jitouch >/dev/null || retval=$?
+  bash private/install_mac.sh
 fi
 
 if [[ ! -e "$HOME"/.terminfo/ || $(find "$HOME"/.terminfo -name 'tmux-256color' | wc -c) -eq 0 ]]; then
