@@ -25,6 +25,13 @@ To update submodules (should already be installed by `git clone --recursive`):
 ```shell
 git submodule init && git submodule update
 ```
+To update submodules excluding the private submodule:
+```shell
+while read -r submodule; do
+  git submodule init "$submodule"
+done < <(git submodule status | cut -f2 -d' ' | sed 's%/.*%%' | sort | uniq | grep -v 'private')
+git submodule update
+```
 Then run the correct install script for your system, e.g.
 ```shell
 ./install_linux.sh
