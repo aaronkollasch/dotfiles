@@ -26,8 +26,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- make cursor stay in place when using J, y, and Y
 vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "y", '"my\"" . v:register . "y`y"', { expr = true })
-vim.keymap.set("n", "Y", '"my\"" . v:register . "Y`y"', { expr = true })
+vim.cmd([[ vnoremap <expr> y "my\"" . v:register . "y`y" ]])
+vim.cmd([[ vnoremap <expr> Y "my\"" . v:register . "Y`y" ]])
 
 -- move by terminal rows, not lines, unless a count is provided
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
