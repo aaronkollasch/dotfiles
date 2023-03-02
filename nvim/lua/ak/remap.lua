@@ -86,8 +86,8 @@ vnoremap <leader>x :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
 nnoremap <leader><leader>x :call ak#save_and_exec()<CR>
 ]])
 
--- <leader>ll to open Lazy plugin management window
-vim.keymap.set("n", "<leader>ll", ":Lazy<CR>", { desc = "[L]azy   [L]oading" })
+-- <leader><leader>l to open Lazy plugin management window
+vim.keymap.set("n", "<leader><leader>l", ":Lazy<CR>", { desc = "[L]azy" })
 
 -- <leader>b keys to change buffers
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { silent = true, desc = "[B]uffer [N]ext" })
