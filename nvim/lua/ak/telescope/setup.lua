@@ -173,6 +173,7 @@ vim.keymap.set("n", "<leader>fr",       builtin.pickers,        { desc = "[F]ind
 vim.keymap.set("n", "<leader>rf",       builtin.resume,         { desc = "[R]esume last [F]ind" })
 
 vim.keymap.set("c", "<C-f>",            builtin.command_history, { desc = "Search command history" })
+vim.keymap.set("c", "<C-r><C-r>",            builtin.command_history, { desc = "Search command history" })
 
 -- options
 

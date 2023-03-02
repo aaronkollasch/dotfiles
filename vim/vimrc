@@ -96,6 +96,9 @@ nnoremap <silent> <leader>lv :Ex<cr>
 vnoremap <silent> < <gv
 vnoremap <silent> > >gv
 
+" Remove annoying q:
+nnoremap <silent> q: :q<CR>
+
 " Move cursor to middle of screen after C-d and C-u
 nnoremap <silent> <C-S-d> <C-u>zz
 nnoremap <silent> <C-d> <C-d>zz
@@ -236,6 +239,7 @@ else
   nnoremap <silent> <Leader>lf      :FZF<CR>
   nnoremap <silent> <Leader>lg      :GFiles<CR>
   cnoremap <silent> <C-f>           :History:<CR>
+  cnoremap <silent> <C-r><C-r>      :History:<CR>
   nnoremap <silent> <Leader>/       :BLines<CR>
   nmap     <silent> <leader>K       <Plug>DashSearch
 

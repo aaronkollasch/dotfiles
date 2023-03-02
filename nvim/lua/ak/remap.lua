@@ -6,6 +6,9 @@ vim.keymap.set("n", "<leader>lv", vim.cmd.Ex, { desc = "[L]ocal  [V]iew" })
 -- press <CR> to hide search results
 vim.keymap.set("n", "<CR>", ":noh<CR><CR>:<backspace>")
 
+-- fix q: annoyance
+vim.keymap.set("n", "q:", ":q<CR>")
+
 -- Move cursor to middle of screen after C-d and C-u
 vim.keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz")
 vim.keymap.set({ "n", "v" }, "<C-u>", "<C-u>zz")
@@ -82,6 +85,9 @@ vnoremap <leader>x :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
 " Execute this file
 nnoremap <leader><leader>x :call ak#save_and_exec()<CR>
 ]])
+
+-- <leader>ll to open Lazy plugin management window
+vim.keymap.set("n", "<leader>ll", ":Lazy<CR>", { desc = "[L]azy   [L]oading" })
 
 -- <leader>b keys to change buffers
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { silent = true, desc = "[B]uffer [N]ext" })
