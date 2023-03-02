@@ -1,17 +1,14 @@
 if not pcall(require, "telescope") then
-  return
+    return
 end
 
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
-local make_entry = require "telescope.make_entry"
 local previewers = require("telescope.previewers")
 local pickers = require("telescope.pickers")
-local utils = require("telescope.utils")
 local sorters = require("telescope.sorters")
 local finders = require("telescope.finders")
-local Path = require("plenary.path")
 
 -- add line numbers to preview
 vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
@@ -101,7 +98,7 @@ local commits_in_project = function()
             "git",
             "log",
             "--format=%h%d %s (%cr)",
-        }
+        },
     })
 end
 
@@ -112,7 +109,7 @@ local commits_in_buffer = function()
             "log",
             "--format=%h%d %s (%cr)",
             "--follow",
-        }
+        },
     })
 end
 
@@ -123,7 +120,7 @@ local commits_in_selection = function()
             "log",
             "--format=%h%d %s (%cr)",
             "--follow",
-        }
+        },
     })
 end
 
@@ -173,7 +170,7 @@ vim.keymap.set("n", "<leader>fr",       builtin.pickers,        { desc = "[F]ind
 vim.keymap.set("n", "<leader>rf",       builtin.resume,         { desc = "[R]esume last [F]ind" })
 
 vim.keymap.set("c", "<C-f>",            builtin.command_history, { desc = "Search command history" })
-vim.keymap.set("c", "<C-r><C-r>",            builtin.command_history, { desc = "Search command history" })
+vim.keymap.set("c", "<C-r><C-r>",       builtin.command_history, { desc = "Search command history" })
 
 -- options
 

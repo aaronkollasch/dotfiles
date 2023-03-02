@@ -63,7 +63,7 @@ return {
                     gc = "Comments",
                     ["<space>p"] = "Paste",
                     ["<space>v"] = "Paste",
-                }
+                },
             })
         end,
     },
@@ -101,7 +101,7 @@ return {
         "Eandrju/cellular-automaton.nvim",
         cmd = "CellularAutomaton",
         keys = {
-            { "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", desc = "FML" }
+            { "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", desc = "FML" },
         },
     },
 }

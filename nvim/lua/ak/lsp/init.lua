@@ -2,11 +2,11 @@ local lsp = require("lsp-zero")
 local builtin = require("telescope.builtin")
 
 -- see https://github.com/neovim/nvim-lspconfig/issues/2366#issuecomment-1367098168
-vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
-  local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
-  local bufnr = vim.api.nvim_get_current_buf()
-  vim.diagnostic.reset(ns, bufnr)
-  return true
+vim.lsp.handlers["workspace/diagnostic/refresh"] = function(_, _, ctx)
+    local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
+    local bufnr = vim.api.nvim_get_current_buf()
+    vim.diagnostic.reset(ns, bufnr)
+    return true
 end
 
 lsp.preset("recommended")
@@ -193,7 +193,7 @@ local rust_lsp = lsp.build_options("rust_analyzer", {
 -- lua setup
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
 require("neodev").setup({
-  -- add any options here, or leave empty to use the default settings
+    -- add any options here, or leave empty to use the default settings
 })
 lsp.configure("lua_ls", {
     on_attach = function(client, bufnr)

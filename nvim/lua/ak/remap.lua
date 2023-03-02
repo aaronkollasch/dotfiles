@@ -20,8 +20,8 @@ vim.keymap.set("n", "n", "nzzzv", { desc = "Next result (expand folds)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous result (expand folds)" })
 
 -- Reselect visual selection after indenting
-vim.keymap.set('v', '<', '<gv')
-vim.keymap.set('v', '>', '>gv')
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
 -- move highlighted blocks of text with J/K
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -54,13 +54,13 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "[D]elete to void" }
 
 -- <leader>p to replace with register
 vim.keymap.set("n", "<leader>p",  "<Plug>ReplaceWithRegisterOperator", { desc = "[P]aste from register (operator)" })
-vim.keymap.set("n", "<leader>pp", "<Plug>ReplaceWithRegisterLine", { desc = "[P]aste line from register" })
-vim.keymap.set("x", "<leader>p",  "<Plug>ReplaceWithRegisterVisual", { desc = "[P]aste from register" })
+vim.keymap.set("n", "<leader>pp", "<Plug>ReplaceWithRegisterLine",     { desc = "[P]aste line from register" })
+vim.keymap.set("x", "<leader>p",  "<Plug>ReplaceWithRegisterVisual",   { desc = "[P]aste from register" })
 
 -- <leader>v to replace with system clipboard
-vim.keymap.set("n", "<leader>v",  "\"+<Plug>ReplaceWithRegisterOperator", { desc = "[P]aste from clipboard (operator)" })
-vim.keymap.set("n", "<leader>vv", "\"+<Plug>ReplaceWithRegisterLine", { desc = "[P]aste line from clipboard" })
-vim.keymap.set("x", "<leader>v",  "\"+<Plug>ReplaceWithRegisterVisual", { desc = "[P]aste from clipboard" })
+vim.keymap.set("n", "<leader>v",  '"+<Plug>ReplaceWithRegisterOperator', { desc = "[P]aste from clipboard (operator)" })
+vim.keymap.set("n", "<leader>vv", '"+<Plug>ReplaceWithRegisterLine',     { desc = "[P]aste line from clipboard" })
+vim.keymap.set("x", "<leader>v",  '"+<Plug>ReplaceWithRegisterVisual',   { desc = "[P]aste from clipboard" })
 
 -- <leader>s to begin replacement with current word
 vim.keymap.set(
