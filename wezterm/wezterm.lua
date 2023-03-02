@@ -613,6 +613,7 @@ return {
     keys = keys,
     key_tables = key_tables,
     send_composed_key_when_left_alt_is_pressed = true,
+    send_composed_key_when_right_alt_is_pressed = false,
     mouse_bindings = mouse_bindings,
     bypass_mouse_reporting_modifiers = bypass_mouse_reporting_modifiers,
     color_schemes = color_schemes,
