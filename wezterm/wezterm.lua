@@ -206,29 +206,24 @@ end)
 -----------
 -- FONTS --
 -----------
+local additional_fallback = {}
+-- A helper function for my fallback fonts
+-- https://wezfurlong.org/wezterm/config/lua/config/font_rules.html
+local function font_with_fallback(name, params)
+    local names = { name, "FiraCode NF", "Hack Nerd Font", table.unpack(additional_fallback) }
+    return wezterm.font_with_fallback(names, params)
+end
+
 -- some host specific stuff
 -- See also https://wezfurlong.org/wezterm/config/lua/wezterm/hostname.html
 local font_size, main_font, bold_font, italic_font
 if wezterm.target_triple:contains("-apple-darwin") then
-    -- A helper function for my fallback fonts
-    -- https://wezfurlong.org/wezterm/config/lua/config/font_rules.html
-    local function font_with_fallback(name, params)
-        local names = { name, "FiraCode NF", "Hack Nerd Font", "AppleGothic" }
-        return wezterm.font_with_fallback(names, params)
-    end
-
+    additional_fallback = { "AppleGothic" }
     font_size = 11.0
     main_font = font_with_fallback("SF Mono", { weight = "Medium" })
     italic_font = font_with_fallback("SF Mono", { weight = "Medium", style = "Italic" })
     bold_font = font_with_fallback("SF Mono", { weight = "Bold" })
 else
-    -- A helper function for my fallback fonts
-    -- https://wezfurlong.org/wezterm/config/lua/config/font_rules.html
-    local function font_with_fallback(name, params)
-        local names = { name, "FiraCode NF", "Hack Nerd Font" }
-        return wezterm.font_with_fallback(names, params)
-    end
-
     font_size = 11.0
     main_font = font_with_fallback("JetBrains Mono")
     italic_font = font_with_fallback("JetBrains Mono", { style = "Italic" })
