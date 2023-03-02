@@ -81,7 +81,14 @@ return {
     { "tpope/vim-characterize", event = "VeryLazy" },
 
     -- text actions
-    { "junegunn/vim-easy-align", event = "VeryLazy" },
+    {
+        "junegunn/vim-easy-align",
+        keys = {
+            -- n: Start interactive EasyAlign for a motion/text object (e.g. gaip)
+            -- x: Start interactive EasyAlign in visual mode (e.g. vipga)
+            { "gl", "<Plug>(EasyAlign)", mode = { "n", "x" }, desc = "EasyAlign" },
+        },
+    },
 
     -- better <leader>p
     { "inkarkat/vim-ReplaceWithRegister", event = "VeryLazy" },
