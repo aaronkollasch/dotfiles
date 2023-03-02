@@ -49,6 +49,16 @@ vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "[Y]ank line to system clipbo
 -- <leader>d to delete to void register
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "[D]elete to void" })
 
+-- <leader>p to replace with register
+vim.keymap.set("n", "<leader>p",  "<Plug>ReplaceWithRegisterOperator", { desc = "[P]aste from register (operator)" })
+vim.keymap.set("n", "<leader>pp", "<Plug>ReplaceWithRegisterLine", { desc = "[P]aste line from register" })
+vim.keymap.set("x", "<leader>p",  "<Plug>ReplaceWithRegisterVisual", { desc = "[P]aste from register" })
+
+-- <leader>v to replace with system clipboard
+vim.keymap.set("n", "<leader>v",  "\"+<Plug>ReplaceWithRegisterOperator", { desc = "[P]aste from clipboard (operator)" })
+vim.keymap.set("n", "<leader>vv", "\"+<Plug>ReplaceWithRegisterLine", { desc = "[P]aste line from clipboard" })
+vim.keymap.set("x", "<leader>v",  "\"+<Plug>ReplaceWithRegisterVisual", { desc = "[P]aste from clipboard" })
+
 -- <leader>s to begin replacement with current word
 vim.keymap.set(
     "n",

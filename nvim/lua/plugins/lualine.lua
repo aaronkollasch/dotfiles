@@ -44,30 +44,34 @@ if vim.env.LC_TERMINAL == "cool-retro-term" or vim.env.LC_RETRO == "yes" then
     options.section_separators = { left = "", right = "" }
 end
 
-require("lualine").setup({
-    options = options,
-    sections = {
-        lualine_a = {
-            { "mode", fmt = trunc(80, 1, 0, true) },
+return {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
+    opts = {
+        options = options,
+        sections = {
+            lualine_a = {
+                { "mode", fmt = trunc(80, 1, 0, true) },
+            },
+            lualine_b = { "branch", "diff", "diagnostics" },
+            lualine_c = {
+                { "filename", path = 1 },
+            },
+            lualine_x = { "encoding", "fileformat", "filetype" },
+            lualine_y = { "progress" },
+            lualine_z = { "location" },
         },
-        lualine_b = { "branch", "diff", "diagnostics" },
-        lualine_c = {
-            { "filename", path = 1 },
+        inactive_sections = {
+            lualine_a = { window },
+            lualine_b = {},
+            lualine_c = { "filename" },
+            lualine_x = { "location" },
+            lualine_y = {},
+            lualine_z = {},
         },
-        lualine_x = { "encoding", "fileformat", "filetype" },
-        lualine_y = { "progress" },
-        lualine_z = { "location" },
-    },
-    inactive_sections = {
-        lualine_a = { window },
-        lualine_b = {},
-        lualine_c = { "filename" },
-        lualine_x = { "location" },
-        lualine_y = {},
-        lualine_z = {},
-    },
-    tabline = {},
-    winbar = {},
-    inactive_winbar = {},
-    extensions = {},
-})
+        tabline = {},
+        winbar = {},
+        inactive_winbar = {},
+        extensions = {},
+    }
+}
