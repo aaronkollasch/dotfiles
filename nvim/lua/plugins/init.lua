@@ -6,8 +6,8 @@ return {
 
     -- extra language support
     "NoahTheDuke/vim-just",
-    "ckipp01/stylua-nvim",
-    "folke/neodev.nvim",
+    { "ckipp01/stylua-nvim", lazy = true },
+    { "folke/neodev.nvim", lazy = true },
     "aaronkollasch/vim-known_hosts",
 
     -- additional info sources
@@ -44,8 +44,7 @@ return {
     },
 
     -- splits management / tmux compatibility
-    "mrjones2014/smart-splits.nvim", -- replaces christoomey/vim-tmux-navigator
-    "aaronkollasch/vim-bufkill",
+    { "aaronkollasch/vim-bufkill", event = "VeryLazy" },
     {
         "markstory/vim-zoomwin",
         cmd = "ZoomToggle",
@@ -55,6 +54,7 @@ return {
     -- hints
     {
         "folke/which-key.nvim",
+        event = "VeryLazy",
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
@@ -69,19 +69,19 @@ return {
     },
 
     -- tpope
-    { "numToStr/Comment.nvim", opts = {} }, -- replaces tpope/vim-commentary
     "tpope/vim-sleuth",
+    { "numToStr/Comment.nvim", event = "VeryLazy", opts = {} }, -- replaces tpope/vim-commentary
     {
         "tpope/vim-fugitive",
         cmd = "Git",
         keys = { { "<leader>gs", vim.cmd.Git, desc = "[G]it [S]tart" } },
     },
-    "tpope/vim-surround",
-    "tpope/vim-repeat",
-    "tpope/vim-characterize",
+    { "tpope/vim-surround", event = "VeryLazy" },
+    { "tpope/vim-repeat", event = "VeryLazy" },
+    { "tpope/vim-characterize", event = "VeryLazy" },
 
     -- text actions
-    "junegunn/vim-easy-align",
+    { "junegunn/vim-easy-align", event = "VeryLazy" },
 
     -- better <leader>p
     { "inkarkat/vim-ReplaceWithRegister", event = "VeryLazy" },
