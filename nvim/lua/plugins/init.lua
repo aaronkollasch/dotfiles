@@ -9,7 +9,7 @@ return {
     "NoahTheDuke/vim-just",
     { "ckipp01/stylua-nvim", lazy = true },
     { "folke/neodev.nvim", lazy = true },
-    "aaronkollasch/vim-known_hosts",
+    { "aaronkollasch/vim-known_hosts", ft = "known_hosts" },
 
     -- additional info sources
     {
