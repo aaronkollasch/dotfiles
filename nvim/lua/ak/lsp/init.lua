@@ -1,5 +1,4 @@
 local lsp = require("lsp-zero")
-local builtin = require("telescope.builtin")
 
 -- see https://github.com/neovim/nvim-lspconfig/issues/2366#issuecomment-1367098168
 vim.lsp.handlers["workspace/diagnostic/refresh"] = function(_, _, ctx)
@@ -122,11 +121,15 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>e",  vim.diagnostic.open_float, { desc = "Open LSP float", unpack(opts) })
 vim.keymap.set("n", "[d",         vim.diagnostic.goto_prev,  { desc = "Previous diagnostic", unpack(opts) })
 vim.keymap.set("n", "]d",         vim.diagnostic.goto_next,  { desc = "Next diagnostic", unpack(opts) })
-vim.keymap.set("n", "<leader>q",  builtin.diagnostics,       { desc = "Show diagnostics", unpack(opts) })
+vim.keymap.set("n", "<leader>q",  function()
+    require("telescope.builtin").diagnostics()
+end,                                                         { desc = "Show diagnostics", unpack(opts) })
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+    local builtin = require("telescope.builtin")
+
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
