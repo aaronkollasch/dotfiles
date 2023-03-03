@@ -3,6 +3,7 @@ return {
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     { "nvim-treesitter/playground", event = "VeryLazy" },
     { "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
+    { "nvim-treesitter/nvim-treesitter-context", event = "VeryLazy", opts = {} }, -- show code context in top line(s)
 
     -- extra language support
     "NoahTheDuke/vim-just",
@@ -13,6 +14,10 @@ return {
     -- additional info sources
     {
         "rizzatti/dash.vim",
+        cmd = {
+            "Dash",
+            "DashKeywords",
+        },
         keys = { { "<leader>K", "<Plug>DashSearch", silent = true, desc = "Dash Search" } },
     },
 
@@ -94,9 +99,10 @@ return {
             })
         end,
     },
+    { "itchyny/vim-cursorword", event = "VeryLazy" },
 
     -- tpope
-    "tpope/vim-sleuth",
+    "tpope/vim-sleuth", -- must run at start to work properly
     { "numToStr/Comment.nvim", event = "VeryLazy", opts = {} }, -- replaces tpope/vim-commentary
     {
         "tpope/vim-fugitive",
@@ -126,6 +132,7 @@ return {
     { "kana/vim-textobj-entire",    dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- ae/ie for the entire region of the current buffer
     { "sgur/vim-textobj-parameter", dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- a,/i, for an argument to a function
     { "glts/vim-textobj-comment",   dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- ac/ic for a comment
+    { "jceb/vim-textobj-uri",       dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- au/iu for a URI, also adds go to open URL
 
     -- colorscheme
     "sainnhe/edge",
