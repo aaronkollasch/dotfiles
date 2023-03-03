@@ -375,6 +375,8 @@ if &background ==# 'light'
   call edge#highlight('Search', ['#000000', '0'], ['#8fec84', '119'])
   " 6996e0 = oklch(67.24% 0.121 259.96) >> oklch(81.0% 0.165 259.96) ~= 9dc2ff
   call edge#highlight('IncSearch', ['#000000', '0'], ['#9dc2ff', '81'])
+  " d05858 = oklch(61.36% 0.153 22.66)  >> oklch(93% 0.153 22.66)    ~= ffdfdd
+  call edge#highlight('Error', ['#d05858', '167'], ['#ffdfdd', '224'])
 else
   let g:edge_colors_override = {
         \ 'bg4': ['#535c6a', '240'],
@@ -384,6 +386,8 @@ else
   call edge#highlight('Search', ['#FFFFFF', '1'], ['#467800', '28'])
   " 6cb6eb = oklch(74.89% 0.107 241.3)  >> oklch(55.5% 0.167 241.3)  ~= 007ab7
   call edge#highlight('IncSearch', ['#FFFFFF', '1'], ['#007ab7', '27'])
+  " ec7279 = oklch(69.7% 0.151 18.26)   >> oklch(20% 0.151 18.26)    ~= 320007
+  call edge#highlight('Error', ['#ec7279', '203'], ['#320007', '52'])
 endif
 
 " use built-in fg color for Normal
