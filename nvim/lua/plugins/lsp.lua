@@ -1,6 +1,7 @@
 -- LSP support with lsp-zero
 return {
     "VonHeikemen/lsp-zero.nvim",
+    branch = 'v1.x',
     dependencies = {
         -- LSP Support
         { "neovim/nvim-lspconfig" },
@@ -22,7 +23,6 @@ return {
         -- Additional dependencies
         { "simrat39/rust-tools.nvim" },
     },
-    event = "VeryLazy",
     config = function()
         require("ak.lsp")
     end,
