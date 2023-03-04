@@ -47,9 +47,19 @@ function UpdateEdgeColors()
   endif
 endfunction
 
+function ColorSchemeDarcula()
+  if &background ==# 'dark'
+    colorscheme darcula
+
+    " make cursor line number brighter
+    set cursorline
+  endif
+endfunction
+
 augroup CustomColors
   au!
   au ColorScheme edge call UpdateEdgeColors()
+  au FileType python call ColorSchemeDarcula()
 augroup END
 
 if &background ==# 'light'

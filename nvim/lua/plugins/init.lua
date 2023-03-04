@@ -117,7 +117,7 @@ return {
     },
     { "tpope/vim-surround", event = "VeryLazy" },
     { "tpope/vim-repeat", event = "VeryLazy" },
-    { "tpope/vim-characterize", event = "VeryLazy" },
+    "tpope/vim-characterize", -- must run at start to work properly
 
     -- text actions
     {
@@ -142,6 +142,7 @@ return {
 
     -- colorscheme
     "sainnhe/edge",
+    { "aaronkollasch/darcula", ft = "python", dev = true }, -- fork of doums/darcula
 
     -- <leader>fml
     {
