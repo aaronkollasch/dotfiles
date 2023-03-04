@@ -99,7 +99,13 @@ return {
             })
         end,
     },
-    { "itchyny/vim-cursorword", event = "VeryLazy" },
+    {
+        "itchyny/vim-cursorword",
+        event = "VeryLazy",
+        init = function()
+            vim.cmd([[ let g:cursorword_delay = 300 ]])
+        end,
+    },
 
     -- tpope
     "tpope/vim-sleuth", -- must run at start to work properly
