@@ -33,11 +33,6 @@ vim.cmd([[ vnoremap <expr> Y "my\"" . v:register . "Y`y" ]])
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
--- make Y = yy, not y$
--- for ergonomics and consistency with S, V, and <leader>Y
--- see https://vi.stackexchange.com/a/6135
-vim.keymap.set("n", "Y", "yy")
-
 -- Alt-Backspace to delete word in insert mode
 vim.keymap.set("i", "<M-BS>", '<Esc>vb"_c')
 vim.keymap.set("c", "<M-BS>", "<C-w>")

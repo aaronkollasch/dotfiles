@@ -114,6 +114,9 @@ nnoremap <silent> N Nzzzv
 vnoremap <silent> J :m<Space>'>+1<CR>gv=gv
 vnoremap <silent> K :m<Space>'<-2<CR>gv=gv
 
+" map Y to y$
+map Y y$
+
 " make cursor stay in place when using J, y, and Y
 nnoremap <silent> J mzJ`z
 vnoremap <expr> y "my\"" . v:register . "y`y"
