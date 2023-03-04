@@ -57,9 +57,6 @@ filetype plugin indent on
 "set clipboard=unnamedplus
 set encoding=utf-8
 
-if !has('nvim')
-  set ttymouse=xterm2
-endif
 set mouse=a
 
 " use term gui colors
