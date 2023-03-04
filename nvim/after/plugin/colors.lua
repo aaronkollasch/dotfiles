@@ -47,7 +47,7 @@ function UpdateEdgeColors()
   endif
 endfunction
 
-augroup customcolors
+augroup CustomColors
   au!
   au ColorScheme edge call UpdateEdgeColors()
 augroup END
