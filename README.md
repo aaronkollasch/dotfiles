@@ -18,12 +18,8 @@ See also:
 ## Installation
 
 ```shell
-git clone --recursive https://github.com/aaronkollasch/dotfiles ~/.dotfiles
+git clone https://github.com/aaronkollasch/dotfiles ~/.dotfiles
 cd ~/.dotfiles
-```
-To update submodules (should already be installed by `git clone --recursive`):
-```shell
-git submodule init && git submodule update
 ```
 To update submodules excluding the private submodule:
 ```shell
@@ -39,7 +35,7 @@ Then run the correct install script for your system, e.g.
 
 ### macOS installation
 ```shell
-./private/mac/install_deps
+[ -x ./private/mac/install_deps ] && ./private/mac/install_deps
 ./mac/osx
 ./install_mac.sh
 ```
