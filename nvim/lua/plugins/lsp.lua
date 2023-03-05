@@ -23,6 +23,7 @@ return {
         -- Additional dependencies
         { "simrat39/rust-tools.nvim" },
     },
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
         require("ak.lsp")
     end,

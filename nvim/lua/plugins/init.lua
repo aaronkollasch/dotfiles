@@ -108,7 +108,7 @@ return {
     },
 
     -- tpope
-    "tpope/vim-sleuth", -- must run at start to work properly
+    { "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
     { "numToStr/Comment.nvim", event = "VeryLazy", opts = {} }, -- replaces tpope/vim-commentary
     {
         "tpope/vim-fugitive",
