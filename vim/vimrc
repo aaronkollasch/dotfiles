@@ -301,13 +301,14 @@ let g:cursorword_delay = 300
 Plug 'itchyny/vim-cursorword'
 
 " textobjects, see https://github.com/kana/vim-textobj-user/wiki
-Plug 'kana/vim-textobj-user'       " textobj library
-Plug 'kana/vim-textobj-line'       " al/il for the current line
-Plug 'kana/vim-textobj-indent'     " ai/ii for a block of similarly indented lines / aI/iI for a block of lines with the same indentation
-Plug 'kana/vim-textobj-entire'     " ae/ie for the entire region of the current buffer
-Plug 'sgur/vim-textobj-parameter'  " a,/i, for an argument to a function
-Plug 'glts/vim-textobj-comment'    " ac/ic for a comment
-Plug 'jceb/vim-textobj-uri'        " au/iu for a URI, also adds go to open URL
+Plug 'kana/vim-textobj-user'               " textobj library
+Plug 'kana/vim-textobj-line'               " al/il for the current line
+Plug 'kana/vim-textobj-indent'             " ai/ii for a block of similarly indented lines / aI/iI for a block of lines with the same indentation
+Plug 'kana/vim-textobj-entire'             " ae/ie for the entire region of the current buffer
+Plug 'sgur/vim-textobj-parameter'          " a,/i, for an argument to a function
+Plug 'glts/vim-textobj-comment'            " ac/ic for a comment
+Plug 'jceb/vim-textobj-uri'                " au/iu for a URI, also adds go to open URL
+Plug 'Julian/vim-textobj-variable-segment' " av/iv for a subword, separated by camelCase or underscore
 
 "language support
 Plug 'vim-python/python-syntax'

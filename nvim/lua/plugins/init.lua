@@ -133,12 +133,13 @@ return {
     { "inkarkat/vim-ReplaceWithRegister", event = "VeryLazy" },
 
     -- textobjects, see https://github.com/kana/vim-textobj-user/wiki
-    { "kana/vim-textobj-line",      dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- al/il for the current line
-    { "kana/vim-textobj-indent",    dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- ai/ii for a block of similarly indented lines / aI/iI for a block of lines with the same indentation
-    { "kana/vim-textobj-entire",    dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- ae/ie for the entire region of the current buffer
-    { "sgur/vim-textobj-parameter", dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- a,/i, for an argument to a function
-    { "glts/vim-textobj-comment",   dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- ac/ic for a comment
-    { "jceb/vim-textobj-uri",       dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- au/iu for a URI, also adds go to open URL
+    { "kana/vim-textobj-line",               dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- al/il for the current line
+    { "kana/vim-textobj-indent",             dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- ai/ii for a block of similarly indented lines / aI/iI for a block of lines with the same indentation
+    { "kana/vim-textobj-entire",             dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- ae/ie for the entire region of the current buffer
+    { "sgur/vim-textobj-parameter",          dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- a,/i, for an argument to a function
+    { "glts/vim-textobj-comment",            dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- ac/ic for a comment
+    { "jceb/vim-textobj-uri",                dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- au/iu for a URI, also adds go to open URL
+    { "Julian/vim-textobj-variable-segment", dependencies = "kana/vim-textobj-user", event = "VeryLazy" }, -- av/iv for a subword, separated by camelCase or underscore
 
     -- colorscheme
     "sainnhe/edge",
