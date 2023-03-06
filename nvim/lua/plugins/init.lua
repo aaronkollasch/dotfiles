@@ -1,10 +1,4 @@
 return {
-    -- treesitter
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-    { "nvim-treesitter/playground", event = "VeryLazy" },
-    { "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
-    { "nvim-treesitter/nvim-treesitter-context", event = "VeryLazy", opts = {} }, -- show code context in top line(s)
-
     -- extra language support
     "NoahTheDuke/vim-just",
     { "ckipp01/stylua-nvim", lazy = true },

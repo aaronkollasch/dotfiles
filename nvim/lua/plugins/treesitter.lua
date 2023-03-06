@@ -1,4 +1,4 @@
-require("nvim-treesitter.configs").setup({
+local ts_opts = {
     -- A list of parser names, or "all"
     ensure_installed = {
         "help",
@@ -96,4 +96,20 @@ require("nvim-treesitter.configs").setup({
             show_help = "?",
         },
     },
-})
+}
+
+return {
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        event = { "BufReadPost", "BufNewFile" },
+        opts = ts_opts,
+        config = function(_, opts)
+            require("nvim-treesitter.configs").setup(opts)
+        end,
+    },
+
+    { "nvim-treesitter/playground", event = "VeryLazy" },
+    { "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
+    { "nvim-treesitter/nvim-treesitter-context", event = "VeryLazy", opts = {} }, -- show code context in top line(s)
+}
