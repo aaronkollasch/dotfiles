@@ -93,12 +93,31 @@ return {
             })
         end,
     },
+
+    -- buffer highlighting
     {
         "itchyny/vim-cursorword",
         event = "VeryLazy",
         init = function()
             vim.cmd([[ let g:cursorword_delay = 300 ]])
         end,
+    },
+    {
+        "folke/todo-comments.nvim",
+        dependencies = "nvim-lua/plenary.nvim",
+        event = "VeryLazy",
+        cmd = "TodoTelescope",
+        keys = { { "<leader>ft", "<cmd>TodoTelescope<CR>", desc = "[F]ind [T]odos" } },
+        opts = {},
+    },
+    {
+        "NvChad/nvim-colorizer.lua",
+        event = { "BufReadPre", "BufNewFile" },
+        opts = {
+            user_default_options = {
+                names = false,
+            },
+        },
     },
 
     -- tpope
