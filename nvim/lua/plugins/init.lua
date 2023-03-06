@@ -1,9 +1,13 @@
 return {
     -- extra language support
-    "NoahTheDuke/vim-just",
+    { "NoahTheDuke/vim-just", ft = "just", config = function ()
+        vim.cmd([[ syntax enable ]])
+    end },
     { "ckipp01/stylua-nvim", lazy = true },
     { "folke/neodev.nvim", lazy = true },
-    { "aaronkollasch/vim-known_hosts", ft = "known_hosts" },
+    { "aaronkollasch/vim-known_hosts", ft = "known_hosts", config = function ()
+        vim.cmd([[ syntax enable ]])
+    end },
 
     -- additional info sources
     {
@@ -99,7 +103,7 @@ return {
         "itchyny/vim-cursorword",
         event = "VeryLazy",
         init = function()
-            vim.cmd([[ let g:cursorword_delay = 300 ]])
+            vim.g.cursorword_delay = 300
         end,
     },
     {
@@ -130,7 +134,7 @@ return {
     },
     { "tpope/vim-surround", event = "VeryLazy" },
     { "tpope/vim-repeat", event = "VeryLazy" },
-    "tpope/vim-characterize", -- must run at start to work properly
+    { "tpope/vim-characterize", keys = { { "ga", "<Plug>(characterize)" } } },
 
     -- text actions
     {
