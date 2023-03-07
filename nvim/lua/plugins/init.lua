@@ -34,7 +34,7 @@ return {
         },
     },
 
-    -- tree view
+    -- popups
     {
         "mbbill/undotree",
         cmd = "UndotreeToggle",
@@ -71,6 +71,20 @@ return {
                 end,
             })
         end,
+    },
+    {
+        "folke/trouble.nvim",
+        cmd = {
+            "Trouble",
+            "TroubleClose",
+            "TroubleToggle",
+            "TroubleRefresh",
+        },
+        keys = {
+            { "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "[T]rouble [W]orkspace" },
+            { "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "[T]rouble [D]ocument" },
+        },
+        opts = {},
     },
 
     -- splits management / tmux compatibility

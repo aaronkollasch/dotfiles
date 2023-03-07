@@ -50,12 +50,11 @@ return {
             map("n", "<leader>hb", function()
                 gs.blame_line({ full = true })
             end, { desc = "Blame line" })
-            map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "Toggle current line blame" })
             map("n", "<leader>hd", gs.diffthis, { desc = "[H]unk [D]iff index" })
             map("n", "<leader>hD", function()
                 gs.diffthis("~")
             end, { desc = "[H]unk [D]iff parent" })
-            map("n", "<leader>td", gs.toggle_deleted, { desc = "Toggle deleted" })
+            -- map("n", "<leader>td", gs.toggle_deleted, { desc = "[T]oggle  [D]eleted" })
 
             -- Text object
             map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "[I]n [H]unk" })

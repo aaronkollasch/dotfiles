@@ -9,6 +9,7 @@ local previewers = require("telescope.previewers")
 local pickers = require("telescope.pickers")
 local sorters = require("telescope.sorters")
 local finders = require("telescope.finders")
+local trouble = require("trouble.providers.telescope")
 
 -- add line numbers to preview
 vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
@@ -231,7 +232,11 @@ require("telescope").setup({
                 ["<C-e>"] = "preview_scrolling_up",
                 ["<C-s>"] = "cycle_previewers_next",
                 ["<C-a>"] = "cycle_previewers_prev",
+                ["<C-t>"] = trouble.open_with_trouble,
             },
+            n = {
+                ["<C-t>"] = trouble.open_with_trouble,
+            }
         },
         cache_picker = {
             num_pickers = 30,
