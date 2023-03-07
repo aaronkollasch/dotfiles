@@ -81,8 +81,7 @@ return {
             "TroubleRefresh",
         },
         keys = {
-            { "<leader>tw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "[T]rouble [W]orkspace" },
-            { "<leader>td", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "[T]rouble [D]ocument" },
+            { "<leader>wt", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "[W]orkspace [T]rouble" },
         },
         opts = {},
     },
@@ -102,11 +101,24 @@ return {
         config = function()
             vim.o.timeout = true
             vim.o.timeoutlen = 300
-            require("which-key").setup({
+            local wk = require("which-key")
+            wk.setup({
                 operators = {
                     gc = "Comments",
                     ["<space>p"] = "Paste",
                     ["<space>v"] = "Paste",
+                },
+            })
+            wk.register({
+                ["<leader>"] = {
+                    b = { name = "[B]uffer" },
+                    c = { name = "[C]ode" },
+                    f = { name = "[F]ind" },
+                    g = { name = "[G]it" },
+                    h = { name = "[H]unk" },
+                    l = { name = "[L]ocal" },
+                    t = { name = "[T]erm" },
+                    w = { name = "[W]orkspace" },
                 },
             })
         end,
