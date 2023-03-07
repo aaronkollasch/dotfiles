@@ -256,6 +256,9 @@ else
   nnoremap <silent> <Leader>gl      :Commits<CR>
   nnoremap <silent> <Leader>gh      :BCommits<CR>
   vnoremap <silent> <Leader>gh      :BCommits<CR>
+  nnoremap <silent> <Leader>gs      :Git<CR>
+  nnoremap <silent> <Leader>gc      :Git commit -v<CR>
+  nnoremap <silent> <Leader>gb      :Git blame<CR>
 
   " Navigation and splitting
   noremap <silent> <C-h>     :<C-U>TmuxNavigateLeft<cr>

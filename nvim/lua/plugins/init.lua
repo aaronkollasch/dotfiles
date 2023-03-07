@@ -144,7 +144,11 @@ return {
     {
         "tpope/vim-fugitive",
         cmd = "Git",
-        keys = { { "<leader>gs", vim.cmd.Git, desc = "[G]it [S]tart" } },
+        keys = {
+            { "<leader>gs", vim.cmd.Git, desc = "[G]it [S]tart" },
+            { "<leader>gc", function() vim.cmd.Git("commit -v") end, desc = "[G]it [C]ommit" },
+            { "<leader>gb", function() vim.cmd.Git("blame") end, desc = "[G]it [B]lame" },
+        },
     },
     { "tpope/vim-surround", event = "VeryLazy" },
     { "tpope/vim-repeat", event = "VeryLazy" },
