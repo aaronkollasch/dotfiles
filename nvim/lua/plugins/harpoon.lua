@@ -1,8 +1,8 @@
 return {
     -- 'ThePrimeagen/harpoon',
-    -- '~/GitHub/harpoon',
     "aaronkollasch/harpoon",
     branch = "add-file-keymap-hints",
+    dev = true,
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
         { "<leader>a", nil, desc = "[A]dd to Harpoon" },
