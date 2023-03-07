@@ -126,16 +126,21 @@ local commits_in_selection = function()
 end
 
 -- picker keymaps
-vim.keymap.set("n", "<leader>lf",       builtin.find_files,     { desc = "[L]ocate [F]iles" })
-vim.keymap.set("n", "<leader>lg",       builtin.git_files,      { desc = "[L]ocate [G]itfiles" })
 vim.keymap.set("n", "<C-p>",            project_files,          { desc = "Find project files" })
 vim.keymap.set("n", "<C-f>",            builtin.find_files,     { desc = "Find project files" })
 vim.keymap.set("n", "<leader>*",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>#",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>rg",       builtin.live_grep,      { desc = "[R]ip[G]rep" })
+vim.keymap.set("n", "<leader>/",        builtin.current_buffer_fuzzy_find,
+                                                                { desc = "[/] Fuzzily search in current buffer" })
+
+-- l-keymaps
+vim.keymap.set("n", "<leader>lb",       builtin.buffers,        { desc = "[L]oaded [B]uffers" })
+vim.keymap.set("n", "<leader>lf",       builtin.find_files,     { desc = "[L]ocate [F]iles" })
+vim.keymap.set("n", "<leader>lg",       builtin.git_files,      { desc = "[L]ocate [G]itfiles" })
 vim.keymap.set("n", "<leader>ls",       builtin.live_grep,      { desc = "[L]ocal  [S]earch" })
 
--- git
+-- g-keymaps
 vim.keymap.set("n", "<leader>gm",       changed_on_branch,      { desc = "[G]it [M]odified files" })
 vim.keymap.set("n", "<leader>gd",       changed_on_root,        { desc = "[G]it [D]iff" })
 vim.keymap.set("n", "<leader>ga",       builtin.git_status,     { desc = "[G]it [A]dd" })
@@ -143,18 +148,15 @@ vim.keymap.set("n", "<leader>gl",       commits_in_project,     { desc = "[G]it 
 vim.keymap.set("n", "<leader>gh",       commits_in_buffer,      { desc = "[G]it buffer [H]istory" })
 vim.keymap.set("v", "<leader>gh",       commits_in_selection,   { desc = "[G]it buffer [H]istory" })
 
--- buffers
-vim.keymap.set("n", "<leader>lb",       builtin.buffers,        { desc = "[L]oaded [B]uffers" })
-vim.keymap.set("n", "<leader>/",        builtin.current_buffer_fuzzy_find,
-                                                                { desc = "[/] Fuzzily search in current buffer" })
-
 -- f-keymaps
 vim.keymap.set("n", "<leader>fh",       builtin.oldfiles,       { desc = "[F]ile [H]istory" })
 vim.keymap.set("n", "<leader>fl",       function()
     builtin.oldfiles({ cwd_only = true })
 end,                                                            { desc = "[F]ile [L]ocal History" })
 vim.keymap.set("n", "<leader>fn",       builtin.treesitter,     { desc = "[F]ind [N]ames" })
-vim.keymap.set("n", "<leader>fd",       builtin.diagnostics,    { desc = "[F]ind [D]iagnostics" })
+vim.keymap.set("n", "<leader>fd",       function()
+    builtin.diagnostics({ bufnr = 0 })
+end,                                                            { desc = "[F]ind buffer [D]iagnostics" })
 vim.keymap.set("n", "<leader>fs",       builtin.spell_suggest,  { desc = "[F]ind [S]pelling suggestions" })
 vim.keymap.set("n", "<leader>f/",       builtin.help_tags,      { desc = "[F]ind [/] Help" })
 vim.keymap.set("n", "<leader>fk",       builtin.keymaps,        { desc = "[F]ind [K]eys" })
@@ -254,6 +256,9 @@ require("telescope").setup({
         find_files = find_file_config,
         git_files = find_file_config,
         oldfiles = find_file_config,
+        diagnostics = {
+            layout_strategy = 'vertical',
+        },
     },
     extensions = {
         -- Your extension configuration goes here:

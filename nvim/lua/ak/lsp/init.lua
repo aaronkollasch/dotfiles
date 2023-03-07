@@ -124,6 +124,9 @@ vim.keymap.set("n", "]d",         vim.diagnostic.goto_next,  { desc = "Next diag
 vim.keymap.set("n", "<leader>q",  function()
     require("telescope.builtin").diagnostics()
 end,                                                         { desc = "Show diagnostics", unpack(opts) })
+vim.keymap.set("n", "<leader>wd",  function()
+    require("telescope.builtin").diagnostics()
+end,                                                         { desc = "[W]orkspace [D]iagnostics", unpack(opts) })
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer

@@ -82,6 +82,7 @@ return {
         },
         keys = {
             { "<leader>wt", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "[W]orkspace [T]rouble" },
+            { "<leader>bt", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "[B]uffer [T]rouble" },
         },
         opts = {},
     },
