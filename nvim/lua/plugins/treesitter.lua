@@ -111,5 +111,5 @@ return {
 
     { "nvim-treesitter/playground", event = "VeryLazy" },
     { "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
-    { "nvim-treesitter/nvim-treesitter-context", event = "VeryLazy", opts = {} }, -- show code context in top line(s)
+    { "nvim-treesitter/nvim-treesitter-context", dev = true, event = "VeryLazy", opts = {} }, -- show code context in top line(s)
 }
