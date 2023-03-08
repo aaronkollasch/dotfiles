@@ -12,7 +12,7 @@ return {
     { "preservim/vim-textobj-sentence",      dependencies = "kana/vim-textobj-user", event = event,   -- as/is for the current sentence (replaces built-in objects/motions)
         config = function ()
             vim.fn["textobj#sentence#init"]()
-        end
+        end,
     },
     { "Julian/vim-textobj-variable-segment", dependencies = "kana/vim-textobj-user", event = event,   -- aS/iS for a subword, separated by camelCase or underscore
         init = function()
@@ -27,6 +27,17 @@ return {
                 \     'select-i': 'iS',  'select-i-function': 'textobj#variable_segment#select_i',
                 \ }})
             ]])
-        end
+        end,
+    },
+
+    -- motions
+    {
+        "rhysd/clever-f.vim",
+        event = event,
+        init = function ()
+            vim.g.clever_f_timeout_ms = 2000
+            vim.g.clever_f_highlight_timeout_ms = vim.g.clever_f_timeout_ms - 200
+            vim.g.clever_f_fix_key_direction = 1
+        end,
     },
 }

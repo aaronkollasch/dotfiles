@@ -318,6 +318,12 @@ Plug 'preservim/vim-textobj-sentence'      " as/is for the current sentence (rep
 let g:loaded_textobj_variable_segment = 1
 Plug 'Julian/vim-textobj-variable-segment' " aS/iS for a subword, separated by camelCase or underscore
 
+" motions
+let g:clever_f_timeout_ms = 2000
+let g:clever_f_highlight_timeout_ms = g:clever_f_timeout_ms - 200
+let g:clever_f_fix_key_direction = 1
+Plug 'rhysd/clever-f.vim'
+
 "language support
 Plug 'vim-python/python-syntax'
 let g:python_highlight_all = 1
@@ -328,6 +334,7 @@ Plug 'aaronkollasch/vim-known_hosts'
 
 call plug#end()
 
+" customize vim-textobj-variable-segment to use aS/iS instead of av/iv
 call textobj#user#plugin('variable', {
   \ '-': {
   \     'sfile': expand('<sfile>:p'),
