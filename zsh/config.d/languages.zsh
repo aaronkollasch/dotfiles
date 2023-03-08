@@ -14,3 +14,8 @@ fi
 if [ -e "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
+
+# add bob-nvim
+if [ -d "$HOME/.local/share/bob/nvim-bin" ]; then
+    export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
+fi
