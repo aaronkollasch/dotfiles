@@ -144,10 +144,22 @@ return {
     },
     {
         "NvChad/nvim-colorizer.lua",
-        event = { "BufReadPre", "BufNewFile" },
+        ft = {
+            "css",
+            "javascript",
+            "html",
+        },
+        cmd = {
+            "ColorizerToggle",
+            "ColorizerAttachToBuffer",
+            "ColorizerReloadAllBuffers",
+        },
+        keys = { { "<leader>ch",  "<cmd>ColorizerToggle<CR>", desc = "[C]olor [H]excodes" } },
         opts = {
             user_default_options = {
-                names = false,
+                RRGGBBAA = true,
+                AARRGGBB = true,
+                css_fn = true,
             },
         },
     },
