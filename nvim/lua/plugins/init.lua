@@ -117,6 +117,7 @@ return {
                     f = { name = "[F]ind" },
                     g = { name = "[G]it" },
                     h = { name = "[H]unk" },
+                    i = { name = "[I]nspect" },
                     l = { name = "[L]ocal" },
                     t = { name = "[T]erm" },
                     w = { name = "[W]orkspace" },

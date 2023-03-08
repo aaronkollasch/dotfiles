@@ -78,6 +78,17 @@ vnoremap <leader>x :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
 nnoremap <leader><leader>x :call ak#save_and_exec()<CR>
 ]])
 
+-- <leader>il to inspect letter
+if vim.version().major > 0 or vim.version().minor >= 9 then
+  vim.keymap.set("n", "<leader>il", ":Inspect<CR>",                        { desc = "[I]nspect [L]etter" })
+  vim.keymap.set("n", "<leader>iv", ":Inspect!<CR>",                       { desc = "[I]nspect [V]erbose" })
+  vim.keymap.set("n", "<leader>it", ":InspectTree<CR>",                    { desc = "[I]nspect [T]ree" })
+else
+  vim.keymap.set("n", "<leader>il", ":TSHighlightCapturesUnderCursor<CR>", { desc = "[I]nspect [L]etter" })
+  vim.keymap.set("n", "<leader>iv", ":TSNodeUnderCursor<CR>",              { desc = "[I]nspect [V]erbose" })
+end
+vim.keymap.set("n",   "<leader>ip", ":TSPlaygroundToggle<CR>",             { desc = "[I]nspect [P]layground" })
+
 -- <leader><leader>l to open Lazy plugin management window
 vim.keymap.set("n", "<leader><leader>l", ":Lazy<CR>", { desc = "[L]azy" })
 

@@ -31,7 +31,7 @@ vim.opt.breakindentopt = "list:-1"
 vim.opt.showbreak = "↳ "
 
 vim.opt.signcolumn = "yes"
-if vim.version().minor >= 9 then
+if vim.version().major > 0 or vim.version().minor >= 9 then
     -- see https://www.reddit.com/r/neovim/comments/10j0vyf/finally_figured_out_a_statuscolumn_i_am_happy/
     vim.opt.numberwidth = 3
     -- vim.opt.statuscolumn = "%=%{v:virtnum < 1 ? (v:relnum ? v:relnum : v:lnum < 10 ? v:lnum . '  ' : v:lnum) : ''}%=%s"
