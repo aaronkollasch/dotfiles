@@ -4,6 +4,10 @@
 #      /opt/homebrew/bin/gsed -u 's/^.*$/now/' |
 #      /opt/homebrew/bin/gdate -f - +%s.%N >/tmp/sample-$$.tim)
 # set -x
+# # or this:
+# # see https://stevenvanbael.com/profiling-zsh-startup
+# zmodload zsh/zprof
+# # see also https://xebia.com/blog/profiling-zsh-shell-scripts/
 
 case "$(uname -s)" in
     Darwin)
@@ -51,3 +55,5 @@ source "$HOME/.dotfiles/zsh/config.d/term.zsh"
 #         last=${tim//.}
 #       done < /tmp/sample-$$.tim
 #   ) <(cat /tmp/sample-$$.log | cut -b 1-200)
+# # or this:
+# zprof
