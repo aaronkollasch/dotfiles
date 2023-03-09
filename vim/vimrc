@@ -299,6 +299,8 @@ Plug 'markstory/vim-zoomwin'
 Plug 'mbbill/undotree'
 let g:undotree_SetFocusWhenToggle = 1
 Plug 'inkarkat/vim-ReplaceWithRegister'
+let g:oscyank_trim = 0
+Plug 'ojroques/vim-oscyank'
 Plug 'machakann/vim-highlightedyank'
 let g:highlightedyank_highlight_duration = 60
 let g:highlightedyank_highlight_in_visual = 0
@@ -360,7 +362,7 @@ if $LC_TERMINAL == "cool-retro-term"
   let g:edge_disable_italic_comment = 1
 endif
 
-function UpdateEdgeColors()
+function! UpdateEdgeColors()
   " use built-in fg color for Normal
   highlight Normal guibg=NONE ctermbg=NONE
 
@@ -480,4 +482,18 @@ augroup textobj_sentence
   autocmd!
   autocmd FileType markdown call textobj#sentence#init()
   autocmd FileType textile call textobj#sentence#init()
+augroup END
+
+function! CheckedYankOSC()
+  if has_key(environ(), 'SSH_TTY') || has_key(environ(), 'TMUX')
+    execute 'OSCYankRegister +'
+  endif
+endfunction
+
+augroup oscyank
+  au!
+  autocmd TextYankPost *
+    \ if v:event.operator is 'y' && (v:event.regname is '+' || v:event.regname is '') |
+    \ call CheckedYankOSC() |
+    \ endif
 augroup END
