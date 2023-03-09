@@ -1,4 +1,11 @@
 return {
+    -- icons
+    {
+        "nvim-tree/nvim-web-devicons",
+        lazy = true,
+        cond = require("ak.opts").icons_enabled,
+    },
+
     -- extra language support
     { "NoahTheDuke/vim-just", ft = "just", config = function ()
         vim.cmd([[ syntax enable ]])

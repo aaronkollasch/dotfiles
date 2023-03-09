@@ -38,7 +38,7 @@ local options = {
     },
 }
 
-if vim.env.LC_TERMINAL == "cool-retro-term" or vim.env.LC_RETRO == "yes" then
+if not require("ak.opts").icons_enabled then
     options.icons_enabled = false
     options.component_separators = { left = "", right = "" }
     options.section_separators = { left = "", right = "" }
@@ -46,7 +46,6 @@ end
 
 return {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
     event = "VeryLazy",
     opts = {
         options = options,
