@@ -40,4 +40,11 @@ return {
             vim.g.clever_f_fix_key_direction = 1
         end,
     },
+    {
+        "ggandor/leap.nvim",
+        event = event,
+        config = function ()
+            require('leap').add_default_mappings()
+        end
+    },
 }
