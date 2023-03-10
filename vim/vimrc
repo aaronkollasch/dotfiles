@@ -176,6 +176,10 @@ cnoremap <C-E> <End>
 inoremap <C-A> <Home>
 inoremap <C-E> <End>
 
+" EasyAlign
+xmap gl <Plug>(EasyAlign)
+nmap gl <Plug>(EasyAlign)
+
 "--------------------------------------------------------------------------
 " IDE key maps
 "--------------------------------------------------------------------------
@@ -319,6 +323,11 @@ Plug 'jceb/vim-textobj-uri'                " au/iu for a URI, also adds go to op
 Plug 'preservim/vim-textobj-sentence'      " as/is for the current sentence (replaces built-in objects/motions)
 let g:loaded_textobj_variable_segment = 1
 Plug 'Julian/vim-textobj-variable-segment' " aS/iS for a subword, separated by camelCase or underscore
+
+" text actions
+Plug 'junegunn/vim-easy-align'
+let g:splitjoin_python_brackets_on_separate_lines = 1
+Plug 'AndrewRadev/splitjoin.vim'
 
 " motions
 let g:clever_f_timeout_ms = 2000

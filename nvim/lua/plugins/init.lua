@@ -196,6 +196,21 @@ return {
             { "gl", "<Plug>(EasyAlign)", mode = { "n", "x" }, desc = "EasyAlign" },
         },
     },
+    {
+        'echasnovski/mini.splitjoin',
+        keys = {
+            { "gS", nil, mode = { "n", "x" }, desc = "Toggle arguments" },
+            { "gJ", nil, mode = { "n", "x" }, desc = "Join arguments" },
+        },
+        opts = {
+            mappings = {
+                join = 'gJ',
+            },
+        },
+        config = function(_, opts)
+            require('mini.splitjoin').setup(opts)
+        end,
+    },
 
     -- better <leader>p
     { "inkarkat/vim-ReplaceWithRegister", event = "VeryLazy" },
