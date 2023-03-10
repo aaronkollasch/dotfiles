@@ -236,7 +236,13 @@ return {
     },
 
     -- colorscheme
-    "sainnhe/edge",
+    {
+        "sainnhe/edge",
+        priority = 1000,
+        config = function()
+            require("ak.colors")
+        end,
+    },
     { "aaronkollasch/darcula", ft = "python", dev = true }, -- fork of doums/darcula
 
     -- <leader>fml

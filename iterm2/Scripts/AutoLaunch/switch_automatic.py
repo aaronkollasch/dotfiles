@@ -83,9 +83,9 @@ async def changeTheme(theme_parts, connection):
         f.write(s)
 
     # set nvim theme
-    with open(os.path.expanduser("~/.config/nvim/after/plugin/colors.lua"), "r") as f:
+    with open(os.path.expanduser("~/.config/nvim/lua/ak/colors.lua"), "r") as f:
         s = f.read()
-    with open(os.path.expanduser("~/.config/nvim/after/plugin/colors.lua"), "w") as f:
+    with open(os.path.expanduser("~/.config/nvim/lua/ak/colors.lua"), "w") as f:
         if "dark" in theme_parts:
             s = s.replace('"DARK\n" ', '"DARK\n ')
             s = s.replace('"LIGHT\n ', '"LIGHT\n" ')
