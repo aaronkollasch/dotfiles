@@ -404,6 +404,8 @@ local keys = {
     { key = "=", mods = "CTRL", action = act.DisableDefaultAssignment },
     { key = "-", mods = "CTRL", action = act.DisableDefaultAssignment },
     { key = "0", mods = "CTRL", action = act.DisableDefaultAssignment },
+    -- Send CSI u encoding for C-Backspace
+    { key = "Backspace", mods = "CTRL", action = act.SendString('\x1b[127;5u') },
 }
 
 if wezterm.target_triple:contains("-apple-darwin") then
