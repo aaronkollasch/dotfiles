@@ -23,6 +23,7 @@ return {
     cmd = "ToggleTerm",
     keys = {
         { "<leader>tt", "<cmd>0ToggleTerm direction=float<cr>",      desc = "[T]oggle  [T]erm 0 (float)" },
+        { "<leader>tv", "<cmd>0ToggleTerm direction=vertical<cr>",   desc = "[T]oggle  [T]erm 0 (vertical)" },
         { "<leader>t0", "<cmd>0ToggleTerm direction=horizontal<cr>", desc = "[T]oggle  [T]erm 0" },
         { "<leader>t1", "<cmd>1ToggleTerm direction=horizontal<cr>", desc = "[T]oggle  [T]erm 1" },
         { "<leader>t2", "<cmd>2ToggleTerm direction=horizontal<cr>", desc = "[T]oggle  [T]erm 2" },
