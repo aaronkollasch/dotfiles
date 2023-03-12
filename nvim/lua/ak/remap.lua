@@ -26,8 +26,10 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move up one line" })
 
 -- make cursor stay in place when using J, y, and Y
 vim.keymap.set("n", "J", [[ "mz" . v:count . "J`z" ]], { expr = true, desc = "Join lines" })
-vim.cmd([[ vnoremap <expr> y "my\"" . v:register . "y`y" ]])
-vim.cmd([[ vnoremap <expr> Y "my\"" . v:register . "Y`y" ]])
+vim.cmd([[ nnoremap <expr> y "my\"" . v:register . "y" ]])
+vim.cmd([[ nnoremap <expr> Y "my\"" . v:register . "y$" ]])
+vim.cmd([[ vnoremap <expr> y "my\"" . v:register . "y" ]])
+vim.cmd([[ vnoremap <expr> Y "my\"" . v:register . "Y" ]])
 
 -- move by terminal rows, not lines, unless a count is provided
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
@@ -38,9 +40,9 @@ vim.keymap.set("i", "<M-BS>", '<Esc>vb"_c')
 vim.keymap.set("c", "<M-BS>", "<C-w>")
 
 -- <leader>y to yank to system clipboard
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "[Y]ank to system clipboard" })
-vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "[Y]ank line to system clipboard" })
-vim.keymap.set("n", "<S-Space>Y", [["+Y]], { desc = "[Y]ank line to system clipboard" })
+vim.keymap.set({ "n", "v" }, "<leader>y", [[my"+y]], { desc = "[Y]ank to system clipboard" })
+vim.keymap.set("n", "<leader>Y", [[my"+Y]], { desc = "[Y]ank line to system clipboard" })
+vim.keymap.set("n", "<S-Space>Y", [[my"+Y]], { desc = "[Y]ank line to system clipboard" })
 
 -- <leader>d to delete to void register
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "[D]elete to void" })

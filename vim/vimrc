@@ -120,8 +120,8 @@ map Y y$
 " make cursor stay in place when using J, y, and Y
 nnoremap <silent> <expr> J ("mz" . v:count . "J`z")
 if !has('ide')
-  vnoremap <expr> y "my\"" . v:register . "y`y"
-  vnoremap <expr> Y "my\"" . v:register . "Y`y"
+  vnoremap <expr> y "my\"" . v:register . "yg`y"
+  vnoremap <expr> Y "my\"" . v:register . "Yg`y"
 
   " move by terminal rows, not lines, unless a count is provided
   noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
@@ -136,9 +136,9 @@ cnoremap <silent> <t_BS>    <C-w>
 
 " <leader>y to yank to system clipboard
 nnoremap <leader>y "+y
-vnoremap <leader>y "+y
+vnoremap <leader>y my"+yg`y
 nnoremap <leader>Y "+Y
-vnoremap <leader>Y "+Y
+vnoremap <leader>Y my"+Yg`y
 
 " <leader>d to delete to void register
 nnoremap <leader>d "_d

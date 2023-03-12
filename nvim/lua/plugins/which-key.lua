@@ -46,6 +46,7 @@ return {
             ["<S-Space>"] = "which_key_ignore",
             ["("] = "Previous start of sentence",
             [")"] = "Next start of sentence",
+            ["Y"] = "Yank (copy) to end of line",
         })
         wk.register({
             ["("]  = [[Start of previous sentence]],
