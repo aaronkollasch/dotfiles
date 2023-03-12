@@ -10,6 +10,7 @@ local pickers = require("telescope.pickers")
 local sorters = require("telescope.sorters")
 local finders = require("telescope.finders")
 local trouble = require("trouble.providers.telescope")
+local harpoon = require("telescope").extensions.harpoon
 
 -- add line numbers to preview
 vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
@@ -128,6 +129,7 @@ end
 -- picker keymaps
 vim.keymap.set("n", "<C-p>",            project_files,          { desc = "Find project files" })
 vim.keymap.set("n", "<C-f>",            builtin.find_files,     { desc = "Find project files" })
+vim.keymap.set("n", "<C-n>",            harpoon.marks,          { desc = "Harpoon marked files" })
 vim.keymap.set("n", "<leader>*",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>#",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>rg",       builtin.live_grep,      { desc = "[R]ip[G]rep" })
@@ -301,3 +303,4 @@ require("telescope").setup({
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("ui-select")
+require("telescope").load_extension('harpoon')

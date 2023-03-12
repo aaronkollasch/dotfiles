@@ -1,7 +1,6 @@
 return {
     -- 'ThePrimeagen/harpoon',
     "aaronkollasch/harpoon",
-    branch = "add-file-keymap-hints",
     dev = true,
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
@@ -25,7 +24,7 @@ return {
         local ui = require("harpoon.ui")
 
         vim.keymap.set("n", "<leader>a", mark.add_file, { desc = "[A]dd to Harpoon" })
-        vim.keymap.set("n", "<C-n>", ui.toggle_quick_menu, { desc = "Toggle Harpoon menu" })
+        vim.keymap.set("n", "<leader><C-n>", ui.toggle_quick_menu, { desc = "Toggle Harpoon menu" })
 
         vim.keymap.set("n", "<C-g>", function()
             ui.nav_file(1)
