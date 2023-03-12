@@ -25,7 +25,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move down one line" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move up one line" })
 
 -- make cursor stay in place when using J, y, and Y
-vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "J", [[ "mz" . v:count . "J`z" ]], { expr = true, desc = "Join lines" })
 vim.cmd([[ vnoremap <expr> y "my\"" . v:register . "y`y" ]])
 vim.cmd([[ vnoremap <expr> Y "my\"" . v:register . "Y`y" ]])
 
