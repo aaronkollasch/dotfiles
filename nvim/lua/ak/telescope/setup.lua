@@ -133,6 +133,7 @@ vim.keymap.set("n", "<leader>#",        builtin.grep_string,    { desc = "Projec
 vim.keymap.set("n", "<leader>rg",       builtin.live_grep,      { desc = "[R]ip[G]rep" })
 vim.keymap.set("n", "<leader>/",        builtin.current_buffer_fuzzy_find,
                                                                 { desc = "[/] Fuzzily search in current buffer" })
+vim.keymap.set("n", "<leader>bl",       builtin.buffers,        { desc = "[B]uffer [L]ist" })
 
 -- l-keymaps
 vim.keymap.set("n", "<leader>lb",       builtin.buffers,        { desc = "[L]oaded [B]uffers" })
