@@ -259,7 +259,7 @@ local ssh_domains = {
 ----------
 local default_clipboard = "Clipboard"
 if wezterm.target_triple:contains("-linux-gnu") then
-    default_clipboard = "PrimarySelection"
+    default_clipboard = "ClipboardAndPrimarySelection"
 end
 local keys = {
     {
@@ -270,7 +270,7 @@ local keys = {
     {
         key = "v",
         mods = "CTRL|ALT",
-        action = act.PasteFrom(default_clipboard),
+        action = act.PasteFrom("Clipboard"),
     },
     {
         key = "t",
@@ -525,13 +525,11 @@ local mouse_bindings = {
         event = { Up = { streak = 1, button = "Left" } },
         mods = "NONE",
         action = act.CompleteSelectionOrOpenLinkAtMouseCursor(default_clipboard),
-        -- NOTE: the default action is:
-        -- action=wezterm.action{CompleteSelectionOrOpenLinkAtMouseCursor="PrimarySelection"},
     },
     {
         event = { Down = { streak = 1, button = "Middle" } },
         mods = "NONE",
-        action = act.PasteFrom(default_clipboard),
+        action = act.PasteFrom("Clipboard"),
     },
     -- use ALT to select and ignore mouse mode
     {
