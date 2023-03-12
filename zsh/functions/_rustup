@@ -1,0 +1,4 @@
+#compdef rustup
+if command -v rustup &>/dev/null; then
+  eval "$(rustup completions zsh rustup)"
+fi
