@@ -102,37 +102,6 @@ return {
         keys = { { "<leader>z", nil, desc = "ZoomToggle" } },
     }, -- <leader>z to zoom, see also troydm/zoomwintab.vim
 
-    -- hints
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        config = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 300
-            local wk = require("which-key")
-            wk.setup({
-                operators = {
-                    gc = "Comments",
-                    ["<space>p"] = "Paste",
-                    ["<space>v"] = "Paste",
-                },
-            })
-            wk.register({
-                ["<leader>"] = {
-                    b = { name = "[B]uffer" },
-                    c = { name = "[C]ode" },
-                    f = { name = "[F]ind" },
-                    g = { name = "[G]it" },
-                    h = { name = "[H]unk" },
-                    i = { name = "[I]nspect" },
-                    l = { name = "[L]ocal" },
-                    t = { name = "[T]erm" },
-                    w = { name = "[W]orkspace" },
-                },
-            })
-        end,
-    },
-
     -- buffer highlighting
     {
         "itchyny/vim-cursorword",
@@ -185,7 +154,7 @@ return {
     },
     { "tpope/vim-surround", event = "VeryLazy" },
     { "tpope/vim-repeat", event = "VeryLazy" },
-    { "tpope/vim-characterize", keys = { { "ga", "<Plug>(characterize)" } } },
+    { "tpope/vim-characterize", keys = { { "ga", "<Plug>(characterize)", desc="Characterize under cursor" } } },
 
     -- text actions
     {
