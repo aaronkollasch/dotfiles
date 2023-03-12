@@ -23,7 +23,10 @@ return {
             "Dash",
             "DashKeywords",
         },
-        keys = { { "<leader>K", "<Plug>DashSearch", silent = true, desc = "Dash Search" } },
+        keys = {
+            { "<leader>K",  "<Plug>DashSearch", silent = true, desc = "Dash Search" },
+            { "<S-Space>K", "<Plug>DashSearch", silent = true, desc = "Dash Search" },
+        },
     },
 
     -- Code Actions

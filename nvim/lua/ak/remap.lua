@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>lv", vim.cmd.Ex, { desc = "[L]ocal  [V]iew" })
 
 -- press <CR> to hide search results
-vim.keymap.set("n", "<CR>", ":noh<CR><CR>:<backspace>")
+vim.keymap.set("n", "<CR>", ":noh<CR><CR>:<backspace>", { desc = "Clear search and next line" })
 
 -- Move cursor to middle of screen after C-d and C-u
 vim.keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz")
@@ -21,8 +21,8 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- move highlighted blocks of text with J/K
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move down one line" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move up one line" })
 
 -- make cursor stay in place when using J, y, and Y
 vim.keymap.set("n", "J", "mzJ`z")
@@ -40,6 +40,7 @@ vim.keymap.set("c", "<M-BS>", "<C-w>")
 -- <leader>y to yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "[Y]ank to system clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "[Y]ank line to system clipboard" })
+vim.keymap.set("n", "<S-Space>Y", [["+Y]], { desc = "[Y]ank line to system clipboard" })
 
 -- <leader>d to delete to void register
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "[D]elete to void" })
@@ -63,20 +64,25 @@ vim.keymap.set(
 )
 
 -- <leader>x to execute line, <leader><leader>x to execute file
-vim.cmd([[
-" Map execute this line
-function! s:executor() abort
-  if &ft == 'lua'
-    call execute(printf(":lua %s", getline(".")))
-  elseif &ft == 'vim'
-    exe getline(">")
-  endif
-endfunction
-nnoremap <leader>x :call <SID>executor()<CR>
-vnoremap <leader>x :<C-w>exe join(getline("'<","'>"),'<Bar>')<CR>
-" Execute this file
-nnoremap <leader><leader>x :call ak#save_and_exec()<CR>
-]])
+vim.keymap.set("n", "<leader>x", function ()
+  vim.cmd([[
+    if &ft == 'lua'
+      call execute(printf(":lua %s", getline(".")))
+    elseif &ft == 'vim'
+      exe getline(">")
+    endif
+  ]])
+end, { desc = "Execute this line" })
+vim.keymap.set("v", "<leader>x", function ()
+  vim.cmd([[
+    if &ft == 'lua'
+      " call execute(printf(":lua %s", getline(".")))
+    elseif &ft == 'vim'
+      exe join(getline("'<","'>"),'<Bar>')
+    endif
+  ]])
+end, { desc = "Execute selection" })
+vim.keymap.set("n", "<leader><leader>x", ":call ak#save_and_exec()<CR>", { desc = "Save and execute this file" })
 
 -- <leader>il to inspect letter
 if vim.version().major > 0 or vim.version().minor >= 9 then

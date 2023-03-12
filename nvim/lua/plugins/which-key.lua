@@ -8,8 +8,11 @@ return {
         wk.setup({
             operators = {
                 gc = "Comments",
-                ["<space>p"] = "Paste",
-                ["<space>v"] = "Paste",
+                ["<leader>p"] = "Paste",
+                ["<leader>v"] = "Paste",
+            },
+            key_labels = {
+                ["<C-Bslash>"] = "<C-\\>",
             },
         })
         wk.register({
@@ -24,6 +27,25 @@ return {
                 t = { name = "[T]erm" },
                 w = { name = "[W]orkspace" },
             },
+            g = {
+                ["("] = "Previous start of sentence",
+                [")"] = "Next start of sentence",
+                ["o"] = "Open URI",
+            },
+            Z = {
+                name = "Exit",
+                Z = { name = "Save and close current window" },
+                Q = { name = "Close window without checking for changes" },
+            },
+            ["h"] = "which_key_ignore",
+            ["j"] = "which_key_ignore",
+            ["k"] = "which_key_ignore",
+            ["l"] = "which_key_ignore",
+            ["<M-b>"] = "which_key_ignore",
+            ["<M-f>"] = "which_key_ignore",
+            ["<S-Space>"] = "which_key_ignore",
+            ["("] = "Previous start of sentence",
+            [")"] = "Next start of sentence",
         })
         wk.register({
             ["("]  = [[Start of previous sentence]],
