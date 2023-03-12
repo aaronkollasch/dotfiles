@@ -2,7 +2,6 @@ return {
     -- "nvim-telescope/telescope.nvim",
     -- branch = "0.1.x",
     "aaronkollasch/telescope.nvim",
-    branch = "visual-bcommit-filter",
     dev = true,
     dependencies = {
         "nvim-lua/plenary.nvim",
