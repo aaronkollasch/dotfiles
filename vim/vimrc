@@ -252,6 +252,14 @@ else
   nnoremap <silent> <Leader>/       :BLines<CR>
   nmap     <silent> <leader>K       <Plug>DashSearch
 
+  function! BrowseLocalHistory()
+    let cwd = escape(fnamemodify(getcwd(), ":~:."), ' \/~')
+    let cmd = 'browse filter /' . cwd . '/ oldfiles'
+    execute(cmd)
+  endfunction
+  nnoremap <silent> <leader>fl      :call BrowseLocalHistory()<CR>
+  nnoremap <silent> <leader>lh      :call BrowseLocalHistory()<CR>
+
   " f-keymaps
   nnoremap <silent> <Leader>fh      :History<CR>
   nnoremap <silent> <Leader>f/      :Helptags<CR>

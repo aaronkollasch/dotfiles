@@ -139,9 +139,12 @@ vim.keymap.set("n", "<leader>bl",       builtin.buffers,        { desc = "[B]uff
 
 -- l-keymaps
 vim.keymap.set("n", "<leader>lb",       builtin.buffers,        { desc = "[L]oaded [B]uffers" })
-vim.keymap.set("n", "<leader>lf",       builtin.find_files,     { desc = "[L]ocate [F]iles" })
+vim.keymap.set("n", "<leader>lf",       builtin.find_files,     { desc = "[L]ocal  [F]iles" })
 vim.keymap.set("n", "<leader>lg",       builtin.git_files,      { desc = "[L]ocate [G]itfiles" })
 vim.keymap.set("n", "<leader>ls",       builtin.live_grep,      { desc = "[L]ocal  [S]earch" })
+vim.keymap.set("n", "<leader>lh",       function()
+    builtin.oldfiles({ cwd_only = true })
+end,                                                            { desc = "[L]ocal  [H]istory" })
 
 -- g-keymaps
 vim.keymap.set("n", "<leader>gm",       changed_on_branch,      { desc = "[G]it [M]odified files" })
