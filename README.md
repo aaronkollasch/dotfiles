@@ -17,14 +17,14 @@ See also:
 
 ## Installation
 
-```shell
+```bash
 git clone https://github.com/aaronkollasch/dotfiles ~/.dotfiles
 cd ~/.dotfiles
 ```
 
 To update submodules excluding the private submodule:
 
-```shell
+```bash
 while read -r submodule; do
   git submodule init "$submodule"
 done < <(git submodule status | cut -f2 -d' ' | sed 's%/.*%%' | sort | uniq | grep -v 'private')
@@ -33,12 +33,12 @@ git submodule update
 
 Then run the correct install script for your system, e.g.
 
-```shell
+```bash
 ./install_linux.sh
 ```
 
 ### macOS installation
-```shell
+```bash
 [ -x ./private/mac/install_deps ] && ./private/mac/install_deps
 ./mac/osx
 ./install_mac.sh
@@ -46,7 +46,7 @@ Then run the correct install script for your system, e.g.
 
 ## Testing
 
-```shell
+```bash
 ./run_tests.sh
 ```
 
