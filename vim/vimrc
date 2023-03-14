@@ -253,7 +253,7 @@ else
   nmap     <silent> <leader>K       <Plug>DashSearch
 
   function! BrowseLocalHistory()
-    let cwd = escape(fnamemodify(getcwd(), ":~:."), ' \/~')
+    let cwd = escape(fnameescape(fnamemodify(getcwd(), ":~:.")), '~/')
     let cmd = 'browse filter /' . cwd . '/ oldfiles'
     execute(cmd)
   endfunction
