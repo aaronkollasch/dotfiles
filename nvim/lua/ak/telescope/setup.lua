@@ -8,6 +8,7 @@ local action_state = require("telescope.actions.state")
 local previewers = require("telescope.previewers")
 local pickers = require("telescope.pickers")
 local sorters = require("telescope.sorters")
+local themes = require("telescope.themes")
 local finders = require("telescope.finders")
 local trouble = require("trouble.providers.telescope")
 local harpoon = require("telescope").extensions.harpoon
@@ -129,7 +130,9 @@ end
 -- picker keymaps
 vim.keymap.set("n", "<C-p>",            project_files,          { desc = "Find project files" })
 vim.keymap.set("n", "<C-f>",            builtin.find_files,     { desc = "Find project files" })
-vim.keymap.set("n", "<C-n>",            harpoon.marks,          { desc = "Harpoon marked files" })
+vim.keymap.set("n", "<C-n>",            function()
+    harpoon.marks(themes.get_dropdown({}))
+end,                                                            { desc = "Harpoon marked files" })
 vim.keymap.set("n", "<leader>*",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>#",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>rg",       builtin.live_grep,      { desc = "[R]ip[G]rep" })
