@@ -15,7 +15,9 @@ set belloff=all
 set scrolloff=4
 set sidescrolloff=4
 set breakindent
-set breakindentopt=list:-1
+if v:version >= 900 || has("patch-8.2-3198")
+  set breakindentopt=list:-1
+endif
 set showbreak=↳\ 
 set incsearch
 set nowrap
