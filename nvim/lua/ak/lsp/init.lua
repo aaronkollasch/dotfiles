@@ -102,13 +102,22 @@ lsp.setup_nvim_cmp({
     sources = cmp_sources,
 })
 
-lsp.set_preferences({
+local sign_icons = {
+    error = "E",
+    warn = "W",
+    hint = "H",
+    info = "I",
+}
+if require("ak.opts").icons_enabled then
     sign_icons = {
-        error = "E",
-        warn = "W",
-        hint = "H",
-        info = "I",
-    },
+        error = " ",
+        warn = " ",
+        hint = " ",
+        info = "",
+    }
+end
+lsp.set_preferences({
+    sign_icons=sign_icons,
 })
 
 vim.diagnostic.config({
