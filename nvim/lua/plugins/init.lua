@@ -169,20 +169,31 @@ return {
         },
     },
     {
-        'echasnovski/mini.splitjoin',
+        'aaronkollasch/treesj',
         keys = {
-            { "gS", nil, mode = { "n", "x" }, desc = "Toggle arguments" },
-            { "gJ", nil, mode = { "n", "x" }, desc = "Join arguments" },
+            { "gS", function() require('treesj').toggle() end, mode = { "n", "x" }, desc = "Toggle arguments" },
+            { "gJ", function() require('treesj').join() end, mode = { "n", "x" }, desc = "Join arguments" },
         },
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
         opts = {
-            mappings = {
-                join = 'gJ',
-            },
+            use_default_keymaps = false,
         },
-        config = function(_, opts)
-            require('mini.splitjoin').setup(opts)
-        end,
     },
+    -- {
+    --     'echasnovski/mini.splitjoin',
+    --     keys = {
+    --         { "gS", nil, mode = { "n", "x" }, desc = "Toggle arguments" },
+    --         { "gJ", nil, mode = { "n", "x" }, desc = "Join arguments" },
+    --     },
+    --     opts = {
+    --         mappings = {
+    --             join = 'gJ',
+    --         },
+    --     },
+    --     config = function(_, opts)
+    --         require('mini.splitjoin').setup(opts)
+    --     end,
+    -- },
 
     -- better <leader>p
     { "inkarkat/vim-ReplaceWithRegister", event = "VeryLazy" },
