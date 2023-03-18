@@ -13,8 +13,8 @@ local finders = require("telescope.finders")
 local trouble = require("trouble.providers.telescope")
 local harpoon = require("telescope").extensions.harpoon
 
--- add line numbers to preview
-vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
+-- -- add line numbers to preview
+-- vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
 
 -- custom previewers
 local project_files = function()
@@ -258,6 +258,26 @@ require("telescope").setup({
         },
         cache_picker = {
             num_pickers = 30,
+        },
+        preview = {
+            filetype_hook = function (_, _, opts)
+                local excluded = false
+                for _, v in ipairs({
+                    "help",
+                    "diff",
+                }) do
+                    if opts.ft == v then
+                        excluded = true
+                    end
+                end
+                if not excluded then
+                    vim.schedule(function()
+                        vim.api.nvim_win_set_option(opts.winid, "number", true)
+                        vim.api.nvim_win_set_option(opts.winid, "numberwidth", 4)
+                    end)
+                end
+                return true
+            end
         },
     },
     pickers = {
