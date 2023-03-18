@@ -168,13 +168,7 @@ vim.keymap.set("n", "<leader>fd",       function()
 end,                                                            { desc = "[F]ind buffer [D]iagnostics" })
 vim.keymap.set("n", "<leader>fs",       builtin.spell_suggest,  { desc = "[F]ind [S]pelling suggestions" })
 vim.keymap.set("n", "<leader>f/",       builtin.help_tags,      { desc = "[F]ind [/] Help" })
-vim.keymap.set("n", "<leader>fk",       function()
-    builtin.keymaps({
-        lhs_filter = function (lhs)
-            return not string.find(lhs, "Þ")
-        end,
-    })
-end,                                                            { desc = "[F]ind [K]eys" })
+vim.keymap.set("n", "<leader>fk",       builtin.keymaps,        { desc = "[F]ind [K]eys" })
 vim.keymap.set("n", "<leader>fo",       builtin.vim_options,    { desc = "[F]ind [O]ptions" })
 vim.keymap.set("n", "<leader>f;",       builtin.commands,       { desc = "[F]ind [;] Commands" })
 vim.keymap.set("n", "<leader>fb",       builtin.builtin,        { desc = "[F]ind [B]uiltin pickers" })
@@ -294,6 +288,11 @@ require("telescope").setup({
         oldfiles = find_file_config,
         diagnostics = {
             layout_strategy = 'vertical',
+        },
+        keymaps = {
+            lhs_filter = function (lhs)
+                return not string.find(lhs, "Þ")
+            end,
         },
     },
     extensions = {
