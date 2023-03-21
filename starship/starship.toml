@@ -104,6 +104,9 @@ symbol = " "
 [elm]
 symbol = " "
 
+[fossil_branch]
+symbol = " "
+
 [golang]
 symbol = " "
 
@@ -183,6 +186,9 @@ Windows = " "
 
 [package]
 symbol = " "
+
+[pijul_channel]
+symbol = " "
 
 [perl]
 symbol = " "
