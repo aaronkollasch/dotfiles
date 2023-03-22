@@ -2,6 +2,7 @@ if not pcall(require, "telescope") then
     return
 end
 
+local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
@@ -11,7 +12,6 @@ local sorters = require("telescope.sorters")
 local themes = require("telescope.themes")
 local finders = require("telescope.finders")
 local trouble = require("trouble.providers.telescope")
-local harpoon = require("telescope").extensions.harpoon
 
 -- -- add line numbers to preview
 -- vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
@@ -131,8 +131,8 @@ end
 vim.keymap.set("n", "<C-p>",            project_files,          { desc = "Find project files" })
 vim.keymap.set("n", "<C-f>",            builtin.find_files,     { desc = "Find project files" })
 vim.keymap.set("n", "<C-n>",            function()
-    harpoon.marks(themes.get_dropdown({}))
-end,                                                            { desc = "Harpoon marked files" })
+    telescope.extensions.harpoon.marks(themes.get_dropdown({}))
+end,                                                            { desc = "Find harpoon files" })
 vim.keymap.set("n", "<leader>*",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>#",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>rg",       builtin.live_grep,      { desc = "[R]ip[G]rep" })
@@ -332,6 +332,5 @@ require("telescope").setup({
     },
 })
 
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("ui-select")
-require("telescope").load_extension('harpoon')
+telescope.load_extension("fzf")
+telescope.load_extension("ui-select")

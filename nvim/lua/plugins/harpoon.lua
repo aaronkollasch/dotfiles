@@ -5,7 +5,7 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
         { "<leader>a", nil, desc = "[A]dd to Harpoon" },
-        { "<C-n>", nil, desc = "Toggle Harpoon menu" },
+        { "<leader><C-n>", nil, desc = "Toggle Harpoon menu" },
         { "<C-g>", nil, desc = "Goto Harpoon file 1" },
         { "<C-t>", nil, desc = "Goto Harpoon file 2" },
         { "<C-y>", nil, desc = "Goto Harpoon file 3" },
