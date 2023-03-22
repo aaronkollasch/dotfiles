@@ -116,13 +116,27 @@ local commits_in_buffer = function()
     })
 end
 
-local commits_in_selection = function()
-    return builtin.git_bcommits({
+local commits_in_operator = function()
+    return builtin.git_bcommits_range({
         git_command = {
             "git",
             "log",
             "--format=%h%d %s (%cr)",
-            "--follow",
+            "--no-patch",
+            "-L",
+        },
+        operator = true,
+    })
+end
+
+local commits_in_selection = function()
+    return builtin.git_bcommits_range({
+        git_command = {
+            "git",
+            "log",
+            "--format=%h%d %s (%cr)",
+            "--no-patch",
+            "-L",
         },
     })
 end
@@ -154,7 +168,7 @@ vim.keymap.set("n", "<leader>gm",       changed_on_branch,      { desc = "[G]it 
 vim.keymap.set("n", "<leader>gd",       changed_on_root,        { desc = "[G]it [D]iff" })
 vim.keymap.set("n", "<leader>ga",       builtin.git_status,     { desc = "[G]it [A]dd" })
 vim.keymap.set("n", "<leader>gl",       commits_in_project,     { desc = "[G]it [L]og" })
-vim.keymap.set("n", "<leader>gh",       commits_in_buffer,      { desc = "[G]it buffer [H]istory" })
+vim.keymap.set("n", "<leader>gh",       commits_in_operator,    { desc = "[G]it buffer [H]istory" })
 vim.keymap.set("v", "<leader>gh",       commits_in_selection,   { desc = "[G]it buffer [H]istory" })
 
 -- f-keymaps

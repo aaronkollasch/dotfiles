@@ -10,6 +10,7 @@ return {
                 gc = "Comments",
                 ["<leader>p"] = "Paste",
                 ["<leader>v"] = "Paste",
+                ["<leader>gh"] = "Git History",
             },
             key_labels = {
                 ["<C-Bslash>"] = "<C-\\>",
