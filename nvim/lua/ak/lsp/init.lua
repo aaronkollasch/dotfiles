@@ -180,32 +180,6 @@ local on_attach = function(client, bufnr)
 end
 lsp.on_attach(on_attach)
 
--- rust setup
-local rust_lsp = lsp.build_options("rust_analyzer", {
-    tools = {
-        runnables = {
-            use_telescope = true,
-        },
-        inlay_hints = {
-            auto = true,
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
-    on_attach = on_attach,
-    settings = {
-        -- to enable rust-analyzer settings visit:
-        -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-        ["rust-analyzer"] = {
-            -- enable clippy on save
-            checkOnSave = {
-                command = "clippy",
-            },
-        },
-    },
-})
-
 -- lua setup
 -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
 require("neodev").setup({
@@ -239,6 +213,36 @@ lsp.configure("lua_ls", {
     },
 })
 
+lsp.skip_server_setup({'rust_analyzer'})
 lsp.setup()
 
-require("rust-tools").setup({ server = rust_lsp })
+-- rust setup
+local rust_lsp = lsp.build_options("rust_analyzer", {
+    on_attach = on_attach,
+    settings = {
+        -- to enable rust-analyzer settings visit:
+        -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+        ["rust-analyzer"] = {
+            -- enable clippy on save
+            checkOnSave = {
+                command = "clippy",
+            },
+        },
+    },
+})
+
+require("rust-tools").setup({
+    tools = {
+        runnables = {
+            use_telescope = true,
+        },
+        inlay_hints = {
+            auto = true,
+            show_parameter_hints = false,
+            parameter_hints_prefix = "",
+            other_hints_prefix = "",
+            highlight = "NonText",
+        },
+    },
+    server = rust_lsp,
+})
