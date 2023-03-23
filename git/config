@@ -47,7 +47,7 @@
 	light = true
 	dark = false
 	syntax-theme = OneHalfLight
-	map-styles = bold purple => syntax "#f7c5f7", bold cyan => syntax "#9fd8fb"
+	map-styles = bold purple => syntax "#f7c5f7", bold cyan => syntax "#9fd8fb", bold blue => syntax "#d5c5f7", bold yellow => syntax "#c3caf8"
 	plus-emph-style = syntax "#b1eda7"
 
 [delta "darkmode"]
