@@ -488,6 +488,14 @@ elseif wezterm.target_triple:contains("-linux-gnu") then
     end
 end
 
+local copy_mode = nil
+if wezterm.gui then
+  copy_mode = wezterm.gui.default_key_tables().copy_mode
+  table.insert(
+    copy_mode,
+    { key = "e", mods = "CTRL", action = act.CopyMode({ MoveByPage = -0.5 }) }
+  )
+end
 local key_tables = {
     search_mode = {
         { key = "Enter", mods = "NONE", action = act.CopyMode("PriorMatch") },
@@ -515,6 +523,7 @@ local key_tables = {
             action = act.CopyMode("NextMatch"),
         },
     },
+    copy_mode = copy_mode,
 }
 
 -----------
