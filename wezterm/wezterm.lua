@@ -21,7 +21,7 @@ end
 -- local colors_dark = wezterm.color.get_builtin_schemes()['Hacktober']
 -- local colors_dark = wezterm.color.get_builtin_schemes()['JetBrains Darcula']
 local colors_dark = wezterm.color.get_builtin_schemes()["Edge Dark (base16)"]
-colors_dark["background"] = "#1F1F1F"
+colors_dark["background"] = "#262626"
 colors_dark["cursor_fg"] = "black"
 colors_dark["scrollbar_thumb"] = "#333333"
 
