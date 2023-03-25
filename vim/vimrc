@@ -46,6 +46,14 @@ set complete=.,w,b,u,t,i,kspell
 " map <Esc><BS> to <t_BS>
 exec "set t_BS=\e"
 
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
@@ -252,7 +260,16 @@ else
   cnoremap <silent> <C-f>           :History:<CR>
   cnoremap <silent> <C-r><C-r>      :History:<CR>
   nnoremap <silent> <Leader>/       :BLines<CR>
-  nmap     <silent> <leader>K       <Plug>DashSearch
+
+  if g:os == "Darwin"
+    nmap   <silent> <leader>K       <Plug>DashSearch
+  elseif g:os == "Linux"
+    nmap   <silent> <leader>K       <Plug>Zeavim
+    vmap   <silent> <leader>K       <Plug>ZVVisSelection
+  elseif g:os == "Windows"
+    nmap   <silent> <leader>K       <Plug>Zeavim
+    vmap   <silent> <leader>K       <Plug>ZVVisSelection
+  endif
 
   function! BrowseLocalHistory()
     let cwd = escape(fnameescape(fnamemodify(getcwd(), ":~:.")), '~/')
@@ -304,7 +321,13 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'rizzatti/dash.vim'
+if g:os == "Darwin"
+  Plug 'rizzatti/dash.vim'
+elseif g:os == "Linux"
+  Plug 'KabbAmine/zeavim.vim'
+elseif g:os == "Windows"
+  Plug 'KabbAmine/zeavim.vim'
+endif
 Plug 'sainnhe/edge'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'

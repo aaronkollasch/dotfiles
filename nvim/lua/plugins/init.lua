@@ -27,6 +27,32 @@ return {
             { "<leader>K",  "<Plug>DashSearch", silent = true, desc = "Dash Search" },
             { "<S-Space>K", "<Plug>DashSearch", silent = true, desc = "Dash Search" },
         },
+        enabled = function ()
+            return vim.loop.os_uname().sysname == "Darwin"
+        end
+    },
+    {
+        "KabbAmine/zeavim.vim",
+        cmd = {
+            "Zeavim",
+            "Docset",
+            "ZeavimV",
+        },
+        keys = {
+            { "<leader>K",  "<Plug>Zeavim", silent = true, desc = "Zeal Search" },
+            { "<S-Space>K", "<Plug>Zeavim", silent = true, desc = "Zeal Search" },
+            { "<leader>K",  "<Plug>ZVVisSelection", mode = "x", silent = true, desc = "Zeal Search" },
+            { "<S-Space>K", "<Plug>ZVVisSelection", mode = "x", silent = true, desc = "Zeal Search" },
+        },
+        init = function()
+            vim.g.zv_disable_mapping = 1
+            if vim.fn.has("unix") then
+                vim.g.zv_zeal_args = '--style=gtk+'
+            end
+        end,
+        enabled = function ()
+            return vim.loop.os_uname().sysname ~= "Darwin"
+        end
     },
 
     -- Code Actions
