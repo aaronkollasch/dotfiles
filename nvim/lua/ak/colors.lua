@@ -49,8 +49,13 @@ function! UpdateEdgeColors()
   " highlight spelling with undercurl
   hi SpellBad   guisp=red gui=undercurl guifg=NONE guibg=NONE
      \ ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
-  hi SpellCap   guisp=yellow gui=undercurl guifg=NONE guibg=NONE
-     \ ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
+  if &background ==# 'light'
+    hi SpellCap   guisp=#be7e05 gui=undercurl guifg=NONE guibg=NONE
+       \ ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
+  else
+    hi SpellCap   guisp=yellow gui=undercurl guifg=NONE guibg=NONE
+       \ ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
+  endif
 endfunction
 
 function! ColorSchemeDarcula()
