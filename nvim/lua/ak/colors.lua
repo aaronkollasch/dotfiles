@@ -79,11 +79,11 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     -- see https://github.com/Microsoft/vscode-docs/blob/main/api/language-extensions/semantic-highlight-guide.md
     local links = {
       ['@identifier'] = 'Identifier',
+      ['@structure'] = 'Structure',
       ['@lsp.type.namespace'] = '@namespace',
       ['@lsp.type.type'] = '@type',
       ['@lsp.type.class'] = '@type',
       ['@lsp.type.enum'] = '@type',
-      ['@lsp.type.interface'] = '@identifier',
       ['@lsp.type.struct'] = '@structure',
       ['@lsp.type.parameter'] = '@parameter',
       ['@lsp.type.variable'] = '@variable',
@@ -93,8 +93,9 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       ['@lsp.type.method'] = '@method',
       ['@lsp.type.macro'] = '@macro',
       ['@lsp.type.decorator'] = '@function',
-      ['@lsp.type.typeParameter'] = '@type',
       -- customizations:
+      ['@lsp.type.interface'] = '@identifier',
+      ['@lsp.type.typeParameter'] = '@type',
       ['@lsp.type.formatSpecifier'] = '@punctuation.special',
       ['@lsp.mod.readonly'] = '@constant',
       ['@lsp.mod.global'] = '@constant',
@@ -110,10 +111,11 @@ vim.api.nvim_create_autocmd('ColorScheme', {
     end
     -- language-specific
     vim.api.nvim_set_hl(0, '@lsp.mod.mutable.rust', { italic = true })
+    vim.api.nvim_set_hl(0, '@lsp.type.struct.rust', { link = '@type', default = true })
     vim.api.nvim_set_hl(0, '@lsp.type.macro.rust', { link = '@lsp', default = true })
-    vim.api.nvim_set_hl(0, '@lsp.typemod.decorator.attribute.rust', { link = 'Purple', default = true })
-    vim.api.nvim_set_hl(0, '@lsp.typemod.builtinAttribute.attribute.rust', { link = 'Purple', default = true })
-    vim.api.nvim_set_hl(0, '@lsp.typemod.generic.attribute.rust', { link = 'Purple', default = true })
+    -- vim.api.nvim_set_hl(0, '@lsp.typemod.decorator.attribute.rust', { link = 'Purple', default = true })
+    -- vim.api.nvim_set_hl(0, '@lsp.typemod.builtinAttribute.attribute.rust', { link = 'Purple', default = true })
+    -- vim.api.nvim_set_hl(0, '@lsp.typemod.generic.attribute.rust', { link = 'Purple', default = true })
   end,
 })
 
