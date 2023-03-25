@@ -65,17 +65,19 @@ augroup END
 
 vim.api.nvim_create_autocmd('ColorScheme', {
   group = "CustomColors",
+  pattern = { "edge", "darcula" },
   callback = function ()
     -- link new semantic highlighting groups
     -- see https://github.com/neovim/neovim/pull/22022
     -- see https://gist.github.com/swarn/fb37d9eefe1bc616c2a7e476c0bc0316
     -- see https://github.com/Microsoft/vscode-docs/blob/main/api/language-extensions/semantic-highlight-guide.md
     local links = {
+      ['@identifier'] = 'Identifier',
       ['@lsp.type.namespace'] = '@namespace',
       ['@lsp.type.type'] = '@type',
       ['@lsp.type.class'] = '@type',
       ['@lsp.type.enum'] = '@type',
-      ['@lsp.type.interface'] = '@type',
+      ['@lsp.type.interface'] = '@identifier',
       ['@lsp.type.struct'] = '@structure',
       ['@lsp.type.parameter'] = '@parameter',
       ['@lsp.type.variable'] = '@variable',
@@ -85,7 +87,7 @@ vim.api.nvim_create_autocmd('ColorScheme', {
       ['@lsp.type.method'] = '@method',
       ['@lsp.type.macro'] = '@macro',
       ['@lsp.type.decorator'] = '@function',
-      ['@lsp.type.typeParameter'] = '@parameter',
+      ['@lsp.type.typeParameter'] = '@type',
       -- customizations:
       ['@lsp.type.formatSpecifier'] = '@punctuation.special',
       ['@lsp.mod.readonly'] = '@constant',

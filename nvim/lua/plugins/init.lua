@@ -227,6 +227,14 @@ return {
         end,
     },
     { "aaronkollasch/darcula", ft = "python", dev = true }, -- fork of doums/darcula
+    {
+        "folke/tokyonight.nvim",
+        lazy = true,
+        opts = {
+            day_brightness = 0.25,
+            lualine_bold = true,
+        },
+    },
 
     -- <leader>fml
     {
