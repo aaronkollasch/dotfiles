@@ -32,7 +32,14 @@ fi
 
 if [[ ! -e "$HOME"/.terminfo/ || $(find "$HOME"/.terminfo -name 'tmux-256color' | wc -c) -eq 0 ]]; then
   "$(brew --prefix ncurses)"/bin/infocmp tmux-256color > /tmp/tmux-256color.info || retval=$?
+  # echo "	Smulx=\E[4\:%p1%dm," >> /tmp/tmux-256color.info
+  # echo "	Setulc=\E[58\:2\:%p1%{65536}%/%d\:%p1%{256}%/%{255}%&%d\:%p1%{255}%&%d%;m," >> /tmp/tmux-256color.info
   tic -xe tmux-256color /tmp/tmux-256color.info && echo "Installed tmux-256color terminfo" || echo "Failed to install tmux-256color terminfo" || retval=$?
+fi
+if [[ ! -e "$HOME"/.terminfo/ || $(find "$HOME"/.terminfo -name 'wezterm' | wc -c) -eq 0 ]]; then
+  tempfile=$(mktemp) && curl -o "$tempfile" https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo || retval=$?
+  tic -xe wezterm "$tempfile" && echo "Installed wezterm terminfo" || echo "Failed to install wezterm terminfo" || retval=$?
+  rm "$tempfile"
 fi
 
 if [[ ! -e "$HOME"/.iterm2_shell_integration.zsh ]]; then

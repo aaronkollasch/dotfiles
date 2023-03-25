@@ -11,6 +11,10 @@ let &t_ZR="\e[23m"
 " disable bold in cool-retro-term
 if $LC_TERMINAL == "cool-retro-term"
   set t_md=
+else
+  " enable undercurl
+  let &t_Cs = "\e[4:3m"
+  let &t_Ce = "\e[4:0m"
 endif
 " allow correct indentation when pasting in tmux https://vi.stackexchange.com/a/28284
 if &term =~ "screen" || &term =~ "tmux"

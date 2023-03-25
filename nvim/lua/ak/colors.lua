@@ -45,6 +45,12 @@ function! UpdateEdgeColors()
     " #ec7279 = oklch(69.7% 0.151 18.26)   >> oklch(20% 0.151 18.26)    ~= #320007
     call edge#highlight('Error', ['#ec7279', '203'], ['#320007', '52'])
   endif
+
+  " highlight spelling with undercurl
+  hi SpellBad   guisp=red gui=undercurl guifg=NONE guibg=NONE
+     \ ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
+  hi SpellCap   guisp=yellow gui=undercurl guifg=NONE guibg=NONE
+     \ ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
 endfunction
 
 function! ColorSchemeDarcula()

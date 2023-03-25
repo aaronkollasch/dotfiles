@@ -73,6 +73,9 @@ fi
 if command -v wezterm &>/dev/null; then
     if env | grep -q WEZTERM; then
         alias imgcat='wezterm imgcat'
+        if infocmp wezterm &>/dev/null; then
+            alias nvim='TERM=wezterm nvim'
+        fi
     fi
 fi
 if command -v nvim &>/dev/null; then
