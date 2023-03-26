@@ -47,31 +47,43 @@ end
 return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    opts = {
-        options = options,
-        sections = {
-            lualine_a = {
-                { "mode", fmt = trunc(80, 1, 0, true) },
+    opts = function ()
+        local navic = require("nvim-navic")
+        return {
+            options = options,
+            sections = {
+                lualine_a = {
+                    { "mode", fmt = trunc(80, 1, 0, true) },
+                },
+                lualine_b = { "branch", "diff", "diagnostics" },
+                lualine_c = {
+                    { "filename", path = 1 },
+                    {
+                        function()
+                            return navic.get_location()
+                        end,
+                        cond = function()
+                            return navic.is_available()
+                        end,
+                        fmt = trunc(180, 50, 120, true),
+                    },
+                },
+                lualine_x = { "encoding", "fileformat", "filetype" },
+                lualine_y = { "progress" },
+                lualine_z = { "location" },
             },
-            lualine_b = { "branch", "diff", "diagnostics" },
-            lualine_c = {
-                { "filename", path = 1 },
+            inactive_sections = {
+                lualine_a = { window },
+                lualine_b = {},
+                lualine_c = { "filename" },
+                lualine_x = { "location" },
+                lualine_y = {},
+                lualine_z = {},
             },
-            lualine_x = { "encoding", "fileformat", "filetype" },
-            lualine_y = { "progress" },
-            lualine_z = { "location" },
-        },
-        inactive_sections = {
-            lualine_a = { window },
-            lualine_b = {},
-            lualine_c = { "filename" },
-            lualine_x = { "location" },
-            lualine_y = {},
-            lualine_z = {},
-        },
-        tabline = {},
-        winbar = {},
-        inactive_winbar = {},
-        extensions = {},
-    },
+            tabline = {},
+            winbar = {},
+            inactive_winbar = {},
+            extensions = {},
+        }
+    end
 }

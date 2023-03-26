@@ -90,16 +90,22 @@ return {
     --     end,
     -- },
     {
+        "aaronkollasch/nvim-navic",
+        dev = true,
+        lazy = true,
+        opts = {
+            icons = navic_icons,
+            separator = "  ",
+            depth_limit = 3,
+            depth_limit_align = "left",
+        },
+    },
+    {
         "aaronkollasch/nvim-navbuddy",
         dev = true,
         dependencies = {
             "neovim/nvim-lspconfig",
-            {
-                "SmiteshP/nvim-navic",
-                opts = {
-                    icons = navic_icons,
-                },
-            },
+            -- "SmiteshP/nvim-navic",
             "MunifTanjim/nui.nvim"
         },
         lazy = true,
