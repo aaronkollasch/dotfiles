@@ -187,6 +187,15 @@ local on_attach = function(client, bufnr)
     vim.cmd([[inoremap <c-k> <C-R>=pumvisible() ? "\<lt>C-P>" : "\<lt>Up>"<CR>]])
 
     require("nvim-navbuddy").attach(client, bufnr)
+
+    if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
+        local semantic = client.config.capabilities.textDocument.semanticTokens
+        client.server_capabilities.semanticTokensProvider = {
+            full = true,
+            legend = {tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes},
+            range = true,
+        }
+    end
 end
 lsp.on_attach(on_attach)
 
