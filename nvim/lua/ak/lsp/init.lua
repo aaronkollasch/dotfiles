@@ -177,6 +177,8 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("i", "<c-x><c-k>", "<c-x><c-p>", bufopts)
     vim.cmd([[inoremap <c-j> <C-R>=pumvisible() ? "\<lt>C-N>" : "\<lt>Down>"<CR>]])
     vim.cmd([[inoremap <c-k> <C-R>=pumvisible() ? "\<lt>C-P>" : "\<lt>Up>"<CR>]])
+
+    require("nvim-navbuddy").attach(client, bufnr)
 end
 lsp.on_attach(on_attach)
 
