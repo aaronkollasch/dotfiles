@@ -167,10 +167,18 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>co",     builtin.lsp_outgoing_calls,   { desc = "[C]alls [O]utgoing", unpack(bufopts) })
     vim.keymap.set("n", "gr",             builtin.lsp_references,       { desc = "[G]oto [R]eferences", unpack(bufopts) })
     vim.keymap.set("n", "<leader>fm",      function()
-        vim.lsp.buf.format({ async = true })
+        if vim.o.filetype == "lua" then
+            require("stylua-nvim").format_file()
+        else
+            vim.lsp.buf.format({ async = true })
+        end
     end,                                                                { desc = "[F]or[M]at (async)", unpack(bufopts) })
     vim.keymap.set("n", "<leader>fmt",      function()
-        vim.lsp.buf.format({ async = true })
+        if vim.o.filetype == "lua" then
+            require("stylua-nvim").format_file()
+        else
+            vim.lsp.buf.format({ async = true })
+        end
     end,                                                                { desc = "[F]or[M]a[T] (async)", unpack(bufopts) })
     -- enable <c-j> and <c-k> arrow keys
     vim.keymap.set("i", "<c-x><c-j>", "<c-x><c-n>", bufopts)
@@ -188,16 +196,6 @@ require("neodev").setup({
     -- add any options here, or leave empty to use the default settings
 })
 lsp.configure("lua_ls", {
-    on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
-        local bufopts = { noremap = true, silent = true, buffer = bufnr }
-        vim.keymap.set("n", "<leader>fm", function()
-            require("stylua-nvim").format_file()
-        end, { desc = "[F]or[M]at (async)", unpack(bufopts) })
-        vim.keymap.set("n", "<leader>fmt", function()
-            require("stylua-nvim").format_file()
-        end, { desc = "[F]or[M]a[T] (async)", unpack(bufopts) })
-    end,
     settings = {
         Lua = {
             -- Do not send telemetry data containing a randomized but unique identifier
