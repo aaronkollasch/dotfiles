@@ -219,13 +219,14 @@ return {
 
     -- colorscheme
     {
-        "sainnhe/edge",
+        "aaronkollasch/edge",
+        dev = true,
         priority = 1000,
         config = function()
             require("ak.colors")
         end,
     },
-    { "aaronkollasch/darcula", ft = "python", dev = true }, -- fork of doums/darcula
+    { "aaronkollasch/darcula", dev = true, ft = "python" }, -- fork of doums/darcula
     {
         "folke/tokyonight.nvim",
         lazy = true,
