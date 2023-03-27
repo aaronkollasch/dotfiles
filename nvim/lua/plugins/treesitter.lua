@@ -111,7 +111,15 @@ return {
         end,
     },
 
-    { "nvim-treesitter/playground", event = "VeryLazy" },
+    {
+        "nvim-treesitter/playground",
+        cmd = {
+            "TSPlaygroundToggle",
+            "TSNodeUnderCursor",
+            "TSCaptureUnderCursor",
+            "TSHighlightCapturesUnderCursor", -- deprecated
+        },
+    },
     { "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
-    { "nvim-treesitter/nvim-treesitter-context", event = "VeryLazy", opts = {} }, -- show code context in top line(s)
+    { "nvim-treesitter/nvim-treesitter-context", event = { "BufReadPost", "BufNewFile" }, opts = {} }, -- show code context in top line(s)
 }
