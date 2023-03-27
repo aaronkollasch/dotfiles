@@ -32,10 +32,11 @@ vim.cmd([[ vnoremap <expr> y "my\"" . v:register . "y" ]])
 vim.cmd([[ vnoremap <expr> Y "my\"" . v:register . "Y" ]])
 
 -- move by terminal rows, not lines, unless a count is provided
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
+vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
+vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
 -- Alt-Backspace to delete word in insert mode
+-- better than C-w because it doesn't leave undotree entries
 vim.keymap.set("i", "<M-BS>", '<Esc>vb"_c')
 vim.keymap.set("c", "<M-BS>", "<C-w>")
 
