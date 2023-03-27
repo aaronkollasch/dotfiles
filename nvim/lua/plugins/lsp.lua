@@ -24,6 +24,7 @@ return {
         { "simrat39/rust-tools.nvim" },
     },
     event = { "BufReadPre", "BufNewFile" },
+    cmd = { "Mason", "MasonUpdate", "LspInfo", "LspInstall" },
     config = function()
         require("ak.lsp")
     end,
