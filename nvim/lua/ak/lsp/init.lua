@@ -15,7 +15,9 @@ lsp.ensure_installed({
     "eslint",
     "lua_ls",
     "rust_analyzer",
-    "pyright",
+    -- "pyright",
+    "pylsp",
+    "ruff_lsp",
     "bashls",
 })
 
@@ -226,6 +228,20 @@ lsp.configure("lua_ls", {
             function()
                 require("stylua-nvim").format_file()
             end,
+        },
+    },
+})
+
+lsp.configure("pylsp", {
+    settings = {
+        pylsp = {
+            plugins = {
+                -- linters replaced by ruff_lsp
+                pyflakes = { enabled = false },
+                flake8 = { enabled = false },
+                mccabe = { enabled = false },
+                pycodestyle = { enabled = false },
+            },
         },
     },
 })
