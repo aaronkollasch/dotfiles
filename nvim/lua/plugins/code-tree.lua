@@ -113,8 +113,21 @@ return {
         keys = {
             { "<leader>ct", "<cmd>Navbuddy<CR>", desc = "[C]ode  [T]ree" },
         },
-        opts = {
-            icons = navic_icons,
-        },
+        opts = function ()
+            local actions = require("nvim-navbuddy.actions")
+            return {
+                icons = navic_icons,
+                mappings = {
+                    ["<C-j>"] = actions.next_sibling,
+                    ["<Down>"] = actions.next_sibling,
+                    ["<C-k>"] = actions.previous_sibling,
+                    ["<Up>"] = actions.previous_sibling,
+                    ["<C-h>"] = actions.parent,
+                    ["<Left>"] = actions.parent,
+                    ["<C-l>"] = actions.children,
+                    ["<Right>"] = actions.children,
+                },
+            }
+        end,
     },
 }
