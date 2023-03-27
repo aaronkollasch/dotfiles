@@ -64,6 +64,10 @@ function! ColorSchemeDarcula()
 
     " make cursor line number brighter
     set cursorline
+
+    " fix lualine theme
+    lua require("lualine").setup({ options = { theme='auto' } })
+    highlight! lualine_a_insert guifg=#30302c
   endif
 endfunction
 
