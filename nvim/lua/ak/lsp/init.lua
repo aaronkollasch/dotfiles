@@ -115,7 +115,7 @@ if require("ak.opts").icons_enabled then
         error = " ",
         warn = " ",
         hint = " ",
-        info = "",
+        info = "󰌵",
     }
 end
 lsp.set_preferences({
