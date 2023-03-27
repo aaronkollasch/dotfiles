@@ -188,9 +188,9 @@ local on_attach = function(client, bufnr)
     vim.cmd([[inoremap <c-j> <C-R>=pumvisible() ? "\<lt>C-N>" : "\<lt>Down>"<CR>]])
     vim.cmd([[inoremap <c-k> <C-R>=pumvisible() ? "\<lt>C-P>" : "\<lt>Up>"<CR>]])
 
-    require("nvim-navbuddy").attach(client, bufnr)
     if client.server_capabilities.documentSymbolProvider then
         require("nvim-navic").attach(client, bufnr)
+        require("nvim-navbuddy").attach(client, bufnr)
     end
 
     if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
@@ -251,7 +251,6 @@ lsp.setup()
 
 -- rust setup
 local rust_lsp = lsp.build_options("rust_analyzer", {
-    on_attach = on_attach,
     settings = {
         -- to enable rust-analyzer settings visit:
         -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
