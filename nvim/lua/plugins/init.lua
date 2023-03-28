@@ -194,6 +194,19 @@ return {
     --     end,
     -- },
 
+    -- get github permalink
+    {
+        "knsh14/vim-github-link",
+        cmd = {
+            "GetCommitLink",
+            "GetCurrentBranchLink",
+            "GetCurrentCommitLink",
+        },
+        keys = {
+            { "<leader>gp", ":GetCurrentCommitLink<CR>", mode = { "n", "x" }, silent = true, desc = "[G]it [P]ermalink" },
+        },
+    },
+
     -- better <leader>p
     { "inkarkat/vim-ReplaceWithRegister", event = "VeryLazy" },
 
