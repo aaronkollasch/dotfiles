@@ -8,7 +8,7 @@
 # To enable this hook, rename this file to "pre-commit".
 
 # check for gitleaks
-gitleaks protect --staged --verbose --redact | jq .
+gitleaks protect --staged --verbose --redact
 if [[ ${PIPESTATUS[0]} -gt 0 ]]; then
     echo "Error: gitleaks has detected sensitive information in your changes."
     exit 1

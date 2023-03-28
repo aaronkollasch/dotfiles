@@ -54,7 +54,7 @@ done
 
 # check for gitleaks
 # Adapted from https://github.com/zricethezav/gitleaks/wiki/Scanning
-gitleaks detect --verbose --redact | jq .
+gitleaks detect --verbose --redact
 if [[ ${PIPESTATUS[0]} -gt 0 ]]; then
     echo "Error: gitleaks has detected sensitive information in your changes."
     exit 1
