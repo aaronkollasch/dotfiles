@@ -26,6 +26,8 @@ vim.opt.listchars = { trail = "·", tab = "▸ ", extends = ">", precedes = "<" 
 vim.opt.scrolloff = 4
 vim.opt.sidescrolloff = 4
 
+vim.opt.splitkeep = "screen"
+
 vim.opt.breakindent = true
 vim.opt.breakindentopt = "list:-1"
 vim.opt.showbreak = "↳ "
