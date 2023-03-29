@@ -57,7 +57,13 @@ return {
                 },
                 lualine_b = { "branch", "diff", "diagnostics" },
                 lualine_c = {
-                    { "filename", path = 1 },
+                    {
+                        "filename",
+                        path = 1,
+                        color = function()
+                           return { gui = vim.bo.modified and "bold" or "" }
+                        end,
+                    },
                     {
                         function()
                             return navic.get_location()
