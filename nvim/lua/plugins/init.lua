@@ -170,6 +170,34 @@ return {
             use_default_keymaps = false,
         },
     },
+    -- {
+    --     "smjonas/inc-rename.nvim",
+    --     keys = {
+    --         { "<leader>rn",function()
+    --             return ":IncRename " .. vim.fn.expand("<cword>")
+    --         end, expr = true, desc = "[R]e[N]ame" },
+    --     },
+    --     opts = {},
+    -- },
+    -- {
+    --     "smjonas/live-command.nvim",
+    --     cmd = { "Norm", "Reg" },
+    --     config = function()
+    --         require("live-command").setup {
+    --             commands = {
+    --                 Norm = { cmd = "norm" },
+    --                 Reg = {
+    --                     cmd = "norm",
+    --                     -- This will transform ":5Reg a" into ":norm 5@a"
+    --                     args = function(opts)
+    --                         return (opts.count == -1 and "" or opts.count) .. "@" .. opts.args
+    --                     end,
+    --                     range = "",
+    --                 },
+    --             },
+    --         }
+    --     end,
+    -- },
 
     -- get github permalink
     {
