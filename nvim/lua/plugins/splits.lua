@@ -1,4 +1,4 @@
-return {
+local smart_splits = {
     "mrjones2014/smart-splits.nvim", -- replaces christoomey/vim-tmux-navigator
     keys = {
         { "<A-h>", nil, desc = "Resize window left" },
@@ -34,4 +34,14 @@ return {
         vim.keymap.set("n", "<C-k>", splits.move_cursor_up,    { desc = "Move up one window" })
         vim.keymap.set("n", "<C-l>", splits.move_cursor_right, { desc = "Move right one window" })
     end
+}
+
+return {
+    { "aaronkollasch/vim-bufkill", event = "VeryLazy" },
+    {
+        "markstory/vim-zoomwin",
+        cmd = "ZoomToggle",
+        keys = { { "<leader>z", nil, desc = "ZoomToggle" } },
+    }, -- <leader>z to zoom, see also troydm/zoomwintab.vim or anuvyklack/windows.nvim
+    smart_splits,
 }

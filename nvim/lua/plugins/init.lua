@@ -96,14 +96,6 @@ return {
         opts = {},
     },
 
-    -- splits management / tmux compatibility
-    { "aaronkollasch/vim-bufkill", event = "VeryLazy" },
-    {
-        "markstory/vim-zoomwin",
-        cmd = "ZoomToggle",
-        keys = { { "<leader>z", nil, desc = "ZoomToggle" } },
-    }, -- <leader>z to zoom, see also troydm/zoomwintab.vim
-
     -- buffer highlighting
     {
         "itchyny/vim-cursorword",
