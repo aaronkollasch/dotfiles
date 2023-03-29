@@ -178,21 +178,6 @@ return {
             use_default_keymaps = false,
         },
     },
-    -- {
-    --     'echasnovski/mini.splitjoin',
-    --     keys = {
-    --         { "gS", nil, mode = { "n", "x" }, desc = "Toggle arguments" },
-    --         { "gJ", nil, mode = { "n", "x" }, desc = "Join arguments" },
-    --     },
-    --     opts = {
-    --         mappings = {
-    --             join = 'gJ',
-    --         },
-    --     },
-    --     config = function(_, opts)
-    --         require('mini.splitjoin').setup(opts)
-    --     end,
-    -- },
 
     -- get github permalink
     {
