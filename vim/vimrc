@@ -332,6 +332,7 @@ Plug 'sainnhe/edge'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'aaronkollasch/vim-bufkill'
+nmap <silent> <Leader>bud <Plug>BufKillUndo
 Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_wrap = 1
 let g:tmux_navigator_no_mappings = 1
