@@ -18,7 +18,15 @@ return {
         })
         wk.register({
             ["<leader>"] = {
-                b = { name = "[B]uffer" },
+                b = {
+                    name = "[B]uffer",
+                    a  = "[B]uffer [A]lternate",
+                    d  = "[B]uffer [D]elete",
+                    w  = "[B]uffer [W]ipe",
+                    un = "[B]uffer [UN]load",
+                    b  = "which_key_ignore",
+                    f  = "which_key_ignore",
+                },
                 c = { name = "[C]ode" },
                 f = { name = "[F]ind" },
                 g = { name = "[G]it" },
@@ -35,8 +43,8 @@ return {
             },
             Z = {
                 name = "Exit",
-                Z = { name = "Save and close current window" },
-                Q = { name = "Close window without checking for changes" },
+                Z = "Save and close current window",
+                Q = "Close window without checking for changes",
             },
             ["h"] = "which_key_ignore",
             ["j"] = "which_key_ignore",
