@@ -89,7 +89,18 @@ return {
             tabline = {},
             winbar = {},
             inactive_winbar = {},
-            extensions = {},
+            extensions = {
+                "Trouble",
+                "lazy",
+                "neo-tree",
+                "toggleterm",
+                "fugitive",
+                "quickfix",
+                -- not installed:
+                -- "nvim-dap-ui",
+                -- "aerial",
+                -- "symbols-outline",
+            },
         }
     end
 }
