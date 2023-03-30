@@ -74,7 +74,21 @@ return {
                         fmt = trunc(180, 50, 120, true),
                     },
                 },
-                lualine_x = { "encoding", "fileformat", "filetype" },
+                lualine_x = {
+                    {
+                        "encoding",
+                        cond = function ()
+                            return vim.o.fileencoding ~= "utf-8"
+                        end,
+                    },
+                    {
+                        "fileformat",
+                        cond = function ()
+                            return vim.o.fileformat ~= "unix"
+                        end,
+                    },
+                    "filetype",
+                },
                 lualine_y = { "progress" },
                 lualine_z = { "location" },
             },
