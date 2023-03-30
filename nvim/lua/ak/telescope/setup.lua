@@ -204,6 +204,10 @@ vim.keymap.set("c", "<C-r><C-r>",       builtin.command_history, { desc = "Searc
 -- https://www.youtube.com/watch?v=X35yfs3yvKw&t=443s
 -- https://gitter.im/nvim-telescope/community/?at=6113b874025d436054c468e6
 local find_file_config = {
+    file_ignore_patterns = {
+        "node_modules/",
+        ".git/COMMIT_EDITMSG",
+    },
     disable_devicons = not require("ak.opts").icons_enabled,
     on_input_filter_cb = function(prompt)
         local find_colon = string.find(prompt, ":")
