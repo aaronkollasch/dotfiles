@@ -1,3 +1,12 @@
+local icons = nil
+if not require("ak.opts").icons_enabled then
+    icons = {
+        breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
+        separator = "→", -- symbol used between a key and it's label
+        group = "+", -- symbol prepended to a group
+    }
+end
+
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",
@@ -15,6 +24,7 @@ return {
             key_labels = {
                 ["<C-Bslash>"] = "<C-\\>",
             },
+            icons = icons,
         })
         wk.register({
             ["<leader>"] = {
