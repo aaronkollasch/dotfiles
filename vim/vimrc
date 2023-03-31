@@ -260,6 +260,8 @@ else
   cnoremap <silent> <C-f>           :History:<CR>
   cnoremap <silent> <C-r><C-r>      :History:<CR>
   nnoremap <silent> <Leader>/       :BLines<CR>
+  nnoremap <silent> <Leader>ls      :Rg<CR>
+  nnoremap <silent> <Leader>rg      :Rg<CR>
 
   if g:os == "Darwin"
     nmap   <silent> <leader>K       <Plug>DashSearch
