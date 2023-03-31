@@ -233,26 +233,7 @@ end
 ---------
 -- SSH --
 ---------
-local ssh_domains = {
-    {
-        -- This name identifies the domain
-        name = "crowley",
-        -- The hostname or address to connect to. Will be used to match settings
-        -- from your ssh config file
-        remote_address = "crowley.nebula.kola.sh",
-        -- The username to use on the remote host
-        username = "aaron",
-    },
-    {
-        -- This name identifies the domain
-        name = "crowley.local",
-        -- The hostname or address to connect to. Will be used to match settings
-        -- from your ssh config file
-        remote_address = "crowley.local",
-        -- The username to use on the remote host
-        username = "aaron",
-    },
-}
+local ssh_domains = require("ssh-domains")
 
 ----------
 -- KEYS --

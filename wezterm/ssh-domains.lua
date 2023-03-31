@@ -1,0 +1,1 @@
+../private/wezterm/ssh-domains.lua
