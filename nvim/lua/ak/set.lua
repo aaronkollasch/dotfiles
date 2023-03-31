@@ -17,6 +17,12 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undofile = true
 
+if vim.fn.has("win32") then
+    vim.opt.shada = "!,'200,<50,s10,h,rA:,rB:"
+else
+    vim.opt.shada = "!,'200,<50,s10,h"
+end
+
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.inccommand = "split"
