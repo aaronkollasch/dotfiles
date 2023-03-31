@@ -25,8 +25,8 @@ local lazyopts = {
     performance = {
         rtp = {
             disabled_plugins = {
-                -- "matchit",
-                -- "matchparen",
+                "matchit",
+                "matchparen",
             },
         },
     },

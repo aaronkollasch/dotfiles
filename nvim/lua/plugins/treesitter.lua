@@ -80,6 +80,10 @@ local ts_opts = {
         },
     },
 
+    matchup = {
+        enable = true,
+    },
+
     playground = {
         enable = true,
         disable = {},

@@ -56,6 +56,9 @@ function! UpdateEdgeColors()
     hi SpellCap   guisp=yellow gui=undercurl guifg=NONE guibg=NONE
        \ ctermfg=NONE ctermbg=NONE term=underline cterm=undercurl
   endif
+
+  " vim-matchup virtual text support
+  hi! link MatchupVirtualText VirtualTextHint
 endfunction
 
 function! ColorSchemeDarcula()

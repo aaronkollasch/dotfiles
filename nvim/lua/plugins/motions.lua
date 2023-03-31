@@ -58,6 +58,14 @@ return {
 
     -- motions
     {
+        "andymass/vim-matchup",
+        event = event,
+        setup = function()
+            -- may set any options here
+            vim.g.matchup_matchparen_offscreen = { method = "popup" }
+        end
+    },
+    {
         "rhysd/clever-f.vim",
         event = event,
         init = function ()
