@@ -360,6 +360,9 @@ defaults write com.apple.screencapture type -string "png"
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
+# Show display resolutions as list in System Settings
+defaults write com.apple.Displays-Settings.extension showListByDefault -bool true
+
 ###############################################################################
 # Finder                                                                      #
 ###############################################################################
