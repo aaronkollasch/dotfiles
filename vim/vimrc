@@ -9,6 +9,7 @@ set tabstop=4 softtabstop=4
 set hidden
 set list
 set listchars=tab:▸\ ,trail:·,extends:>,precedes:<
+set fillchars+=diff:╱
 set number relativenumber
 set noerrorbells
 set belloff=all

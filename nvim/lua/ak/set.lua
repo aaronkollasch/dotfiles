@@ -29,6 +29,7 @@ vim.opt.inccommand = "split"
 
 vim.opt.list = true
 vim.opt.listchars = { trail = "·", tab = "▸ ", extends = ">", precedes = "<" }
+vim.opt.fillchars:append { diff = "╱" }
 
 vim.opt.scrolloff = 4
 vim.opt.sidescrolloff = 4
