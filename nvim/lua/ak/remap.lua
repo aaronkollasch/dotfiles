@@ -35,6 +35,10 @@ vim.cmd([[ vnoremap <expr> Y "my\"" . v:register . "Y" ]])
 vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
+-- g keys for git diffget
+vim.keymap.set("n", "gh",  "<cmd>diffget //2<CR>",  { desc = "[G]it diffget target (left)" })
+vim.keymap.set("n", "gl",  "<cmd>diffget //3<CR>",  { desc = "[G]it diffget merge (right)" })
+
 -- Alt-Backspace to delete word in insert mode
 -- better than C-w because it doesn't leave undotree entries
 vim.keymap.set("i", "<M-BS>", '<Esc>vb"_c')
@@ -109,10 +113,6 @@ vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { silent = true, desc = "[B]
 vim.keymap.set("n", "<leader>n",  "]",  { desc = "Next,     alias of ]", remap = true })
 vim.keymap.set("n", "<leader>N",  "[",  { desc = "Previous, alias of [", remap = true })
 vim.keymap.set("n", "<S-Space>N", "[",  { desc = "Previous, alias of [", remap = true })
-
--- <leader>g keys for git
-vim.keymap.set("n", "gh",  "<cmd>diffget //2<CR>",  { desc = "[G]it diffget target (left)" })
-vim.keymap.set("n", "gl",  "<cmd>diffget //3<CR>",  { desc = "[G]it diffget merge (right)" })
 
 -- <leader><number> to move to window
 for i = 1, 6 do

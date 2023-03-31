@@ -136,6 +136,10 @@ if !has('ide')
   " move by terminal rows, not lines, unless a count is provided
   noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
   noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+  " get commit from left or right of Gdiffsplit
+  nnoremap <silent> gh <cmd>diffget //2<CR>
+  nnoremap <silent> gl <cmd>diffget //3<CR>
 endif
 
 " Alt-Backspace to delete word in insert mode
@@ -321,6 +325,8 @@ Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+nmap <leader>ic <Plug>(characterize)
+Plug 'tpope/vim-characterize'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 if g:os == "Darwin"
