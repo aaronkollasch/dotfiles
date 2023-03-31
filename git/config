@@ -15,8 +15,19 @@
 	ff = only
 [diff]
 	colorMoved = default
+	tool = nvimdiff
+[difftool]
+	prompt = false
+; [difftool "nvimdiff"]
+; 	cmd = "if command -v nvim &>/dev/null; then nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"; else vimdiff \"$LOCAL\" \"$REMOTE\"; fi"
 [merge]
+	tool = nvimdiff
 	conflictstyle = diff3
+[mergetool]
+	keepBackup = false
+	prompt = false
+; [mergetool "nvimdiff"]
+; 	cmd = "if command -v nvim &>/dev/null; then nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"; else vimdiff \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\"; fi"
 
 [interactive]
 #LIGHT
