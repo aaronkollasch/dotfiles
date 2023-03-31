@@ -139,7 +139,12 @@ return {
     { "numToStr/Comment.nvim", event = "VeryLazy", opts = {} }, -- replaces tpope/vim-commentary
     {
         "tpope/vim-fugitive",
-        cmd = "Git",
+        cmd = {
+            "G",
+            "Git",
+            "Gdiff",
+            "Gdiffsplit",
+        },
         keys = {
             { "<leader>gs", vim.cmd.Git, desc = "[G]it [S]tart" },
             { "<leader>gc", function() vim.cmd.Git("commit -v") end, desc = "[G]it [C]ommit" },
@@ -148,15 +153,16 @@ return {
     },
     { "tpope/vim-surround", event = "VeryLazy" },
     { "tpope/vim-repeat", event = "VeryLazy" },
-    { "tpope/vim-characterize", keys = { { "ga", "<Plug>(characterize)", desc="Characterize under cursor" } } },
+    { "tpope/vim-characterize", keys = { { "<leader>ic", "<Plug>(characterize)", desc="Characterize under cursor" } } },
 
     -- text actions
     {
         "junegunn/vim-easy-align",
+        cmd = "EasyAlign",
         keys = {
             -- n: Start interactive EasyAlign for a motion/text object (e.g. gaip)
             -- x: Start interactive EasyAlign in visual mode (e.g. vipga)
-            { "gl", "<Plug>(EasyAlign)", mode = { "n", "x" }, desc = "EasyAlign" },
+            { "ga", "<Plug>(EasyAlign)", mode = { "n", "x" }, desc = "EasyAlign" },
         },
     },
     {

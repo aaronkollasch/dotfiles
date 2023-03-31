@@ -110,6 +110,10 @@ vim.keymap.set("n", "<leader>n",  "]",  { desc = "Next,     alias of ]", remap =
 vim.keymap.set("n", "<leader>N",  "[",  { desc = "Previous, alias of [", remap = true })
 vim.keymap.set("n", "<S-Space>N", "[",  { desc = "Previous, alias of [", remap = true })
 
+-- <leader>g keys for git
+vim.keymap.set("n", "gh",  "<cmd>diffget //2<CR>",  { desc = "[G]it diffget target (left)" })
+vim.keymap.set("n", "gl",  "<cmd>diffget //3<CR>",  { desc = "[G]it diffget merge (right)" })
+
 -- <leader><number> to move to window
 for i = 1, 6 do
     local lhs = "<Leader>" .. i

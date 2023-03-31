@@ -95,6 +95,42 @@ local changed_on_root = function()
         :find()
 end
 
+local changed_staged = function()
+    local rel_path = string.gsub(vim.fn.system("git rev-parse --show-cdup"), "^%s*(.-)%s*$", "%1")
+    if vim.v.shell_error ~= 0 then
+        return
+    end
+    pickers
+        .new({
+            results_title = "Staged on current branch",
+            finder = finders.new_oneshot_job({
+                "git",
+                "diff",
+                "--staged",
+                "--name-only",
+                "HEAD",
+            }),
+            sorter = sorters.get_fuzzy_file(),
+            previewer = previewers.new_termopen_previewer({
+                get_command = function(entry)
+                    return {
+                        "git",
+                        "-c",
+                        "core.pager=delta",
+                        "-c",
+                        "delta.side-by-side=false",
+                        "diff",
+                        "--staged",
+                        "HEAD",
+                        "--",
+                        rel_path .. entry.value,
+                    }
+                end,
+            }),
+        })
+        :find()
+end
+
 local commits_in_project = function()
     return builtin.git_commits({
         git_command = {
@@ -166,6 +202,7 @@ end,                                                            { desc = "[L]oca
 -- g-keymaps
 vim.keymap.set("n", "<leader>gm",       changed_on_branch,      { desc = "[G]it [M]odified files" })
 vim.keymap.set("n", "<leader>gd",       changed_on_root,        { desc = "[G]it [D]iff" })
+vim.keymap.set("n", "<leader>gD",       changed_staged,         { desc = "[G]it [D]iff staged" })
 vim.keymap.set("n", "<leader>ga",       builtin.git_status,     { desc = "[G]it [A]dd" })
 vim.keymap.set("n", "<leader>gl",       commits_in_project,     { desc = "[G]it [L]og" })
 vim.keymap.set("n", "<leader>gh",       commits_in_operator,    { desc = "[G]it buffer [H]istory" })
