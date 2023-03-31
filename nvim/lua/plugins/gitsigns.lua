@@ -54,7 +54,7 @@ return {
             map("n",          "<leader>hD", function()
                 gs.diffthis("~")
             end,                                                        { desc = "[H]unk [D]iff parent" })
-            -- map("n", "<leader>td", gs.toggle_deleted, { desc = "[T]oggle  [D]eleted" })
+            -- map("n", "<leader>td", gs.toggle_deleted, { desc = "[T]oggle [D]eleted" })
 
             -- Text object
             map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "git hunk" })
