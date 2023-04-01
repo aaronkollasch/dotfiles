@@ -233,7 +233,15 @@ end
 ---------
 -- SSH --
 ---------
-local ssh_domains = require("ssh-domains")
+local status, ssh_domains = pcall(require, "ssh-domains")
+if not status then
+    print("could not load ssh_domains")
+    if wezterm.default_ssh_domains ~= nil then
+        ssh_domains = wezterm.default_ssh_domains()
+    else
+        ssh_domains = {}
+    end
+end
 
 ----------
 -- KEYS --
