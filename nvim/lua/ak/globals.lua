@@ -20,6 +20,11 @@ R = function(name)
     return require(name)
 end
 
+LR = function(name)
+    local plugin = require("lazy.core.config").plugins[name]
+    return require("lazy.core.loader").reload(plugin)
+end
+
 vim.cmd([[
 " This command definition includes -bar, so that it is possible to "chain" Vim commands.
 " Side effect: double quotes can't be used in external commands
