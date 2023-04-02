@@ -69,6 +69,12 @@ vim.keymap.set(
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "[S]ubstitute current word" }
 )
+vim.keymap.set(
+    "x",
+    "<leader>s",
+    [[:s///gI<Left><Left><Left><Left>]],
+    { desc = "[S]ubstitute in selection" }
+)
 
 -- <leader>x to execute line, <leader><leader>x to execute file
 vim.keymap.set("n", "<leader>x", function ()

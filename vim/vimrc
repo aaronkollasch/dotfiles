@@ -161,6 +161,7 @@ vnoremap <leader>d "_d
 
 " <leader>s to begin replacement with current word
 nnoremap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+xnoremap <leader>s :s///gI<Left><Left><Left><Left>
 
 " <leader>p to replace with register
 nmap <Leader>p  <Plug>ReplaceWithRegisterOperator
