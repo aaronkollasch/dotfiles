@@ -199,6 +199,10 @@ inoremap <C-E> <End>
 xmap gl <Plug>(EasyAlign)
 nmap gl <Plug>(EasyAlign)
 
+" aC/iC for fenced code blocks
+omap aC <plug>(textobj-markdown-chunk-a)
+omap iC <plug>(textobj-markdown-chunk-i)
+
 "--------------------------------------------------------------------------
 " IDE key maps
 "--------------------------------------------------------------------------
@@ -366,7 +370,10 @@ Plug 'kana/vim-textobj-indent'             " ai/ii for a block of similarly inde
 Plug 'kana/vim-textobj-entire'             " ae/ie for the entire region of the current buffer
 Plug 'sgur/vim-textobj-parameter'          " a,/i, for an argument to a function
 Plug 'vimtaku/vim-textobj-keyvalue'        " ak/ik and av/iv for key/value
+let g:loaded_textobj_comment = 1
 Plug 'glts/vim-textobj-comment'            " ac/ic for a comment
+let g:textobj_markdown_no_default_key_mappings = 1
+Plug 'coachshea/vim-textobj-markdown'      " aC/iC for markdown code blocks
 Plug 'jceb/vim-textobj-uri'                " au/iu for a URI, also adds go to open URL
 Plug 'preservim/vim-textobj-sentence'      " as/is for the current sentence (replaces built-in objects/motions)
 let g:loaded_textobj_variable_segment = 1
@@ -394,6 +401,13 @@ Plug 'NoahTheDuke/vim-just'
 Plug 'aaronkollasch/vim-known_hosts'
 
 call plug#end()
+
+" customize vim-textobj-comment to not use aC for big comment
+call textobj#user#plugin('comment', {
+    \ '-': {
+    \    'select-a': 'ac', 'select-a-function': 'textobj#comment#select_a',
+    \    'select-i': 'ic', 'select-i-function': 'textobj#comment#select_i',
+    \ }})
 
 " customize vim-textobj-variable-segment to use aS/iS instead of av/iv
 call textobj#user#plugin('variable', {
