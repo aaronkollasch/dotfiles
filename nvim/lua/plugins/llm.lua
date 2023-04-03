@@ -38,6 +38,9 @@ return {
         },
         config = function()
             vim.env.OPENAI_API_KEY = require('op.api').item.get({ 'OpenAI Secret Key', '--fields', 'credential' })[1]
+            if not vim.env.OPENAI_API_KEY or not vim.startswith(vim.env.OPENAI_API_KEY, 'sk-') then
+                error('Failed to get OpenAI API key.')
+            end
             require("chatgpt").setup({
                 question_sign = icons_enabled and "" or "Q",
                 answer_sign = icons_enabled and "ﮧ" or "A",
