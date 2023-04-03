@@ -6,26 +6,26 @@ return {
         "chrisgrieser/nvim-various-textobjs",
         event = event,
         init = function ()
-            vim.keymap.set({"o", "x"}, "!", function () require("various-textobjs").diagnostic() end, { desc = "Diagnostic" })
-            vim.keymap.set({"o", "x"}, "|", function () require("various-textobjs").column() end, { desc = "Column" })
-            -- vim.keymap.set({"o", "x"}, "ae", function () require("various-textobjs").entireBuffer() end)
-            -- vim.keymap.set({"o", "x"}, "ie", function () require("various-textobjs").entireBuffer() end)
+            vim.keymap.set({"o", "x"}, "!", '<cmd>lua require("various-textobjs").diagnostic()<CR>', { desc = "Diagnostic" })
+            vim.keymap.set({"o", "x"}, "|", '<cmd>lua require("various-textobjs").column()<CR>', { desc = "Column" })
+            -- vim.keymap.set({"o", "x"}, "ae", '<cmd>lua require("various-textobjs").entireBuffer()<CR>')
+            -- vim.keymap.set({"o", "x"}, "ie", '<cmd>lua require("various-textobjs").entireBuffer()<CR>')
 
-            -- vim.keymap.set({"o", "x"}, "aS", function () require("various-textobjs").subword(false) end)
-            -- vim.keymap.set({"o", "x"}, "iS", function () require("various-textobjs").subword(true) end)
-            vim.keymap.set({"o", "x"}, "ak", function () require("various-textobjs").key(false) end)
-            vim.keymap.set({"o", "x"}, "ik", function () require("various-textobjs").key(true) end)
-            vim.keymap.set({"o", "x"}, "av", function () require("various-textobjs").value(false) end)
-            vim.keymap.set({"o", "x"}, "iv", function () require("various-textobjs").value(true) end)
-            vim.keymap.set({"o", "x"}, "aC", function () require("various-textobjs").mdFencedCodeBlock(false) end)
-            vim.keymap.set({"o", "x"}, "iC", function () require("various-textobjs").mdFencedCodeBlock(true) end)
+            -- vim.keymap.set({"o", "x"}, "aS", '<cmd>lua require("various-textobjs").subword(false)<CR>')
+            -- vim.keymap.set({"o", "x"}, "iS", '<cmd>lua require("various-textobjs").subword(true)<CR>')
+            vim.keymap.set({"o", "x"}, "ak", '<cmd>lua require("various-textobjs").key(false)<CR>')
+            vim.keymap.set({"o", "x"}, "ik", '<cmd>lua require("various-textobjs").key(true)<CR>')
+            vim.keymap.set({"o", "x"}, "av", '<cmd>lua require("various-textobjs").value(false)<CR>')
+            vim.keymap.set({"o", "x"}, "iv", '<cmd>lua require("various-textobjs").value(true)<CR>')
+            vim.keymap.set({"o", "x"}, "aC", '<cmd>lua require("various-textobjs").mdFencedCodeBlock(false)<CR>')
+            vim.keymap.set({"o", "x"}, "iC", '<cmd>lua require("various-textobjs").mdFencedCodeBlock(true)<CR>')
 
             -- indentation textobj requires two parameters, the first for
-            -- exclusion of the starting border, the second for the exclusion of ending border
-            vim.keymap.set({"o", "x"}, "ii", function () require("various-textobjs").indentation(true, true) end)
-            vim.keymap.set({"o", "x"}, "ai", function () require("various-textobjs").indentation(false, true) end)
-            vim.keymap.set({"o", "x"}, "iI", function () require("various-textobjs").indentation(true, true) end)
-            vim.keymap.set({"o", "x"}, "aI", function () require("various-textobjs").indentation(false, false) end)
+            -- exclusion of the starting border, the second for the exclusion of<CR>'ing border
+            vim.keymap.set({"o", "x"}, "ii", '<cmd>lua require("various-textobjs").indentation(true, true)<CR>')
+            vim.keymap.set({"o", "x"}, "ai", '<cmd>lua require("various-textobjs").indentation(false, true)<CR>')
+            vim.keymap.set({"o", "x"}, "iI", '<cmd>lua require("various-textobjs").indentation(true, true)<CR>')
+            vim.keymap.set({"o", "x"}, "aI", '<cmd>lua require("various-textobjs").indentation(false, false)<CR>')
         end
     },
     -- see https://github.com/kana/vim-textobj-user/wiki
