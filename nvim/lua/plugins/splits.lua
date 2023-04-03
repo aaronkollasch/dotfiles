@@ -31,6 +31,13 @@ return {
                 -- e.g. by default, moving left at the left edge will jump
                 -- to the rightmost window, and vice versa, same for up/down.
                 wrap_at_edge = false,
+
+                -- enable or disable a multiplexer integration
+                -- set to false to disable, otherwise
+                -- it will default to tmux if $TMUX is set,
+                -- then wezterm if $WEZTERM_PANE is set,
+                -- otherwise false
+                multiplexer_integration = "tmux",
             })
 
             -- recommended mappings
