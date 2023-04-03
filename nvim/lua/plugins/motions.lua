@@ -17,10 +17,11 @@ return {
             vim.keymap.set({"o", "x"}, "ik", function () require("various-textobjs").key(true) end)
             vim.keymap.set({"o", "x"}, "av", function () require("various-textobjs").value(false) end)
             vim.keymap.set({"o", "x"}, "iv", function () require("various-textobjs").value(true) end)
+            vim.keymap.set({"o", "x"}, "aC", function () require("various-textobjs").mdFencedCodeBlock(false) end)
+            vim.keymap.set({"o", "x"}, "iC", function () require("various-textobjs").mdFencedCodeBlock(true) end)
 
             -- indentation textobj requires two parameters, the first for
-            -- exclusion of the starting border, the second for the exclusion of ending
-            -- border
+            -- exclusion of the starting border, the second for the exclusion of ending border
             vim.keymap.set({"o", "x"}, "ii", function () require("various-textobjs").indentation(true, true) end)
             vim.keymap.set({"o", "x"}, "ai", function () require("various-textobjs").indentation(false, true) end)
             vim.keymap.set({"o", "x"}, "iI", function () require("various-textobjs").indentation(true, true) end)
@@ -33,11 +34,25 @@ return {
     { "kana/vim-textobj-entire",             dependencies = "kana/vim-textobj-user", event = event }, -- ae/ie for the entire region of the current buffer
     { "sgur/vim-textobj-parameter",          dependencies = "kana/vim-textobj-user", event = event }, -- a,/i, for an argument to a function
     -- { "vimtaku/vim-textobj-keyvalue",        dependencies = "kana/vim-textobj-user", event = event }, -- ak/ik and av/iv for key/value
-    { "glts/vim-textobj-comment",            dependencies = "kana/vim-textobj-user", event = event }, -- ac/ic for a comment
     { "jceb/vim-textobj-uri",                dependencies = "kana/vim-textobj-user", event = event }, -- au/iu for a URI, also adds go to open URL
     { "preservim/vim-textobj-sentence",      dependencies = "kana/vim-textobj-user", event = event,   -- as/is for the current sentence (replaces built-in objects/motions)
         config = function ()
             vim.fn["textobj#sentence#init"]()
+        end,
+    },
+    {
+        "glts/vim-textobj-comment",          dependencies = "kana/vim-textobj-user", event = event,   -- ac/ic for a comment
+        init = function()
+            vim.g.loaded_textobj_comment = 1
+        end,
+        config = function()
+            vim.cmd([[
+            call textobj#user#plugin('comment', {
+                \ '-': {
+                \    'select-a': 'ac', 'select-a-function': 'textobj#comment#select_a',
+                \    'select-i': 'ic', 'select-i-function': 'textobj#comment#select_i',
+                \ }})
+            ]])
         end,
     },
     { "Julian/vim-textobj-variable-segment", dependencies = "kana/vim-textobj-user", event = event,   -- aS/iS for a subword, separated by camelCase or underscore
