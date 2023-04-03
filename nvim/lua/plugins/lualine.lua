@@ -104,7 +104,7 @@ return {
             winbar = {},
             inactive_winbar = {},
             extensions = {
-                "Trouble",
+                "trouble",
                 "lazy",
                 "neo-tree",
                 "toggleterm",
