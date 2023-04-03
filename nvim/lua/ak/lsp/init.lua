@@ -122,10 +122,6 @@ lsp.set_preferences({
     sign_icons=sign_icons,
 })
 
-vim.diagnostic.config({
-    virtual_text = true,
-})
-
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap = true, silent = true }
@@ -278,3 +274,14 @@ require("rust-tools").setup({
     },
     server = rust_lsp,
 })
+
+local diagnostic_config = {
+    virtual_text = {
+        prefix = "■",
+        spacing = 1,
+    },
+}
+if not require("ak.opts").icons_enabled then
+    diagnostic_config.virtual_text.prefix = "!"
+end
+vim.diagnostic.config(diagnostic_config)
