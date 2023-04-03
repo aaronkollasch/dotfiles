@@ -5,6 +5,12 @@ return {
         "github/copilot.vim",
         event = { "BufReadPre", "BufNewFile" },
         cmd = { "Copilot" },
+        keys = { { "<leader>cp", "<cmd>Copilot<CR>", desc = "[C]opilot [P]anel" } },
+        init = function ()
+            vim.g.copilot_filetypes = {
+                TelescopePrompt = false,
+            }
+        end
     },
     {
         "aaronkollasch/ChatGPT.nvim",
@@ -23,12 +29,12 @@ return {
             "ChatGPTRunCustomCodeAction",
         },
         keys = {
-            { "<leader>cgo", "<cmd>ChatGPT<CR>" },
-            { "<leader>cga", "<cmd>ChatGPTActAs<CR>" },
-            { "<leader>cge", "<cmd>ChatGPTEditWithInstructions<CR>" },
-            { "<leader>cgc", "<cmd>ChatGPTCompleteCode<CR>" },
-            { "<leader>cgr", "<cmd>ChatGPTRun<CR>" },
-            { "<leader>cgu", "<cmd>ChatGPTRunCustomCodeAction<CR>" },
+            { "<leader>cgo", "<cmd>ChatGPT<CR>", desc = "[C]hat [G]PT [O]pen" },
+            { "<leader>cga", "<cmd>ChatGPTActAs<CR>", desc = "[C]hat [G]PT [A]ct" },
+            { "<leader>cge", "<cmd>ChatGPTEditWithInstructions<CR>", desc = "[C]hat [G]PT [E]dit" },
+            { "<leader>cgc", "<cmd>ChatGPTCompleteCode<CR>", desc = "[C]hat [G]PT [C]omplete" },
+            -- { "<leader>cgr", "<cmd>ChatGPTRun<CR>", desc = "[C]hat [G]PT [R]un" },
+            { "<leader>cgu", "<cmd>ChatGPTRunCustomCodeAction<CR>", desc = "[C]hat [G]PT custom action" },
         },
         config = function()
             vim.env.OPENAI_API_KEY = require('op.api').item.get({ 'OpenAI Secret Key', '--fields', 'credential' })[1]

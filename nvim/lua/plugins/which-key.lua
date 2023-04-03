@@ -37,7 +37,12 @@ return {
                     b  = "which_key_ignore",
                     f  = "which_key_ignore",
                 },
-                c = { name = "[C]ode" },
+                c = {
+                    name = "[C]ode",
+                    g = {
+                        name = "[C]hat [G]PT",
+                    },
+                },
                 f = { name = "[F]ind" },
                 g = { name = "[G]it" },
                 h = { name = "[H]unk" },
