@@ -548,7 +548,7 @@ endif
 
 augroup StripHistory
   au!
-  au VimEnter,CmdLineLeave *  echom histdel(":", '\m^\(w\|wq\|qa\?!\?\|b[npw]\)$')
+  au VimEnter,CmdLineLeave *  echom histdel(":", '\m^\(w\|wq\|qa\?!\?\|x\|xa\?!\?\|b[npw]\)$')
 augroup END
 
 augroup textobj_sentence

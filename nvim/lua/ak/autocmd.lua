@@ -33,6 +33,6 @@ autocmd({ "VimEnter", "CmdLineLeave" }, {
     group = strip_history_group,
     pattern = "*",
     callback = function()
-        vim.fn.histdel(":", "\\m^\\(w\\|wq\\|qa\\?!\\?\\|b[npw]\\)$")
+        vim.fn.histdel(":", "\\m^\\(w\\|wq\\|qa\\?!\\?\\|x\\|xa\\?!\\?\\|b[npw]\\)$")
     end,
 })
