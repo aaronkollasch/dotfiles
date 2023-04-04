@@ -26,10 +26,6 @@ function! UpdateEdgeColors()
   highlight! link TSVariable Normal
   highlight! link TSVariableBuiltin Red
 
-  " make cursor line number brighter
-  set cursorline
-  highlight CursorLine ctermbg=NONE guibg=NONE
-
   if &background ==# 'light'
     " #76af6f = oklch(69.82% 0.109 141.77) >> oklch(86.2% 0.165 141.77)  = #8fec84
     call edge#highlight('Search', ['#000000', '0'], ['#8fec84', '119'])
