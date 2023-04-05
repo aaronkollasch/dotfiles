@@ -5,7 +5,12 @@ return {
     dependencies = {
         -- LSP Support
         { "neovim/nvim-lspconfig" },
-        { "williamboman/mason.nvim" },
+        {
+            "williamboman/mason.nvim",
+            opts = {
+                PATH = "append",
+            },
+        },
         { "williamboman/mason-lspconfig.nvim" },
 
         -- Autocompletion
