@@ -111,9 +111,19 @@ vim.keymap.set("n",   "<leader>ip", ":TSPlaygroundToggle<CR>",   { desc = "[I]ns
 -- <leader><leader>l to open Lazy plugin management window
 vim.keymap.set("n", "<leader><leader>l", ":Lazy<CR>", { desc = "[L]azy" })
 
--- <leader>b keys to change buffers
+-- <leader>b keys for buffers
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { silent = true, desc = "[B]uffer [N]ext" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { silent = true, desc = "[B]uffer [P]revious" })
+vim.keymap.set('n', '<leader>bc',
+  function()
+    local curbufnr = vim.api.nvim_get_current_buf()
+    local buflist = vim.api.nvim_list_bufs()
+    for _, bufnr in ipairs(buflist) do
+      if vim.bo[bufnr].buflisted and bufnr ~= curbufnr and (vim.fn.getbufvar(bufnr, 'bufpersist') ~= 1) then
+        vim.cmd('bd ' .. tostring(bufnr))
+      end
+    end
+  end, { silent = true, desc = '[B]uffer [C]lear' })
 
 -- <leader>n keys to jump
 vim.keymap.set("n", "<leader>n",  "]",  { desc = "Next,     alias of ]", remap = true })

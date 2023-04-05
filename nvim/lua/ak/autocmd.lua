@@ -36,3 +36,24 @@ autocmd({ "VimEnter", "CmdLineLeave" }, {
         vim.fn.histdel(":", "\\m^\\(w\\|wq\\|qa\\?!\\?\\|x\\|xa\\?!\\?\\|b[npw]\\)$")
     end,
 })
+
+local persist_buffer_group = augroup("PersistBuffer", {
+  clear = false
+})
+local persist_buffer = function(bufnr)
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+  vim.fn.setbufvar(bufnr, 'bufpersist', 1)
+end
+autocmd({"BufRead"}, {
+  group = persist_buffer_group,
+  pattern = {"*"},
+  callback = function()
+    autocmd({"InsertEnter","BufModifiedSet"}, {
+      buffer = 0,
+      once = true,
+      callback = function()
+        persist_buffer()
+      end
+    })
+  end
+})
