@@ -184,11 +184,6 @@ local on_attach = function(client, bufnr)
     vim.cmd([[inoremap <c-j> <C-R>=pumvisible() ? "\<lt>C-N>" : "\<lt>Down>"<CR>]])
     vim.cmd([[inoremap <c-k> <C-R>=pumvisible() ? "\<lt>C-P>" : "\<lt>Up>"<CR>]])
 
-    if client.server_capabilities.documentSymbolProvider then
-        require("nvim-navic").attach(client, bufnr)
-        require("nvim-navbuddy").attach(client, bufnr)
-    end
-
     if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
         local semantic = client.config.capabilities.textDocument.semanticTokens
         client.server_capabilities.semanticTokensProvider = {

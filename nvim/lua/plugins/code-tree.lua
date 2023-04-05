@@ -98,6 +98,10 @@ return {
             separator = "  ",
             depth_limit = 3,
             depth_limit_align = "left",
+            lsp = {
+                auto_attach = true,
+                preference = nil,
+            },
         },
     },
     {
@@ -108,7 +112,7 @@ return {
             -- "SmiteshP/nvim-navic",
             "MunifTanjim/nui.nvim"
         },
-        lazy = true,
+        event = "LspAttach",
         cmd = "Navbuddy",
         keys = {
             { "<leader>ct", "<cmd>Navbuddy<CR>", desc = "[C]ode  [T]ree" },
@@ -126,6 +130,10 @@ return {
                     ["<Left>"] = actions.parent,
                     ["<C-l>"] = actions.children,
                     ["<Right>"] = actions.children,
+                },
+                lsp = {
+                    auto_attach = true,
+                    preference = nil,
                 },
             }
         end,
