@@ -15,10 +15,10 @@ return {
     {
         "aaronkollasch/ChatGPT.nvim",
         dev = true,
-        requires = {
+        dependencies = {
             "MunifTanjim/nui.nvim",
             "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
+            "aaronkollasch/telescope.nvim"
         },
         cmd = {
             "ChatGPT",
