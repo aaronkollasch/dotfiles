@@ -151,7 +151,7 @@ return {
             { "<leader>gb", function() vim.cmd.Git("blame") end, desc = "[G]it [B]lame" },
         },
     },
-    { "tpope/vim-surround", event = "VeryLazy" },
+    { "kylechui/nvim-surround", event = "VeryLazy", opts = {} }, -- replaces tpope/vim-surround
     { "tpope/vim-repeat", event = "VeryLazy" },
     { "tpope/vim-characterize", keys = { { "<leader>ic", "<Plug>(characterize)", desc="Characterize under cursor" } } },
 
