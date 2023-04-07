@@ -153,7 +153,7 @@ return {
     },
     { "kylechui/nvim-surround", event = "VeryLazy", opts = {} }, -- replaces tpope/vim-surround
     { "tpope/vim-repeat", event = "VeryLazy" },
-    { "tpope/vim-characterize", keys = { { "<leader>ic", "<Plug>(characterize)", desc="Characterize under cursor" } } },
+    { "tpope/vim-characterize", keys = { { "<leader>ic", "<Plug>(characterize)", desc="[I]nspect [C]haracter" } } },
 
     -- text actions
     {
