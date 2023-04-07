@@ -90,26 +90,27 @@ return {
     --     end,
     -- },
     {
-        "aaronkollasch/nvim-navic",
-        dev = true,
-        lazy = true,
-        opts = {
-            icons = navic_icons,
-            separator = "  ",
-            depth_limit = 3,
-            depth_limit_align = "left",
-            lsp = {
-                auto_attach = true,
-                preference = nil,
-            },
-        },
-    },
-    {
+        -- "SmiteshP/nvim-navbuddy",
         "aaronkollasch/nvim-navbuddy",
         dev = true,
         dependencies = {
             "neovim/nvim-lspconfig",
             -- "SmiteshP/nvim-navic",
+            {
+                "aaronkollasch/nvim-navic",
+                dev = true,
+                lazy = true,
+                opts = {
+                    icons = navic_icons,
+                    separator = "  ",
+                    depth_limit = 3,
+                    depth_limit_align = "left",
+                    lsp = {
+                        auto_attach = true,
+                        preference = nil,
+                    },
+                },
+            },
             "MunifTanjim/nui.nvim"
         },
         event = "LspAttach",
