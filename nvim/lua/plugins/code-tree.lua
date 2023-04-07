@@ -121,6 +121,9 @@ return {
         opts = function ()
             local actions = require("nvim-navbuddy.actions")
             return {
+                window = {
+                    border = "rounded",
+                },
                 icons = navic_icons,
                 mappings = {
                     ["<C-j>"] = actions.next_sibling,
