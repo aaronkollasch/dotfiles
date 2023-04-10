@@ -1,7 +1,7 @@
 local ts_opts = {
     -- A list of parser names, or "all"
     ensure_installed = {
-        "help",
+        "vimdoc",
         "vim",
         "python",
         "javascript",
