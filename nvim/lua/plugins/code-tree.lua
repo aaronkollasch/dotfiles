@@ -117,13 +117,28 @@ return {
         cmd = "Navbuddy",
         keys = {
             { "<leader>ct", "<cmd>Navbuddy<CR>", desc = "[C]ode  [T]ree" },
+            -- { "<leader>cs", "<cmd>Telescope navbuddy<CR>", desc = "[C]ode  [S]ymbols" },
         },
         opts = function ()
             local actions = require("nvim-navbuddy.actions")
+            local node_markers = {
+                enabled = true,
+                icons = {
+                    leaf = "  ",
+                    leaf_selected = " 󰗼 ",
+                    branch = " ",
+                },
+            }
+            if not icons_enabled then
+                node_markers.icons.leaf = "  "
+                node_markers.icons.leaf_selected = "→□"
+                node_markers.icons.branch = " >"
+            end
             return {
                 window = {
                     border = "rounded",
                 },
+                node_markers = node_markers,
                 icons = navic_icons,
                 mappings = {
                     ["<C-j>"] = actions.next_sibling,
