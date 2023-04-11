@@ -9,6 +9,7 @@ return {
         init = function ()
             vim.g.copilot_filetypes = {
                 TelescopePrompt = false,
+                ["neo-tree-popup"] = false,
             }
         end
     },
