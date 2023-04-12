@@ -96,6 +96,7 @@ return {
             require('leap').add_default_mappings()
             vim.keymap.set("o", "s", "v:operator == 'y' ? '<Esc>ys' : '<Plug>(leap-forward-to)'", { expr = true, remap = true, desc = "Leap forward to" })
             vim.keymap.set("o", "S", "v:operator == 'y' ? '<Esc>yS' : '<Plug>(leap-backward-to)'", { expr = true, remap = true, desc = "Leap backward to" })
-        end
+        end,
+        enabled = false,
     },
 }
