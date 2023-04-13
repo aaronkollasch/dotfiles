@@ -12,6 +12,8 @@ local cmdline_format = {
     lua = {},
     help = {},
 }
+local notify_icons = {}
+
 if not require("ak.opts").icons_enabled then
     cmdline_format.cmdline.icon = ":"
     cmdline_format.search_down.icon = "/⌄"
@@ -19,9 +21,23 @@ if not require("ak.opts").icons_enabled then
     cmdline_format.filter.icon = "$"
     cmdline_format.lua.icon = "☾"
     cmdline_format.help.icon = "?"
+    notify_icons = {
+        ERROR = "E:",
+        WARN = "W:",
+        HINT = "H:",
+        INFO = "I:",
+        TRACE = "T:",
+    }
 end
 
 return {
+    {
+        "rcarriga/nvim-notify",
+        event = "VeryLazy",
+        opts = {
+            icons = notify_icons,
+        },
+    },
     {
         "folke/noice.nvim",
         dependencies = {
