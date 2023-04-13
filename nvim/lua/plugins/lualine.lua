@@ -77,6 +77,10 @@ return {
                 },
                 lualine_x = {
                     {
+                        "%S",
+                        color = { fg = "#ff9e64" },
+                    },
+                    {
                         noice.api.statusline.mode.get,
                         cond = function()
                             return noice.api.statusline.mode.has()
