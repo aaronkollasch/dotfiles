@@ -80,7 +80,7 @@ return {
                         noice.api.statusline.mode.get,
                         cond = function()
                             return noice.api.statusline.mode.has()
-                                and not string.find(noice.api.statusline.mode.get(), "^--")
+                                and not string.find(noice.api.statusline.mode.get(), "^%-%-")
                         end,
                         color = { fg = "#ff9e64" },
                     },
