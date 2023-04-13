@@ -1,16 +1,24 @@
-local cmdline_icons = {
-    search_down = { icon = " " },
-    search_up = { icon = " " },
+local cmdline_format = {
+    cmdline = {},
+    search_down = {
+        icon = " ",
+        view = "cmdline",
+    },
+    search_up = {
+        icon = " ",
+        view = "cmdline",
+    },
+    filter = {},
+    lua = {},
+    help = {},
 }
 if not require("ak.opts").icons_enabled then
-    cmdline_icons = {
-        cmdline = { icon = ":" },
-        search_down = { icon = "/⌄" },
-        search_up = { icon = "?^" },
-        filter = { icon = "$" },
-        lua = { icon = "☾" },
-        help = { icon = "?" },
-    }
+    cmdline_format.cmdline.icon = ":"
+    cmdline_format.search_down.icon = "/⌄"
+    cmdline_format.search_up.icon = "?⌄"
+    cmdline_format.filter.icon = "$"
+    cmdline_format.lua.icon = "☾"
+    cmdline_format.help.icon = "?"
 end
 
 return {
@@ -23,8 +31,8 @@ return {
         event = "VeryLazy",
         opts = {
             cmdline = {
-                view = "cmdline",
-                format = cmdline_icons,
+                -- view = "cmdline",
+                format = cmdline_format,
             },
             lsp = {
                 hover = {
