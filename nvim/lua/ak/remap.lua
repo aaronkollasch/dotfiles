@@ -4,7 +4,7 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>lv", vim.cmd.Ex, { desc = "[L]ocal  [V]iew" })
 
 -- press <CR> to hide search results
-vim.keymap.set("n", "<CR>", ":noh<CR><CR>:<backspace>", { desc = "Clear search and next line" })
+vim.keymap.set("n", "<CR>", ":noh<CR><CR>:<Esc>", { desc = "Clear search and next line" })
 
 -- Move cursor to middle of screen after C-d and C-u
 vim.keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz")
