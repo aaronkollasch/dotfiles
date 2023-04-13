@@ -125,5 +125,12 @@ return {
         },
     },
     { "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
-    { "nvim-treesitter/nvim-treesitter-context", event = { "BufReadPost", "BufNewFile" }, opts = {} }, -- show code context in top line(s)
+    { -- show code context in top line(s)
+        "nvim-treesitter/nvim-treesitter-context",
+        event = { "BufReadPost", "BufNewFile" },
+        keys = {
+            { "<leader>cc", "<cmd>TSContextToggle<CR>", desc = "[C]ode  [C]ontext" },
+        },
+        opts = {},
+    },
 }

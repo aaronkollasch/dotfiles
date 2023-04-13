@@ -307,6 +307,9 @@ else
   nnoremap <silent> <Leader>gc      :Git commit -v<CR>
   nnoremap <silent> <Leader>gb      :Git blame<CR>
 
+  " c-keymaps
+  nnoremap <silent> <Leader>cc      :ContextToggle<CR>
+
   " Navigation and splitting
   noremap <silent> <C-h>     :<C-U>TmuxNavigateLeft<cr>
   noremap <silent> <C-j>     :<C-U>TmuxNavigateDown<cr>
