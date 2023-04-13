@@ -111,7 +111,7 @@ return {
                     },
                 },
             },
-            "MunifTanjim/nui.nvim"
+            "MunifTanjim/nui.nvim",
         },
         event = "LspAttach",
         cmd = "Navbuddy",
@@ -119,7 +119,7 @@ return {
             { "<leader>ct", "<cmd>Navbuddy<CR>", desc = "[C]ode  [T]ree" },
             -- { "<leader>cs", "<cmd>Telescope navbuddy<CR>", desc = "[C]ode  [S]ymbols" },
         },
-        opts = function ()
+        opts = function()
             local actions = require("nvim-navbuddy.actions")
             local node_markers = {
                 enabled = true,

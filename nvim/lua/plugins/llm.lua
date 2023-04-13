@@ -6,12 +6,12 @@ return {
         event = { "BufReadPre", "BufNewFile" },
         cmd = { "Copilot" },
         keys = { { "<leader>cp", "<cmd>Copilot<CR>", desc = "[C]opilot [P]anel" } },
-        init = function ()
+        init = function()
             vim.g.copilot_filetypes = {
                 TelescopePrompt = false,
                 ["neo-tree-popup"] = false,
             }
-        end
+        end,
     },
     {
         "aaronkollasch/ChatGPT.nvim",
@@ -19,7 +19,7 @@ return {
         dependencies = {
             "MunifTanjim/nui.nvim",
             "nvim-lua/plenary.nvim",
-            "aaronkollasch/telescope.nvim"
+            "aaronkollasch/telescope.nvim",
         },
         cmd = {
             "ChatGPT",
@@ -38,13 +38,13 @@ return {
             { "<leader>cgu", "<cmd>ChatGPTRunCustomCodeAction<CR>", desc = "[C]hat [G]PT custom action" },
         },
         config = function()
-            vim.env.OPENAI_API_KEY = require('op.api').item.get({ 'OpenAI Secret Key', '--fields', 'credential' })[1]
-            if not vim.env.OPENAI_API_KEY or not vim.startswith(vim.env.OPENAI_API_KEY, 'sk-') then
-                error('Failed to get OpenAI API key.')
+            vim.env.OPENAI_API_KEY = require("op.api").item.get({ "OpenAI Secret Key", "--fields", "credential" })[1]
+            if not vim.env.OPENAI_API_KEY or not vim.startswith(vim.env.OPENAI_API_KEY, "sk-") then
+                error("Failed to get OpenAI API key.")
             end
             require("chatgpt").setup({
                 question_sign = icons_enabled and "" or "Q",
-                answer_sign = icons_enabled and "ﮧ" or "A",
+                answer_sign = icons_enabled and "󰚩" or "A",
                 tokens_border = icons_enabled and { "", "" } or { "", "" },
                 keymaps = {
                     close = { "<C-c>" },

@@ -47,7 +47,7 @@ end
 return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
-    opts = function ()
+    opts = function()
         local navic = require("nvim-navic")
         local noice = require("noice")
         return {
@@ -62,7 +62,7 @@ return {
                         "filename",
                         path = 1,
                         color = function()
-                           return { gui = vim.bo.modified and "bold" or "" }
+                            return { gui = vim.bo.modified and "bold" or "" }
                         end,
                     },
                     {
@@ -78,7 +78,7 @@ return {
                 lualine_x = {
                     {
                         noice.api.statusline.mode.get,
-                        cond = function ()
+                        cond = function()
                             return noice.api.statusline.mode.has()
                                 and not string.find(noice.api.statusline.mode.get(), "^--")
                         end,
@@ -86,13 +86,13 @@ return {
                     },
                     {
                         "encoding",
-                        cond = function ()
+                        cond = function()
                             return vim.o.fileencoding ~= "utf-8"
                         end,
                     },
                     {
                         "fileformat",
-                        cond = function ()
+                        cond = function()
                             return vim.o.fileformat ~= "unix"
                         end,
                     },

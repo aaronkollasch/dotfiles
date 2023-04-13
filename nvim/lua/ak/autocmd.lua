@@ -15,10 +15,7 @@ autocmd("TextYankPost", {
     end,
 })
 local function return_to_y_mark()
-    if
-        vim.v.event.operator == "y" or
-        vim.v.event.operator == "Y"
-    then
+    if vim.v.event.operator == "y" or vim.v.event.operator == "Y" then
         vim.api.nvim_feedkeys("g`y", "n", true)
     end
 end
@@ -38,22 +35,22 @@ autocmd({ "VimEnter", "CmdLineLeave" }, {
 })
 
 local persist_buffer_group = augroup("PersistBuffer", {
-  clear = false
+    clear = false,
 })
 local persist_buffer = function(bufnr)
-  bufnr = bufnr or vim.api.nvim_get_current_buf()
-  vim.fn.setbufvar(bufnr, 'bufpersist', 1)
+    bufnr = bufnr or vim.api.nvim_get_current_buf()
+    vim.fn.setbufvar(bufnr, "bufpersist", 1)
 end
-autocmd({"BufRead"}, {
-  group = persist_buffer_group,
-  pattern = {"*"},
-  callback = function()
-    autocmd({"InsertEnter","BufModifiedSet"}, {
-      buffer = 0,
-      once = true,
-      callback = function()
-        persist_buffer()
-      end
-    })
-  end
+autocmd({ "BufRead" }, {
+    group = persist_buffer_group,
+    pattern = { "*" },
+    callback = function()
+        autocmd({ "InsertEnter", "BufModifiedSet" }, {
+            buffer = 0,
+            once = true,
+            callback = function()
+                persist_buffer()
+            end,
+        })
+    end,
 })

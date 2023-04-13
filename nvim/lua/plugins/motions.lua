@@ -5,28 +5,28 @@ return {
     {
         "chrisgrieser/nvim-various-textobjs",
         event = event,
-        init = function ()
-            vim.keymap.set({"o", "x"}, "!", '<cmd>lua require("various-textobjs").diagnostic()<CR>', { desc = "Diagnostic" })
-            vim.keymap.set({"o", "x"}, "|", '<cmd>lua require("various-textobjs").column()<CR>', { desc = "Column" })
-            -- vim.keymap.set({"o", "x"}, "ae", '<cmd>lua require("various-textobjs").entireBuffer()<CR>')
-            -- vim.keymap.set({"o", "x"}, "ie", '<cmd>lua require("various-textobjs").entireBuffer()<CR>')
+        init = function()
+            vim.keymap.set({ "o", "x" }, "!", '<cmd>lua require("various-textobjs").diagnostic()<CR>', { desc = "Diagnostic" })
+            vim.keymap.set({ "o", "x" }, "|", '<cmd>lua require("various-textobjs").column()<CR>', { desc = "Column" })
+            -- vim.keymap.set({ "o", "x" }, "ae", '<cmd>lua require("various-textobjs").entireBuffer()<CR>')
+            -- vim.keymap.set({ "o", "x" }, "ie", '<cmd>lua require("various-textobjs").entireBuffer()<CR>')
 
-            -- vim.keymap.set({"o", "x"}, "aS", '<cmd>lua require("various-textobjs").subword(false)<CR>')
-            -- vim.keymap.set({"o", "x"}, "iS", '<cmd>lua require("various-textobjs").subword(true)<CR>')
-            vim.keymap.set({"o", "x"}, "ak", '<cmd>lua require("various-textobjs").key(false)<CR>')
-            vim.keymap.set({"o", "x"}, "ik", '<cmd>lua require("various-textobjs").key(true)<CR>')
-            vim.keymap.set({"o", "x"}, "av", '<cmd>lua require("various-textobjs").value(false)<CR>')
-            vim.keymap.set({"o", "x"}, "iv", '<cmd>lua require("various-textobjs").value(true)<CR>')
-            vim.keymap.set({"o", "x"}, "aC", '<cmd>lua require("various-textobjs").mdFencedCodeBlock(false)<CR>')
-            vim.keymap.set({"o", "x"}, "iC", '<cmd>lua require("various-textobjs").mdFencedCodeBlock(true)<CR>')
+            -- vim.keymap.set({ "o", "x" }, "aS", '<cmd>lua require("various-textobjs").subword(false)<CR>')
+            -- vim.keymap.set({ "o", "x" }, "iS", '<cmd>lua require("various-textobjs").subword(true)<CR>')
+            vim.keymap.set({ "o", "x" }, "ak", '<cmd>lua require("various-textobjs").key(false)<CR>')
+            vim.keymap.set({ "o", "x" }, "ik", '<cmd>lua require("various-textobjs").key(true)<CR>')
+            vim.keymap.set({ "o", "x" }, "av", '<cmd>lua require("various-textobjs").value(false)<CR>')
+            vim.keymap.set({ "o", "x" }, "iv", '<cmd>lua require("various-textobjs").value(true)<CR>')
+            vim.keymap.set({ "o", "x" }, "aC", '<cmd>lua require("various-textobjs").mdFencedCodeBlock(false)<CR>')
+            vim.keymap.set({ "o", "x" }, "iC", '<cmd>lua require("various-textobjs").mdFencedCodeBlock(true)<CR>')
 
             -- indentation textobj requires two parameters, the first for
             -- exclusion of the starting border, the second for the exclusion of<CR>'ing border
-            vim.keymap.set({"o", "x"}, "ii", '<cmd>lua require("various-textobjs").indentation(true, true)<CR>')
-            vim.keymap.set({"o", "x"}, "ai", '<cmd>lua require("various-textobjs").indentation(false, true)<CR>')
-            vim.keymap.set({"o", "x"}, "iI", '<cmd>lua require("various-textobjs").indentation(true, true)<CR>')
-            vim.keymap.set({"o", "x"}, "aI", '<cmd>lua require("various-textobjs").indentation(false, false)<CR>')
-        end
+            vim.keymap.set({ "o", "x" }, "ii", '<cmd>lua require("various-textobjs").indentation(true, true)<CR>')
+            vim.keymap.set({ "o", "x" }, "ai", '<cmd>lua require("various-textobjs").indentation(false, true)<CR>')
+            vim.keymap.set({ "o", "x" }, "iI", '<cmd>lua require("various-textobjs").indentation(true, true)<CR>')
+            vim.keymap.set({ "o", "x" }, "aI", '<cmd>lua require("various-textobjs").indentation(false, false)<CR>')
+        end,
     },
     -- see https://github.com/kana/vim-textobj-user/wiki
     { "kana/vim-textobj-line",               dependencies = "kana/vim-textobj-user", event = event }, -- al/il for the current line
@@ -78,12 +78,12 @@ return {
         config = function()
             -- may set any options here
             vim.g.matchup_matchparen_offscreen = { method = "popup" }
-        end
+        end,
     },
     {
         "rhysd/clever-f.vim",
         event = event,
-        init = function ()
+        init = function()
             vim.g.clever_f_timeout_ms = 2000
             vim.g.clever_f_highlight_timeout_ms = vim.g.clever_f_timeout_ms - 200
             vim.g.clever_f_fix_key_direction = 1
@@ -92,10 +92,20 @@ return {
     {
         "ggandor/leap.nvim",
         event = event,
-        config = function ()
-            require('leap').add_default_mappings()
-            vim.keymap.set("o", "s", "v:operator == 'y' ? '<Esc>ys' : '<Plug>(leap-forward-to)'", { expr = true, remap = true, desc = "Leap forward to" })
-            vim.keymap.set("o", "S", "v:operator == 'y' ? '<Esc>yS' : '<Plug>(leap-backward-to)'", { expr = true, remap = true, desc = "Leap backward to" })
+        config = function()
+            require("leap").add_default_mappings()
+            vim.keymap.set(
+                "o",
+                "s",
+                "v:operator == 'y' ? '<Esc>ys' : '<Plug>(leap-forward-to)'",
+                { expr = true, remap = true, desc = "Leap forward to" }
+            )
+            vim.keymap.set(
+                "o",
+                "S",
+                "v:operator == 'y' ? '<Esc>yS' : '<Plug>(leap-backward-to)'",
+                { expr = true, remap = true, desc = "Leap backward to" }
+            )
         end,
         enabled = false,
     },

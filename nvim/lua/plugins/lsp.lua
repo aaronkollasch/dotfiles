@@ -1,7 +1,7 @@
 -- LSP support with lsp-zero
 return {
     "VonHeikemen/lsp-zero.nvim",
-    branch = 'v1.x',
+    branch = "v1.x",
     dependencies = {
         -- LSP Support
         { "neovim/nvim-lspconfig" },
