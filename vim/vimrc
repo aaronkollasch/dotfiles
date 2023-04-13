@@ -390,8 +390,8 @@ let g:clever_f_timeout_ms = 2000
 let g:clever_f_highlight_timeout_ms = g:clever_f_timeout_ms - 200
 let g:clever_f_fix_key_direction = 1
 Plug 'rhysd/clever-f.vim'
-let g:sneak#label = 1
-Plug 'justinmk/vim-sneak'
+" let g:sneak#label = 1
+" Plug 'justinmk/vim-sneak'
 
 "language support
 Plug 'vim-python/python-syntax'
