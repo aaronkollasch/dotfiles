@@ -17,7 +17,7 @@ local notify_icons = {}
 if not require("ak.opts").icons_enabled then
     cmdline_format.cmdline.icon = ":"
     cmdline_format.search_down.icon = "/⌄"
-    cmdline_format.search_up.icon = "?⌄"
+    cmdline_format.search_up.icon = "?^"
     cmdline_format.filter.icon = "$"
     cmdline_format.lua.icon = "☾"
     cmdline_format.help.icon = "?"
