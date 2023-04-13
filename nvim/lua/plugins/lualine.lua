@@ -49,6 +49,7 @@ return {
     event = "VeryLazy",
     opts = function ()
         local navic = require("nvim-navic")
+        local noice = require("noice")
         return {
             options = options,
             sections = {
@@ -75,6 +76,14 @@ return {
                     },
                 },
                 lualine_x = {
+                    {
+                        noice.api.statusline.mode.get,
+                        cond = function ()
+                            return noice.api.statusline.mode.has()
+                                and not string.find(noice.api.statusline.mode.get(), "^--")
+                        end,
+                        color = { fg = "#ff9e64" },
+                    },
                     {
                         "encoding",
                         cond = function ()
@@ -114,7 +123,8 @@ return {
                 -- "nvim-dap-ui",
                 -- "aerial",
                 -- "symbols-outline",
+                -- "fzf",
             },
         }
-    end
+    end,
 }
