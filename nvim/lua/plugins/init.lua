@@ -15,6 +15,7 @@ return {
     { "aaronkollasch/vim-known_hosts", dev = true, ft = "known_hosts", config = function ()
         vim.cmd([[ syntax enable ]])
     end },
+    { 'mrjones2014/lua-gf.nvim', event = { "BufReadPre *.lua", "BufNewFile *.lua" } },
 
     -- additional info sources
     {
