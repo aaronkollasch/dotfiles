@@ -21,7 +21,6 @@ find vim -mindepth 1 -maxdepth 1 -type d -print | while read -r dir; do install_
 
 create_dir "$HOME"/.config/nvim/ || retval=$?
 install_link ../../"$SCRIPT_DIR"/nvim/init.lua "$HOME"/.config/nvim/init.lua || retval=$?
-install_link ../../"$SCRIPT_DIR"/nvim/lazy-lock.json "$HOME"/.config/nvim/lazy-lock.json || retval=$?
 find nvim -mindepth 1 -maxdepth 1 -type d -print | while read -r dir; do install_link "../../$SCRIPT_DIR/$dir" "$HOME/.config/$dir" || retval=$?; done
 
 create_dir "$HOME"/.tmux || retval=$?
