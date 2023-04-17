@@ -1,7 +1,7 @@
 return {
     -- 'ThePrimeagen/harpoon',
     "aaronkollasch/harpoon",
-    dev = true,
+    dev = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     keys = {
         { "<leader>a", nil, desc = "[A]dd to Harpoon" },

@@ -15,7 +15,7 @@ return {
     },
     {
         "aaronkollasch/ChatGPT.nvim",
-        dev = true,
+        dev = false,
         dependencies = {
             "MunifTanjim/nui.nvim",
             "nvim-lua/plenary.nvim",

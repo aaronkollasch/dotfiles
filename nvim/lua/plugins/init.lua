@@ -12,7 +12,7 @@ return {
     end },
     { "ckipp01/stylua-nvim", lazy = true },
     { "folke/neodev.nvim", lazy = true },
-    { "aaronkollasch/vim-known_hosts", dev = true, ft = "known_hosts", config = function ()
+    { "aaronkollasch/vim-known_hosts", dev = false, ft = "known_hosts", config = function ()
         vim.cmd([[ syntax enable ]])
     end },
     { 'mrjones2014/lua-gf.nvim', event = { "BufReadPre *.lua", "BufNewFile *.lua" } },
@@ -245,13 +245,13 @@ return {
     -- colorscheme
     {
         "aaronkollasch/edge",
-        dev = true,
+        dev = false,
         priority = 1000,
         config = function()
             require("ak.colors")
         end,
     },
-    { "aaronkollasch/darcula", dev = true, ft = "python" }, -- fork of doums/darcula
+    { "aaronkollasch/darcula", dev = false, ft = "python" }, -- fork of doums/darcula
     {
         "folke/tokyonight.nvim",
         lazy = true,

@@ -92,13 +92,13 @@ return {
     {
         -- "SmiteshP/nvim-navbuddy",
         "aaronkollasch/nvim-navbuddy",
-        dev = true,
+        dev = false,
         dependencies = {
             "neovim/nvim-lspconfig",
             -- "SmiteshP/nvim-navic",
             {
                 "aaronkollasch/nvim-navic",
-                dev = true,
+                dev = false,
                 lazy = true,
                 opts = {
                     icons = navic_icons,
