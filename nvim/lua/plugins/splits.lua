@@ -3,7 +3,7 @@ return {
         "aaronkollasch/vim-bufkill",
         event = "VeryLazy",
         keys = {
-            "<leader>bud", "<Plug>BufKillUndo", desc = "[B]uffer [U]n[D]o kill"
+            { "<leader>bud", "<Plug>BufKillUndo", desc = "[B]uffer [U]n[D]o kill" },
         },
     },
     {
