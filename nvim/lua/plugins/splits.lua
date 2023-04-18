@@ -27,10 +27,12 @@ return {
             local splits = require("smart-splits")
 
             splits.setup({
-                -- whether to wrap to opposite side when cursor is at an edge
-                -- e.g. by default, moving left at the left edge will jump
-                -- to the rightmost window, and vice versa, same for up/down.
-                wrap_at_edge = false,
+                -- Desired behavior when your cursor is at an edge and you
+                -- are moving towards that same edge:
+                -- 'wrap' => Wrap to opposite side
+                -- 'split' => Create a new split in the desired direction
+                -- 'stop' => Do nothing
+                at_edge = "stop",
 
                 -- enable or disable a multiplexer integration
                 -- set to false to disable, otherwise
