@@ -15,7 +15,6 @@ return {
     { "aaronkollasch/vim-known_hosts", dev = false, ft = "known_hosts", config = function ()
         vim.cmd([[ syntax enable ]])
     end },
-    { 'mrjones2014/lua-gf.nvim', event = { "BufReadPre *.lua", "BufNewFile *.lua" } },
 
     -- additional info sources
     {
@@ -176,6 +175,16 @@ return {
         opts = {
             use_default_keymaps = false,
         },
+    },
+    { 'mrjones2014/lua-gf.nvim', event = { "BufReadPre *.lua", "BufNewFile *.lua" } },
+    {
+        "chrishrb/gx.nvim",
+        keys = {
+            { "gx", nil, mode = { "n", "x" }, desc = "Open URL under cursor" },
+        },
+        -- event = { "BufReadPre", "BufNewFile" },
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {},
     },
     -- {
     --     "smjonas/inc-rename.nvim",
