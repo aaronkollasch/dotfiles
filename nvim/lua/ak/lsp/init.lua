@@ -237,8 +237,17 @@ lsp.configure("pylsp", {
     },
 })
 
-lsp.skip_server_setup({'rust_analyzer'})
+
+lsp.skip_server_setup({ 'rust_analyzer', 'clangd' })
 lsp.setup()
+
+-- clangd setup
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.offsetEncoding = { "utf-16" }
+require("lspconfig").clangd.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+})
 
 -- rust setup
 local rust_lsp = lsp.build_options("rust_analyzer", {
