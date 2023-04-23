@@ -91,6 +91,14 @@ local changed_on_root = function()
                     }
                 end,
             }),
+            attach_mappings = function()
+                actions.select_default:replace(function(prompt_bufnr)
+                    actions.close(prompt_bufnr)
+                    local selection = action_state.get_selected_entry()
+                    vim.cmd("edit " .. rel_path .. selection.value)
+                end)
+                return true
+            end,
         })
         :find()
 end
@@ -127,6 +135,14 @@ local changed_staged = function()
                     }
                 end,
             }),
+            attach_mappings = function()
+                actions.select_default:replace(function(prompt_bufnr)
+                    actions.close(prompt_bufnr)
+                    local selection = action_state.get_selected_entry()
+                    vim.cmd("edit " .. rel_path .. selection.value)
+                end)
+                return true
+            end,
         })
         :find()
 end
