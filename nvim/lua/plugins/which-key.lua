@@ -10,6 +10,7 @@ end
 return {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    -- stylua: ignore
     config = function()
         vim.o.timeout = true
         vim.o.timeoutlen = 300

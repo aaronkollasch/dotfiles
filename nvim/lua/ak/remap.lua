@@ -6,8 +6,8 @@ vim.keymap.set("n", "<leader>lv", vim.cmd.Ex, { desc = "[L]ocal  [V]iew" })
 -- press <CR> to hide search results
 local cr = vim.api.nvim_replace_termcodes("<CR>", true, true, true)
 vim.keymap.set("n", "<CR>", function()
-  vim.fn.execute("nohlsearch")
-  vim.api.nvim_feedkeys(cr, "n", false)
+    vim.fn.execute("nohlsearch")
+    vim.api.nvim_feedkeys(cr, "n", false)
 end, { desc = "Clear search; next line" })
 
 -- Move cursor to middle of screen after C-d and C-u
@@ -57,6 +57,7 @@ vim.keymap.set("n", "<S-Space>Y", [[my"+Y]], { desc = "[Y]ank line to system cli
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "[D]elete to void" })
 
 -- <leader>p to replace with register
+-- stylua: ignore start
 vim.keymap.set("n", "<leader>p",  "<Plug>ReplaceWithRegisterOperator", { desc = "[P]aste from register (operator)" })
 vim.keymap.set("n", "<leader>pp", "<Plug>ReplaceWithRegisterLine",     { desc = "[P]aste line from register" })
 vim.keymap.set("x", "<leader>p",  "<Plug>ReplaceWithRegisterVisual",   { desc = "[P]aste from register" })
@@ -65,6 +66,7 @@ vim.keymap.set("x", "<leader>p",  "<Plug>ReplaceWithRegisterVisual",   { desc = 
 vim.keymap.set("n", "<leader>v",  '"+<Plug>ReplaceWithRegisterOperator', { desc = "[P]aste from clipboard (operator)" })
 vim.keymap.set("n", "<leader>vv", '"+<Plug>ReplaceWithRegisterLine',     { desc = "[P]aste line from clipboard" })
 vim.keymap.set("x", "<leader>v",  '"+<Plug>ReplaceWithRegisterVisual',   { desc = "[P]aste from clipboard" })
+-- stylua: ignore end
 
 -- <leader>s to begin replacement with current word
 vim.keymap.set(
@@ -73,35 +75,31 @@ vim.keymap.set(
     [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
     { desc = "[S]ubstitute current word" }
 )
-vim.keymap.set(
-    "x",
-    "<leader>s",
-    [[:s///gI<Left><Left><Left><Left>]],
-    { desc = "[S]ubstitute in selection" }
-)
+vim.keymap.set("x", "<leader>s", [[:s///gI<Left><Left><Left><Left>]], { desc = "[S]ubstitute in selection" })
 
 -- <leader>x to execute line, <leader><leader>x to execute file
-vim.keymap.set("n", "<leader>x", function ()
-  vim.cmd([[
+vim.keymap.set("n", "<leader>x", function()
+    vim.cmd([[
     if &ft == 'lua'
       call execute(printf(":lua %s", getline(".")))
     elseif &ft == 'vim'
       exe getline(">")
     endif
-  ]])
+    ]])
 end, { desc = "Execute this line" })
-vim.keymap.set("v", "<leader>x", function ()
-  vim.cmd([[
+vim.keymap.set("v", "<leader>x", function()
+    vim.cmd([[
     if &ft == 'lua'
       " call execute(printf(":lua %s", getline(".")))
     elseif &ft == 'vim'
       exe join(getline("'<","'>"),'<Bar>')
     endif
-  ]])
+    ]])
 end, { desc = "Execute selection" })
 vim.keymap.set("n", "<leader><leader>x", ":call ak#save_and_exec()<CR>", { desc = "Save and execute this file" })
 
 -- <leader>il to inspect letter
+-- stylua: ignore start
 if vim.version().major > 0 or vim.version().minor >= 9 then
   vim.keymap.set("n", "<leader>il", ":Inspect<CR>",              { desc = "[I]nspect [L]etter" })
   vim.keymap.set("n", "<leader>iv", ":Inspect!<CR>",             { desc = "[I]nspect [V]erbose" })
@@ -111,6 +109,7 @@ else
   vim.keymap.set("n", "<leader>iv", ":TSNodeUnderCursor<CR>",    { desc = "[I]nspect [V]erbose" })
 end
 vim.keymap.set("n",   "<leader>ip", ":TSPlaygroundToggle<CR>",   { desc = "[I]nspect [P]layground" })
+-- stylua: ignore end
 
 -- <leader><leader>l to open Lazy plugin management window
 vim.keymap.set("n", "<leader><leader>l", ":Lazy<CR>", { desc = "[L]azy" })
@@ -118,21 +117,22 @@ vim.keymap.set("n", "<leader><leader>l", ":Lazy<CR>", { desc = "[L]azy" })
 -- <leader>b keys for buffers
 vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { silent = true, desc = "[B]uffer [N]ext" })
 vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { silent = true, desc = "[B]uffer [P]revious" })
-vim.keymap.set('n', '<leader>bc',
-  function()
+vim.keymap.set("n", "<leader>bc", function()
     local curbufnr = vim.api.nvim_get_current_buf()
     local buflist = vim.api.nvim_list_bufs()
     for _, bufnr in ipairs(buflist) do
-      if vim.bo[bufnr].buflisted and bufnr ~= curbufnr and (vim.fn.getbufvar(bufnr, 'bufpersist') ~= 1) then
-        vim.cmd('bd ' .. tostring(bufnr))
-      end
+        if vim.bo[bufnr].buflisted and bufnr ~= curbufnr and (vim.fn.getbufvar(bufnr, "bufpersist") ~= 1) then
+            vim.cmd("bd " .. tostring(bufnr))
+        end
     end
-  end, { silent = true, desc = '[B]uffer [C]lear' })
+end, { silent = true, desc = "[B]uffer [C]lear" })
 
 -- <leader>n keys to jump
+-- stylua: ignore start
 vim.keymap.set("n", "<leader>n",  "]",  { desc = "Next,     alias of ]", remap = true })
 vim.keymap.set("n", "<leader>N",  "[",  { desc = "Previous, alias of [", remap = true })
 vim.keymap.set("n", "<S-Space>N", "[",  { desc = "Previous, alias of [", remap = true })
+-- stylua: ignore end
 
 -- <leader><number> to move to window
 for i = 1, 6 do
@@ -148,6 +148,7 @@ vim.keymap.set({ "c", "i", "n", "v" }, "<M-b>", "<S-Left>")
 vim.keymap.set({ "c", "i", "n", "v" }, "<M-f>", "<S-Right>")
 
 -- window splitting
+-- stylua: ignore start
 vim.keymap.set("n", "<leader>\\", ":bel vsplit<CR>", { silent = true, desc = "Split Vertically" })
 vim.keymap.set("n", "<C-\\>",     ":bel vsplit<CR>", { silent = true, desc = "Split Vertically" })
 vim.keymap.set("n", "<leader>-",  ":bel split<CR>",  { silent = true, desc = "Split Horizontally" })
@@ -156,11 +157,12 @@ vim.keymap.set("n", "<C-_>",      ":bel split<CR>",  { silent = true, desc = "Sp
 vim.keymap.set("n", "<C-'>",      ":bel split<CR>",  { silent = true, desc = "Split Horizontally" })
 vim.keymap.set("n", "<leader>=",  ":ZoomToggle<CR>", { silent = true, desc = "Toggle window zoom" })
 vim.keymap.set("n", "<C-=>",      ":ZoomToggle<CR>", { silent = true, desc = "Toggle window zoom" })
+-- stylua: ignore end
 
 -- term keymaps
-vim.keymap.set('t', '<esc>', [[<C-\><C-n>]])
-vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]])
-vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]])
-vim.keymap.set('t', '<C-k>', [[<Cmd>wincmd k<CR>]])
-vim.keymap.set('t', '<C-l>', [[<Cmd>wincmd l<CR>]])
-vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]])
+vim.keymap.set("t", "<esc>", [[<C-\><C-n>]])
+vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]])
+vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]])
+vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]])
+vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]])
+vim.keymap.set("t", "<C-w>", [[<C-\><C-n><C-w>]])

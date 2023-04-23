@@ -46,6 +46,7 @@ return {
             -- resizing splits
             -- these keymaps will also accept a range,
             -- for example `10<A-h>` will `resize_left` by `(10 * config.default_amount)`
+            -- stylua: ignore start
             vim.keymap.set("n", "<A-h>", splits.resize_left,       { desc = "Resize window left" })
             vim.keymap.set("n", "<A-j>", splits.resize_down,       { desc = "Resize window down" })
             vim.keymap.set("n", "<A-k>", splits.resize_up,         { desc = "Resize window up" })
@@ -55,6 +56,7 @@ return {
             vim.keymap.set("n", "<C-j>", splits.move_cursor_down,  { desc = "Move down one window" })
             vim.keymap.set("n", "<C-k>", splits.move_cursor_up,    { desc = "Move up one window" })
             vim.keymap.set("n", "<C-l>", splits.move_cursor_right, { desc = "Move right one window" })
+            -- stylua: ignore end
         end,
     },
 }

@@ -2,6 +2,7 @@ local icons_enabled = require("ak.opts").icons_enabled
 
 local navic_icons = {}
 if icons_enabled then
+    -- stylua: ignore
     navic_icons = {
         File          = "󰈙 ",
         Module        = " ",
@@ -31,6 +32,7 @@ if icons_enabled then
         TypeParameter = "󰊄 ",
     }
 else
+    -- stylua: ignore
     navic_icons = {
         File          = "",
         Module        = "",

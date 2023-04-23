@@ -119,11 +119,12 @@ if require("ak.opts").icons_enabled then
     }
 end
 lsp.set_preferences({
-    sign_icons=sign_icons,
+    sign_icons = sign_icons,
 })
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+-- stylua: ignore start
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>e",  vim.diagnostic.open_float, { desc = "Open LSP float", unpack(opts) })
 vim.keymap.set("n", "[d",         vim.diagnostic.goto_prev,  { desc = "Previous diagnostic", unpack(opts) })
@@ -134,6 +135,7 @@ end,                                                         { desc = "Show diag
 vim.keymap.set("n", "<leader>wd",  function()
     require("telescope.builtin").diagnostics()
 end,                                                         { desc = "[W]orkspace [D]iagnostics", unpack(opts) })
+-- stylua: ignore end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -144,6 +146,7 @@ local on_attach = function(client, bufnr)
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- See `:help vim.lsp.*` for documentation on any of the below functions
+    -- stylua: ignore start
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "gD",             vim.lsp.buf.declaration,      { desc = "[G]oto [D]eclaration", unpack(bufopts) })
     vim.keymap.set("n", "gd",             builtin.lsp_definitions,      { desc = "[G]oto [d]efinition", unpack(bufopts) })
@@ -178,17 +181,19 @@ local on_attach = function(client, bufnr)
             vim.lsp.buf.format({ async = true })
         end
     end,                                                                { desc = "[F]or[M]a[T] (async)", unpack(bufopts) })
+    -- stylua: ignore end
+
     -- enable <c-j> and <c-k> arrow keys
     vim.keymap.set("i", "<c-x><c-j>", "<c-x><c-n>", bufopts)
     vim.keymap.set("i", "<c-x><c-k>", "<c-x><c-p>", bufopts)
     vim.cmd([[inoremap <c-j> <C-R>=pumvisible() ? "\<lt>C-N>" : "\<lt>Down>"<CR>]])
     vim.cmd([[inoremap <c-k> <C-R>=pumvisible() ? "\<lt>C-P>" : "\<lt>Up>"<CR>]])
 
-    if client.name == 'gopls' and not client.server_capabilities.semanticTokensProvider then
+    if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
         local semantic = client.config.capabilities.textDocument.semanticTokens
         client.server_capabilities.semanticTokensProvider = {
             full = true,
-            legend = {tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes},
+            legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
             range = true,
         }
     end
@@ -209,7 +214,7 @@ lsp.configure("lua_ls", {
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file('', true),
+                library = vim.api.nvim_get_runtime_file("", true),
                 checkThirdParty = false,
             },
         },
@@ -237,8 +242,7 @@ lsp.configure("pylsp", {
     },
 })
 
-
-lsp.skip_server_setup({ 'rust_analyzer', 'clangd' })
+lsp.skip_server_setup({ "rust_analyzer", "clangd" })
 lsp.setup()
 
 -- clangd setup

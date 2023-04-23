@@ -7,14 +7,23 @@ return {
     },
 
     -- extra language support
-    { "NoahTheDuke/vim-just", ft = "just", config = function ()
-        vim.cmd([[ syntax enable ]])
-    end },
+    {
+        "NoahTheDuke/vim-just",
+        ft = "just",
+        config = function()
+            vim.cmd([[ syntax enable ]])
+        end,
+    },
     { "ckipp01/stylua-nvim", lazy = true },
     { "folke/neodev.nvim", lazy = true },
-    { "aaronkollasch/vim-known_hosts", dev = false, ft = "known_hosts", config = function ()
-        vim.cmd([[ syntax enable ]])
-    end },
+    {
+        "aaronkollasch/vim-known_hosts",
+        dev = false,
+        ft = "known_hosts",
+        config = function()
+            vim.cmd([[ syntax enable ]])
+        end,
+    },
 
     -- additional info sources
     {
@@ -23,13 +32,14 @@ return {
             "Dash",
             "DashKeywords",
         },
+        -- stylua: ignore
         keys = {
             { "<leader>K",  "<Plug>DashSearch", silent = true, desc = "Dash Search" },
             { "<S-Space>K", "<Plug>DashSearch", silent = true, desc = "Dash Search" },
         },
-        enabled = function ()
+        enabled = function()
             return vim.loop.os_uname().sysname == "Darwin"
-        end
+        end,
     },
     {
         "KabbAmine/zeavim.vim",
@@ -38,6 +48,7 @@ return {
             "Docset",
             "ZeavimV",
         },
+        -- stylua: ignore
         keys = {
             { "<leader>K",  "<Plug>Zeavim", silent = true, desc = "Zeal Search" },
             { "<S-Space>K", "<Plug>Zeavim", silent = true, desc = "Zeal Search" },
@@ -47,12 +58,12 @@ return {
         init = function()
             vim.g.zv_disable_mapping = 1
             if vim.fn.has("unix") then
-                vim.g.zv_zeal_args = '--style=gtk+'
+                vim.g.zv_zeal_args = "--style=gtk+"
             end
         end,
-        enabled = function ()
+        enabled = function()
             return vim.loop.os_uname().sysname ~= "Darwin"
-        end
+        end,
     },
 
     -- Code Actions
@@ -89,6 +100,7 @@ return {
             "TroubleToggle",
             "TroubleRefresh",
         },
+        -- stylua: ignore
         keys = {
             { "<leader>wt", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "[W]orkspace [T]rouble" },
             { "<leader>bt", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "[B]uffer [T]rouble" },
@@ -124,7 +136,7 @@ return {
             "ColorizerAttachToBuffer",
             "ColorizerReloadAllBuffers",
         },
-        keys = { { "<leader>ch",  "<cmd>ColorizerToggle<CR>", desc = "[C]olor [H]excodes" } },
+        keys = { { "<leader>ch", "<cmd>ColorizerToggle<CR>", desc = "[C]olor [H]excodes" } },
         opts = {
             user_default_options = {
                 RRGGBBAA = true,
@@ -145,6 +157,7 @@ return {
             "Gdiff",
             "Gdiffsplit",
         },
+        -- stylua: ignore
         keys = {
             { "<leader>gs", vim.cmd.Git, desc = "[G]it [S]tart" },
             { "<leader>gc", function() vim.cmd.Git("commit -v") end, desc = "[G]it [C]ommit" },
@@ -153,7 +166,7 @@ return {
     },
     { "kylechui/nvim-surround", event = "VeryLazy", opts = {} }, -- replaces tpope/vim-surround
     { "tpope/vim-repeat", event = "VeryLazy" },
-    { "tpope/vim-characterize", keys = { { "<leader>ic", "<Plug>(characterize)", desc="[I]nspect [C]haracter" } } },
+    { "tpope/vim-characterize", keys = { { "<leader>ic", "<Plug>(characterize)", desc = "[I]nspect [C]haracter" } } },
 
     -- text actions
     {
@@ -166,17 +179,18 @@ return {
         },
     },
     {
-        'aaronkollasch/treesj',
+        "aaronkollasch/treesj",
+        -- stylua: ignore
         keys = {
             { "gS", function() require('treesj').toggle() end, mode = { "n", "x" }, desc = "Toggle arguments" },
             { "gJ", function() require('treesj').join() end, mode = { "n", "x" }, desc = "Join arguments" },
         },
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         opts = {
             use_default_keymaps = false,
         },
     },
-    { 'mrjones2014/lua-gf.nvim', event = { "BufReadPre *.lua", "BufNewFile *.lua" } },
+    { "mrjones2014/lua-gf.nvim", event = { "BufReadPre *.lua", "BufNewFile *.lua" } },
     {
         "chrishrb/gx.nvim",
         keys = {
@@ -223,6 +237,7 @@ return {
             "GetCurrentBranchLink",
             "GetCurrentCommitLink",
         },
+        -- stylua: ignore
         keys = {
             { "<leader>gp", ":GetCurrentCommitLink<CR>", mode = { "n", "x" }, silent = true, desc = "[G]it [P]ermalink" },
         },

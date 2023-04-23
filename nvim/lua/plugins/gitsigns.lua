@@ -41,6 +41,7 @@ return {
             end, { expr = true, desc = "Previous git hunk" })
 
             -- Actions
+            -- stylua: ignore start
             map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { desc = "[H]unk [S]tage" })
             map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", { desc = "[H]unk [R]eset" })
             map("n",          "<leader>hS", gs.stage_buffer,            { desc = "[H]unk [S]tage buffer" })
@@ -55,6 +56,7 @@ return {
                 gs.diffthis("~")
             end,                                                        { desc = "[H]unk [D]iff parent" })
             -- map("n", "<leader>td", gs.toggle_deleted, { desc = "[T]oggle [D]eleted" })
+            -- stylua: ignore end
 
             -- Text object
             map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "git hunk" })

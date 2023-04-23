@@ -21,6 +21,7 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     cmd = "ToggleTerm",
+    -- stylua: ignore
     keys = {
         { "<leader>tt", "<cmd>0ToggleTerm direction=float<cr>",      desc = "[T]oggle [T]erm 0 (float)" },
         { "<leader>tf", "<cmd>0ToggleTerm direction=float<cr>",      desc = "[T]oggle Term 0 ([F]loat)" },

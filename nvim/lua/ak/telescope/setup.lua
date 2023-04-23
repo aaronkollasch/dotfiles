@@ -178,6 +178,7 @@ local commits_in_selection = function()
 end
 
 -- picker keymaps
+-- stylua: ignore start
 vim.keymap.set("n", "<C-p>",            project_files,          { desc = "Find project files" })
 vim.keymap.set("n", "<C-f>",            builtin.find_files,     { desc = "Find project files" })
 vim.keymap.set("n", "<C-n>",            function()
@@ -234,6 +235,7 @@ vim.keymap.set("n", "<leader>rf",       builtin.resume,         { desc = "[R]esu
 
 vim.keymap.set("c", "<C-f>",            builtin.command_history, { desc = "Search command history" })
 vim.keymap.set("c", "<C-r><C-r>",       builtin.command_history, { desc = "Search command history" })
+-- stylua: ignore end
 
 -- options
 
@@ -303,13 +305,13 @@ require("telescope").setup({
             },
             n = {
                 ["<C-t>"] = trouble.open_with_trouble,
-            }
+            },
         },
         cache_picker = {
             num_pickers = 30,
         },
         preview = {
-            filetype_hook = function (_, _, opts)
+            filetype_hook = function(_, _, opts)
                 local excluded = false
                 for _, v in ipairs({
                     "help",
@@ -326,7 +328,7 @@ require("telescope").setup({
                     end)
                 end
                 return true
-            end
+            end,
         },
     },
     pickers = {
@@ -342,10 +344,10 @@ require("telescope").setup({
         git_files = find_file_config,
         oldfiles = find_file_config,
         diagnostics = {
-            layout_strategy = 'vertical',
+            layout_strategy = "vertical",
         },
         keymaps = {
-            lhs_filter = function (lhs)
+            lhs_filter = function(lhs)
                 return not string.find(lhs, "Þ")
             end,
         },

@@ -1,5 +1,6 @@
 local event = "VeryLazy"
 
+-- stylua: ignore
 return {
     -- textobjects
     {
