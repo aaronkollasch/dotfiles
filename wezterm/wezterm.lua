@@ -394,9 +394,9 @@ local keys = {
     { key = "-", mods = "CTRL", action = act.DisableDefaultAssignment },
     { key = "0", mods = "CTRL", action = act.DisableDefaultAssignment },
     -- Send CSI u encoding for C-Backspace
-    { key = "Backspace", mods = "CTRL", action = act.SendString('\x1b[127;5u') },
+    { key = "Backspace", mods = "CTRL", action = act.SendString("\x1b[127;5u") },
     -- send C-/, see https://github.com/wez/wezterm/issues/3180
-    { key = "/", mods = "CTRL", action = act.SendString('\x1f') },
+    { key = "/", mods = "CTRL", action = act.SendString("\x1f") },
 }
 
 if wezterm.target_triple:contains("-apple-darwin") then
@@ -481,11 +481,8 @@ end
 
 local copy_mode = nil
 if wezterm.gui then
-  copy_mode = wezterm.gui.default_key_tables().copy_mode
-  table.insert(
-    copy_mode,
-    { key = "e", mods = "CTRL", action = act.CopyMode({ MoveByPage = -0.5 }) }
-  )
+    copy_mode = wezterm.gui.default_key_tables().copy_mode
+    table.insert(copy_mode, { key = "e", mods = "CTRL", action = act.CopyMode({ MoveByPage = -0.5 }) })
 end
 local key_tables = {
     search_mode = {
