@@ -102,9 +102,6 @@ return {
                 lazy = true,
                 opts = {
                     icons = navic_icons,
-                    separator = "  ",
-                    depth_limit = 3,
-                    depth_limit_align = "left",
                     lsp = {
                         auto_attach = true,
                         preference = nil,

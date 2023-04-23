@@ -48,7 +48,6 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function()
-        local navic = require("nvim-navic")
         local noice = require("noice")
         return {
             options = options,
@@ -66,12 +65,12 @@ return {
                         end,
                     },
                     {
-                        function()
-                            return navic.get_location()
-                        end,
-                        cond = function()
-                            return navic.is_available()
-                        end,
+                        "navic",
+                        navic_opts = {
+                            separator = require("ak.opts").icons_enabled and "  " or "│",
+                            depth_limit = 3,
+                            depth_limit_align = "left",
+                        },
                         fmt = trunc(180, 50, 120, true),
                     },
                 },
