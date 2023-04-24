@@ -61,7 +61,7 @@ jobs:
       - name: Install stylua
         run: |
           case ${{ matrix.job.target }} in
-            aarch64-unknown-linux-*) sudo wget -O /tmp/stylua.zip https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-linux-aarch64.zip && sudo unzip /tmp/stylua.zip -d /usr/local/bin && sudo chmod +x /usr/local/bin/stylua ;;
+            aarch64-unknown-linux-*) sudo wget -O /tmp/stylua.zip https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-linux-x86_64.zip && sudo unzip /tmp/stylua.zip -d /usr/local/bin && sudo chmod +x /usr/local/bin/stylua ;;
             x86_64-unknown-linux-*) sudo wget -O /tmp/stylua.zip https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-linux-x86_64.zip && sudo unzip /tmp/stylua.zip -d /usr/local/bin && sudo chmod +x /usr/local/bin/stylua ;;
             x86_64-apple-darwin) sudo wget -O /tmp/stylua.zip https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-macos-x86_64.zip && sudo unzip /tmp/stylua.zip -d /usr/local/bin && sudo chmod +x /usr/local/bin/stylua ;;
           esac
