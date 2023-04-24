@@ -40,8 +40,8 @@ vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, si
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- g keys for git diffget
-vim.keymap.set("n", "gh",  "<cmd>diffget //2<CR>",  { desc = "[G]it diffget target (left)" })
-vim.keymap.set("n", "gl",  "<cmd>diffget //3<CR>",  { desc = "[G]it diffget merge (right)" })
+vim.keymap.set("n", "gh", "<cmd>diffget //2<CR>", { desc = "[G]it diffget target (left)" })
+vim.keymap.set("n", "gl", "<cmd>diffget //3<CR>", { desc = "[G]it diffget merge (right)" })
 
 -- Alt-Backspace to delete word in insert mode
 -- better than C-w because it doesn't leave undotree entries
