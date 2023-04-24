@@ -37,7 +37,6 @@ local changed_on_branch = function()
                 "--name-only",
                 "--diff-filter=ACMR",
                 "--relative",
-                "HEAD",
             }),
             sorter = sorters.get_fuzzy_file(),
             previewer = previewers.new_termopen_previewer({
@@ -51,7 +50,6 @@ local changed_on_branch = function()
                         "diff",
                         "--diff-filter=ACMR",
                         "--relative",
-                        "HEAD",
                         "--",
                         entry.value,
                     }
@@ -73,7 +71,6 @@ local changed_on_root = function()
                 "git",
                 "diff",
                 "--name-only",
-                "HEAD",
             }),
             sorter = sorters.get_fuzzy_file(),
             previewer = previewers.new_termopen_previewer({
@@ -85,7 +82,6 @@ local changed_on_root = function()
                         "-c",
                         "delta.side-by-side=false",
                         "diff",
-                        "HEAD",
                         "--",
                         rel_path .. entry.value,
                     }
