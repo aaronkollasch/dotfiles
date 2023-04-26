@@ -193,9 +193,6 @@ end
 -- stylua: ignore start
 vim.keymap.set("n", "<C-p>",            project_files,          { desc = "Find project files" })
 vim.keymap.set("n", "<C-f>",            builtin.find_files,     { desc = "Find project files" })
-vim.keymap.set("n", "<C-n>",            function()
-    telescope.extensions.harpoon.marks(themes.get_dropdown({}))
-end,                                                            { desc = "Find harpoon files" })
 vim.keymap.set("n", "<leader>*",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>#",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>rg",       builtin.live_grep,      { desc = "[R]ip[G]rep" })
