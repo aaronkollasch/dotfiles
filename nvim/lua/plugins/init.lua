@@ -136,7 +136,7 @@ return {
             "ColorizerAttachToBuffer",
             "ColorizerReloadAllBuffers",
         },
-        keys = { { "<leader>ch", "<cmd>ColorizerToggle<CR>", desc = "[C]olor [H]excodes" } },
+        keys = { { "<leader>ih", "<cmd>ColorizerToggle<CR>", desc = "[I]nspect [H]excodes" } },
         opts = {
             user_default_options = {
                 RRGGBBAA = true,
