@@ -1,6 +1,7 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+-- Highlight yanked text
 local yank_group = augroup("CustomYank", {})
 autocmd("TextYankPost", {
     group = yank_group,
@@ -25,6 +26,7 @@ autocmd("TextYankPost", {
     callback = return_to_y_mark,
 })
 
+-- Filter out some commands from history
 local strip_history_group = augroup("StripHistory", {})
 autocmd({ "VimEnter", "CmdLineLeave" }, {
     group = strip_history_group,
@@ -34,6 +36,7 @@ autocmd({ "VimEnter", "CmdLineLeave" }, {
     end,
 })
 
+-- Persist buffers on insert mode or when modified
 local persist_buffer_group = augroup("PersistBuffer", {
     clear = false,
 })
