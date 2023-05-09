@@ -107,6 +107,16 @@ return {
         },
         opts = {},
     },
+    {
+        "BooleanCube/keylab.nvim",
+        dependencies = "nvim-lua/plenary.nvim",
+        lazy = true,
+        keys = {
+            { "<leader>kl", "<cmd>lua require('keylab').start()<cr>", desc = "[K]ey[L]ab" },
+        },
+        opts = {},
+        dev = true,
+    },
 
     -- buffer highlighting
     {
