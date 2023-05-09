@@ -37,7 +37,7 @@ return {
             { "<leader>K",  "<Plug>DashSearch", silent = true, desc = "Dash Search" },
             { "<S-Space>K", "<Plug>DashSearch", silent = true, desc = "Dash Search" },
         },
-        enabled = function()
+        cond = function()
             return vim.loop.os_uname().sysname == "Darwin"
         end,
     },
@@ -61,7 +61,7 @@ return {
                 vim.g.zv_zeal_args = "--style=gtk+"
             end
         end,
-        enabled = function()
+        cond = function()
             return vim.loop.os_uname().sysname ~= "Darwin"
         end,
     },

@@ -10,6 +10,5 @@ source bash/functions.sh || retval=$?
 
 install_link "$SCRIPT_DIR"/bash/bashrc_linux "$HOME"/.bashrc || retval=$?
 install_link "$SCRIPT_DIR"/git/gitconfig_server "$HOME"/.gitconfig || retval=$?
-install_link ../../"$SCRIPT_DIR"/nvim/lazy-lock-linux.json "$HOME"/.config/nvim/lazy-lock.json || retval=$?
 
 exit "${retval:-0}"

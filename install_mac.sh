@@ -19,7 +19,6 @@ install_link "$SCRIPT_DIR"/bash/bashrc "$HOME"/.bashrc || retval=$?
 install_link "$SCRIPT_DIR"/mac/inputrc "$HOME"/.inputrc || retval=$?
 install_link "$SCRIPT_DIR"/pymol/pymolrc "$HOME"/.pymolrc || retval=$?
 install_link "$SCRIPT_DIR"/git/gitconfig_mac "$HOME"/.gitconfig || retval=$?
-install_link ../../"$SCRIPT_DIR"/nvim/lazy-lock-mac.json "$HOME"/.config/nvim/lazy-lock.json || retval=$?
 
 create_dir "$HOME"/Library/Application\ Support/iTerm2/Scripts/AutoLaunch || retval=$?
 install_link  "$HOME"/"$SCRIPT_DIR"/iterm2/Scripts/AutoLaunch/switch_automatic.py "$HOME"/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/switch_automatic.py "Installed iTerm2 profile switch script" || retval=$?

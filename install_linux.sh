@@ -10,7 +10,6 @@ source bash/functions.sh || retval=$?
 
 install_link "$SCRIPT_DIR"/bash/bashrc_linux "$HOME"/.bashrc || retval=$?
 install_link "$SCRIPT_DIR"/git/gitconfig_linux "$HOME"/.gitconfig || retval=$?
-install_link ../../"$SCRIPT_DIR"/nvim/lazy-lock-linux.json "$HOME"/.config/nvim/lazy-lock.json || retval=$?
 [ -e "$HOME"/.var/app/org.wezfurlong.wezterm/config ] && [ ! -e "$HOME"/.var/app/org.wezfurlong.wezterm/config/wezterm ] && install_link "$HOME/$SCRIPT_DIR"/wezterm "$HOME"/.var/app/org.wezfurlong.wezterm/config/wezterm "Installed flatpak wezterm config" || echo "Did not install flatpak wezterm config"
 
 # system vscodium
