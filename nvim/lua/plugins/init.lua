@@ -115,7 +115,6 @@ return {
             { "<leader>kl", "<cmd>lua require('keylab').start()<cr>", desc = "[K]ey[L]ab" },
         },
         opts = {},
-        dev = true,
     },
     {
         "ecthelionvi/NeoComposer.nvim",
