@@ -115,6 +115,11 @@ lsp.on_attach(function(client, bufnr)
             range = true,
         }
     end
+
+    if client.name == "ruff_lsp" then
+        -- Disable hover in favor of Pyright
+        client.server_capabilities.hoverProvider = false
+    end
 end)
 
 -- lua setup
@@ -155,6 +160,15 @@ require("lspconfig").pylsp.setup({
                 flake8 = { enabled = false },
                 mccabe = { enabled = false },
                 pycodestyle = { enabled = false },
+            },
+        },
+    },
+})
+require("lspconfig").ruff_lsp.setup({
+    init_options = {
+        settings = {
+            args = {
+                "--line-length=120",
             },
         },
     },
