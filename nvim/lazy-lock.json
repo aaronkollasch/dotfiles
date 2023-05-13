@@ -19,7 +19,6 @@
   "gitsigns.nvim": { "branch": "main", "commit": "e5edefd9976039f5352e0c900f35206770b33a2d" },
   "gx.nvim": { "branch": "main", "commit": "8d16f2372dcfc0b15d0b4a3fcc0e3d75a6f160f9" },
   "harpoon": { "branch": "master", "commit": "19f399d35f7a22f97aa60788fa59257978b03624" },
-  "jupynium.nvim": { "branch": "master", "commit": "f5faa4bca9d84afc81459727e445ea96139edde6" },
   "keylab.nvim": { "branch": "main", "commit": "9aa9f4408de4635fe0aee06d16c0d97223e33130" },
   "lazy.nvim": { "branch": "main", "commit": "9ac19880b677d08f416c5189ffc2dc023084a159" },
   "lsp-zero.nvim": { "branch": "v2.x", "commit": "1c5b0a9e6a29e4329d82dcba6bf78a7831446a49" },

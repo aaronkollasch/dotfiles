@@ -1,23 +1,23 @@
 return {
-    {
-        "kiyoon/jupynium.nvim",
-        build = "conda run --no-capture-output -n jupynium pip install .",
-        enabled = vim.fn.isdirectory(vim.fn.expand("~/mambaforge/envs/jupynium")),
-        cmd = {
-            "JupyniumAttachToServer",
-            "JupyniumStartAndAttachToServer",
-            "JupyniumStartAndAttachToServerInTerminal",
-            "JupyniumStartSync",
-            "JupyniumLoadFromIpynbTab",
-            "JupyniumLoadFromIpynbTabAndStartSync",
-        },
-        opts = {
-            --- For Conda environment named "jupynium",
-            python_host = { "conda", "run", "--no-capture-output", "-n", "jupynium", "python" },
-
-            jupyter_command = { "conda", "run", "--no-capture-output", "-n", "home", "jupyter" },
-        },
-    },
+    -- {
+    --     "kiyoon/jupynium.nvim",
+    --     build = "conda run --no-capture-output -n jupynium pip install .",
+    --     enabled = vim.fn.isdirectory(vim.fn.expand("~/mambaforge/envs/jupynium")),
+    --     cmd = {
+    --         "JupyniumAttachToServer",
+    --         "JupyniumStartAndAttachToServer",
+    --         "JupyniumStartAndAttachToServerInTerminal",
+    --         "JupyniumStartSync",
+    --         "JupyniumLoadFromIpynbTab",
+    --         "JupyniumLoadFromIpynbTabAndStartSync",
+    --     },
+    --     opts = {
+    --         --- For Conda environment named "jupynium",
+    --         python_host = { "conda", "run", "--no-capture-output", "-n", "jupynium", "python" },
+    --
+    --         jupyter_command = { "conda", "run", "--no-capture-output", "-n", "home", "jupyter" },
+    --     },
+    -- },
     -- {
     --     'glacambre/firenvim',
     --     build = function()
