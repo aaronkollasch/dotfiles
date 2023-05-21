@@ -66,21 +66,6 @@ return {
         end,
     },
 
-    -- Code Actions
-    {
-        "kosayoda/nvim-lightbulb",
-        dependencies = "antoinemadec/FixCursorHold.nvim",
-        event = "VeryLazy",
-        opts = {
-            -- LSP client names to ignore
-            -- Example: {"lua_ls", "null-ls"}
-            ignore = {
-                "marksman",
-            },
-            autocmd = { enabled = true },
-        },
-    },
-
     -- popups
     {
         "mbbill/undotree",
