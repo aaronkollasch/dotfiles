@@ -34,6 +34,9 @@ return {
     {
         "rcarriga/nvim-notify",
         event = "VeryLazy",
+        keys = {
+            { "<leader>mf", "<cmd>Telescope notify<cr>", desc = "[M]essage [F]ind" },
+        },
         opts = {
             icons = notify_icons,
         },
@@ -47,7 +50,7 @@ return {
         event = "VeryLazy",
         cmd = "Noice",
         keys = {
-            { "<leader>cm", "<cmd>Noice dismiss<cr>", desc = "[C]lear [M]essages" },
+            { "<leader>mc", "<cmd>Noice dismiss<cr>", desc = "[M]essage [C]lear" },
         },
         opts = {
             cmdline = {

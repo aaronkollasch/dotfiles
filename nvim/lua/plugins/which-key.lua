@@ -49,6 +49,7 @@ return {
                 h = { name = "[H]unk" },
                 i = { name = "[I]nspect" },
                 l = { name = "[L]ocal" },
+                m = { name = "[M]essage" },
                 t = { name = "[T]erm" },
                 w = { name = "[W]orkspace" },
             },
