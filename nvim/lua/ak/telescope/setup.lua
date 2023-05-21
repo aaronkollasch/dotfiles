@@ -16,6 +16,22 @@ local trouble = require("trouble.providers.telescope")
 -- -- add line numbers to preview
 -- vim.cmd("autocmd User TelescopePreviewerLoaded setlocal number")
 
+-- NOTE: Telescope opens file in insert mode after neovim commit: d52cc66
+-- Ref: https://github.com/nvim-telescope/telescope.nvim/issues/2501#issuecomment-1541009573
+-- Neovim commit pull request: https://github.com/neovim/neovim/pull/22984
+-- Workaround: Leave insert mode when leaving Telescope prompt.
+-- Ref: https://github.com/nvim-telescope/telescope.nvim/issues/2027#issuecomment-1510001730
+local telescope_augroup_id = vim.api.nvim_create_augroup("telescope_settings", {})
+vim.api.nvim_create_autocmd({ "WinLeave" }, {
+    group = telescope_augroup_id,
+    pattern = "*",
+    callback = function()
+        if vim.bo.filetype == "TelescopePrompt" and vim.fn.mode() == "i" then
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "i", false)
+        end
+    end,
+})
+
 -- custom previewers
 local project_files = function()
     local opts = {} -- define here if you want to define something
