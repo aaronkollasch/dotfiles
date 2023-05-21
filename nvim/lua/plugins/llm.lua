@@ -43,9 +43,11 @@ return {
                 error("Failed to get OpenAI API key.")
             end
             require("chatgpt").setup({
-                question_sign = icons_enabled and "" or "Q",
-                answer_sign = icons_enabled and "󰚩" or "A",
-                tokens_border = icons_enabled and { "", "" } or { "", "" },
+                chat = {
+                    question_sign = icons_enabled and "" or "Q",
+                    answer_sign = icons_enabled and "󰚩" or "A",
+                    tokens_border = icons_enabled and { "", "" } or { "", "" },
+                },
                 keymaps = {
                     close = { "<C-c>" },
                     scroll_up = { "<C-u>", "<C-e>" },
@@ -66,7 +68,7 @@ return {
                         highlight = "TelescopeBorder",
                     },
                 },
-                chat_window = {
+                popup_window = {
                     border = {
                         highlight = "TelescopeBorder",
                     },
