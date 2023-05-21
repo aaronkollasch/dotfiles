@@ -88,6 +88,12 @@ return {
                         color = { fg = "#ff9e64" },
                     },
                     {
+                        "%3{codeium#GetStatusString()}",
+                        cond = function()
+                            return vim.fn.mode() == "i"
+                        end,
+                    },
+                    {
                         "encoding",
                         cond = function()
                             return vim.o.fileencoding ~= "utf-8"

@@ -1,13 +1,22 @@
 local icons_enabled = require("ak.opts").icons_enabled
 
 return {
+    -- {
+    --     "github/copilot.vim",
+    --     event = { "BufReadPre", "BufNewFile" },
+    --     cmd = { "Copilot" },
+    --     keys = { { "<leader>cp", "<cmd>Copilot<CR>", desc = "[C]opilot [P]anel" } },
+    --     init = function()
+    --         vim.g.copilot_filetypes = {
+    --             TelescopePrompt = false,
+    --             ["neo-tree-popup"] = false,
+    --         }
+    --     end,
+    -- },
     {
-        "github/copilot.vim",
-        event = { "BufReadPre", "BufNewFile" },
-        cmd = { "Copilot" },
-        keys = { { "<leader>cp", "<cmd>Copilot<CR>", desc = "[C]opilot [P]anel" } },
+        "Exafunction/codeium.vim",
         init = function()
-            vim.g.copilot_filetypes = {
+            vim.g.codeium_filetypes = {
                 TelescopePrompt = false,
                 ["neo-tree-popup"] = false,
             }
