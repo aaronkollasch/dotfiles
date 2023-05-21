@@ -45,6 +45,10 @@ return {
             "rcarriga/nvim-notify",
         },
         event = "VeryLazy",
+        cmd = "Noice",
+        keys = {
+            { "<leader>cm", "<cmd>Noice dismiss<cr>", desc = "[C]lear [M]essages" },
+        },
         opts = {
             cmdline = {
                 -- view = "cmdline",
