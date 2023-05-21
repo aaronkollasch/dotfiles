@@ -119,17 +119,23 @@ return {
     {
         "ecthelionvi/NeoComposer.nvim",
         dependencies = { "kkharji/sqlite.lua" },
-        opts = {
-            keymaps = {
-                play_macro = "Q",
-                yank_macro = "yq",
-                stop_macro = "cq",
-                toggle_record = "q",
-                cycle_next = "<c-m>",
-                cycle_prev = "<c-s-m>",
-                toggle_macro_menu = "<c-q>",
-            },
-        },
+        event = "VeryLazy",
+        config = function()
+            local opts = {
+                keymaps = {
+                    play_macro = "Q",
+                    yank_macro = "yq",
+                    stop_macro = "cq",
+                    toggle_record = "q",
+                    cycle_next = "<c-m>",
+                    cycle_prev = "<c-s-m>",
+                    toggle_macro_menu = "<c-q>",
+                },
+            }
+            require("NeoComposer").setup(opts)
+            require("NeoComposer.store").load_macros_from_database()
+            require("NeoComposer.state").set_queued_macro_on_startup()
+        end,
     },
 
     -- buffer highlighting
