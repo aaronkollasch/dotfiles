@@ -97,6 +97,15 @@ return {
                         end,
                         color = { fg = "#276abc" },
                     },
+                    -- stylua: ignore
+                    {
+                        function()
+                            local icon = require("ak.opts").icons_enabled and " " or "d"
+                            return icon .. require("dap").status()
+                        end,
+                        cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
+                        color = { fg = "#be7e05" },
+                    },
                     {
                         "encoding",
                         cond = function()
