@@ -88,10 +88,14 @@ return {
                         color = { fg = "#ff9e64" },
                     },
                     {
-                        "%3{codeium#GetStatusString()}",
-                        cond = function()
-                            return vim.fn.mode() == "i"
+                        function()
+                            local icon = require("ak.opts").icons_enabled and "{}" or "c"
+                            return icon .. "%3{codeium#GetStatusString()}"
                         end,
+                        cond = function()
+                            return vim.api.nvim_get_mode().mode ~= "c"
+                        end,
+                        color = { fg = "#276abc" },
                     },
                     {
                         "encoding",
