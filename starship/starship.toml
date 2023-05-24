@@ -28,7 +28,7 @@ pipestatus_segment_format = '[$symbol $common_meaning$signal_name$maybe_int]($st
 fish_indicator = "><\\(\\(\\(°>"
 powershell_indicator = "_"
 xonsh_indicator = "🐚"
-zsh_indicator = ""
+zsh_indicator = "󰏰"
 bash_indicator = "B"
 unknown_indicator = "???"
 disabled = false
@@ -56,7 +56,7 @@ style = "bold green"
 [directory]
 truncation_length = 8
 truncation_symbol = ""
-read_only = " "
+read_only = " 󰌾"
 
 [jobs]
 symbol = "+"
@@ -132,13 +132,13 @@ symbol = " "
 symbol = " "
 
 [memory_usage]
-symbol = " "
+symbol = "󰍛 "
 
 [meson]
 symbol = "∆ "
 
 [nim]
-symbol = " "
+symbol = "󰆥 "
 
 [nix_shell]
 symbol = " "
@@ -158,10 +158,10 @@ Emscripten = " "
 EndeavourOS = " "
 Fedora = " "
 FreeBSD = " "
-Garuda = "﯑ "
+Garuda = "󰛓 "
 Gentoo = " "
-HardenedBSD = "ﲊ "
-Illumos = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
 Linux = " "
 Macos = " "
 Manjaro = " "
@@ -170,22 +170,22 @@ MidnightBSD = " "
 Mint = " "
 NetBSD = " "
 NixOS = " "
-OpenBSD = " "
+OpenBSD = "󰈺 "
 openSUSE = " "
-OracleLinux = " "
+OracleLinux = "󰌷 "
 Pop = " "
 Raspbian = " "
 Redhat = " "
 RedHatEnterprise = " "
-Redox = " "
-Solus = "ﴱ "
+Redox = "󰀘 "
+Solus = "󰠳 "
 SUSE = " "
 Ubuntu = " "
 Unknown = " "
-Windows = " "
+Windows = "󰍲 "
 
 [package]
-symbol = " "
+symbol = "󰏗 "
 
 [pijul_channel]
 symbol = " "
@@ -197,7 +197,7 @@ symbol = " "
 symbol = " "
 
 [rlang]
-symbol = "ﳒ "
+symbol = "󰟔 "
 
 [ruby]
 symbol = " "
@@ -214,7 +214,7 @@ disabled = false
 threshold = 2
 
 [swift]
-symbol = "ﯣ "
+symbol = "󰛥 "
 
 [spack]
 symbol = "🅢 "
