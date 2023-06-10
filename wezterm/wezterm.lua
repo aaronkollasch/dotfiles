@@ -397,7 +397,7 @@ local keys = {
     -- Send CSI u encoding for C-Backspace
     { key = "Backspace", mods = "CTRL", action = act.SendString("\x1b[127;5u") },
     -- send C-/, see https://github.com/wez/wezterm/issues/3180
-    { key = "/", mods = "CTRL", action = act.SendString("\x1f") },
+    -- { key = "/", mods = "CTRL", action = act.SendString("\x1f") },
 }
 
 if wezterm.target_triple:contains("-apple-darwin") then
