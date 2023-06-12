@@ -160,6 +160,14 @@ return {
             },
         },
     },
+    {
+        "tzachar/highlight-undo.nvim",
+        event = "VeryLazy",
+        opts = {
+            hlgroup = "IncSearch",
+            duration = 200,
+        },
+    },
 
     -- tpope
     { "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
