@@ -30,6 +30,7 @@ return {
                                 "Dap",
                                 "neotest",
                                 "Diagnostic",
+                                "todo",
                             },
                             maxwidth = 1,
                             colwidth = 2,
