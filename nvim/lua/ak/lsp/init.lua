@@ -36,9 +36,7 @@ if require("ak.opts").icons_enabled then
         info = "󰌵",
     }
 end
-lsp.set_preferences({
-    sign_icons = sign_icons,
-})
+lsp.set_sign_icons(sign_icons)
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
