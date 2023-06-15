@@ -137,7 +137,21 @@ return {
         event = "VeryLazy",
         cmd = "TodoTelescope",
         keys = { { "<leader>ft", "<cmd>TodoTelescope<CR>", desc = "[F]ind [T]odos" } },
-        opts = {},
+        opts = {
+            keywords = {
+                TODO = { alt = { "todo", "unimplemented" } },
+            },
+            highlight = {
+                pattern = {
+                    [[.*<(KEYWORDS)\s*:]],
+                    [[.*<(KEYWORDS)\s*!\(]],
+                },
+                comments_only = false,
+            },
+            search = {
+                pattern = [[\b(KEYWORDS)(:|!\()]],
+            },
+        },
     },
     {
         "NvChad/nvim-colorizer.lua",
