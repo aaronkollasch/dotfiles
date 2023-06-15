@@ -70,6 +70,9 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
+# Restore windows when re-opening an application
+defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool true
+
 ## Restart automatically if the computer freezes
 #if [[ "$RUN_AS_ROOT" = true ]]; then
 #  systemsetup -setrestartfreeze on
