@@ -114,7 +114,12 @@ defaults write com.apple.menuextra.clock IsAnalog -bool true
 # No spotlight or siri in menu bar
 defaults delete "com.apple.Spotlight" "NSStatusItem Preferred Position Item-0"
 defaults delete "com.apple.Spotlight" "NSStatusItem Visible Item-0"
-defaults write "com.apple.Siri" "StatusMenuVisible" '0'
+defaults write "com.apple.Siri" "StatusMenuVisible" -bool false
+
+# Show Time Machine and VPM in menu bar
+defaults write "com.apple.systemuiserver" "menuExtras" '("/System/Library/CoreServices/Menu Extras/TimeMachine.menu","/System/Library/CoreServices/Menu Extras/VPN.menu",)'
+defaults write "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.vpn" -bool true
+defaults write "com.apple.networkConnect" '{VPNShowTime=1;}'
 
 # Quick Actions
 defaults write pbs FinderActive -dict \
