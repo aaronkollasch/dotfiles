@@ -15,6 +15,7 @@ return {
     -- },
     {
         "Exafunction/codeium.vim",
+        event = "VeryLazy",
         init = function()
             vim.g.codeium_filetypes = {
                 TelescopePrompt = false,
