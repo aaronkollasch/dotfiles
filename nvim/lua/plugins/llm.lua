@@ -16,6 +16,9 @@ return {
     {
         "Exafunction/codeium.vim",
         event = "VeryLazy",
+        keys = {
+            { "<Tab>", "codeium#Accept()", mode = "i", expr = true, silent = true, script = true, nowait = true },
+        },
         init = function()
             vim.g.codeium_filetypes = {
                 TelescopePrompt = false,
