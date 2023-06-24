@@ -110,4 +110,15 @@ return {
         end,
         enabled = false,
     },
+    {
+        "folke/flash.nvim",
+        event = event,
+        opts = {
+            -- labels = "asdfghjklqwertyuiopzxcvbnm",
+            labels = "arstdhneiobgvjmkpfwluycxzq",
+            char = {
+                enabled = false,
+            },
+        },
+    },
 }
