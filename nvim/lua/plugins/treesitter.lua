@@ -37,10 +37,10 @@ local ts_opts = {
     incremental_selection = {
         enable = true,
         keymaps = {
-            init_selection = "<c-space>", -- set to `false` to disable one of the mappings
-            node_incremental = "<c-space>",
-            scope_incremental = "<c-s>",
-            node_decremental = "<c-backspace>",
+            init_selection = false,
+            node_incremental = "v",
+            scope_incremental = "<M-v>",
+            node_decremental = "<C-v>",
         },
     },
 
