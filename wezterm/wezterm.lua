@@ -545,7 +545,10 @@ local mouse_bindings = {
         event = { Down = { streak = 2, button = "Left" } },
         mods = "ALT",
         mouse_reporting = true,
-        action = act.SelectTextAtMouseCursor("Word"),
+        action = act.Multiple {
+            act.SelectTextAtMouseCursor("Word"),
+            act.CompleteSelection(default_clipboard),
+        },
     },
     {
         event = { Down = { streak = 3, button = "Left" } },
@@ -556,7 +559,10 @@ local mouse_bindings = {
         event = { Down = { streak = 3, button = "Left" } },
         mods = "ALT",
         mouse_reporting = true,
-        action = act.SelectTextAtMouseCursor("Line"),
+        action = act.Multiple {
+            act.SelectTextAtMouseCursor("Line"),
+            act.CompleteSelection(default_clipboard),
+        },
     },
     {
         event = { Drag = { streak = 1, button = "Left" } },
