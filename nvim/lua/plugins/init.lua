@@ -24,6 +24,28 @@ return {
             vim.cmd([[ syntax enable ]])
         end,
     },
+    {
+        "cameron-wags/rainbow_csv.nvim",
+        ft = {
+            "csv",
+            "tsv",
+            "csv_semicolon",
+            "csv_whitespace",
+            "csv_pipe",
+            "rfc_csv",
+            "rfc_semicolon",
+        },
+        cmd = {
+            "RainbowDelim",
+            "RainbowDelimSimple",
+            "RainbowDelimQuoted",
+            "RainbowMultiDelim",
+        },
+        init = function()
+            vim.g.disable_rainbow_hover = 1
+        end,
+        config = true,
+    },
 
     -- additional info sources
     {

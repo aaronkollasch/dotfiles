@@ -50,6 +50,7 @@
   "op.nvim": { "branch": "master", "commit": "bbcaffd25a63f40ba59f30af408cabd3d64ab61e" },
   "playground": { "branch": "master", "commit": "2b81a018a49f8e476341dfcb228b7b808baba68b" },
   "plenary.nvim": { "branch": "master", "commit": "36aaceb6e93addd20b1b18f94d86aecc552f30c4" },
+  "rainbow_csv.nvim": { "branch": "main", "commit": "5eadace1015ca08caa4f42cc18ae93ed190c12f6" },
   "rust-tools.nvim": { "branch": "master", "commit": "71d2cf67b5ed120a0e31b2c8adb210dd2834242f" },
   "smart-splits.nvim": { "branch": "master", "commit": "87b0f3374b5c4dd0ff601558a247a2dc78dc7b4e" },
   "sqlite.lua": { "branch": "master", "commit": "b7e28c8463254c46a8e61c52d27d6a2040492fc3" },
