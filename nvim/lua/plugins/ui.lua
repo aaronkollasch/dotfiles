@@ -8,8 +8,10 @@ return {
             -- LSP client names to ignore
             -- Example: {"lua_ls", "null-ls"}
             ignore = {
-                "marksman",
-                "ruff_lsp",
+                clients = {
+                    "marksman",
+                    "ruff_lsp",
+                },
             },
             autocmd = { enabled = true },
         },

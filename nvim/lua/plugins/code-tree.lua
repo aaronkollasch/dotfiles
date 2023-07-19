@@ -112,7 +112,7 @@ return {
             },
             "MunifTanjim/nui.nvim",
         },
-        event = { "BufReadPre", "BufNewFile" },
+        lazy = true,
         cmd = "Navbuddy",
         keys = {
             { "<leader>ct", "<cmd>Navbuddy<CR>", desc = "[C]ode  [T]ree" },

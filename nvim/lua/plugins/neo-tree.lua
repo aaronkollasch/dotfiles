@@ -1,6 +1,6 @@
 return {
     "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
+    branch = "v3.x",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
@@ -12,9 +12,6 @@ return {
     },
     config = function()
         local icons_enabled = require("ak.opts").icons_enabled
-
-        -- Unless you are still migrating, remove the deprecated commands from v1.x
-        vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
         if icons_enabled then
             -- If you want icons for diagnostic errors, you'll need to define them somewhere:
