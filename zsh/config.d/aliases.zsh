@@ -64,6 +64,7 @@ alias zsource="source ~/.zshrc"
 alias zhup="source ~/.zshrc"
 alias ds="du -hs * | sort -h"
 alias nohist="unsetopt history"
+alias history_clear="history -p"
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 alias twork='tmux attach -t work'
 { command -v sponge &>/dev/null && alias tacat=sponge; } || alias tacat='tac | tac'
