@@ -2,7 +2,7 @@
 
 function install_copy() {
   if [ -f "$2" ]; then
-    [[ "$(shasum "$2")" == "$(shasum "$1")" ]] || echo "Not copying file: $1 to $2"
+    [[ "$(shasum "$2" | cut -d' ' -f1)" == "$(shasum "$1" | cut -d' ' -f1)" ]] || echo "Not overwriting changed file: $1 to $2"
     return
   elif [ -e "$2" ]; then
     echo "Moving existing file: $2 to $2.bak"
