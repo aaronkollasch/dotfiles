@@ -19,3 +19,6 @@ fi
 if [ -d "$HOME/.local/share/bob/nvim-bin" ]; then
     export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 fi
+if command -v bob &>/dev/null; then
+  eval "$(bob complete zsh)"
+fi
