@@ -127,6 +127,15 @@ if command -v wezterm &>/dev/null && ! command -v _wezterm &>/dev/null; then
   compdef _wezterm wezterm
 fi
 
+# bob init
+if command -v bob &>/dev/null; then
+  _bob () {
+    eval "_bob_cli() { $(bob complete zsh) }"
+    _bob_cli "$@"
+  }
+  compdef _bob bob
+fi
+
 # bash completions fallback init
 export ZSH_BASH_COMPLETIONS_FALLBACK_BLACKLIST=(python python3 pydoc3)
 source ~/.dotfiles/zsh/repos/zsh-bash-completions-fallback/zsh-bash-completions-fallback.plugin.zsh
