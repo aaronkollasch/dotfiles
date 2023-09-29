@@ -12,8 +12,6 @@ vim.opt.shiftwidth = 4
 
 vim.opt.smartindent = true
 
-vim.opt.tagcase = "ignore" -- fix issue with capitalized lazy plugins, #67
-
 vim.opt.wrap = false
 vim.opt.synmaxcol = 10000
 
