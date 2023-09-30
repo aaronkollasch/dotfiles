@@ -102,6 +102,9 @@ defaults write -g AppleFontSmoothing -int 0
 # Hide all desktop icons
 defaults write com.apple.finder CreateDesktop -bool false
 
+# Disable click wallpaper to reveal desktop
+defaults write com.apple.WindowManager EnableStandardClickToShowDesktop -bool false
+
 # Disable window tinting
 defaults write NSGlobalDomain AppleReduceDesktopTinting -bool true
 
