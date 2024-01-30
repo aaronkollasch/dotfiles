@@ -4,7 +4,7 @@
 	ignore = all
 [submodule "zsh/repos/zsh-autocomplete"]
 	path = zsh/repos/zsh-autocomplete
-	url = https://github.com/marlonrichert/zsh-autocomplete.git
+	url = https://github.com/aaronkollasch/zsh-autocomplete.git
 [submodule "zsh/repos/fzf"]
 	path = zsh/repos/fzf
 	url = https://github.com/junegunn/fzf
