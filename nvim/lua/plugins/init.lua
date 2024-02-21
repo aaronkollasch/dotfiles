@@ -220,7 +220,7 @@ return {
         keys = {
             { "<leader>gs", vim.cmd.Git, desc = "[G]it [S]tart" },
             { "<leader>gc", function() vim.cmd.Git("commit -v") end, desc = "[G]it [C]ommit" },
-            { "<leader>gb", function() vim.cmd.Git("blame") end, desc = "[G]it [B]lame" },
+            { "<leader>gb", function() vim.cmd.Git("blame -w -C -C -C") end, desc = "[G]it [B]lame" },
         },
     },
     { "kylechui/nvim-surround", event = "VeryLazy", opts = {} }, -- replaces tpope/vim-surround

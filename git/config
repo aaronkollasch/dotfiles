@@ -14,7 +14,9 @@
 [pull]
 	ff = only
 [diff]
+	algorithm = histogram
 	colorMoved = default
+	submodule = log
 	tool = nvimdiff
 [difftool]
 	prompt = false
@@ -22,7 +24,7 @@
 ; 	cmd = "if command -v nvim &>/dev/null; then nvim -d \"$LOCAL\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd L\"; else vimdiff \"$LOCAL\" \"$REMOTE\"; fi"
 [merge]
 	tool = nvimdiff
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 [mergetool]
 	keepBackup = false
 	prompt = false
@@ -80,5 +82,14 @@
 	smudge = "~/.dotfiles/git/alwaysdark-smudge.sh"
 [alias]
 	adog = log --all --decorate --oneline --graph
+	bb = "!~/.dotfiles/git/better-git-branch.sh"
 	logtree = "!fn() { git log --oneline --decorate --graph --all; }; fn"
 	logtreea = "!fn() { git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all; }; fn"
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[status]
+	submoduleSummary = true
