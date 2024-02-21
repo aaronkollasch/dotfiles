@@ -630,6 +630,5 @@ return {
     initial_rows = initial_rows,
     use_resize_increments = true,
     warn_about_missing_glyphs = false,
-    show_update_window = false,
     -- debug_key_events = true,
 }
