@@ -222,6 +222,9 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 # Set Fn key to Show Emoji and Symbols
 defaults write com.apple.HIToolbox AppleFnUsageType -int 2
 
+# Hide language popup under cursor
+defaults write kCFPreferencesAnyApplication TSMLanguageIndicatorEnabled -bool false
+
 # Keyboard shortcuts
 # see: https://web.archive.org/web/20141112224103/http://hintsforums.macworld.com/showthread.php?t=114785
 # from one-line string:
