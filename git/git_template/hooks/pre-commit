@@ -7,10 +7,14 @@
 #
 # To enable this hook, rename this file to "pre-commit".
 
+# Colors
+RED='\033[0;31m'
+NO_COLOR='\033[0m'
+
 # check for gitleaks
 gitleaks protect --staged --verbose --redact
 if [[ ${PIPESTATUS[0]} -gt 0 ]]; then
-    echo "Error: gitleaks has detected sensitive information in your changes."
+    echo "${RED}Error:${NO_COLOR} gitleaks has detected sensitive information in your changes."
     exit 1
 fi
 

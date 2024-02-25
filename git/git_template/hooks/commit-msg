@@ -8,6 +8,10 @@
 #
 # To enable this hook, rename this file to "commit-msg".
 
+# Colors
+YELLOW='\033[0;33m'
+NO_COLOR='\033[0m'
+
 # Uncomment the below to add a Signed-off-by line to the message.
 # Doing this in a hook is a bad idea in general, but the prepare-commit-msg
 # hook is more suited to it.
@@ -28,15 +32,15 @@ test "" = "$(grep '^Signed-off-by: ' "$1" |
 # see https://gist.github.com/tueda/7633695
 my_warned=false
 head -1 "$1" | grep -qe '^..\{50\}' && {
-  echo >&2 "WARNING: First line exceeds 50 char limit."
+  echo >&2 "${YELLOW}WARNING:${NO_COLOR} First line exceeds 50 char limit."
   my_warned=true
 }
 [ "$(wc -l < "$1")" -gt 1 ] && [ "$(head -2 "$1" | tail -1 | tr -d '[:space:]' | wc -c)" -gt 0 ] && {
-  echo >&2 "WARNING: Second line must be empty."
+  echo >&2 "${YELLOW}WARNING:${NO_COLOR} Second line must be empty."
   my_warned=true
 }
 sed -n '3,/# ------------------------ >8 ------------------------/p' "$1" | grep -v '^#' | grep -qe '^..\{72\}' && {
-  echo >&2 "WARNING: Line exceeds 72 char limit."
+  echo >&2 "${YELLOW}WARNING:${NO_COLOR} Line exceeds 72 char limit."
   my_warned=true
 }
 if $my_warned; then
