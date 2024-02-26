@@ -1476,6 +1476,10 @@ function _op_plugin_run {
     ;;
   esac
 
+  if [[ "$words[1]" == "--" ]]; then
+    shift words
+  fi
+
   _dispatch "$curcontext" "$line[1]"
 }
 
