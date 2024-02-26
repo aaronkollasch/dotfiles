@@ -8,7 +8,7 @@ function _op {
 
   _arguments -C \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -25,7 +25,7 @@ function _op {
     commands=(
       "account:Manage your locally configured 1Password accounts"
       "completion:Generate shell completion information"
-      "connect:Manage Connect instances and Connect tokens in your 1Password account"
+      "connect:Manage Connect server instances and tokens in your 1Password account"
       "document:Perform CRUD operations on Document items in your vaults"
       "events-api:Manage Events API integrations in your 1Password account"
       "group:Manage the groups in your 1Password account"
@@ -33,7 +33,7 @@ function _op {
       "inject:Inject secrets into a config file"
       "item:Perform CRUD operations on the 1Password items in your vaults"
       "plugin:Manage the shell plugins you use to authenticate third-party CLIs"
-      "read:Read a secret using the secrets reference syntax"
+      "read:Read a secret reference"
       "run:Pass secrets as environment variables to a process"
       "signin:Sign in to a 1Password account"
       "signout:Sign out of a 1Password account"
@@ -109,9 +109,8 @@ function _op_account {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with account.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -154,12 +153,11 @@ function _op_account_add {
   _arguments \
     '--address[The sign-in address for your account.]:' \
     '--email[The email address associated with your account.]:' \
-    '(-h --help)'{-h,--help}'[Get help with account add.]' \
     '--raw[Only return the session token.]' \
-    '--shorthand[Set the short account name.]:' \
-    '--signin[Directly sign in to the added account.]' \
+    '--shorthand[Set a custom account shorthand for your account.]:' \
+    '--signin[Immediately sign in to the added account.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -172,9 +170,8 @@ function _op_account_add {
 function _op_account_forget {
   _arguments \
     '--all[Forget all authenticated accounts.]' \
-    '(-h --help)'{-h,--help}'[Get help with account forget.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -186,9 +183,8 @@ function _op_account_forget {
 
 function _op_account_get {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with account get.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -200,9 +196,8 @@ function _op_account_get {
 
 function _op_account_list {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with account list.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -214,9 +209,9 @@ function _op_account_list {
 
 function _op_completion {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with completion.]' \
+    '(-h --help)'{-h,--help}'[help for completion]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -231,9 +226,8 @@ function _op_connect {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with connect.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -249,8 +243,8 @@ function _op_connect {
     commands=(
       "group:Manage group access to Secrets Automation"
       "server:Manage Connect servers"
-      "token:Manage Connect tokens"
-      "vault:Manage connect server vault access"
+      "token:Manage Connect server tokens"
+      "vault:Manage Connect server vault access"
     )
     _describe "command" commands
     ;;
@@ -277,9 +271,8 @@ function _op_connect_group {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with connect group.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -314,10 +307,9 @@ function _op_connect_group_grant {
   _arguments \
     '--all-servers[Grant access to all current and future servers in the authenticated account.]' \
     '--group[The `group` to receive access.]:' \
-    '(-h --help)'{-h,--help}'[Get help with connect group grant.]' \
     '--server[The `server` to grant access to.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -331,10 +323,9 @@ function _op_connect_group_revoke {
   _arguments \
     '--all-servers[Revoke access to all current and future servers in the authenticated account.]' \
     '--group[The `group` to revoke access from.]:' \
-    '(-h --help)'{-h,--help}'[Get help with connect group revoke.]' \
     '--server[The `server` to revoke access to.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -349,9 +340,8 @@ function _op_connect_server {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with connect server.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -397,10 +387,9 @@ function _op_connect_server {
 function _op_connect_server_create {
   _arguments \
     '(-f --force)'{-f,--force}'[Do not prompt for confirmation when overwriting credential files.]' \
-    '(-h --help)'{-h,--help}'[Get help with connect server create.]' \
     '*--vaults[Grant the Connect server access to these vaults.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -412,9 +401,8 @@ function _op_connect_server_create {
 
 function _op_connect_server_delete {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with connect server delete.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -426,10 +414,9 @@ function _op_connect_server_delete {
 
 function _op_connect_server_edit {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with connect server edit.]' \
     '--name[Change the server'\''s `name`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -441,9 +428,8 @@ function _op_connect_server_edit {
 
 function _op_connect_server_get {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with connect server get.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -455,9 +441,8 @@ function _op_connect_server_get {
 
 function _op_connect_server_list {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with connect server list.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -472,9 +457,8 @@ function _op_connect_token {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with connect token.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -490,7 +474,7 @@ function _op_connect_token {
     commands=(
       "create:Issue a token for a 1Password Connect server"
       "delete:Revoke a token for a Connect server"
-      "edit:Rename a Connect token"
+      "edit:Rename a Connect server token"
       "list:Get a list of tokens"
     )
     _describe "command" commands
@@ -516,11 +500,10 @@ function _op_connect_token {
 function _op_connect_token_create {
   _arguments \
     '--expires-in[Set how long the Connect token is valid for in (s)econds, (m)inutes, or (h)ours.]:' \
-    '(-h --help)'{-h,--help}'[Get help with connect token create.]' \
     '--server[Issue a token for this server.]:' \
     '*--vault[Issue a token on these vaults.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -532,10 +515,9 @@ function _op_connect_token_create {
 
 function _op_connect_token_delete {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with connect token delete.]' \
     '--server[Only look for tokens for this 1Password Connect server.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -547,11 +529,10 @@ function _op_connect_token_delete {
 
 function _op_connect_token_edit {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with connect token edit.]' \
     '--name[Change the token'\''s name.]:' \
     '--server[Only look for tokens for this 1Password Connect server.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -563,10 +544,9 @@ function _op_connect_token_edit {
 
 function _op_connect_token_list {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with connect token list.]' \
     '--server[Only list tokens for this Connect `server`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -581,9 +561,8 @@ function _op_connect_vault {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with connect vault.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -616,11 +595,10 @@ function _op_connect_vault {
 
 function _op_connect_vault_grant {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with connect vault grant.]' \
     '--server[The server to be granted access.]:' \
     '--vault[The vault to grant access to.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -632,11 +610,10 @@ function _op_connect_vault_grant {
 
 function _op_connect_vault_revoke {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with connect vault revoke.]' \
     '--server[The `server` to revoke access from.]:' \
     '--vault[The `vault` to revoke a server'\''s access to.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -651,9 +628,8 @@ function _op_document {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with document.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -699,12 +675,11 @@ function _op_document {
 function _op_document_create {
   _arguments \
     '--file-name[Set the file'\''s `name`.]:' \
-    '(-h --help)'{-h,--help}'[Get help with document create.]' \
     '--tags[Set the tags to the specified (comma-separated) values.]:' \
     '--title[Set the document item'\''s `title`.]:' \
     '--vault[Save the document in this `vault`. Default: Private.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -717,10 +692,9 @@ function _op_document_create {
 function _op_document_delete {
   _arguments \
     '--archive[Move the document to the Archive.]' \
-    '(-h --help)'{-h,--help}'[Get help with document delete.]' \
     '--vault[Delete the document in this `vault`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -733,12 +707,11 @@ function _op_document_delete {
 function _op_document_edit {
   _arguments \
     '--file-name[Set the file'\''s `name`.]:' \
-    '(-h --help)'{-h,--help}'[Get help with document edit.]' \
-    '--tags[Set the tags to the specified (comma-separated) values. An empty value will remove all tags.]:' \
+    '--tags[Set the tags to the specified (comma-separated) values. An empty value removes all tags.]:' \
     '--title[Set the document item'\''s `title`.]:' \
     '--vault[Look up document in this `vault`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -750,13 +723,13 @@ function _op_document_edit {
 
 function _op_document_get {
   _arguments \
-    '--force[Force the document to be printed to the shell when printing an unintelligible document to an interactive terminal.]' \
-    '(-h --help)'{-h,--help}'[Get help with document get.]' \
+    '--file-mode[Set filemode for the output file. It is ignored without the --out-file flag.]:' \
+    '--force[Forcibly print an unintelligible document to an interactive terminal. If --out-file is specified, save the document to a file without prompting for confirmation.]' \
     '--include-archive[Include document items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.]' \
-    '--output[Save the document to the file `path` instead of stdout.]:' \
+    '(-o --out-file)'{-o,--out-file}'[Save the document to the file `path` instead of stdout.]:' \
     '--vault[Look for the document in this `vault`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -768,11 +741,10 @@ function _op_document_get {
 
 function _op_document_list {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with document list.]' \
     '--include-archive[Include document items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.]' \
     '--vault[Only list documents in this `vault`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -787,9 +759,8 @@ function _op_events-api {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with events-api.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -819,10 +790,9 @@ function _op_events-api {
 function _op_events-api_create {
   _arguments \
     '--expires-in[Set how the long the events-api token is valid for in (s)econds, (m)inutes, or (h)ours.]:' \
-    '*--features[Set the comma-separated list of `features` the integration token can be used for. Options: '\''signinattempts'\'', '\''itemusages'\''.]:' \
-    '(-h --help)'{-h,--help}'[Get help with events-api create.]' \
+    '*--features[Set the comma-separated list of `features` the integration token can be used for. Options: '\''signinattempts'\'', '\''itemusages'\'', '\''auditevents'\''.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -837,9 +807,8 @@ function _op_group {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with group.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -889,9 +858,8 @@ function _op_group {
 function _op_group_create {
   _arguments \
     '--description[Set the group'\''s description.]:' \
-    '(-h --help)'{-h,--help}'[Get help with group create.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -903,9 +871,8 @@ function _op_group_create {
 
 function _op_group_delete {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with group delete.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -918,10 +885,9 @@ function _op_group_delete {
 function _op_group_edit {
   _arguments \
     '--description[Change the group'\''s `description`.]:' \
-    '(-h --help)'{-h,--help}'[Get help with group edit.]' \
     '--name[Change the group'\''s `name`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -933,9 +899,8 @@ function _op_group_edit {
 
 function _op_group_get {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with group get.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -947,11 +912,10 @@ function _op_group_get {
 
 function _op_group_list {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with group list.]' \
     '--user[List groups that a `user` belongs to.]:' \
     '--vault[List groups that have direct access to a `vault`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -966,9 +930,8 @@ function _op_group_user {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with group user.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1006,11 +969,10 @@ function _op_group_user {
 function _op_group_user_grant {
   _arguments \
     '--group[Specify the group to add the user to.]:' \
-    '(-h --help)'{-h,--help}'[Get help with group user grant.]' \
     '--role[Specify the user'\''s role as a member or manager. Default: member.]:' \
     '--user[Specify the user to add to the group.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1022,9 +984,8 @@ function _op_group_user_grant {
 
 function _op_group_user_list {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with group user list.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1037,10 +998,9 @@ function _op_group_user_list {
 function _op_group_user_revoke {
   _arguments \
     '--group[Specify the group to remove the user from.]:' \
-    '(-h --help)'{-h,--help}'[Get help with group user revoke.]' \
     '--user[Specify the user to remove from the group.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1053,7 +1013,7 @@ function _op_group_user_revoke {
 function _op_help {
   _arguments \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1065,13 +1025,12 @@ function _op_help {
 
 function _op_inject {
   _arguments \
-    '--file-mode[Set filemode for the output file if it does not yet exist. It is ignored without the --out-file flag.]:' \
+    '--file-mode[Set filemode for the output file. It is ignored without the --out-file flag.]:' \
     '(-f --force)'{-f,--force}'[Do not prompt for confirmation.]' \
-    '(-h --help)'{-h,--help}'[Get help with inject.]' \
     '(-i --in-file)'{-i,--in-file}'[The filename of a template file to inject.]:' \
     '(-o --out-file)'{-o,--out-file}'[Write the injected template to a file instead of stdout.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1086,9 +1045,8 @@ function _op_item {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with item.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1107,6 +1065,7 @@ function _op_item {
       "edit:Edit an item's details"
       "get:Get an item's details"
       "list:List items"
+      "move:Move an item between vaults"
       "share:Share an item"
       "template:Manage templates"
     )
@@ -1130,6 +1089,9 @@ function _op_item {
   list)
     _op_item_list
     ;;
+  move)
+    _op_item_move
+    ;;
   share)
     _op_item_share
     ;;
@@ -1142,16 +1104,17 @@ function _op_item {
 function _op_item_create {
   _arguments \
     '--category[Set the item'\''s `category`.]:' \
-    '--dry-run[Perform a dry run of the command and output a preview of the resulting item.]' \
-    '--generate-password[Give the item a randomly generated password.]' \
-    '(-h --help)'{-h,--help}'[Get help with item create.]' \
+    '--dry-run[Test the command and output a preview of the resulting item.]' \
+    '--favorite[Add item to favorites.]' \
+    '--generate-password[Add a randomly-generated password to a Login or Password item.]' \
+    '--ssh-generate-key[The type of SSH key to create: Ed25519 or RSA. For RSA, specify 2048, 3072, or 4096 (default) bits. Possible values: '\''ed25519'\'', '\''rsa'\'', '\''rsa2048'\'', '\''rsa3072'\'', '\''rsa4096'\''.]:' \
     '--tags[Set the tags to the specified (comma-separated) values.]:' \
-    '--template[Specify the filepath to read an item template from.]:' \
+    '--template[Specify the file path to read an item template from.]:' \
     '--title[Set the item'\''s `title`.]:' \
     '--url[Set the `URL` associated with the item]:' \
     '--vault[Save the item in this `vault`. Default: Private.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1164,10 +1127,9 @@ function _op_item_create {
 function _op_item_delete {
   _arguments \
     '--archive[Move the item to the Archive.]' \
-    '(-h --help)'{-h,--help}'[Get help with item delete.]' \
     '--vault[Look for the item in this vault.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1180,14 +1142,15 @@ function _op_item_delete {
 function _op_item_edit {
   _arguments \
     '--dry-run[Perform a dry run of the command and output a preview of the resulting item.]' \
+    '--favorite[Whether this item is a favorite item. Options: true, false]' \
     '--generate-password[Give the item a randomly generated password.]' \
-    '(-h --help)'{-h,--help}'[Get help with item edit.]' \
     '--tags[Set the tags to the specified (comma-separated) values. An empty value will remove all tags.]:' \
+    '--template[Specify the filepath to read an item template from.]:' \
     '--title[Set the item'\''s `title`.]:' \
     '--url[Set the `URL` associated with the item]:' \
     '--vault[Edit the item in this `vault`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1199,14 +1162,14 @@ function _op_item_edit {
 
 function _op_item_get {
   _arguments \
-    '*--fields[Only return data from these `fields`. Use '\''label='\'' to get the field by name or '\''type='\'' to filter fields by type.]:' \
-    '(-h --help)'{-h,--help}'[Get help with item get.]' \
+    '*--fields[Return data from specific fields. Use '\''label='\'' to get the field by name or '\''type='\'' to filter fields by type. Specify multiple in a comma-separated list.]:' \
     '--include-archive[Include items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.]' \
     '--otp[Output the primary one-time password for this item.]' \
+    '--reveal[Don'\''t conceal the private SSH key when using human-readable output.]' \
     '--share-link[Get a shareable link for the item.]' \
-    '--vault[Look for the item in this `vault`.]:' \
+    '--vault[Look for the item in this vault.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1220,13 +1183,27 @@ function _op_item_list {
   _arguments \
     '*--categories[Only list items in these `categories` (comma-separated).]:' \
     '--favorite[Only list favorite items]' \
-    '(-h --help)'{-h,--help}'[Get help with item list.]' \
     '--include-archive[Include items in the Archive. Can also be set using OP_INCLUDE_ARCHIVE environment variable.]' \
     '--long[Output a more detailed item list.]' \
     '*--tags[Only list items with these `tags` (comma-separated).]:' \
     '--vault[Only list items in this `vault`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
+    '--config[Use this configuration `directory`.]:' \
+    '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
+    '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
+    '--format[Use this output format. Can be '\''human-readable'\'' or '\''json'\''. Can be set as the OP_FORMAT environment variable.]:' \
+    '--iso-timestamps[Format timestamps according to ISO 8601 / RFC 3339. Can be set as the OP_ISO_TIMESTAMPS environment variable.]' \
+    '--no-color[Print output without color.]' \
+    '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:'
+}
+
+function _op_item_move {
+  _arguments \
+    '--current-vault[Vault where the item is currently saved.]:' \
+    '--destination-vault[The vault you want to move the item to.]:' \
+    '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1240,11 +1217,10 @@ function _op_item_share {
   _arguments \
     '*--emails[Email addresses to share with.]:' \
     '--expiry[Link expiring after the specified duration in (s)econds, (m)inutes, or (h)ours (default 7h).]:' \
-    '(-h --help)'{-h,--help}'[Get help with item share.]' \
     '--vault[Look for the item in this vault.]:' \
     '--view-once[Expire link after a single view.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1259,9 +1235,8 @@ function _op_item_template {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with item template.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1294,11 +1269,11 @@ function _op_item_template {
 
 function _op_item_template_get {
   _arguments \
+    '--file-mode[Set filemode for the output file. It is ignored without the --out-file flag.]:' \
     '(-f --force)'{-f,--force}'[Do not prompt for confirmation.]' \
-    '(-h --help)'{-h,--help}'[Get help with item template get.]' \
     '(-o --out-file)'{-o,--out-file}'[Write the template to a file instead of stdout.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1310,9 +1285,8 @@ function _op_item_template_get {
 
 function _op_item_template_list {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with item template list.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1329,9 +1303,8 @@ function _op_plugin {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with plugin.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1347,7 +1320,7 @@ function _op_plugin {
     commands=(
       "clear:Clear shell plugin configuration"
       "credential:Manage credentials for shell plugins"
-      "init:Get started with 1Password Shell Plugins"
+      "init:Configure a shell plugin"
       "inspect:Inspect your existing shell plugin configurations"
       "list:List all available shell plugins"
       "run:Provision credentials from 1Password and run this command"
@@ -1382,9 +1355,8 @@ function _op_plugin_clear {
   _arguments \
     '--all[Clear all configurations for this plugin that apply to this directory and/or terminal session, including the global default.]' \
     '(-f --force)'{-f,--force}'[Apply immediately without asking for confirmation.]' \
-    '(-h --help)'{-h,--help}'[Get help with plugin clear.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1399,9 +1371,8 @@ function _op_plugin_credential {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with plugin credential.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1430,9 +1401,8 @@ function _op_plugin_credential {
 
 function _op_plugin_credential_import {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with plugin credential import.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1444,9 +1414,8 @@ function _op_plugin_credential_import {
 
 function _op_plugin_init {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with plugin init.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1458,9 +1427,8 @@ function _op_plugin_init {
 
 function _op_plugin_inspect {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with plugin inspect.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1472,9 +1440,8 @@ function _op_plugin_inspect {
 
 function _op_plugin_list {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with plugin list.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1490,10 +1457,9 @@ function _op_plugin_run {
   local curcontext="$curcontext" state state_descr line
   typeset -A opt_args
 
-  _arguments -C -S -n \
-    '(-h --help)'{-h,--help}'[Get help with plugin run.]' \
+  _arguments -C -S \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1503,15 +1469,6 @@ function _op_plugin_run {
     '--session[Authenticate with this session `token`. 1Password CLI outputs session tokens for successful '\''op signin'\'' commands when 1Password app integration is not enabled.]:' \
     ":plugin:->cmnds" \
     "*::arg:->args"
-
-  # echo "NORMARG: $NORMARG" >> /tmp/op_comp.log
-  # echo "state: $state" >> /tmp/op_comp.log
-  # echo "context: $context" >> /tmp/op_comp.log
-  # echo "curcontext: $curcontext" >> /tmp/op_comp.log
-  # echo "line: $line" >> /tmp/op_comp.log
-  # echo "words: $words" >> /tmp/op_comp.log
-  # echo "opt_args: $opt_args" >> /tmp/op_comp.log
-  # echo >> /tmp/op_comp.log
 
   case $state in
   cmnds)
@@ -1524,13 +1481,12 @@ function _op_plugin_run {
 
 function _op_read {
   _arguments \
-    '--file-mode[Set filemode for the output file if it does not yet exist. It is ignored without the --out-file flag.]:' \
+    '--file-mode[Set filemode for the output file. It is ignored without the --out-file flag.]:' \
     '(-f --force)'{-f,--force}'[Do not prompt for confirmation.]' \
-    '(-h --help)'{-h,--help}'[Get help with read.]' \
     '(-n --no-newline)'{-n,--no-newline}'[Do not print a new line after the secret.]' \
     '(-o --out-file)'{-o,--out-file}'[Write the secret to a file instead of stdout.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1543,10 +1499,9 @@ function _op_read {
 function _op_run {
   _arguments \
     '*--env-file[Enable Dotenv integration with specific Dotenv files to parse. For example: --env-file=.env.]:' \
-    '(-h --help)'{-h,--help}'[Get help with run.]' \
     '--no-masking[Disable masking of secrets on stdout and stderr.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1559,10 +1514,9 @@ function _op_run {
 function _op_signin {
   _arguments \
     '(-f --force)'{-f,--force}'[Ignore warnings and print raw output from this command.]' \
-    '(-h --help)'{-h,--help}'[Get help with signin.]' \
     '--raw[Only return the session token.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1576,9 +1530,8 @@ function _op_signout {
   _arguments \
     '--all[Sign out of all signed-in accounts.]' \
     '--forget[Remove the details for a 1Password account from this device.]' \
-    '(-h --help)'{-h,--help}'[Get help with signout.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1592,9 +1545,8 @@ function _op_update {
   _arguments \
     '--channel[Look for updates from a specific channel. allowed: stable, beta]:' \
     '--directory[Download the update to this '\'''\''path'\'''\''.]:' \
-    '(-h --help)'{-h,--help}'[Get help with update.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1609,9 +1561,8 @@ function _op_user {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with user.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1669,9 +1620,8 @@ function _op_user {
 function _op_user_confirm {
   _arguments \
     '--all[Confirm all unconfirmed users.]' \
-    '(-h --help)'{-h,--help}'[Get help with user confirm.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1683,9 +1633,8 @@ function _op_user_confirm {
 
 function _op_user_delete {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with user delete.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1697,11 +1646,10 @@ function _op_user_delete {
 
 function _op_user_edit {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with user edit.]' \
     '--name[Set the user'\''s name.]:' \
     '--travel-mode[Turn Travel Mode on or off for the user.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1714,11 +1662,10 @@ function _op_user_edit {
 function _op_user_get {
   _arguments \
     '--fingerprint[Get the user'\''s public key fingerprint.]' \
-    '(-h --help)'{-h,--help}'[Get help with user get.]' \
     '--me[Get the authenticated user'\''s details.]' \
     '--public-key[Get the user'\''s public key.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1731,10 +1678,9 @@ function _op_user_get {
 function _op_user_list {
   _arguments \
     '--group[List users who belong to a `group`.]:' \
-    '(-h --help)'{-h,--help}'[Get help with user list.]' \
     '--vault[List users who have direct access to `vault`.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1747,11 +1693,10 @@ function _op_user_list {
 function _op_user_provision {
   _arguments \
     '--email[Provide the user'\''s email address.]:' \
-    '(-h --help)'{-h,--help}'[Get help with user provision.]' \
     '--language[Provide the user'\''s account language.]:' \
     '--name[Provide the user'\''s name.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1763,9 +1708,8 @@ function _op_user_provision {
 
 function _op_user_reactivate {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with user reactivate.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1778,9 +1722,8 @@ function _op_user_reactivate {
 function _op_user_suspend {
   _arguments \
     '--deauthorize-devices-after[Deauthorize the user'\''s devices after a time (rounded down to seconds).]:' \
-    '(-h --help)'{-h,--help}'[Get help with user suspend.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1795,9 +1738,8 @@ function _op_vault {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with vault.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1813,7 +1755,7 @@ function _op_vault {
     commands=(
       "create:Create a new vault"
       "delete:Remove a vault"
-      "edit:Edit a vault's name, description, icon or Travel Mode status"
+      "edit:Edit a vault's name, description, icon, or Travel Mode status"
       "get:Get details about a vault"
       "group:Manage group vault access"
       "list:List all vaults in the account"
@@ -1852,10 +1794,9 @@ function _op_vault_create {
   _arguments \
     '--allow-admins-to-manage[Set whether administrators can manage the vault. If not provided, the default policy for the account applies.]:' \
     '--description[Set the group'\''s `description`.]:' \
-    '(-h --help)'{-h,--help}'[Get help with vault create.]' \
     '--icon[Set the vault icon.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1867,9 +1808,8 @@ function _op_vault_create {
 
 function _op_vault_delete {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with vault delete.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1882,12 +1822,11 @@ function _op_vault_delete {
 function _op_vault_edit {
   _arguments \
     '--description[Change the vault'\''s `description`.]:' \
-    '(-h --help)'{-h,--help}'[Get help with vault edit.]' \
     '--icon[Change the vault'\''s `icon`.]:' \
     '--name[Change the vault'\''s `name`.]:' \
-    '--travel-mode[Turn Travel Mode on or off for the vault. Only vaults with Travel Mode enabled will be accessible while a user has Travel Mode turned on.]:' \
+    '--travel-mode[Turn Travel Mode on or off for the vault. Only vaults with Travel Mode enabled are accessible while a user has Travel Mode turned on.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1899,9 +1838,8 @@ function _op_vault_edit {
 
 function _op_vault_get {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with vault get.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1916,9 +1854,8 @@ function _op_vault_group {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with vault group.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1956,12 +1893,11 @@ function _op_vault_group {
 function _op_vault_group_grant {
   _arguments \
     '--group[The `group` to receive access.]:' \
-    '(-h --help)'{-h,--help}'[Get help with vault group grant.]' \
     '--no-input[Do not prompt for `input` on interactive terminal.]' \
     '--permissions[The `permissions` to grant to the group.]:' \
     '--vault[The `vault` to grant group permissions to.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1973,9 +1909,8 @@ function _op_vault_group_grant {
 
 function _op_vault_group_list {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with vault group list.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -1988,12 +1923,11 @@ function _op_vault_group_list {
 function _op_vault_group_revoke {
   _arguments \
     '--group[The `group` to revoke access from.]:' \
-    '(-h --help)'{-h,--help}'[Get help with vault group revoke.]' \
     '--no-input[Do not prompt for `input` on interactive terminal.]' \
     '--permissions[The `permissions` to revoke from the group.]:' \
     '--vault[The `vault` to revoke access to.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -2006,10 +1940,9 @@ function _op_vault_group_revoke {
 function _op_vault_list {
   _arguments \
     '--group[List vaults a group has access to.]:' \
-    '(-h --help)'{-h,--help}'[Get help with vault list.]' \
     '--user[List vaults that a given user has access to.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -2024,9 +1957,8 @@ function _op_vault_user {
   local -a commands
 
   _arguments -C \
-    '(-h --help)'{-h,--help}'[Get help with vault user.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -2063,13 +1995,12 @@ function _op_vault_user {
 
 function _op_vault_user_grant {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with vault user grant.]' \
     '--no-input[Do not prompt for `input` on interactive terminal.]' \
     '--permissions[The `permissions` to grant to the user.]:' \
     '--user[The `user` to receive access.]:' \
     '--vault[The `vault` to grant access to.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -2081,9 +2012,8 @@ function _op_vault_user_grant {
 
 function _op_vault_user_list {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with vault user list.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -2095,13 +2025,12 @@ function _op_vault_user_list {
 
 function _op_vault_user_revoke {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with vault user revoke.]' \
     '--no-input[Do not prompt for `input` on interactive terminal.]' \
     '--permissions[The `permissions` to revoke from the user.]:' \
     '--user[The `user` to revoke access from.]:' \
     '--vault[The `vault` to revoke access to.]:' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
@@ -2113,9 +2042,8 @@ function _op_vault_user_revoke {
 
 function _op_whoami {
   _arguments \
-    '(-h --help)'{-h,--help}'[Get help with whoami.]' \
     '--account[Select the `account` to execute the command by account shorthand, sign-in address, account ID, or user ID. For a list of available accounts, run '\''op account list'\''. Can be set as the OP_ACCOUNT environment variable.]:' \
-    '--cache[Store and use cached information. Cache is enabled by default. The cache is not available on Windows.]' \
+    '--cache[Store and use cached information. Caching is enabled by default on UNIX-like systems. Caching is not available on Windows. Options: true, false. Can also be set with the OP_CACHE environment variable.]' \
     '--config[Use this configuration `directory`.]:' \
     '--debug[Enable debug mode. Can also be enabled by setting the OP_DEBUG environment variable to true.]' \
     '--encoding[Use this character encoding `type`. Default: UTF-8. Supported: SHIFT_JIS, gbk.]:' \
