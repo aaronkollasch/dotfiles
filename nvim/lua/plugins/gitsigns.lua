@@ -22,8 +22,8 @@ return {
                 if vim.wo.diff then
                     return "]g"
                 end
-                gs.next_hunk()
                 vim.schedule(function()
+                    gs.next_hunk()
                     feedkeys("zz", "n", false)
                 end)
                 return "<Ignore>"
@@ -33,8 +33,8 @@ return {
                 if vim.wo.diff then
                     return "[g"
                 end
-                gs.prev_hunk()
                 vim.schedule(function()
+                    gs.prev_hunk()
                     feedkeys("zz", "n", false)
                 end)
                 return "<Ignore>"
