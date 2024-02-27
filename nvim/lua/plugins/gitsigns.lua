@@ -7,6 +7,7 @@ return {
     "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
     opts = {
+        _extmark_signs = false,
         on_attach = function(bufnr)
             local gs = package.loaded.gitsigns
             local feedkeys = vim.api.nvim_feedkeys
