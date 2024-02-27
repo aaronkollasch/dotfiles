@@ -43,24 +43,30 @@ return {
 
             -- Actions
             -- stylua: ignore start
-            map({ "n", "v" }, "<leader>hs", ":Gitsigns stage_hunk<CR>", { desc = "[H]unk [S]tage" })
-            map({ "n", "v" }, "<leader>hr", ":Gitsigns reset_hunk<CR>", { desc = "[H]unk [R]eset" })
-            map("n",          "<leader>hS", gs.stage_buffer,            { desc = "[H]unk [S]tage buffer" })
-            map("n",          "<leader>hu", gs.undo_stage_hunk,         { desc = "[H]unk [U]ndo stage" })
-            map("n",          "<leader>hU", function()
+            map("n", "<leader>hs", gs.stage_hunk,      { desc = "[H]unk [S]tage" })
+            map("n", "<leader>hr", gs.reset_hunk,      { desc = "[H]unk [R]eset" })
+            map("v", "<leader>hs", function()
+                gs.stage_hunk {vim.fn.line("."), vim.fn.line("v")}
+            end,                                       { desc = "[H]unk [S]tage" })
+            map("v", "<leader>hr", function()
+                gs.reset_hunk {vim.fn.line("."), vim.fn.line("v")}
+            end,                                       { desc = "[H]unk [R]eset" })
+            map("n", "<leader>hS", gs.stage_buffer,    { desc = "[H]unk [S]tage buffer" })
+            map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "[H]unk [U]ndo stage" })
+            map("n", "<leader>hU", function()
                 os.execute("git restore --staged " .. vim.fn.expand("%"))
                 gs.refresh()
-            end,                                                        { desc = "[H]unk [U]ndo all staged" })
-            map("n",          "<leader>hR", gs.reset_buffer,            { desc = "[H]unk [R]eset buffer" })
-            map("n",          "<leader>hp", gs.preview_hunk,            { desc = "[H]unk [P]review" })
-            map("n",          "<leader>hb", function()
+            end,                                       { desc = "[H]unk [U]ndo stage buffer" })
+            map("n", "<leader>hR", gs.reset_buffer,    { desc = "[H]unk [R]eset buffer" })
+            map("n", "<leader>hp", gs.preview_hunk,    { desc = "[H]unk [P]review" })
+            map("n", "<leader>hb", function()
                 gs.blame_line({ full = true })
-            end,                                                        { desc = "[H]unk [B]lame line" })
-            map("n",          "<leader>hd", gs.diffthis,                { desc = "[H]unk [D]iff index" })
-            map("n",          "<leader>hD", function()
+            end,                                       { desc = "[H]unk [B]lame line" })
+            map("n", "<leader>hd", gs.diffthis,        { desc = "[H]unk [D]iff index" })
+            map("n", "<leader>hD", function()
                 gs.diffthis("~")
-            end,                                                        { desc = "[H]unk [D]iff parent" })
-            -- map("n", "<leader>td", gs.toggle_deleted, { desc = "[T]oggle [D]eleted" })
+            end,                                       { desc = "[H]unk [D]iff parent" })
+            map("n", "<leader>id", gs.toggle_deleted,  { desc = "[I]nspect [D]eleted" })
             -- stylua: ignore end
 
             -- Text object
