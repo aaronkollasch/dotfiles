@@ -75,7 +75,7 @@ return {
     -- motions
     {
         "andymass/vim-matchup",
-        event = event,
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             -- may set any options here
             vim.g.matchup_matchparen_offscreen = { method = "popup" }
