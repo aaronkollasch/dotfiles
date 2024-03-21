@@ -13,6 +13,8 @@
 	gpgsign = true
 [pull]
 	ff = only
+[rebase]
+	updateRefs = true
 [diff]
 	algorithm = histogram
 	colorMoved = default
