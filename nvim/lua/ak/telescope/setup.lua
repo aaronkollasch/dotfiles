@@ -332,8 +332,8 @@ require("telescope").setup({
                 end
                 if not excluded then
                     vim.schedule(function()
-                        vim.api.nvim_win_set_option(opts.winid, "number", true)
-                        vim.api.nvim_win_set_option(opts.winid, "numberwidth", 4)
+                        vim.api.nvim_set_option_value("number", true, { win = opts.winid })
+                        vim.api.nvim_set_option_value("numberwidth", 4, { win = opts.winid })
                     end)
                 end
                 return true
