@@ -196,8 +196,11 @@ vim.keymap.set("n", "<C-f>",            builtin.find_files,     { desc = "Find p
 vim.keymap.set("n", "<leader>*",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>#",        builtin.grep_string,    { desc = "Project search current word" })
 vim.keymap.set("n", "<leader>rg",       builtin.live_grep,      { desc = "[R]ip[G]rep" })
-vim.keymap.set("n", "<leader>/",        builtin.current_buffer_fuzzy_find,
-                                                                { desc = "[/] Fuzzily search in current buffer" })
+vim.keymap.set("n", "<leader>/",        function()
+    builtin.current_buffer_fuzzy_find(themes.get_dropdown {
+        layout_config = { width = 0.8 },
+    })
+end,                                                            { desc = "[/] Fuzzily search in current buffer" })
 vim.keymap.set("n", "<leader>bl",       builtin.buffers,        { desc = "[B]uffer [L]ist" })
 
 -- l-keymaps
