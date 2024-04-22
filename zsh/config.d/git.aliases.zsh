@@ -100,9 +100,10 @@ alias ggui='git gui'
 alias ghm='cd "$(git rev-parse --show-toplevel)"' # Git home
 
 # imerge
-alias gim='git-imerge'
-alias girb='git-imerge rebase'
+alias gimm='git-imerge merge'
+alias gimr='git-imerge rebase'
 alias gims='git-imerge start'
+alias gimc='git-imerge continue'
 alias gimf='git-imerge finish'
 
 # merge
