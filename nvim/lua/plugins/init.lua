@@ -253,7 +253,7 @@ return {
     {
         "chrishrb/gx.nvim",
         keys = {
-            { "gx", nil, mode = { "n", "x" }, desc = "Open URL under cursor" },
+            { "gx", "<cmd>Browse<cr>", mode = { "n", "x" }, desc = "Open URL under cursor" },
         },
         -- event = { "BufReadPre", "BufNewFile" },
         dependencies = { "nvim-lua/plenary.nvim" },
