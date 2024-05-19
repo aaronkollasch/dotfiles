@@ -305,26 +305,6 @@ return {
     -- better <leader>p
     { "inkarkat/vim-ReplaceWithRegister", event = "VeryLazy" },
 
-    -- better <leader>y over SSH
-    {
-        "ojroques/nvim-osc52",
-        lazy = true,
-        init = function()
-            local function copy()
-                if
-                    vim.v.event.operator == "y"
-                    and vim.v.event.regname == "+"
-                    and (vim.env.SSH_TTY ~= nil or vim.env.TMUX ~= nil)
-                then
-                    require("osc52").copy_register("+")
-                end
-            end
-
-            vim.api.nvim_create_autocmd("TextYankPost", { callback = copy })
-        end,
-        opts = {},
-    },
-
     -- colorscheme
     {
         "aaronkollasch/edge",

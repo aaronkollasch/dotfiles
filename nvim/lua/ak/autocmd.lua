@@ -57,3 +57,12 @@ autocmd({ "BufRead" }, {
         })
     end,
 })
+
+-- Yank to clipboard over tmux
+local function copy()
+    if vim.v.event.operator == "y" and vim.v.event.regname == "+" and vim.env.TMUX ~= nil then
+        require("vim.ui.clipboard.osc52").copy("+")
+    end
+end
+
+autocmd("TextYankPost", { callback = copy })
