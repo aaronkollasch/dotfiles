@@ -189,7 +189,7 @@ require("lspconfig").clangd.setup({
 })
 
 -- rust setup
-local rust_lsp = lsp.build_options("rust_analyzer", {
+require("lspconfig").rust_analyzer.setup({
     settings = {
         -- to enable rust-analyzer settings visit:
         -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
@@ -200,22 +200,6 @@ local rust_lsp = lsp.build_options("rust_analyzer", {
             },
         },
     },
-})
-
-require("rust-tools").setup({
-    tools = {
-        runnables = {
-            use_telescope = true,
-        },
-        inlay_hints = {
-            auto = true,
-            show_parameter_hints = false,
-            parameter_hints_prefix = " ",
-            other_hints_prefix = " ",
-            highlight = "NonText",
-        },
-    },
-    server = rust_lsp,
 })
 
 local diagnostic_config = {

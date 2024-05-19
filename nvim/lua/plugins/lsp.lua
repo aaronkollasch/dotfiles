@@ -27,7 +27,7 @@ return {
         { "rafamadriz/friendly-snippets" },
 
         -- Additional dependencies
-        { "simrat39/rust-tools.nvim" },
+        -- { "mrcjkb/rustaceanvim" },
     },
     event = { "BufReadPre", "BufNewFile" },
     cmd = { "Mason", "MasonUpdate", "LspInfo", "LspInstall" },
