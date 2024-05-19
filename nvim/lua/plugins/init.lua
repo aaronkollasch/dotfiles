@@ -249,7 +249,7 @@ return {
             use_default_keymaps = false,
         },
     },
-    { "mrjones2014/lua-gf.nvim", event = { "BufReadPre *.lua", "BufNewFile *.lua" } },
+    { "mrjones2014/lua-gf.nvim", ft = "lua" },
     {
         "chrishrb/gx.nvim",
         keys = {

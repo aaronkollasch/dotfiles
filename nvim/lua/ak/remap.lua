@@ -115,9 +115,7 @@ vim.keymap.set("n",   "<leader>ip", ":TSPlaygroundToggle<CR>",   { desc = "[I]ns
 vim.keymap.set("n", "<leader><leader>l", ":Lazy<CR>", { desc = "[L]azy" })
 
 -- <leader>b keys for buffers
-vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { silent = true, desc = "[B]uffer [N]ext" })
-vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { silent = true, desc = "[B]uffer [P]revious" })
-vim.keymap.set("n", "<leader>bc", function()
+local buf_clear = function()
     local curbufnr = vim.api.nvim_get_current_buf()
     local buflist = vim.api.nvim_list_bufs()
     for _, bufnr in ipairs(buflist) do
@@ -125,7 +123,12 @@ vim.keymap.set("n", "<leader>bc", function()
             vim.cmd("bd " .. tostring(bufnr))
         end
     end
-end, { silent = true, desc = "[B]uffer [C]lear" })
+end
+-- stylua: ignore start
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>",     { silent = true, desc = "[B]uffer [N]ext" })
+vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { silent = true, desc = "[B]uffer [P]revious" })
+vim.keymap.set("n", "<leader>bc", buf_clear,        { silent = true, desc = "[B]uffer [C]lear" })
+-- stylua: ignore end
 
 -- <leader>n keys to jump
 -- stylua: ignore start

@@ -55,7 +55,7 @@ return {
                 },
                 ft_ignore = {
                     "help",
-                    "vim",
+                    -- "vim",
                     "alpha",
                     "dashboard",
                     "neo-tree",
