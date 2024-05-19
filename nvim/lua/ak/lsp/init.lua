@@ -118,6 +118,15 @@ lsp.on_attach(function(client, bufnr)
         -- Disable hover in favor of Pyright
         client.server_capabilities.hoverProvider = false
     end
+
+    if client.server_capabilities.inlayHintProvider then
+        vim.keymap.set("n", "<leader>ch", function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
+        end, { desc = "[C]ode  [H]ints", unpack(bufopts) })
+        if client.name == "rust_analyzer" then
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        end
+    end
 end)
 
 -- lua setup
