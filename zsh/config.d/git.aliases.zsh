@@ -187,8 +187,9 @@ alias gsts='git stash push'
 alias gstsm='git stash push -m'
 
 # submodules
-alias gsu='git submodule update --recursive'
-alias gsui='git submodule update --init --recursive'
+alias gsm='git submodule'
+alias gsmu='git submodule update --recursive'
+alias gsmui='git submodule update --init --recursive'
 
 # switch
 # these aliases requires git v2.23+
