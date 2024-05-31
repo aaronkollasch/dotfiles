@@ -48,7 +48,6 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function()
-        local noice = require("noice")
         return {
             options = options,
             sections = {
@@ -80,9 +79,13 @@ return {
                         color = { fg = "#ff9e64" },
                     },
                     {
-                        noice.api.statusline.mode.get,
+                        function()
+                            return require("noice").api.statusline.mode.get()
+                        end,
                         cond = function()
-                            return noice.api.statusline.mode.has()
+                            local status, noice = pcall(require, "noice")
+                            return status
+                                and noice.api.statusline.mode.has()
                                 and not string.find(noice.api.statusline.mode.get(), "^%-%-")
                         end,
                         color = { fg = "#ff9e64" },
@@ -90,25 +93,21 @@ return {
                     {
                         function()
                             local icon = require("ak.opts").icons_enabled and "{}" or "c"
-                            local status, neocodeium = pcall(require, "neocodeium")
-                            if status then
-                                return icon .. neocodeium.get_status()
-                            else
-                                return icon .. " x"
-                            end
+                            return icon .. require("neocodeium").get_status()
                         end,
                         cond = function()
-                            return vim.api.nvim_get_mode().mode ~= "c"
+                            return package.loaded["neocodeium"] and vim.api.nvim_get_mode().mode ~= "c"
                         end,
                         color = { fg = "#276abc" },
                     },
-                    -- stylua: ignore
                     {
                         function()
                             local icon = require("ak.opts").icons_enabled and " " or "d"
                             return icon .. require("dap").status()
                         end,
-                        cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
+                        cond = function()
+                            return package.loaded["dap"] and require("dap").status() ~= ""
+                        end,
                         color = { fg = "#be7e05" },
                     },
                     {
