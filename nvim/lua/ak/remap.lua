@@ -100,15 +100,9 @@ vim.keymap.set("n", "<leader><leader>x", ":call ak#save_and_exec()<CR>", { desc 
 
 -- <leader>il to inspect letter
 -- stylua: ignore start
-if vim.version().major > 0 or vim.version().minor >= 9 then
-  vim.keymap.set("n", "<leader>il", ":Inspect<CR>",              { desc = "[I]nspect [L]etter" })
-  vim.keymap.set("n", "<leader>iv", ":Inspect!<CR>",             { desc = "[I]nspect [V]erbose" })
-  vim.keymap.set("n", "<leader>it", ":InspectTree<CR>",          { desc = "[I]nspect [T]ree" })
-else
-  vim.keymap.set("n", "<leader>il", ":TSCaptureUnderCursor<CR>", { desc = "[I]nspect [L]etter" })
-  vim.keymap.set("n", "<leader>iv", ":TSNodeUnderCursor<CR>",    { desc = "[I]nspect [V]erbose" })
-end
-vim.keymap.set("n",   "<leader>ip", ":TSPlaygroundToggle<CR>",   { desc = "[I]nspect [P]layground" })
+vim.keymap.set("n", "<leader>il", ":Inspect<CR>",     { desc = "[I]nspect [L]etter" })
+vim.keymap.set("n", "<leader>iv", ":Inspect!<CR>",    { desc = "[I]nspect [V]erbose" })
+vim.keymap.set("n", "<leader>it", ":InspectTree<CR>", { desc = "[I]nspect [T]ree" })
 -- stylua: ignore end
 
 -- <leader><leader>l to open Lazy plugin management window
