@@ -90,7 +90,12 @@ return {
                     {
                         function()
                             local icon = require("ak.opts").icons_enabled and "{}" or "c"
-                            return icon .. "%3{codeium#GetStatusString()}"
+                            local status, neocodeium = pcall(require, "neocodeium")
+                            if status then
+                                return icon .. neocodeium.get_status()
+                            else
+                                return icon .. " x"
+                            end
                         end,
                         cond = function()
                             return vim.api.nvim_get_mode().mode ~= "c"
