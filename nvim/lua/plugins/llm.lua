@@ -7,6 +7,7 @@ return {
         config = function()
             local neocodeium = require("neocodeium")
             neocodeium.setup({
+                silent = true,
                 filetypes = {
                     help = false,
                     gitcommit = false,
