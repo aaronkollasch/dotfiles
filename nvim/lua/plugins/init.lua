@@ -176,25 +176,28 @@ return {
         },
     },
     {
-        "NvChad/nvim-colorizer.lua",
+        "brenoprata10/nvim-highlight-colors",
         ft = {
             "css",
             "javascript",
             "html",
         },
-        cmd = {
-            "ColorizerToggle",
-            "ColorizerAttachToBuffer",
-            "ColorizerReloadAllBuffers",
-        },
-        keys = { { "<leader>ih", "<cmd>ColorizerToggle<CR>", desc = "[I]nspect [H]excodes" } },
-        opts = {
-            user_default_options = {
-                RRGGBBAA = true,
-                AARRGGBB = true,
-                css_fn = true,
-            },
-        },
+        cmd = "HighlightColors",
+        keys = { { "<leader>ih", "<cmd>HighlightColors Toggle<CR>", desc = "[I]nspect [H]excodes" } },
+        config = function()
+            require("nvim-highlight-colors").setup({
+                render = "virtual",
+                virtual_symbol = "██",
+            })
+            if
+                not vim.tbl_contains(
+                    { "css", "html", "javascript" },
+                    vim.filetype.match({ buf = vim.api.nvim_get_current_buf() })
+                )
+            then
+                require("nvim-highlight-colors").turnOff()
+            end
+        end,
     },
     {
         "tzachar/highlight-undo.nvim",

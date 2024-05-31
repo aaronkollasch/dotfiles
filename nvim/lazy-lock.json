@@ -32,7 +32,7 @@
   "noice.nvim": { "branch": "main", "commit": "9f6f6ba74f8bfbf7e43d6302cf86b070362f6203" },
   "nui.nvim": { "branch": "main", "commit": "b1b3dcd6ed8f355c78bad3d395ff645be5f8b6ae" },
   "nvim-cmp": { "branch": "main", "commit": "5260e5e8ecadaf13e6b82cf867a909f54e15fd07" },
-  "nvim-colorizer.lua": { "branch": "master", "commit": "85855b38011114929f4058efc97af1059ab3e41d" },
+  "nvim-highlight-colors": { "branch": "main", "commit": "df8d10c188670a17b3e63fcfc340ab09fcbedb03" },
   "nvim-lightbulb": { "branch": "master", "commit": "8f00b89dd1b1dbde16872bee5fbcee2e58c9b8e9" },
   "nvim-lspconfig": { "branch": "master", "commit": "6d2ae9fdc3111a6e8fd5db2467aca11737195a30" },
   "nvim-navbuddy": { "branch": "master", "commit": "f34237e8a41ebc6e2716af2ebf49854d8c5289c8" },
