@@ -4,26 +4,10 @@
 # https://gist.github.com/jamesmacfie/2061023e5365e8b6bfbbc20792ac90f8#file-auto_dark_mode-py
 
 import os
-import asyncio
 import iterm2
 
 
 async def changeTheme(theme_parts, connection):
-    # Themes have space-delimited attributes, one of which will be light or dark.
-    if "dark" in theme_parts:
-        preset = await iterm2.ColorPreset.async_get(connection, "Night Mode")
-    else:
-        preset = await iterm2.ColorPreset.async_get(
-            connection, "iTerm2 Light Background"
-        )
-
-    # Update the list of all profiles and iterate over them.
-    profiles = await iterm2.PartialProfile.async_query(connection)
-    for partial in profiles:
-        # Fetch the full profile and then set the color preset in it.
-        profile = await partial.async_get_full_profile()
-        await profile.async_set_color_preset(preset)
-
     # set bat theme
     with open(os.path.expanduser("~/.config/bat/config"), "r") as f:
         s = f.read()
