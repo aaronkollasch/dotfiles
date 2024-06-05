@@ -124,6 +124,10 @@ defaults write "com.apple.systemuiserver" "menuExtras" '("/System/Library/CoreSe
 defaults write "com.apple.systemuiserver" "NSStatusItem Visible com.apple.menuextra.vpn" -bool true
 defaults write "com.apple.networkConnect" '{VPNShowTime=1;}'
 
+# Reduce menu bar item spacing
+defaults -currentHost write NSGlobalDomain NSStatusItemSpacing -int 6
+defaults -currentHost write NSGlobalDomain NSStatusItemSelectionPadding -int 6
+
 # Quick Actions
 defaults write pbs FinderActive -dict \
   "APPEXTENSION-com.apple.finder.CreatePDFQuickAction" 1 \
