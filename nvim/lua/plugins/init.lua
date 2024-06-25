@@ -70,7 +70,7 @@ return {
             { "<S-Space>K", "<Plug>DashSearch", silent = true, desc = "Dash Search" },
         },
         cond = function()
-            return vim.loop.os_uname().sysname == "Darwin"
+            return vim.uv.os_uname().sysname == "Darwin"
         end,
     },
     {
@@ -94,7 +94,7 @@ return {
             end
         end,
         cond = function()
-            return vim.loop.os_uname().sysname ~= "Darwin"
+            return vim.uv.os_uname().sysname ~= "Darwin"
         end,
     },
 
