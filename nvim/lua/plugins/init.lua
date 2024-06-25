@@ -101,16 +101,11 @@ return {
     },
     {
         "folke/trouble.nvim",
-        cmd = {
-            "Trouble",
-            "TroubleClose",
-            "TroubleToggle",
-            "TroubleRefresh",
-        },
+        cmd = "Trouble",
         -- stylua: ignore
         keys = {
-            { "<leader>wt", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "[W]orkspace [T]rouble" },
-            { "<leader>bt", "<cmd>TroubleToggle document_diagnostics<cr>",  desc = "[B]uffer [T]rouble" },
+            { "<leader>wt", "<cmd>Trouble diagnostics toggle<cr>",               desc = "[W]orkspace [T]rouble" },
+            { "<leader>bt", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",  desc = "[B]uffer [T]rouble" },
         },
         opts = {},
     },
