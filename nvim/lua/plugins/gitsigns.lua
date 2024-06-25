@@ -11,6 +11,7 @@ return {
         current_line_blame_opts = {
             delay = 300,
         },
+        signs_staged_enable = false,
         on_attach = function(bufnr)
             local gs = package.loaded.gitsigns
             local feedkeys = vim.api.nvim_feedkeys
