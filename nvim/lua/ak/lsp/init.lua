@@ -130,10 +130,6 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 -- lua setup
--- IMPORTANT: make sure to setup neodev BEFORE lspconfig
-require("neodev").setup({
-    -- add any options here, or leave empty to use the default settings
-})
 require("lspconfig").lua_ls.setup({
     settings = {
         Lua = {
@@ -289,7 +285,7 @@ cmp_mappings["<S-Tab>"] = nil
 
 local cmp_sources = cmp.config.sources({
     { name = "path" },
-    { name = "nvim_lua", keyword_length = 3 },
+    { name = "lazydev", keyword_length = 3, group_index = 0 },
     { name = "nvim_lsp", keyword_length = 3 },
     { name = "buffer", keyword_length = 3 },
     { name = "luasnip", keyword_length = 2 },
