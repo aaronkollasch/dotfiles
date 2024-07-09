@@ -66,3 +66,16 @@ local function copy()
 end
 
 autocmd("TextYankPost", { callback = copy })
+
+-- Replace LSP goto definition with builtin keymap in help files
+autocmd("FileType", {
+    pattern = { "help" },
+    callback = function()
+        vim.keymap.set(
+            "n",
+            "gd",
+            "<C-]>",
+            { desc = "[G]oto tag [d]efinition", noremap = true, silent = true, buffer = true }
+        )
+    end,
+})
