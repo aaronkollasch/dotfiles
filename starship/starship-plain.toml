@@ -77,6 +77,14 @@ renamed = "»"
 deleted = "x"
 style = "bright-red"
 
+[custom.git_lock]
+when = 'test -f "$(git rev-parse --git-dir 2> /dev/null)"/index.lock'
+require_repo = true
+description = "Show if index.lock exists in the repo"
+symbol = ""
+style = "bold red"
+format = "is [${symbol}LOCKED]($style)"
+
 [aws]
 style = "bold 208"
 [aws.region_aliases]
