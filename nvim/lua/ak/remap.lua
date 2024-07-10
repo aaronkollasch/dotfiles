@@ -36,8 +36,10 @@ vim.cmd([[ vnoremap <expr> y "my\"" . v:register . "y" ]])
 vim.cmd([[ vnoremap <expr> Y "my\"" . v:register . "Y" ]])
 
 -- move by terminal rows, not lines, unless a count is provided
-vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ "n" }, "k", "v:count == 0 ? ':silent normal! gk<CR>' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set({ "n" }, "j", "v:count == 0 ? ':silent normal! gj<CR>' : 'j'", { expr = true, silent = true })
+vim.keymap.set({ "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- g keys for git diffget
 vim.keymap.set("n", "gh", "<cmd>diffget //2<CR>", { desc = "[G]it diffget target (left)" })
