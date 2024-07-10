@@ -20,3 +20,6 @@
 [submodule "bat/themes/sublime-darkula"]
 	path = bat/themes/sublime-darkula
 	url = https://github.com/gkjoyes/sublime-darkula
+[submodule "zsh/repos/fzf-tab"]
+	path = zsh/repos/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab

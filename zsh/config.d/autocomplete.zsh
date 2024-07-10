@@ -25,6 +25,7 @@ zstyle ':autocomplete:*' widget-style menu-select
 zstyle ':autocomplete:*' fzf-completion yes
 zstyle ':autocomplete:*' min-delay 0.1
 source ~/.dotfiles/zsh/repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source ~/.dotfiles/zsh/repos/fzf-tab/fzf-tab.plugin.zsh
 
 # zsh-autocomplete keys
 # https://github.com/marlonrichert/zsh-autocomplete/blob/main/.zshrc
@@ -88,6 +89,17 @@ bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M viins '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M vicmd '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
+
+# ctrl-f for fzf-tab completion
+my-fzf-tab-complete () {
+  functions[compadd]=$functions[-ftb-compadd]
+  zle fzf-tab-complete
+}
+zle -N my-fzf-tab-complete
+bindkey '^F' my-fzf-tab-complete
+bindkey -M viins '^F' my-fzf-tab-complete
+bindkey -M vicmd '^F' my-fzf-tab-complete
+bindkey -M menuselect '^F' send-break
 
 # escape to exit completion
 bindkey -M menuselect '\e' accept-line
