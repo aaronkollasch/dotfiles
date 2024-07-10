@@ -79,14 +79,19 @@ return {
                         color = { fg = "#ff9e64" },
                     },
                     {
-                        function()
-                            return require("noice").api.statusline.mode.get()
-                        end,
+                        require("noice").api.status.mode.get,
                         cond = function()
                             local status, noice = pcall(require, "noice")
-                            return status
-                                and noice.api.statusline.mode.has()
-                                and not string.find(noice.api.statusline.mode.get(), "^%-%-")
+                            return status and noice.api.status.mode.has()
+                            -- and not string.find(noice.api.status.mode.get(), "^%-%-")
+                        end,
+                        color = { fg = "#ff9e64" },
+                    },
+                    {
+                        require("noice").api.status.search.get,
+                        cond = function()
+                            local status, noice = pcall(require, "noice")
+                            return status and noice.api.status.search.has()
                         end,
                         color = { fg = "#ff9e64" },
                     },
