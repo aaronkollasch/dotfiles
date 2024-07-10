@@ -49,6 +49,7 @@
   "op.nvim": { "branch": "master", "commit": "af90e02d6c3338dcbc0ef250aafa9cac406bffad" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
   "rainbow_csv.nvim": { "branch": "main", "commit": "7f3fddfe813641035fac2cdf94c2ff69bb0bf0b9" },
+  "screenkey.nvim": { "branch": "main", "commit": "6c9b5a8a38d56f425a44bb8e4d3d49e6bb0cfa7d" },
   "smart-splits.nvim": { "branch": "master", "commit": "95833675cd92538bf9cded1d2d58d1fc271c5428" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
   "statuscol.nvim": { "branch": "main", "commit": "d6f7f5437c5404d958b88bb73e0721b1c0e09223" },

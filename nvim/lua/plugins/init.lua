@@ -149,6 +149,20 @@ return {
             require("NeoComposer.state").set_queued_macro_on_startup()
         end,
     },
+    {
+        "NStefan002/screenkey.nvim",
+        version = "*",
+        cmd = "Screenkey",
+        keys = {
+            { "<leader>ks", "<cmd>Screenkey toggle<cr>", desc = "[K]ey[S]creen" },
+        },
+        opts = {
+            group_mappings = true,
+            keys = {
+                ["<SPACE>"] = "<Spc>",
+            },
+        },
+    },
 
     -- buffer highlighting
     {
