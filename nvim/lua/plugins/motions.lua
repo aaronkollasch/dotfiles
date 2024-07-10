@@ -12,23 +12,23 @@ return {
             -- vim.keymap.set({ "o", "x" }, "ae", '<cmd>lua require("various-textobjs").entireBuffer()<CR>')
             -- vim.keymap.set({ "o", "x" }, "ie", '<cmd>lua require("various-textobjs").entireBuffer()<CR>')
 
-            -- vim.keymap.set({ "o", "x" }, "aS", '<cmd>lua require("various-textobjs").subword(false)<CR>')
-            -- vim.keymap.set({ "o", "x" }, "iS", '<cmd>lua require("various-textobjs").subword(true)<CR>')
-            vim.keymap.set({ "o", "x" }, "ak", '<cmd>lua require("various-textobjs").key(false)<CR>')
-            vim.keymap.set({ "o", "x" }, "ik", '<cmd>lua require("various-textobjs").key(true)<CR>')
-            vim.keymap.set({ "o", "x" }, "av", '<cmd>lua require("various-textobjs").value(false)<CR>')
-            vim.keymap.set({ "o", "x" }, "iv", '<cmd>lua require("various-textobjs").value(true)<CR>')
-            vim.keymap.set({ "o", "x" }, "aC", '<cmd>lua require("various-textobjs").mdFencedCodeBlock(false)<CR>')
-            vim.keymap.set({ "o", "x" }, "iC", '<cmd>lua require("various-textobjs").mdFencedCodeBlock(true)<CR>')
-            vim.keymap.set({ "o", "x" }, "am", '<cmd>lua require("various-textobjs").chainMember(false)<CR>')
-            vim.keymap.set({ "o", "x" }, "im", '<cmd>lua require("various-textobjs").chainMember(true)<CR>')
+            -- vim.keymap.set({ "o", "x" }, "aS", '<cmd>lua require("various-textobjs").subword("outer")<CR>')
+            -- vim.keymap.set({ "o", "x" }, "iS", '<cmd>lua require("various-textobjs").subword("inner")<CR>')
+            vim.keymap.set({ "o", "x" }, "ak", '<cmd>lua require("various-textobjs").key("outer")<CR>')
+            vim.keymap.set({ "o", "x" }, "ik", '<cmd>lua require("various-textobjs").key("inner")<CR>')
+            vim.keymap.set({ "o", "x" }, "av", '<cmd>lua require("various-textobjs").value("outer")<CR>')
+            vim.keymap.set({ "o", "x" }, "iv", '<cmd>lua require("various-textobjs").value("inner")<CR>')
+            vim.keymap.set({ "o", "x" }, "aC", '<cmd>lua require("various-textobjs").mdFencedCodeBlock("outer")<CR>')
+            vim.keymap.set({ "o", "x" }, "iC", '<cmd>lua require("various-textobjs").mdFencedCodeBlock("inner")<CR>')
+            vim.keymap.set({ "o", "x" }, "am", '<cmd>lua require("various-textobjs").chainMember("outer")<CR>')
+            vim.keymap.set({ "o", "x" }, "im", '<cmd>lua require("various-textobjs").chainMember("inner")<CR>')
 
             -- indentation textobj requires two parameters, the first for
             -- exclusion of the starting border, the second for the exclusion of<CR>'ing border
-            vim.keymap.set({ "o", "x" }, "ii", '<cmd>lua require("various-textobjs").indentation(true, true)<CR>')
-            vim.keymap.set({ "o", "x" }, "ai", '<cmd>lua require("various-textobjs").indentation(false, true)<CR>')
-            vim.keymap.set({ "o", "x" }, "iI", '<cmd>lua require("various-textobjs").indentation(true, true)<CR>')
-            vim.keymap.set({ "o", "x" }, "aI", '<cmd>lua require("various-textobjs").indentation(false, false)<CR>')
+            vim.keymap.set({ "o", "x" }, "ii", '<cmd>lua require("various-textobjs").indentation("inner", "inner")<CR>')
+            vim.keymap.set({ "o", "x" }, "ai", '<cmd>lua require("various-textobjs").indentation("outer", "inner")<CR>')
+            vim.keymap.set({ "o", "x" }, "iI", '<cmd>lua require("various-textobjs").indentation("inner", "inner")<CR>')
+            vim.keymap.set({ "o", "x" }, "aI", '<cmd>lua require("various-textobjs").indentation("outer", "outer")<CR>')
         end,
     },
     -- see https://github.com/kana/vim-textobj-user/wiki
