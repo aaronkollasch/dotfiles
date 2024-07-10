@@ -20,6 +20,8 @@ return {
             vim.keymap.set({ "o", "x" }, "iv", '<cmd>lua require("various-textobjs").value(true)<CR>')
             vim.keymap.set({ "o", "x" }, "aC", '<cmd>lua require("various-textobjs").mdFencedCodeBlock(false)<CR>')
             vim.keymap.set({ "o", "x" }, "iC", '<cmd>lua require("various-textobjs").mdFencedCodeBlock(true)<CR>')
+            vim.keymap.set({ "o", "x" }, "am", '<cmd>lua require("various-textobjs").chainMember(false)<CR>')
+            vim.keymap.set({ "o", "x" }, "im", '<cmd>lua require("various-textobjs").chainMember(true)<CR>')
 
             -- indentation textobj requires two parameters, the first for
             -- exclusion of the starting border, the second for the exclusion of<CR>'ing border
@@ -34,6 +36,7 @@ return {
     -- { "kana/vim-textobj-indent",             dependencies = "kana/vim-textobj-user", event = event }, -- ai/ii for a block of similarly indented lines / aI/iI for a block of lines with the same indentation
     { "kana/vim-textobj-entire",             dependencies = "kana/vim-textobj-user", event = event }, -- ae/ie for the entire region of the current buffer
     { "sgur/vim-textobj-parameter",          dependencies = "kana/vim-textobj-user", event = event }, -- a,/i, for an argument to a function
+    -- { "D4KU/vim-textobj-chainmember",        dependencies = "kana/vim-textobj-user", event = event }, -- am/im for a member in a member chain
     -- { "vimtaku/vim-textobj-keyvalue",        dependencies = "kana/vim-textobj-user", event = event }, -- ak/ik and av/iv for key/value
     { "jceb/vim-textobj-uri",                dependencies = "kana/vim-textobj-user", event = event }, -- au/iu for a URI, also adds go to open URL
     { "preservim/vim-textobj-sentence",      dependencies = "kana/vim-textobj-user", event = event,   -- as/is for the current sentence (replaces built-in objects/motions)
