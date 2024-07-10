@@ -28,6 +28,7 @@ setopt nosharehistory
 setopt NO_CASE_GLOB
 setopt CORRECT
 unsetopt CORRECT_ALL  # Don't correct arguments
+setopt interactive_comments # allow comments in interactive shells (needed for zsh-autocomplete)
 
 # Bash-like navigation
 autoload -U select-word-style
