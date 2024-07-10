@@ -14,6 +14,7 @@ local ts_opts = {
         "query",
         "markdown",
         "markdown_inline",
+        "rst",
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)

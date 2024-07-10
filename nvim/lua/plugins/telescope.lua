@@ -11,6 +11,7 @@ return {
 
         -- Telescope add-ons
         { "nvim-telescope/telescope-ui-select.nvim" },
+        { "crispgm/telescope-heading.nvim" },
     },
     event = "VeryLazy",
     config = function()
