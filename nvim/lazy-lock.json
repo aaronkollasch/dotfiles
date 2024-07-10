@@ -13,6 +13,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "05a9ab28b53f71d1aece421ef32fee2cb857a843" },
   "darcula": { "branch": "master", "commit": "206ef67bb6e49c03f282625f1c866b5fef0c8a90" },
   "dash.vim": { "branch": "master", "commit": "25b17d9488454a1fcdbb2cbe829a23226f95e3c2" },
+  "decisive.nvim": { "branch": "main", "commit": "18ad9a657dd2ca2d100d246271dbda843f17619e" },
   "edge": { "branch": "master", "commit": "566f01e9476f5bd288557102563343937b7521d2" },
   "friendly-snippets": { "branch": "main", "commit": "45a1b96e46efe5fce8af325d4bed45feb9d29d0f" },
   "gitsigns.nvim": { "branch": "main", "commit": "375c44bdfdde25585466a966f00c2e291db74f2d" },

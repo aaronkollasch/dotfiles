@@ -56,6 +56,23 @@ return {
         end,
         config = true,
     },
+    {
+        "aaronkollasch/decisive.nvim",
+        ft = {
+            "csv",
+            "tsv",
+        },
+        -- stylua: ignore
+        keys = {
+            { '<leader>rl', ":lua require('decisive').align_csv({})<cr>",      mode = 'n', silent = true, desc = "[R]ea[L]ign CSV" },
+            { '<leader>rL', ":lua require('decisive').align_csv_clear({})<cr>",mode = 'n', silent = true, desc = "[R]ea[L]ign CSV clear" },
+            { '[c', ":lua require('decisive').align_csv_prev_col()<cr>",       mode = 'n', silent = true, desc = "Previous CSV column" },
+            { ']c', ":lua require('decisive').align_csv_next_col()<cr>",       mode = 'n', silent = true, desc = "Next CSV column" },
+        },
+        opts = {
+            enable_text_objects = true,
+        },
+    },
 
     -- additional info sources
     {

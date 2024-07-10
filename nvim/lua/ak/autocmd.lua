@@ -79,3 +79,16 @@ autocmd("FileType", {
         )
     end,
 })
+
+-- Automatically align CSV/TSV columns
+vim.api.nvim_create_autocmd("FileType", {
+    desc = "Align CSV/TSV columns",
+    pattern = { "csv", "tsv" },
+    callback = function(args)
+        local MAX_FILESIZE = 1000 * 1024 -- 1 MB
+        local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
+        if ok and stats and stats.size < MAX_FILESIZE then
+            require("decisive").align_csv({})
+        end
+    end,
+})
