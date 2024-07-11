@@ -26,6 +26,7 @@ _ls_colors () {
         printf "$LS_COLORS"
     fi
 }
+zstyle ':completion:*' list-colors ${(s.:.)$(_ls_colors)}
 
 if command -v exa &>/dev/null; then
     alias l="exa"

@@ -92,6 +92,7 @@ bindkey -M vicmd '\t' menu-select "$terminfo[kcbt]" menu-select
 bindkey -M menuselect '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
 
 # ctrl-f for fzf-tab completion
+zstyle ":fzf-tab:*" default-color ""
 my-fzf-tab-complete () {
   functions[compadd]=$functions[-ftb-compadd]
   zle fzf-tab-complete
