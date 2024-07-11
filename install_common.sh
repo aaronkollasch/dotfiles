@@ -54,6 +54,9 @@ install_link ../../"$SCRIPT_DIR"/bat/config "$HOME"/.config/bat/config || retval
 install_link ../../"$SCRIPT_DIR"/bat/themes "$HOME"/.config/bat/themes || retval=$?
 [ "$HOME"/.cache/bat/themes.bin -nt "$HOME/$SCRIPT_DIR"/bat/themes/sublime-darkula/dracula.tmTheme ] || { bat cache --build && echo "Created ~/.cache/bat/ with bat" || echo "Could not create bat cache"; }
 
+create_dir "$HOME"/.config/fzf || retval=$?
+install_link ../../"$SCRIPT_DIR"/fzf/fzfrc "$HOME"/.config/fzf/fzfrc || retval=$?
+
 create_dir "$HOME"/.config/vivid || retval=$?
 install_link ../../"$SCRIPT_DIR"/vivid/theme "$HOME"/.config/vivid/theme || retval=$?
 
