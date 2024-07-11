@@ -16,8 +16,8 @@ lsp.ensure_installed({
     "eslint",
     "lua_ls",
     "rust_analyzer",
-    -- "pyright",
-    "pylsp",
+    "basedpyright",
+    -- "pylsp",
     "ruff_lsp",
     "bashls",
 })
@@ -154,15 +154,11 @@ require("lspconfig").lua_ls.setup({
 })
 
 -- python setup
-require("lspconfig").pylsp.setup({
+require("lspconfig").basedpyright.setup({
     settings = {
-        pylsp = {
-            plugins = {
-                -- linters replaced by ruff_lsp
-                pyflakes = { enabled = false },
-                flake8 = { enabled = false },
-                mccabe = { enabled = false },
-                pycodestyle = { enabled = false },
+        basedpyright = {
+            analysis = {
+                typeCheckingMode = "strict", -- disable deprecation warnings for now
             },
         },
     },
