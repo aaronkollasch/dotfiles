@@ -11,6 +11,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
         -e 's/#LIGHT\n#-/#LIGHT\n-/g' -e 's/#DARK\n-/#DARK\n#-/g' \
         -e 's/"LIGHT\n" /"LIGHT\n /g' -e 's/"DARK\n /"DARK\n" /g' \
         -e 's/"workbench.colorTheme": "Darcula"/"workbench.colorTheme": "Night Owl Light (No Italics)"/g' \
+        -e 's/--color=dark/--color=light/g' \
         "$@"
     else
       sed -e ':a' -e 'N' -e '$!ba' \
@@ -19,6 +20,7 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
         -e 's/#LIGHT\n#-/#LIGHT\n-/g' -e 's/#DARK\n-/#DARK\n#-/g' \
         -e 's/"LIGHT\n" /"LIGHT\n /g' -e 's/"DARK\n /"DARK\n" /g' \
         -e 's/"workbench.colorTheme": "Darcula"/"workbench.colorTheme": "Night Owl Light (No Italics)"/g' \
+        -e 's/--color=dark/--color=light/g' \
         "$@"
     fi
   fi

@@ -1,4 +1,5 @@
 # fzf integration
+export FZF_DEFAULT_OPTS_FILE="$HOME/.dotfiles/fzf/fzfrc"
 if [ -d /usr/share/doc/fzf/examples ]; then
   if [[ $- == *i* ]]; then
     [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh

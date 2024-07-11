@@ -2,6 +2,7 @@ git/config filter=alwaysdark
 git/gitconfig_mac filter=alwaysdark
 git/gitconfig_linux filter=alwaysdark
 bat/config filter=alwaysdark
+fzf/fzfrc filter=alwaysdark
 vivid/theme filter=alwaysdark
 vim/vimrc filter=alwaysdark
 nvim/lua/ak/colors.lua filter=alwaysdark
