@@ -146,6 +146,7 @@ alias grm='git rm'
 # rebase
 alias grb='git rebase'
 alias grbc='git rebase --continue'
+alias gra='git rebase -i --autosquash'
 alias grm='git rebase $(get_default_branch)'
 alias grmi='git rebase $(get_default_branch) -i'
 alias grma='GIT_SEQUENCE_EDITOR=: git rebase  $(get_default_branch) -i --autosquash'
