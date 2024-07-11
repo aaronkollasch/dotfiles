@@ -92,7 +92,7 @@ require_repo = true
 description = "Show if index.lock exists in the repo"
 symbol = " "
 style = "bold red"
-format = "is [${symbol}LOCKED]($style)"
+format = "is [${symbol}LOCKED ]($style)"
 
 [buf]
 symbol = " "
