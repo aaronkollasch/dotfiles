@@ -75,6 +75,11 @@ return {
 
             -- Text object
             map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "git hunk" })
+
+            local status, wk = pcall(require, "which-key")
+            if status then
+                wk.register({ ["<leader>h"] = { name = "[H]unk" } }, { buffer = bufnr })
+            end
         end,
     },
 }

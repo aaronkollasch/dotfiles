@@ -91,6 +91,8 @@ return {
             ["aI"] = [[an indent (include above/below)]],
             ["ik"] = [[inner key]],
             ["ak"] = [[a key (with quotes)]],
+            ["im"] = [[inner chainMember]],
+            ["am"] = [[a chainMember (with dot)]],
             ["iv"] = [[inner value]],
             ["av"] = [[a value (with quotes)]],
             ["iS"] = [[inner subword]],
