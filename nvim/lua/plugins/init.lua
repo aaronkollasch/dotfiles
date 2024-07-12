@@ -6,6 +6,12 @@ return {
         cond = require("ak.opts").icons_enabled,
     },
 
+    -- cloak
+    {
+        "laytan/cloak.nvim",
+        opts = {},
+    },
+
     -- extra language support
     {
         "NoahTheDuke/vim-just",
