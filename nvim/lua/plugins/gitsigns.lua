@@ -1,11 +1,10 @@
--- Do not load up plugin when in diff mode.
-if vim.opt.diff:get() then
-    return {}
-end
-
 return {
     "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
+    cond = function()
+        -- Do not load up plugin when in diff mode.
+        return not vim.opt.diff:get()
+    end,
     opts = {
         attach_to_untracked = true,
         current_line_blame_opts = {
