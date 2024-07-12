@@ -40,17 +40,23 @@ lsp.set_sign_icons(sign_icons)
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local function map(mode, l, r, opts)
+    opts = opts or {}
+    opts.noremap = true
+    opts.silent = true
+    vim.keymap.set(mode, l, r, opts)
+end
+
 -- stylua: ignore start
-local opts = { noremap = true, silent = true }
-vim.keymap.set("n", "<leader>e",  vim.diagnostic.open_float, { desc = "Open LSP float", unpack(opts) })
-vim.keymap.set("n", "[d",         vim.diagnostic.goto_prev,  { desc = "Previous diagnostic", unpack(opts) })
-vim.keymap.set("n", "]d",         vim.diagnostic.goto_next,  { desc = "Next diagnostic", unpack(opts) })
-vim.keymap.set("n", "<leader>q",  function()
+map("n", "<leader>e",  vim.diagnostic.open_float, { desc = "Open LSP float" })
+map("n", "[d",         vim.diagnostic.goto_prev,  { desc = "Previous diagnostic" })
+map("n", "]d",         vim.diagnostic.goto_next,  { desc = "Next diagnostic" })
+map("n", "<leader>q",  function()
     require("telescope.builtin").diagnostics()
-end,                                                         { desc = "Show diagnostics", unpack(opts) })
-vim.keymap.set("n", "<leader>wd",  function()
+end,                                              { desc = "Show diagnostics" })
+map("n", "<leader>wd",  function()
     require("telescope.builtin").diagnostics()
-end,                                                         { desc = "[W]orkspace [D]iagnostics", unpack(opts) })
+end,                                              { desc = "[W]orkspace [D]iagnostics" })
 -- stylua: ignore end
 
 -- Use an on_attach function to only map the following keys
@@ -61,49 +67,56 @@ lsp.on_attach(function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.api.nvim_set_option_value("omnifunc", "v:lua.vim.lsp.omnifunc", { buf = bufnr })
 
+    local function bufmap(mode, l, r, bufopts)
+        bufopts = bufopts or {}
+        bufopts.buffer = bufnr
+        bufopts.noremap = true
+        bufopts.silent = true
+        vim.keymap.set(mode, l, r, bufopts)
+    end
+
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     -- stylua: ignore start
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("n", "gD",             vim.lsp.buf.declaration,      { desc = "[G]oto [D]eclaration", unpack(bufopts) })
-    vim.keymap.set("n", "gd",             builtin.lsp_definitions,      { desc = "[G]oto [d]efinition", unpack(bufopts) })
-    vim.keymap.set("n", "K",              vim.lsp.buf.hover,            { desc = "LSP Hover", unpack(bufopts) })
-    vim.keymap.set("n", "gi",             builtin.lsp_implementations,  { desc = "[G]oto [I]mplementation", unpack(bufopts) })
-    vim.keymap.set({ "i", "s" }, "<C-h>", vim.lsp.buf.signature_help,   { desc = "Show signature help", unpack(bufopts) })
-    vim.keymap.set("n", "<leader>wa",     vim.lsp.buf.add_workspace_folder,
-                                                                        { desc = "[W]orkspace [A]dd folder", unpack(bufopts) })
-    vim.keymap.set("n", "<leader>wr",     vim.lsp.buf.remove_workspace_folder,
-                                                                        { desc = "[W]orkspace [R]emove folder", unpack(bufopts) })
-    vim.keymap.set("n", "<leader>wl",     function()
+    bufmap("n", "gD",             vim.lsp.buf.declaration,      { desc = "[G]oto [D]eclaration" })
+    bufmap("n", "gd",             builtin.lsp_definitions,      { desc = "[G]oto [d]efinition" })
+    bufmap("n", "K",              vim.lsp.buf.hover,            { desc = "LSP Hover" })
+    bufmap("n", "gi",             builtin.lsp_implementations,  { desc = "[G]oto [I]mplementation" })
+    bufmap({ "i", "s" }, "<C-h>", vim.lsp.buf.signature_help,   { desc = "Show signature help" })
+    bufmap("n", "<leader>wa",     vim.lsp.buf.add_workspace_folder,
+                                                                { desc = "[W]orkspace [A]dd folder" })
+    bufmap("n", "<leader>wr",     vim.lsp.buf.remove_workspace_folder,
+                                                                { desc = "[W]orkspace [R]emove folder" })
+    bufmap("n", "<leader>wl",     function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end,                                                                { desc = "[W]orkspace [L]ist", unpack(bufopts) })
-    vim.keymap.set("n", "<leader>D",      builtin.lsp_type_definitions, { desc = "Type [D]efinition", unpack(bufopts) })
-    vim.keymap.set("n", "<S-Space>D",     builtin.lsp_type_definitions, { desc = "Type [D]efinition", unpack(bufopts) })
-    vim.keymap.set("n", "<leader>rn",     vim.lsp.buf.rename,           { desc = "[R]e[N]ame", unpack(bufopts) })
-    vim.keymap.set("n", "<leader>ca",     vim.lsp.buf.code_action,      { desc = "[C]ode  [A]ctions", unpack(bufopts) })
-    vim.keymap.set("n", "<leader>ci",     builtin.lsp_incoming_calls,   { desc = "[C]alls [I]ncoming", unpack(bufopts) })
-    vim.keymap.set("n", "<leader>co",     builtin.lsp_outgoing_calls,   { desc = "[C]alls [O]utgoing", unpack(bufopts) })
-    vim.keymap.set("n", "gr",             builtin.lsp_references,       { desc = "[G]oto [R]eferences", unpack(bufopts) })
-    vim.keymap.set("n", "<leader>fm",      function()
+    end,                                                        { desc = "[W]orkspace [L]ist" })
+    bufmap("n", "<leader>D",      builtin.lsp_type_definitions, { desc = "Type [D]efinition" })
+    bufmap("n", "<S-Space>D",     builtin.lsp_type_definitions, { desc = "Type [D]efinition" })
+    bufmap("n", "<leader>rn",     vim.lsp.buf.rename,           { desc = "[R]e[N]ame" })
+    bufmap("n", "<leader>ca",     vim.lsp.buf.code_action,      { desc = "[C]ode  [A]ctions" })
+    bufmap("n", "<leader>ci",     builtin.lsp_incoming_calls,   { desc = "[C]alls [I]ncoming" })
+    bufmap("n", "<leader>co",     builtin.lsp_outgoing_calls,   { desc = "[C]alls [O]utgoing" })
+    bufmap("n", "gr",             builtin.lsp_references,       { desc = "[G]oto [R]eferences" })
+    bufmap("n", "<leader>fm",      function()
         if vim.o.filetype == "lua" then
             require("stylua-nvim").format_file()
         else
             vim.lsp.buf.format({ async = true })
         end
-    end,                                                                { desc = "[F]or[M]at (async)", unpack(bufopts) })
-    vim.keymap.set("n", "<leader>fmt",      function()
+    end,                                                        { desc = "[F]or[M]at (async)" })
+    bufmap("n", "<leader>fmt",      function()
         if vim.o.filetype == "lua" then
             require("stylua-nvim").format_file()
         else
             vim.lsp.buf.format({ async = true })
         end
-    end,                                                                { desc = "[F]or[M]a[T] (async)", unpack(bufopts) })
+    end,                                                        { desc = "[F]or[M]a[T] (async)" })
     -- stylua: ignore end
 
     -- enable <c-j> and <c-k> arrow keys
-    vim.keymap.set("i", "<c-x><c-j>", "<c-x><c-n>", bufopts)
-    vim.keymap.set("i", "<c-x><c-k>", "<c-x><c-p>", bufopts)
-    vim.cmd([[inoremap <c-j> <C-R>=pumvisible() ? "\<lt>C-N>" : "\<lt>Down>"<CR>]])
-    vim.cmd([[inoremap <c-k> <C-R>=pumvisible() ? "\<lt>C-P>" : "\<lt>Up>"<CR>]])
+    bufmap("i", "<c-x><c-j>", "<c-x><c-n>")
+    bufmap("i", "<c-x><c-k>", "<c-x><c-p>")
+    vim.cmd([[inoremap <buffer> <c-j> <C-R>=pumvisible() ? "\<lt>C-N>" : "\<lt>Down>"<CR>]])
+    vim.cmd([[inoremap <buffer> <c-k> <C-R>=pumvisible() ? "\<lt>C-P>" : "\<lt>Up>"<CR>]])
 
     if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
         local semantic = client.config.capabilities.textDocument.semanticTokens
@@ -120,9 +133,9 @@ lsp.on_attach(function(client, bufnr)
     end
 
     if client.server_capabilities.inlayHintProvider then
-        vim.keymap.set("n", "<leader>ch", function()
+        bufmap("n", "<leader>ch", function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }))
-        end, { desc = "[C]ode  [H]ints", unpack(bufopts) })
+        end, { desc = "[C]ode  [H]ints" })
         if client.name == "rust_analyzer" then
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
         end
