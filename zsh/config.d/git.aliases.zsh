@@ -214,6 +214,12 @@ case $OSTYPE in
     ;;
 esac
 
+# worktree
+alias gwt='git worktree'
+alias gwta='git worktree add'
+alias gwtl='git worktree list'
+alias gwtrm='git worktree remove'
+
 # functions
 function gdv() {
   git diff --ignore-all-space "$@" | vim -R -
