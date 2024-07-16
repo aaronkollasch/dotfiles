@@ -94,4 +94,4 @@
 [branch]
 	sort = -committerdate
 [status]
-	submoduleSummary = true
+	submoduleSummary = 30
