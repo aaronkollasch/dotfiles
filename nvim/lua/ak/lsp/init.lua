@@ -9,6 +9,7 @@ require("mason-lspconfig").setup({
         "rust_analyzer",
         "basedpyright",
         -- "pylsp",
+        "ruff",
         "ruff_lsp",
         "bashls",
         "clangd",
@@ -94,6 +95,22 @@ require("mason-lspconfig").setup({
     },
 })
 
+require("conform").setup({
+    formatters_by_ft = {
+        lua = { "stylua" },
+        python = function(bufnr)
+            if require("conform").get_formatter_info("ruff_format", bufnr).available then
+                return { "ruff_format" }
+            else
+                return { "isort", "black" }
+            end
+        end,
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+        rust = { "rustfmt" },
+    },
+})
+
 -- see https://github.com/neovim/nvim-lspconfig/issues/2366#issuecomment-1367098168
 vim.lsp.handlers["workspace/diagnostic/refresh"] = function(_, _, ctx)
     local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
@@ -176,19 +193,8 @@ lsp_zero.on_attach(function(client, bufnr)
     bufmap("n", "<leader>ci",     builtin.lsp_incoming_calls,   { desc = "[C]alls [I]ncoming" })
     bufmap("n", "<leader>co",     builtin.lsp_outgoing_calls,   { desc = "[C]alls [O]utgoing" })
     bufmap("n", "gr",             builtin.lsp_references,       { desc = "[G]oto [R]eferences" })
-    bufmap("n", "<leader>fm",      function()
-        if vim.o.filetype == "lua" then
-            require("stylua-nvim").format_file()
-        else
-            vim.lsp.buf.format({ async = true })
-        end
-    end,                                                        { desc = "[F]or[M]at (async)" })
     bufmap("n", "<leader>fmt",      function()
-        if vim.o.filetype == "lua" then
-            require("stylua-nvim").format_file()
-        else
-            vim.lsp.buf.format({ async = true })
-        end
+        require("conform").format({ async = true, bufnr = bufnr, lsp_format = "fallback" })
     end,                                                        { desc = "[F]or[M]a[T] (async)" })
     -- stylua: ignore end
 

@@ -27,6 +27,7 @@ return {
 
         -- Additional dependencies
         -- { "mrcjkb/rustaceanvim" },
+        { "stevearc/conform.nvim" },
     },
     event = { "BufReadPre", "BufNewFile" },
     cmd = { "Mason", "MasonUpdate", "LspInfo", "LspInstall" },
