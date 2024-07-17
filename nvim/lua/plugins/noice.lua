@@ -75,6 +75,13 @@ return {
                     opts = { skip = true },
                 },
             },
+            views = {
+                mini = {
+                    win_options = {
+                        winblend = 0,
+                    },
+                },
+            },
         },
     },
 }
