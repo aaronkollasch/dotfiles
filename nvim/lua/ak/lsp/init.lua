@@ -1,4 +1,98 @@
-local lsp = require("lsp-zero").preset({})
+local lsp_zero = require("lsp-zero")
+
+require("mason").setup({})
+require("mason-lspconfig").setup({
+    ensure_installed = {
+        "tsserver",
+        "eslint",
+        "lua_ls",
+        "rust_analyzer",
+        "basedpyright",
+        -- "pylsp",
+        "ruff_lsp",
+        "bashls",
+        "clangd",
+    },
+    handlers = {
+        function(server_name)
+            require("lspconfig")[server_name].setup({})
+        end,
+
+        lua_ls = function()
+            -- lua setup
+            require("lspconfig").lua_ls.setup({
+                settings = {
+                    Lua = {
+                        -- Do not send telemetry data containing a randomized but unique identifier
+                        telemetry = {
+                            enable = false,
+                        },
+                        workspace = {
+                            -- Make the server aware of Neovim runtime files
+                            library = vim.api.nvim_get_runtime_file("", true),
+                            checkThirdParty = false,
+                        },
+                    },
+                },
+                commands = {
+                    Format = {
+                        function()
+                            require("stylua-nvim").format_file()
+                        end,
+                    },
+                },
+            })
+        end,
+
+        -- python setup
+        basedpyright = function()
+            require("lspconfig").basedpyright.setup({
+                settings = {
+                    basedpyright = {
+                        analysis = {
+                            typeCheckingMode = "strict", -- disable deprecation warnings for now
+                        },
+                    },
+                },
+            })
+        end,
+        ruff_lsp = function()
+            require("lspconfig").ruff_lsp.setup({
+                init_options = {
+                    settings = {
+                        args = {
+                            "--line-length=120",
+                        },
+                    },
+                },
+            })
+        end,
+
+        clangd = function()
+            local capabilities = lsp_zero.get_capabilities()
+            capabilities.offsetEncoding = { "utf-16" }
+            require("lspconfig").clangd.setup({
+                capabilities = capabilities,
+            })
+        end,
+
+        rust_analyzer = function()
+            -- rust setup
+            require("lspconfig").rust_analyzer.setup({
+                settings = {
+                    -- to enable rust-analyzer settings visit:
+                    -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+                    ["rust-analyzer"] = {
+                        -- enable clippy on save
+                        checkOnSave = {
+                            command = "clippy",
+                        },
+                    },
+                },
+            })
+        end,
+    },
+})
 
 -- see https://github.com/neovim/nvim-lspconfig/issues/2366#issuecomment-1367098168
 vim.lsp.handlers["workspace/diagnostic/refresh"] = function(_, _, ctx)
@@ -7,20 +101,6 @@ vim.lsp.handlers["workspace/diagnostic/refresh"] = function(_, _, ctx)
     vim.diagnostic.reset(ns, bufnr)
     return true
 end
-
--- disabled, see https://www.reddit.com/r/neovim/comments/12wxwxs/comment/jhgskez
--- lsp.preset("recommended")
-
-lsp.ensure_installed({
-    "tsserver",
-    "eslint",
-    "lua_ls",
-    "rust_analyzer",
-    "basedpyright",
-    -- "pylsp",
-    "ruff_lsp",
-    "bashls",
-})
 
 local sign_icons = {
     error = "E",
@@ -36,7 +116,7 @@ if require("ak.opts").icons_enabled then
         info = "󰌵",
     }
 end
-lsp.set_sign_icons(sign_icons)
+lsp_zero.set_sign_icons(sign_icons)
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -61,7 +141,7 @@ end,                                              { desc = "[W]orkspace [D]iagno
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-lsp.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(client, bufnr)
     local builtin = require("telescope.builtin")
 
     -- Enable completion triggered by <c-x><c-o>
@@ -142,71 +222,6 @@ lsp.on_attach(function(client, bufnr)
     end
 end)
 
--- lua setup
-require("lspconfig").lua_ls.setup({
-    settings = {
-        Lua = {
-            -- Do not send telemetry data containing a randomized but unique identifier
-            telemetry = {
-                enable = false,
-            },
-            workspace = {
-                -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
-                checkThirdParty = false,
-            },
-        },
-    },
-    commands = {
-        Format = {
-            function()
-                require("stylua-nvim").format_file()
-            end,
-        },
-    },
-})
-
--- python setup
-require("lspconfig").basedpyright.setup({
-    settings = {
-        basedpyright = {
-            analysis = {
-                typeCheckingMode = "strict", -- disable deprecation warnings for now
-            },
-        },
-    },
-})
-require("lspconfig").ruff_lsp.setup({
-    init_options = {
-        settings = {
-            args = {
-                "--line-length=120",
-            },
-        },
-    },
-})
-
--- clangd setup
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.offsetEncoding = { "utf-16" }
-require("lspconfig").clangd.setup({
-    capabilities = capabilities,
-})
-
--- rust setup
-require("lspconfig").rust_analyzer.setup({
-    settings = {
-        -- to enable rust-analyzer settings visit:
-        -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-        ["rust-analyzer"] = {
-            -- enable clippy on save
-            checkOnSave = {
-                command = "clippy",
-            },
-        },
-    },
-})
-
 local diagnostic_config = {
     virtual_text = {
         prefix = "■",
@@ -218,13 +233,11 @@ if not require("ak.opts").icons_enabled then
 end
 vim.diagnostic.config(diagnostic_config)
 
-lsp.setup()
-
 -- completion setup
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
+local cmp_mappings = lsp_zero.defaults.cmp_mappings({
     ["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
     ["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
     ["<C-l>"] = cmp.mapping.confirm({ select = true }),

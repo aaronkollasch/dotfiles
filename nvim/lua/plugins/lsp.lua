@@ -1,8 +1,7 @@
 -- LSP support with lsp-zero
--- see https://github.com/VonHeikemen/lsp-zero.nvim/blob/v2.x/doc/md/guides/lazy-loading-with-lazy-nvim.md
 return {
     "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
+    branch = "v3.x",
     dependencies = {
         -- LSP Support
         { "neovim/nvim-lspconfig" },
