@@ -126,7 +126,7 @@ return {
         "mbbill/undotree",
         cmd = "UndotreeToggle",
         keys = {
-            { "<leader>u", vim.cmd.UndotreeToggle, desc = "Toggle undotree" },
+            { "<leader>u", vim.cmd.UndotreeToggle, desc = "[U]ndotree Toggle" },
         },
         config = function()
             vim.g.undotree_SetFocusWhenToggle = 1

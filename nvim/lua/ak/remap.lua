@@ -88,7 +88,7 @@ vim.keymap.set("n", "<leader>x", function()
       exe getline(">")
     endif
     ]])
-end, { desc = "Execute this line" })
+end, { desc = "E[X]ecute this line" })
 vim.keymap.set("v", "<leader>x", function()
     vim.cmd([[
     if &ft == 'lua'
@@ -97,7 +97,7 @@ vim.keymap.set("v", "<leader>x", function()
       exe join(getline("'<","'>"),'<Bar>')
     endif
     ]])
-end, { desc = "Execute selection" })
+end, { desc = "E[X]ecute selection" })
 vim.keymap.set("n", "<leader><leader>x", ":call ak#save_and_exec()<CR>", { desc = "Save and execute this file" })
 
 -- <leader>il to inspect letter
