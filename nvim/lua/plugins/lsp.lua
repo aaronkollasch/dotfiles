@@ -22,8 +22,10 @@ return {
         { "hrsh7th/cmp-nvim-lua" },
 
         -- Snippets
-        { "L3MON4D3/LuaSnip" },
-        { "rafamadriz/friendly-snippets" },
+        {
+            "L3MON4D3/LuaSnip",
+            dependencies = { "rafamadriz/friendly-snippets" },
+        },
 
         -- Additional dependencies
         -- { "mrcjkb/rustaceanvim" },
