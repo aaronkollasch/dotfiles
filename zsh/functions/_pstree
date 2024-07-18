@@ -1,0 +1,15 @@
+#compdef pstree
+
+_pstree() {
+    _arguments \
+        "(-f -g -l -u -U -s -p -w 1)-h[show this help message and exit]" \
+        "-f[read output of ps from <file>]:file:_files" \
+        "-g[use graphics chars for tree]:graphics chars:((1\:IBM-850 2\:VT100 3\:UTF-8))" \
+        "-l[print tree to n level deep]:n:" \
+        "-u[show only branches containing processes of <user>]:user:_users" \
+        "-U[don't show branches containing only root processes]" \
+        "-s[show only branches containing process with <string> in commandline]:string:" \
+        "-p[show only branches containing process <pid>]:pid:_pids" \
+        "-w[wide output, not truncated to window width]" \
+        "1::pid:_pids"
+}
