@@ -68,6 +68,7 @@ require("mason-lspconfig").setup({
                 },
             })
         end,
+        ruff = function() end,
 
         clangd = function()
             local capabilities = lsp_zero.get_capabilities()
