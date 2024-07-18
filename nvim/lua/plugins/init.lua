@@ -249,11 +249,6 @@ return {
             duration = 200,
         },
     },
-    {
-        "moyiz/command-and-cursor.nvim",
-        event = "VeryLazy",
-        opts = {},
-    },
 
     -- tpope
     { "tpope/vim-sleuth", event = { "BufReadPre", "BufNewFile" } },
