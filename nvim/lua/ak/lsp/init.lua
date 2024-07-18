@@ -96,6 +96,41 @@ require("mason-lspconfig").setup({
     },
 })
 
+-- set basedpyright type checking mode without restarting server
+-- see https://github.com/neovim/nvim-lspconfig/blob/01e08d4bf1c35e5126b2ad5209725e4c552289ab/lua/lspconfig/server_configurations/basedpyright.lua#L28-L41
+local function pyright_set_type_checking_mode(mode)
+    local clients = require("lspconfig.util").get_lsp_clients({
+        bufnr = vim.api.nvim_get_current_buf(),
+        name = "basedpyright",
+    })
+    for _, client in ipairs(clients) do
+        if client.settings then
+            client.settings.basedpyright = vim.tbl_deep_extend(
+                "force",
+                client.settings.basedpyright or {},
+                { analysis = { typeCheckingMode = mode } }
+            )
+        else
+            client.config.settings = vim.tbl_deep_extend(
+                "force",
+                client.config.settings,
+                { basedpyright = { analysis = { typeCheckingMode = mode } } }
+            )
+        end
+        client.notify("workspace/didChangeConfiguration", { settings = nil })
+    end
+end
+
+vim.api.nvim_create_user_command("PyrightSetTypeCheckingMode", function(opts)
+    local typeCheckingMode = opts.fargs[1] or "standard"
+    pyright_set_type_checking_mode(typeCheckingMode)
+end, {
+    nargs = 1,
+    complete = function()
+        return { "off", "basic", "standard", "strict", "all" }
+    end,
+})
+
 require("conform").setup({
     formatters_by_ft = {
         lua = { "stylua" },
