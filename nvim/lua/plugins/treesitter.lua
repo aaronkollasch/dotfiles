@@ -92,6 +92,9 @@ local ts_opts = {
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        dependencies = {
+            { "nvim-treesitter/nvim-treesitter-textobjects" },
+        },
         build = ":TSUpdate",
         event = { "BufReadPost", "BufNewFile" },
         opts = ts_opts,
@@ -99,7 +102,6 @@ return {
             require("nvim-treesitter.configs").setup(opts)
         end,
     },
-    { "nvim-treesitter/nvim-treesitter-textobjects", event = "VeryLazy" },
     { -- show code context in top line(s)
         "nvim-treesitter/nvim-treesitter-context",
         event = { "BufReadPost", "BufNewFile" },
