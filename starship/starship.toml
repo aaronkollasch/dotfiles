@@ -6,7 +6,7 @@ continuation_prompt = "[ ](bg:244) "
 [character]
 success_symbol = "[](bold 69)"
 error_symbol = "[](bold 69)"
-vicmd_symbol = "[](bold 69)"
+vimcmd_symbol = "[](bold 69)"
 
 [status]
 style = "bg:57 fg:231 bold"
