@@ -87,7 +87,7 @@ diverged = "⇕⇡${ahead_count}⇣${behind_count}"
 behind = "⇣${count}"
 
 [custom.git_lock]
-when = 'test -f "$(git rev-parse --git-dir 2> /dev/null)"/index.lock'
+when = 'test -f "$(git --no-optional-locks rev-parse --git-dir 2> /dev/null)"/index.lock'
 require_repo = true
 description = "Show if index.lock exists in the repo"
 symbol = " "
