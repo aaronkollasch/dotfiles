@@ -17,7 +17,13 @@ return {
                     ["neo-tree-popup"] = false,
                 },
             })
-            vim.keymap.set("i", "<Tab>", neocodeium.accept)
+            vim.keymap.set("i", "<Tab>", function()
+                if neocodeium.visible() then
+                    neocodeium.accept()
+                else
+                    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, true, true), "n", true)
+                end
+            end)
             vim.keymap.set("i", "<S-Tab>", neocodeium.cycle)
         end,
     },
