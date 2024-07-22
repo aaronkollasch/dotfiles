@@ -1,6 +1,9 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+local config = wezterm.config_builder()
+config:set_strict_mode(false)
+
 -- Lua string utilities
 -- https://gist.github.com/kgriffs/124aae3ac80eefe57199451b823c24ec
 function string:contains(sub)
@@ -85,6 +88,7 @@ local color_schemes = {
     ["Custom Dark"] = colors_dark,
     ["Custom Light"] = colors_light,
 }
+config.color_schemes = color_schemes
 
 -- https://wezfurlong.org/wezterm/config/lua/wezterm.gui/get_appearance.html
 local function scheme_for_appearance(appearance)
@@ -95,6 +99,7 @@ local function scheme_for_appearance(appearance)
     end
 end
 local color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
+config.color_scheme = color_scheme
 
 local right_colors_dark, right_colors_light, right_text_fg_dark, right_text_fg_light
 -- Color palette for the backgrounds of each cell
@@ -248,6 +253,19 @@ else
     bold_font = font_with_fallback("JetBrains Mono", { weight = "Bold" })
 end
 
+config.font = main_font
+config.font_size = font_size
+config.font_rules = {
+    {
+        italic = true,
+        font = italic_font,
+    },
+    {
+        intensity = "Bold",
+        font = bold_font,
+    },
+}
+
 ---------
 -- SSH --
 ---------
@@ -260,6 +278,7 @@ if not status then
         ssh_domains = {}
     end
 end
+config.ssh_domains = ssh_domains
 
 ----------
 -- KEYS --
@@ -532,6 +551,9 @@ local key_tables = {
     copy_mode = copy_mode,
 }
 
+config.keys = keys
+config.key_tables = key_tables
+
 -----------
 -- MOUSE --
 -----------
@@ -603,6 +625,8 @@ local bypass_mouse_reporting_modifiers = "SHIFT"
 if wezterm.target_triple:contains("-apple-darwin") then
     bypass_mouse_reporting_modifiers = "ALT"
 end
+config.mouse_bindings = mouse_bindings
+config.bypass_mouse_reporting_modifiers = bypass_mouse_reporting_modifiers
 
 ----------
 -- MISC --
@@ -613,39 +637,19 @@ if wezterm.target_triple:contains("-apple-darwin") then
     initial_cols = 200
     initial_rows = 64
 end
+config.initial_cols = initial_cols
+config.initial_rows = initial_rows
 
 ------------
 -- RETURN --
 ------------
-return {
-    ssh_domains = ssh_domains,
-    font = main_font,
-    font_size = font_size,
-    font_rules = {
-        {
-            italic = true,
-            font = italic_font,
-        },
-        {
-            intensity = "Bold",
-            font = bold_font,
-        },
-    },
-    keys = keys,
-    key_tables = key_tables,
-    send_composed_key_when_left_alt_is_pressed = true,
-    send_composed_key_when_right_alt_is_pressed = false,
-    mouse_bindings = mouse_bindings,
-    bypass_mouse_reporting_modifiers = bypass_mouse_reporting_modifiers,
-    color_schemes = color_schemes,
-    color_scheme = color_scheme,
-    scrollback_lines = 10000,
-    enable_scroll_bar = true,
-    use_fancy_tab_bar = false,
-    hide_tab_bar_if_only_one_tab = false,
-    initial_cols = initial_cols,
-    initial_rows = initial_rows,
-    use_resize_increments = true,
-    warn_about_missing_glyphs = false,
-    -- debug_key_events = true,
-}
+config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_right_alt_is_pressed = false
+config.scrollback_lines = 10000
+config.enable_scroll_bar = true
+config.use_fancy_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = false
+config.use_resize_increments = true
+config.warn_about_missing_glyphs = false
+-- config.debug_key_events = true
+return config
