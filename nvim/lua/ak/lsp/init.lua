@@ -51,7 +51,7 @@ require("mason-lspconfig").setup({
                 settings = {
                     basedpyright = {
                         analysis = {
-                            typeCheckingMode = "strict", -- disable deprecation warnings for now
+                            typeCheckingMode = "standard",
                         },
                     },
                 },
