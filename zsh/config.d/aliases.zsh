@@ -28,20 +28,20 @@ _ls_colors () {
 }
 zstyle ':completion:*' list-colors ${(s.:.)$(_ls_colors)}
 
-if command -v exa &>/dev/null; then
-    alias l="exa"
-    alias ls="exa"
-    alias la="exa -a"
-    alias ll="exa -al --git --icons"
-    alias lla="exa -al --git --icons"
-    alias lll="exa -abghHliS@ --git --icons --time-style=full-iso"
-    alias lt="exa -T --level=2 --group-directories-first --git-ignore"
-    alias lT="exa -T --level=4 --group-directories-first --git-ignore"
-    alias lat="exa -Ta --level=2 --group-directories-first"
-    alias llt="exa -lT --level=2 --group-directories-first --git-ignore"
-    alias lllt="exa -abghHliS@T --git --icons --time-style=full-iso"
-    alias t="exa -lT --no-permissions --no-user --no-time --icons --git-ignore --git --group-directories-first"
-    export EXA_ICON_SPACING=2
+if command -v eza &>/dev/null; then
+    alias l="eza"
+    alias ls="eza"
+    alias la="eza -a"
+    alias ll="eza -al --git --icons"
+    alias lla="eza -al --git --icons"
+    alias lll="eza -abghHliS@ --git --icons --time-style=full-iso"
+    alias lt="eza -T --level=2 --group-directories-first --git-ignore"
+    alias lT="eza -T --level=4 --group-directories-first --git-ignore"
+    alias lat="eza -Ta --level=2 --group-directories-first"
+    alias llt="eza -lT --level=2 --group-directories-first --git-ignore"
+    alias lllt="eza -abghHliS@T --git --icons --time-style=full-iso"
+    alias t="eza -lT --no-permissions --no-user --no-time --icons --git-ignore --git --group-directories-first"
+    export EZA_ICON_SPACING=2
 else
     alias l='ls -GFh'
     alias ls='ls -GFh'
