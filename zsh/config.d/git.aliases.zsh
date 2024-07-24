@@ -199,6 +199,7 @@ alias gstsm='git stash push -m'
 
 # submodules
 alias gsm='git submodule'
+alias gsms='git submodule status --recursive'
 alias gsmu='git submodule update --recursive'
 alias gsmui='git submodule update --init --recursive'
 
