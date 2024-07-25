@@ -5,5 +5,5 @@ export LC_RETRO=yes
 bindkey -M viins '\e[1;3D' backward-word
 bindkey -M viins '\e[1;3C' forward-word
 if command -v eza &>/dev/null; then
-    alias eza="eza --no-icons"
+    alias eza="eza --icons=never"
 fi
