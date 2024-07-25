@@ -43,17 +43,20 @@ if command -v eza &>/dev/null; then
     alias t="eza -lT --no-permissions --no-user --no-time --icons --git-ignore --git --group-directories-first"
     export EZA_ICON_SPACING=2
 else
-    alias l='ls -GFh'
-    alias ls='ls -GFh'
-    alias la='ls -GFha'
-    alias ll='ls -lhAG'
-    alias lla='ls -alhAG'
+    alias l='ls -GFh --color=auto'
+    alias ls='ls -GFh --color=auto'
+    alias la='ls -GFha --color=auto'
+    alias ll='ls -lhAG --color=auto'
+    alias lla='ls -alhAG --color=auto'
     if [[ "$(uname -s)" == "Darwin" ]]; then
-        alias lll='ls -lhAis@GT'
+        alias lll='ls -lhAis@GT --color=auto'
     else
-        alias lll='ls -lhAis@G --full-time'
+        alias lll='ls -lhAis@G --full-time --color=auto'
     fi
 fi
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 alias :w="cowsay 'You are not in vim anymore.'"
 alias :q="cowsay 'You are not in vim anymore.'"
