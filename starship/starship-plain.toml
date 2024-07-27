@@ -49,6 +49,10 @@ style_user = "bright-yellow"
 [hostname]
 style = "bright-green"
 
+[directory]
+read_only = " ro"
+style = "cyan"
+
 [git_branch]
 symbol = "git "
 style = "bright-purple"
@@ -85,14 +89,21 @@ symbol = ""
 style = "bold red"
 format = "is [${symbol}LOCKED ]($style)"
 
+[golang]
+symbol = "go "
+style = "cyan"
+
 [aws]
 style = "bold 208"
 [aws.region_aliases]
 us-east-1 = "va"
 us-west-2 = "or"
 
+[azure]
+symbol = "az "
+
 [buf]
-symbol = "B "
+symbol = "buf "
 
 [bun]
 symbol = "bun "
@@ -124,10 +135,6 @@ symbol = "deno "
 [dotnet]
 symbol = ".NET "
 
-[directory]
-read_only = " ro"
-style = "cyan"
-
 [docker_context]
 symbol = "docker "
 
@@ -137,12 +144,23 @@ symbol = "exs "
 [elm]
 symbol = "elm "
 
+[fennel]
+symbol = "fnl "
+
 [fossil_branch]
 symbol = "fossil "
 
-[golang]
-symbol = "go "
-style = "cyan"
+[gcloud]
+symbol = "gcp "
+
+[gleam]
+symbol = "gleam "
+
+[gradle]
+symbol = "gradle "
+
+[guix_shell]
+symbol = "guix "
 
 [hg_branch]
 symbol = "hg "
@@ -168,6 +186,9 @@ symbol = "memory "
 [meson]
 symbol = "meson "
 
+[nats]
+symbol = "nats "
+
 [nim]
 symbol = "nim "
 
@@ -176,6 +197,58 @@ symbol = "nix "
 
 [ocaml]
 symbol = "ml "
+
+[opa]
+symbol = "opa "
+
+[os.symbols]
+AIX = "aix "
+Alpaquita = "alq "
+AlmaLinux = "alma "
+Alpine = "alp "
+Amazon = "amz "
+Android = "andr "
+Arch = "rch "
+Artix = "atx "
+CentOS = "cent "
+Debian = "deb "
+DragonFly = "dfbsd "
+Emscripten = "emsc "
+EndeavourOS = "ndev "
+Fedora = "fed "
+FreeBSD = "fbsd "
+Garuda = "garu "
+Gentoo = "gent "
+HardenedBSD = "hbsd "
+Illumos = "lum "
+Kali = "kali "
+Linux = "lnx "
+Mabox = "mbox "
+Macos = "mac "
+Manjaro = "mjo "
+Mariner = "mrn "
+MidnightBSD = "mid "
+Mint = "mint "
+NetBSD = "nbsd "
+NixOS = "nix "
+OpenBSD = "obsd "
+OpenCloudOS = "ocos "
+openEuler = "oeul "
+openSUSE = "osuse "
+OracleLinux = "orac "
+Pop = "pop "
+Raspbian = "rasp "
+Redhat = "rhl "
+RedHatEnterprise = "rhel "
+RockyLinux = "rky "
+Redox = "redox "
+Solus = "sol "
+SUSE = "suse "
+Ubuntu = "ubnt "
+Ultramarine = "ultm "
+Unknown = "unk "
+Void = "void "
+Windows = "win "
 
 [package]
 symbol = "pkg "
@@ -198,6 +271,9 @@ symbol = "purs "
 [python]
 symbol = "py "
 
+[quarto]
+symbol = "quarto "
+
 [raku]
 symbol = "raku "
 
@@ -213,11 +289,17 @@ symbol = "scala "
 [spack]
 symbol = "spack "
 
+[solidity]
+symbol = "solidity "
+
 [sudo]
 symbol = "sudo "
 
 [swift]
 symbol = "swift "
+
+[typst]
+symbol = "typst "
 
 [terraform]
 symbol = "terraform "
