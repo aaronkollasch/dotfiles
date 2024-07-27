@@ -32,7 +32,7 @@ zsh_indicator = "󰏰"
 bash_indicator = "B"
 unknown_indicator = "???"
 disabled = false
-format = "[  $indicator  ](bold fg:231 bg:69)"
+format = "[](fg:prev_bg fg:69 bg:69)[ $indicator  ](bold fg:231 bg:69)"
 
 [battery]
 format = "[ $symbol$percentage ]($style)"
