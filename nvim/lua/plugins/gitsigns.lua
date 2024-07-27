@@ -77,7 +77,7 @@ return {
 
             local status, wk = pcall(require, "which-key")
             if status then
-                wk.register({ ["<leader>h"] = { name = "[H]unk" } }, { buffer = bufnr })
+                wk.add({ { "<leader>h", buffer = bufnr, group = "[H]unk" } })
             end
         end,
     },
