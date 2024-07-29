@@ -247,6 +247,16 @@ return {
         opts = {
             hlgroup = "IncSearch",
             duration = 200,
+            undo = {
+                opts = {
+                    desc = "Undo",
+                },
+            },
+            redo = {
+                opts = {
+                    desc = "Redo",
+                },
+            },
         },
     },
 

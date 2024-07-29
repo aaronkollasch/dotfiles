@@ -11,10 +11,12 @@ vim.keymap.set("n", "<CR>", function()
 end, { desc = "Clear search; next line" })
 
 -- Move cursor to middle of screen after C-d and C-u
-vim.keymap.set({ "n", "v" }, "<C-d>", "<C-d>zz")
-vim.keymap.set({ "n", "v" }, "<C-u>", "<C-u>zz")
-vim.keymap.set({ "n", "v" }, "<C-S-d>", "<C-u>zz")
-vim.keymap.set({ "n", "v" }, "<C-e>", "<C-u>zz")
+-- stylua: ignore start
+vim.keymap.set({ "n", "v" }, "<C-d>",   "<C-d>zz", { desc = "Scroll down" })
+vim.keymap.set({ "n", "v" }, "<C-u>",   "<C-u>zz", { desc = "Scroll up" })
+vim.keymap.set({ "n", "v" }, "<C-S-d>", "<C-u>zz", { desc = "Scroll up" })
+vim.keymap.set({ "n", "v" }, "<C-e>",   "<C-u>zz", { desc = "Scroll up" })
+-- stylua: ignore end
 
 -- move cursor to center of screen when searching, and expand folds
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next result (expand folds)" })
@@ -47,8 +49,8 @@ vim.keymap.set("n", "gl", "<cmd>diffget //3<CR>", { desc = "[G]it diffget merge 
 
 -- Alt-Backspace to delete word in insert mode
 -- better than C-w because it doesn't leave undotree entries
-vim.keymap.set("i", "<M-BS>", '<Esc>vb"_c')
-vim.keymap.set("c", "<M-BS>", "<C-w>")
+vim.keymap.set("i", "<M-BS>", '<Esc>vb"_c', { desc = "Backwards delete word" })
+vim.keymap.set("c", "<M-BS>", "<C-w>", { desc = "Backwards delete word" })
 
 -- <leader>y to yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [[my"+y]], { desc = "[Y]ank to system clipboard" })

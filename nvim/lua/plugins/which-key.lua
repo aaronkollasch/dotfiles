@@ -92,6 +92,12 @@ return {
                 { "k", hidden = true },
                 { "l", hidden = true },
                 {
+                    mode = { "n" },
+                    { "q", desc = "Record macro" },
+                    { "Q", desc = "Play macro" },
+                    { "<C-q>", desc = "Toggle macro menu" },
+                },
+                {
                     mode = { "o" },
                     { "(", desc = "Start of previous sentence" },
                     { ")", desc = "Start of next sentence" },
