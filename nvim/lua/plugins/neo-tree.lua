@@ -8,7 +8,7 @@ return {
     cmd = "Neotree",
     keys = {
         -- map <leader>lt to ":Neotree reveal toggle<cr>"
-        { "<leader>lt", "<cmd>Neotree reveal toggle<cr>", desc = "[L]ocal  [T]ree" },
+        { "<leader>lt", "<cmd>Neotree reveal toggle<cr>", silent = true, desc = "[L]ocal  [T]ree" },
     },
     config = function()
         local icons_enabled = require("ak.opts").icons_enabled

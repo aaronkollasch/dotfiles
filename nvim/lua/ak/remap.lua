@@ -27,8 +27,8 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- move highlighted blocks of text with J/K
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move down one line" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move up one line" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { silent = true, desc = "Move down one line" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { silent = true, desc = "Move up one line" })
 
 -- make cursor stay in place when using J, y, and Y
 vim.keymap.set("n", "J", [[ "mz" . v:count . "J`z" ]], { expr = true, desc = "Join lines" })
@@ -44,8 +44,8 @@ vim.keymap.set({ "n" }, "j", "v:count == 0 ? ':silent normal! gj<CR>' : 'j'", { 
 vim.keymap.set({ "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- g keys for git diffget
-vim.keymap.set("n", "gh", "<cmd>diffget //2<CR>", { desc = "[G]it diffget target (left)" })
-vim.keymap.set("n", "gl", "<cmd>diffget //3<CR>", { desc = "[G]it diffget merge (right)" })
+vim.keymap.set("n", "gh", "<cmd>diffget //2<CR>", { silent = true, desc = "[G]it diffget target (left)" })
+vim.keymap.set("n", "gl", "<cmd>diffget //3<CR>", { silent = true, desc = "[G]it diffget merge (right)" })
 
 -- Alt-Backspace to delete word in insert mode
 -- better than C-w because it doesn't leave undotree entries
@@ -100,17 +100,22 @@ vim.keymap.set("v", "<leader>x", function()
     endif
     ]])
 end, { desc = "E[X]ecute selection" })
-vim.keymap.set("n", "<leader><leader>x", ":call ak#save_and_exec()<CR>", { desc = "Save and execute this file" })
+vim.keymap.set(
+    "n",
+    "<leader><leader>x",
+    ":call ak#save_and_exec()<CR>",
+    { silent = true, desc = "Save and execute this file" }
+)
 
 -- <leader>il to inspect letter
 -- stylua: ignore start
-vim.keymap.set("n", "<leader>il", ":Inspect<CR>",     { desc = "[I]nspect [L]etter" })
-vim.keymap.set("n", "<leader>iv", ":Inspect!<CR>",    { desc = "[I]nspect [V]erbose" })
-vim.keymap.set("n", "<leader>it", ":InspectTree<CR>", { desc = "[I]nspect [T]ree" })
+vim.keymap.set("n", "<leader>il", ":Inspect<CR>",     { silent = true, desc = "[I]nspect [L]etter" })
+vim.keymap.set("n", "<leader>iv", ":Inspect!<CR>",    { silent = true, desc = "[I]nspect [V]erbose" })
+vim.keymap.set("n", "<leader>it", ":InspectTree<CR>", { silent = true, desc = "[I]nspect [T]ree" })
 -- stylua: ignore end
 
 -- <leader><leader>l to open Lazy plugin management window
-vim.keymap.set("n", "<leader><leader>l", ":Lazy<CR>", { desc = "[L]azy" })
+vim.keymap.set("n", "<leader><leader>l", ":Lazy<CR>", { silent = true, desc = "[L]azy" })
 
 -- <leader>b keys for buffers
 local buf_clear = function()

@@ -73,7 +73,7 @@ return {
             -- stylua: ignore end
 
             -- Text object
-            map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "git hunk" })
+            map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { silent = true, desc = "git hunk" })
 
             local status, wk = pcall(require, "which-key")
             if status then
