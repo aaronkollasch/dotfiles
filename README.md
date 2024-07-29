@@ -27,7 +27,7 @@ To update submodules excluding the private submodule:
 ```bash
 while read -r submodule; do
   git submodule init "$submodule"
-done < <(git submodule status | cut -f2 -d' ' | sed 's%/.*%%' | sort | uniq | grep -v 'private')
+done < <(git submodule status | cut -c 2- | cut -f2 -d' ' | sed 's%/.*%%' | sort | uniq | grep -v 'private')
 git submodule update
 ```
 
