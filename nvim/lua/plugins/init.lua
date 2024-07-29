@@ -170,6 +170,7 @@ return {
             require("NeoComposer").setup(opts)
             require("NeoComposer.store").load_macros_from_database()
             require("NeoComposer.state").set_queued_macro_on_startup()
+            vim.cmd([[ hi! link ComposerNormal Normal ]])
         end,
     },
     {
