@@ -15,6 +15,7 @@ return {
             },
             autocmd = { enabled = true },
         },
+        cond = false,
     },
     {
         "luukvbaal/statuscol.nvim",
