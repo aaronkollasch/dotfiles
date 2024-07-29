@@ -15,6 +15,10 @@ return {
                     ["."] = false,
                     TelescopePrompt = false,
                     ["neo-tree-popup"] = false,
+                    csv = false,
+                    tsv = false,
+                    txt = false,
+                    rtf = false,
                 },
             })
             vim.keymap.set("i", "<Tab>", function()
