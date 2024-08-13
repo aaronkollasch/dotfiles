@@ -6,7 +6,7 @@ if command -v gsed &>/dev/null; then
     -e 's/#DARK\n#-/#DARK\n-/g' -e 's/#LIGHT\n-/#LIGHT\n#-/g' \
     -e 's/"DARK\n" /"DARK\n /g' -e 's/"LIGHT\n /"LIGHT\n" /g' \
     -e 's/"workbench.colorTheme": "Night Owl Light (No Italics)"/"workbench.colorTheme": "Darcula"/g' \
-    -e 's/--color=light/--color=dark/g' \
+    -e 's/--color=light/--color=dark /g' \
     "$@"
 else
   sed -e ':a' -e 'N' -e '$!ba' \
@@ -15,6 +15,6 @@ else
     -e 's/#DARK\n#-/#DARK\n-/g' -e 's/#LIGHT\n-/#LIGHT\n#-/g' \
     -e 's/"DARK\n" /"DARK\n /g' -e 's/"LIGHT\n /"LIGHT\n" /g' \
     -e 's/"workbench.colorTheme": "Night Owl Light (No Italics)"/"workbench.colorTheme": "Darcula"/g' \
-    -e 's/--color=light/--color=dark/g' \
+    -e 's/--color=light/--color=dark /g' \
     "$@"
 fi
