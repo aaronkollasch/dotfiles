@@ -25,9 +25,9 @@ async def changeTheme(theme_parts, connection):
         s = f.read()
     with open(os.path.expanduser("~/.config/fzf/fzfrc"), "w") as f:
         if "dark" in theme_parts:
-            s = s.replace("--color=light", "--color=dark")
+            s = s.replace("--color=light", "--color=dark ")
         else:
-            s = s.replace("--color=dark", "--color=light")
+            s = s.replace("--color=dark ", "--color=light")
         f.write(s)
 
     # set vivid LS_COLORS theme
