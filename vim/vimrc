@@ -153,8 +153,8 @@ cnoremap <silent> <t_BS>    <C-w>
 " <leader>y to yank to system clipboard
 nnoremap <leader>y "+y
 vnoremap <leader>y my"+yg`y
-nnoremap <leader>Y "+Y
-vnoremap <leader>Y my"+Yg`y
+nnoremap <leader>Y "+y$
+vnoremap <leader>Y my"+y$g`y
 
 " <leader>d to delete to void register
 nnoremap <leader>d "_d

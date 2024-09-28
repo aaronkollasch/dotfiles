@@ -54,8 +54,8 @@ vim.keymap.set("c", "<M-BS>", "<C-w>", { desc = "Backwards delete word" })
 
 -- <leader>y to yank to system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [[my"+y]], { desc = "[Y]ank to system clipboard" })
-vim.keymap.set("n", "<leader>Y", [[my"+Y]], { desc = "[Y]ank line to system clipboard" })
-vim.keymap.set("n", "<S-Space>Y", [[my"+Y]], { desc = "[Y]ank line to system clipboard" })
+vim.keymap.set("n", "<leader>Y", [[my"+y$]], { desc = "[Y]ank line to system clipboard" })
+vim.keymap.set("n", "<S-Space>Y", [[my"+y$]], { desc = "[Y]ank line to system clipboard" })
 
 -- <leader>d to delete to void register
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], { desc = "[D]elete to void" })
