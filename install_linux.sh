@@ -11,6 +11,11 @@ source bash/functions.sh || retval=$?
 install_link "$SCRIPT_DIR"/bash/bashrc_linux "$HOME"/.bashrc || retval=$?
 install_link "$SCRIPT_DIR"/git/gitconfig_linux "$HOME"/.gitconfig || retval=$?
 [ -e "$HOME"/.var/app/org.wezfurlong.wezterm/config ] && [ ! -e "$HOME"/.var/app/org.wezfurlong.wezterm/config/wezterm ] && install_link "$HOME/$SCRIPT_DIR"/wezterm "$HOME"/.var/app/org.wezfurlong.wezterm/config/wezterm "Installed flatpak wezterm config" || echo "Did not install flatpak wezterm config"
+if ! infocmp wezterm 2>/dev/null | grep -q kEND; then
+  tempfile=$(mktemp) && curl -o "$tempfile" https://raw.githubusercontent.com/wez/wezterm/master/termwiz/data/wezterm.terminfo || retval=$?
+  tic -xe wezterm "$tempfile" && echo "Installed wezterm terminfo" || echo "Failed to install wezterm terminfo" || retval=$?
+  rm "$tempfile"
+fi
 
 # system vscodium
 create_dir "$HOME"/.config/VSCodium/User/
