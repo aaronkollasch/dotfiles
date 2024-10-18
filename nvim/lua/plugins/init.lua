@@ -246,16 +246,19 @@ return {
         "tzachar/highlight-undo.nvim",
         event = "VeryLazy",
         opts = {
-            hlgroup = "IncSearch",
             duration = 200,
-            undo = {
-                opts = {
-                    desc = "Undo",
+            keymaps = {
+                undo = {
+                    hlgroup = "IncSearch",
+                    opts = {
+                        desc = "Undo",
+                    },
                 },
-            },
-            redo = {
-                opts = {
-                    desc = "Redo",
+                redo = {
+                    hlgroup = "IncSearch",
+                    opts = {
+                        desc = "Redo",
+                    },
                 },
             },
         },
