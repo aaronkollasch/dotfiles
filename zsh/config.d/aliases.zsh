@@ -33,7 +33,7 @@ if command -v eza &>/dev/null; then
     alias ls="eza"
     alias la="eza -a"
     alias ll="eza -al --git --icons=auto"
-    alias lla="eza -al --git --icons=auto"
+    alias lla="eza -aal --git --icons=auto"
     alias lll="eza -abghHliS@ --git --icons=auto --time-style=full-iso"
     alias lt="eza -T --level=2 --group-directories-first --git-ignore"
     alias lT="eza -T --level=4 --group-directories-first --git-ignore"
