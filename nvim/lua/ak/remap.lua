@@ -18,6 +18,16 @@ vim.keymap.set({ "n", "v" }, "<C-S-d>", "<C-u>zz", { desc = "Scroll up" })
 vim.keymap.set({ "n", "v" }, "<C-e>",   "<C-u>zz", { desc = "Scroll up" })
 -- stylua: ignore end
 
+-- Scroll view with arrow keys
+-- stylua: ignore start
+vim.keymap.set('n', '<down>',    '<c-e>')
+vim.keymap.set('n', '<up>',      '<c-y>')
+vim.keymap.set('n', '<left>',    'zh')
+vim.keymap.set('n', '<right>',   'zl')
+vim.keymap.set('n', '<S-left>',  'zH')
+vim.keymap.set('n', '<S-right>', 'zL')
+-- stylua: ignore end
+
 -- move cursor to center of screen when searching, and expand folds
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next result (expand folds)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous result (expand folds)" })
