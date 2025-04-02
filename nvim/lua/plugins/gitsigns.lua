@@ -10,7 +10,7 @@ return {
         current_line_blame_opts = {
             delay = 300,
         },
-        signs_staged_enable = false,
+        signs_staged_enable = true,
         on_attach = function(bufnr)
             local gs = package.loaded.gitsigns
             local feedkeys = vim.api.nvim_feedkeys
@@ -55,11 +55,6 @@ return {
                 gs.reset_hunk {vim.fn.line("."), vim.fn.line("v")}
             end,                                       { desc = "[H]unk [R]eset" })
             map("n", "<leader>hS", gs.stage_buffer,    { desc = "[H]unk [S]tage buffer" })
-            map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "[H]unk [U]ndo stage" })
-            map("n", "<leader>hU", function()
-                os.execute("git restore --staged " .. vim.fn.expand("%"))
-                gs.refresh()
-            end,                                       { desc = "[H]unk [U]ndo stage buffer" })
             map("n", "<leader>hR", gs.reset_buffer,    { desc = "[H]unk [R]eset buffer" })
             map("n", "<leader>hp", gs.preview_hunk,    { desc = "[H]unk [P]review" })
             map('n', '<leader>hi', gs.preview_hunk_inline,
