@@ -41,42 +41,38 @@ return {
         end,
     },
     {
-        "cameron-wags/rainbow_csv.nvim",
-        ft = {
-            "csv",
-            "tsv",
-            "csv_semicolon",
-            "csv_whitespace",
-            "csv_pipe",
-            "rfc_csv",
-            "rfc_semicolon",
-        },
-        cmd = {
-            "RainbowDelim",
-            "RainbowDelimSimple",
-            "RainbowDelimQuoted",
-            "RainbowMultiDelim",
-        },
-        init = function()
-            vim.g.disable_rainbow_hover = 1
-        end,
-        config = true,
-    },
-    {
-        "aaronkollasch/decisive.nvim",
+        "hat0uma/csvview.nvim",
         ft = {
             "csv",
             "tsv",
         },
         -- stylua: ignore
         keys = {
-            { '<leader>rl', ":lua require('decisive').align_csv({})<cr>",      mode = 'n', silent = true, desc = "[R]ea[L]ign CSV" },
-            { '<leader>rL', ":lua require('decisive').align_csv_clear({})<cr>",mode = 'n', silent = true, desc = "[R]ea[L]ign CSV clear" },
-            { '[c', ":lua require('decisive').align_csv_prev_col()<cr>",       mode = 'n', silent = true, desc = "Previous CSV column" },
-            { ']c', ":lua require('decisive').align_csv_next_col()<cr>",       mode = 'n', silent = true, desc = "Next CSV column" },
+            { '[c', ":lua require('csvview.jump').prev_field_start()<cr>", mode = 'n', silent = true, desc = "Previous CSV column" },
+            { ']c', ":lua require('csvview.jump').next_field_start()<cr>", mode = 'n', silent = true, desc = "Next CSV column" },
         },
+        cmd = { "CsvViewEnable", "CsvViewDisable", "CsvViewToggle" },
         opts = {
-            enable_text_objects = true,
+            parser = { comments = { "#", "//" } },
+            keymaps = {
+                -- Text objects for selecting fields
+                textobject_field_inner = { "if", mode = { "o", "x" } },
+                textobject_field_outer = { "af", mode = { "o", "x" } },
+                -- Excel-like navigation:
+                -- Use <Tab> and <S-Tab> to move horizontally between fields.
+                -- Use <Enter> and <S-Enter> to move vertically between rows and place the cursor at the end of the field.
+                -- Note: In terminals, you may need to enable CSI-u mode to use <S-Tab> and <S-Enter>.
+                jump_next_field_end = { "<Tab>", mode = { "n", "v" } },
+                jump_prev_field_end = { "<S-Tab>", mode = { "n", "v" } },
+                jump_next_row = { "<Enter>", mode = { "n", "v" } },
+                jump_prev_row = { "<S-Enter>", mode = { "n", "v" } },
+            },
+            view = {
+                header_lnum = 1,
+                sticky_header = {
+                    separator = false,
+                },
+            },
         },
     },
 
