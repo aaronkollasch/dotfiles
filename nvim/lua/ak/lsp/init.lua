@@ -10,7 +10,6 @@ require("mason-lspconfig").setup({
         "basedpyright",
         -- "pylsp",
         "ruff",
-        "ruff_lsp",
         "bashls",
         "clangd",
     },
@@ -57,8 +56,8 @@ require("mason-lspconfig").setup({
                 },
             })
         end,
-        ruff_lsp = function()
-            require("lspconfig").ruff_lsp.setup({
+        ruff = function()
+            require("lspconfig").ruff.setup({
                 init_options = {
                     settings = {
                         args = {
@@ -68,7 +67,6 @@ require("mason-lspconfig").setup({
                 },
             })
         end,
-        ruff = function() end,
 
         clangd = function()
             local capabilities = lsp_zero.get_capabilities()
@@ -247,11 +245,6 @@ lsp_zero.on_attach(function(client, bufnr)
             legend = { tokenModifiers = semantic.tokenModifiers, tokenTypes = semantic.tokenTypes },
             range = true,
         }
-    end
-
-    if client.name == "ruff_lsp" then
-        -- Disable hover in favor of Pyright
-        client.server_capabilities.hoverProvider = false
     end
 
     if client.server_capabilities.inlayHintProvider then

@@ -10,7 +10,6 @@ return {
             ignore = {
                 clients = {
                     "marksman",
-                    "ruff_lsp",
                 },
             },
             autocmd = { enabled = true },
