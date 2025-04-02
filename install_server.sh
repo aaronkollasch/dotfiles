@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd -P )"
-SCRIPT_DIR="$(realpath --relative-to="$HOME" "$SCRIPT_DIR")"
+SCRIPT_DIR="$(realpath --relative-to="$HOME" "$SCRIPT_DIR")" || { echo "GNU realpath not present" >&2; exit 1; }
 cd "$HOME/$SCRIPT_DIR" || { echo "Could not change directories: $SCRIPT_DIR" >&2; exit 1; }
 
 bash install_common.sh || retval=$?
