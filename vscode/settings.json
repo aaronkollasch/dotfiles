@@ -9,10 +9,14 @@
     "vim.useSystemClipboard": false,
     "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
-    "vim.insertModeKeyBindings": [
+    "vim.insertModeKeyBindingsNonRecursive": [
       {
-        "before": ["j", "j"],
-        "after": ["<Esc>"]
+        "before": ["<C-a>"],
+        "after": ["<C-o>0"]
+      },
+      {
+        "before": ["<C-e>"],
+        "after": ["<C-o>$"]
       }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
@@ -35,7 +39,6 @@
       }
     ],
     "vim.handleKeys": {
-      "<C-a>": false,
       "<C-f>": false
     },
     "vim.leader": "<space>",
@@ -45,5 +48,14 @@
     "terminal.integrated.mouseWheelScrollSensitivity": 0.7,
     "vim.visualstar": true,
     "vim.whichwrap": "",
-    "vim.vimrc.enable": true
+    "vim.vimrc.enable": true,
+    "remote.SSH.defaultExtensions": [
+      "ms-toolsai.jupyter",
+      "ms-toolsai.jupyter-keymap",
+      "ms-toolsai.jupyter-renderers",
+      "ms-toolsai.vscode-jupyter-cell-tags",
+      "ms-toolsai.vscode-jupyter-slideshow",
+      "ms-python.python"
+    ],
+    "terminal.integrated.sendKeybindingsToShell": true
 }
