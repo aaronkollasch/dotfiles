@@ -15,6 +15,11 @@ if $LC_TERMINAL == "cool-retro-term"
   let g:edge_enable_italic = 0
   let g:edge_disable_italic_comment = 1
 endif
+if $LC_DARKMODE == "YES"
+  set background=dark
+elseif $LC_DARKMODE == "NO"
+  set background=light
+endif
 
 function! UpdateEdgeColors()
   " use built-in fg color for Normal
