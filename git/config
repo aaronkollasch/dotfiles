@@ -13,11 +13,16 @@
 	gpgsign = true
 [pull]
 	ff = only
+[push]
+	autoSetupRemote = true
+	default = upstream
 [rebase]
 	updateRefs = true
+	missingCommitsCheck = warn
 [diff]
 	algorithm = histogram
 	colorMoved = default
+	interHunkContext = 10
 	submodule = log
 	tool = nvimdiff
 [difftool]
@@ -38,6 +43,7 @@
 #	diffFilter = "delta --color-only --features=\"interactive lightmode\""
 #DARK
 	diffFilter = "delta --color-only --features=\"interactive darkmode\""
+	singlekey = true
 
 [delta]
 #LIGHT
