@@ -42,6 +42,7 @@
       "<C-f>": false
     },
     "vim.leader": "<space>",
+    "vim.startInInsertMode": true,
     "editor.lineNumbers": "relative",
     "editor.mouseWheelScrollSensitivity": 0.7,
     "workbench.list.mouseWheelScrollSensitivity": 0.7,
@@ -55,7 +56,11 @@
       "ms-toolsai.jupyter-renderers",
       "ms-toolsai.vscode-jupyter-cell-tags",
       "ms-toolsai.vscode-jupyter-slideshow",
+      "ms-toolsai.vscode-jupyter-powertoys",
       "ms-python.python"
     ],
-    "terminal.integrated.sendKeybindingsToShell": true
+    "terminal.integrated.sendKeybindingsToShell": true,
+    "cursor.chat.terminalShowHoverHint": false,
+    "cursor.terminal.usePreviewBox": true,
+    "terminal.integrated.localEchoLatencyThreshold": 200
 }
