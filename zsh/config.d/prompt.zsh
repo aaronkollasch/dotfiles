@@ -13,4 +13,14 @@ else
   PS1='
 %B%F{green}%n@%m%f%b in %B%F{blue}%~%f%b${vcs_info_msg_0_}%b
 > '
+  function zle-line-init zle-keymap-select {
+    case ${KEYMAP} in
+      vicmd)      PROMPT_CHAR='<' ;;
+      viins|main) PROMPT_CHAR='>' ;;
+    esac
+    PS1='
+%B%F{green}%n@%m%f%b in %B%F{blue}%~%f%b${vcs_info_msg_0_}%b
+${PROMPT_CHAR} '
+    zle reset-prompt
+  }
 fi
