@@ -3,6 +3,7 @@ local icons_enabled = require("ak.opts").icons_enabled
 return {
     {
         "monkoose/neocodeium",
+        enabled = false,
         event = "VeryLazy",
         config = function()
             local neocodeium = require("neocodeium")
