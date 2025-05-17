@@ -17,10 +17,13 @@ else
     case ${KEYMAP} in
       vicmd)      PROMPT_CHAR='<' ;;
       viins|main) PROMPT_CHAR='>' ;;
+      *)          PROMPT_CHAR='>' ;;
     esac
     PS1='
 %B%F{green}%n@%m%f%b in %B%F{blue}%~%f%b${vcs_info_msg_0_}%b
 ${PROMPT_CHAR} '
     zle reset-prompt
   }
+  zle -N zle-line-init
+  zle -N zle-keymap-select
 fi
