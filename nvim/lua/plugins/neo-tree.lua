@@ -82,6 +82,7 @@ return {
 
         require("neo-tree").setup(config)
 
+        require("neo-tree").ensure_config()
         local file_renderers = require("neo-tree.setup").config.filesystem.renderers.file
         table.insert(file_renderers[3].content, 3, {
             "harpoon_index",
