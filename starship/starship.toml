@@ -71,7 +71,7 @@ style = "bold bg:21 fg:231"
 
 [aws]
 style = "bold 208"
-symbol = "  "
+symbol = " "
 [aws.region_aliases]
 us-east-1 = "va"
 us-west-2 = "or"
@@ -79,6 +79,9 @@ us-west-2 = "or"
 [conda]
 symbol = " "
 ignore_base = false
+
+[gcloud]
+symbol = " "
 
 [git_branch]
 symbol = " "
@@ -103,14 +106,23 @@ format = "is [${symbol}LOCKED ]($style)"
 [buf]
 symbol = " "
 
+[bun]
+symbol = " "
+
 [c]
 symbol = " "
+
+[cpp]
+symbol = " "
 
 [crystal]
 symbol = " "
 
 [dart]
 symbol = " "
+
+[deno]
+symbol = " "
 
 [docker_context]
 symbol = " "
@@ -228,6 +240,9 @@ symbol = " "
 
 [pijul_channel]
 symbol = " "
+
+[pixi]
+symbol = "󰏗 "
 
 [rlang]
 symbol = "󰟔 "
