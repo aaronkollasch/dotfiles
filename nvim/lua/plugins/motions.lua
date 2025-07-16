@@ -38,7 +38,6 @@ return {
     { "sgur/vim-textobj-parameter",          dependencies = "kana/vim-textobj-user", event = event }, -- a,/i, for an argument to a function
     -- { "D4KU/vim-textobj-chainmember",        dependencies = "kana/vim-textobj-user", event = event }, -- am/im for a member in a member chain
     -- { "vimtaku/vim-textobj-keyvalue",        dependencies = "kana/vim-textobj-user", event = event }, -- ak/ik and av/iv for key/value
-    { "jceb/vim-textobj-uri",                dependencies = "kana/vim-textobj-user", event = event }, -- au/iu for a URI, also adds go to open URL
     { "preservim/vim-textobj-sentence",      dependencies = "kana/vim-textobj-user", event = event,   -- as/is for the current sentence (replaces built-in objects/motions)
         config = function ()
             vim.fn["textobj#sentence#init"]()

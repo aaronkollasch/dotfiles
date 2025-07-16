@@ -382,7 +382,6 @@ let g:loaded_textobj_comment = 1
 Plug 'glts/vim-textobj-comment'            " ac/ic for a comment
 let g:textobj_markdown_no_default_key_mappings = 1
 Plug 'coachshea/vim-textobj-markdown'      " aC/iC for markdown code blocks
-Plug 'jceb/vim-textobj-uri'                " au/iu for a URI, also adds go to open URL
 Plug 'preservim/vim-textobj-sentence'      " as/is for the current sentence (replaces built-in objects/motions)
 let g:loaded_textobj_variable_segment = 1
 Plug 'Julian/vim-textobj-variable-segment' " aS/iS for a subword, separated by camelCase or underscore
