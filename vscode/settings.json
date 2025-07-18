@@ -42,7 +42,7 @@
       "<C-f>": false
     },
     "vim.leader": "<space>",
-    "vim.startInInsertMode": true,
+    "vim.startInInsertMode": false,
     "editor.lineNumbers": "relative",
     "editor.mouseWheelScrollSensitivity": 0.7,
     "workbench.list.mouseWheelScrollSensitivity": 0.7,
