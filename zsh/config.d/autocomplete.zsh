@@ -86,9 +86,15 @@ bindkey -M menuselect 'l' forward-char
 # bindkey -M vicmd '\t' vi-menu-select
 
 # first tab enters menu-select
-bindkey '\t' menu-select "$terminfo[kcbt]" menu-select
-bindkey -M viins '\t' menu-select "$terminfo[kcbt]" menu-select
-bindkey -M vicmd '\t' menu-select "$terminfo[kcbt]" menu-select
+# shift-tab enters menu-select at last item
+reverse-menu-select () {
+  zle menu-select
+  zle reverse-menu-complete
+}
+zle -N reverse-menu-select
+bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-select
+bindkey -M viins '\t' menu-select "$terminfo[kcbt]" reverse-menu-select
+bindkey -M vicmd '\t' menu-select "$terminfo[kcbt]" reverse-menu-select
 bindkey -M menuselect '\t' menu-select "$terminfo[kcbt]" reverse-menu-complete
 
 # ctrl-f for fzf-tab completion
