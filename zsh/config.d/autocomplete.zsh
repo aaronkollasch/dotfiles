@@ -89,7 +89,6 @@ bindkey -M menuselect 'l' forward-char
 # shift-tab enters menu-select at last item
 reverse-menu-select () {
   zle menu-select
-  zle reverse-menu-complete
 }
 zle -N reverse-menu-select
 bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-select
