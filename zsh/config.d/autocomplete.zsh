@@ -87,10 +87,10 @@ bindkey -M menuselect 'l' forward-char
 
 # first tab enters menu-select
 # shift-tab enters menu-select at last item
-reverse-menu-select () {
+_reverse-menu-select () {
   zle menu-select
 }
-zle -N reverse-menu-select
+zle -N reverse-menu-select _reverse-menu-select
 bindkey '\t' menu-select "$terminfo[kcbt]" reverse-menu-select
 bindkey -M viins '\t' menu-select "$terminfo[kcbt]" reverse-menu-select
 bindkey -M vicmd '\t' menu-select "$terminfo[kcbt]" reverse-menu-select
