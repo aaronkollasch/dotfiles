@@ -57,6 +57,7 @@ fi
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias htopu='htop -u "$USER"'
 
 alias :w="cowsay 'You are not in vim anymore.'"
 alias :q="cowsay 'You are not in vim anymore.'"
