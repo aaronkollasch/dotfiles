@@ -63,6 +63,7 @@ alias :w="cowsay 'You are not in vim anymore.'"
 alias :q="cowsay 'You are not in vim anymore.'"
 alias :wq="cowsay 'You are not in vim anymore.'"
 alias :x="cowsay 'You are not in vim anymore.'"
+alias :e="vi $@"
 
 alias zconf="vi ~/.zshrc"
 alias zsource="source ~/.zshrc"
