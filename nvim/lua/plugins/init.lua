@@ -298,7 +298,6 @@ return {
         -- stylua: ignore
         keys = {
             { "gS", function() require('treesj').toggle() end, mode = { "n", "x" }, desc = "Toggle arguments" },
-            { "gJ", function() require('treesj').join() end, mode = { "n", "x" }, desc = "Join arguments" },
         },
         dependencies = { "nvim-treesitter/nvim-treesitter" },
         opts = {
