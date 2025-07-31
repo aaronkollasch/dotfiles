@@ -109,6 +109,8 @@ return {
         keys = {
             { "<leader>cc", "<cmd>TSContextToggle<CR>", desc = "[C]ode  [C]ontext" },
         },
-        opts = {},
+        opts = {
+            multiline_threshold = 2,
+        },
     },
 }
