@@ -68,7 +68,12 @@ alias :e="vi $@"
 alias zconf="vi ~/.zshrc"
 alias zsource="source ~/.zshrc"
 alias zhup="source ~/.zshrc"
-alias ds="du -hs * | sort -h"
+
+if command -v dvc &>/dev/null; then
+    alias ds="dvc status -R"
+    alias dp="dvc push -R"
+fi
+
 alias nohist="unsetopt history"
 alias history_clear="history -p"
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'

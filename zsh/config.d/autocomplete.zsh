@@ -150,3 +150,12 @@ fi
 # bash completions fallback init
 export ZSH_BASH_COMPLETIONS_FALLBACK_BLACKLIST=(python python3 pydoc3)
 source ~/.dotfiles/zsh/repos/zsh-bash-completions-fallback/zsh-bash-completions-fallback.plugin.zsh
+
+# dvc init
+if command -v dvc &>/dev/null && ! command -v _dvc &>/dev/null; then
+  _dvc () {
+    eval "_dvc() { $(dvc completion -s zsh) }"
+    _dvc "$@"
+  }
+  compdef _dvc dvc
+fi
