@@ -1,5 +1,5 @@
 return {
-    "aaronkollasch/gitsigns.nvim",
+    "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
     cond = function()
         -- Do not load up plugin when in diff mode.
