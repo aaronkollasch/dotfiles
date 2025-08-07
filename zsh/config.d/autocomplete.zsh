@@ -159,3 +159,8 @@ if command -v dvc &>/dev/null && ! command -v _dvc &>/dev/null; then
   }
   compdef _dvc dvc
 fi
+
+# aws init
+if command -v aws_completer &>/dev/null; then
+  complete -C aws_completer aws
+fi
