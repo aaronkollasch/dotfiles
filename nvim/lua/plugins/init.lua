@@ -183,6 +183,7 @@ return {
             },
         },
     },
+    { "meznaric/key-analyzer.nvim", opts = {} },
 
     -- buffer highlighting
     {
