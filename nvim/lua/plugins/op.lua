@@ -30,7 +30,7 @@ return {
             gh_env = function()
                 -- see https://blog.1password.com/1password-neovim/
                 local github_token =
-                    require("op.api").item.get({ "GitHub Personal Access Token", "--fields", "token" })[1]
+                    require("op.api").item.get({ "GitHub Personal Access Token", "--reveal", "--fields", "token" })[1]
                 if not github_token or not vim.startswith(github_token, "ghp_") then
                     error("Failed to get GitHub token.")
                 end
