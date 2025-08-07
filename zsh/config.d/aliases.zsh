@@ -70,8 +70,9 @@ alias zsource="source ~/.zshrc"
 alias zhup="source ~/.zshrc"
 
 if command -v dvc &>/dev/null; then
-    alias ds="dvc status -R"
+    alias da="dvc add"
     alias dp="dvc push -R"
+    alias ds="dvc status -R"
 fi
 
 alias nohist="unsetopt history"
