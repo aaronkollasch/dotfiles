@@ -70,7 +70,7 @@
   "vim-easy-align": { "branch": "master", "commit": "9815a55dbcd817784458df7a18acacc6f82b1241" },
   "vim-fugitive": { "branch": "master", "commit": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4" },
   "vim-github-link": { "branch": "master", "commit": "9df238dbf150417772f2a1b7748750cfeda3d167" },
-  "vim-just": { "branch": "master", "commit": "2cf3acc4a7c0f9d2adc2b2fd3400557ab7d4e5b4" },
+  "vim-just": { "branch": "main", "commit": "e0c04b6433b9c636274f074356744fdfae039b7e" },
   "vim-known_hosts": { "branch": "master", "commit": "a15cd4391485bd6c135f9b4220e3f5c0c098b77c" },
   "vim-matchup": { "branch": "master", "commit": "b4efd6a97380b99bb9f5eb80c9002e061402c288" },
   "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
