@@ -1,7 +1,11 @@
-if command -v starship &>/dev/null; then
-  # Starship init
-  eval "$(starship init zsh)"
-  # source "$HOME/.dotfiles/zsh/config.d/starship.zsh"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+if [[ $LC_RETRO == yes && -d $HOME/.dotfiles/zsh/repos/powerlevel10k ]]; then
+  source "$HOME/.dotfiles/zsh/repos/powerlevel10k/powerlevel10k.zsh-theme"
+  source "$HOME/.dotfiles/zsh/config.d/p10k-retro.zsh"
+elif [[ -d $HOME/.dotfiles/zsh/repos/powerlevel10k ]]; then
+  source "$HOME/.dotfiles/zsh/repos/powerlevel10k/powerlevel10k.zsh-theme"
+  source "$HOME/.dotfiles/zsh/config.d/p10k.zsh"
 else
   autoload -Uz vcs_info
   precmd_vcs_info() { vcs_info }

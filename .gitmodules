@@ -23,3 +23,6 @@
 [submodule "zsh/repos/fzf-tab"]
 	path = zsh/repos/fzf-tab
 	url = https://github.com/Aloxaf/fzf-tab
+[submodule "zsh/repos/powerlevel10k"]
+	path = zsh/repos/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k
