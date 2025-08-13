@@ -27,6 +27,7 @@ case "$(uname -s)" in
 esac
 source "$HOME/.dotfiles/zsh/config.d/autocomplete.zsh"
 
+conda() {
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$("$HOME/mambaforge/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
@@ -45,6 +46,13 @@ if [ -f "$HOME/mambaforge/etc/profile.d/mamba.sh" ]; then
     . "$HOME/mambaforge/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
+[[ $1 == "__init" ]] || conda "$@"
+}
+
+mamba() {
+conda __init
+mamba "$@"
+}
 
 source "$HOME/.dotfiles/zsh/config.d/languages.zsh"
 source "$HOME/.dotfiles/zsh/config.d/options.zsh"
