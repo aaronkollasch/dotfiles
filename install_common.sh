@@ -61,7 +61,6 @@ create_dir "$HOME"/.config/vivid || retval=$?
 install_link ../../"$SCRIPT_DIR"/vivid/theme "$HOME"/.config/vivid/theme || retval=$?
 
 install_link ../"$SCRIPT_DIR"/starship/starship.toml "$HOME"/.config/starship.toml || retval=$?
-install_link "$SCRIPT_DIR"/zsh/config.d/p10k.zsh "$HOME"/.p10k.zsh || retval=$?
 
 create_dir "$HOME"/.ssh && chmod 700 "$HOME"/.ssh || retval=$?
 if [[ -e "$HOME/$SCRIPT_DIR/private" ]]; then
