@@ -47,10 +47,31 @@ do
 		fi
 
 		# Check for WIP commit
-		commit=$(git rev-list -n 1 --grep '^WIP' "$range")
+		commit=$(git rev-list -n 1 --grep '^[Ww][Ii][Pp]' "$range")
 		if test -n "$commit"
 		then
 			echo >&2 "${RED}Error:${NO_COLOR} Found WIP commit in $local_ref, not pushing"
+			exit 1
+		fi
+		# Check for squash commit
+		commit=$(git rev-list -n 1 --grep '^squash!' "$range")
+		if test -n "$commit"
+		then
+			echo >&2 "${RED}Error:${NO_COLOR} Found squash! commit in $local_ref, not pushing"
+			exit 1
+		fi
+		# Check for fixup commit
+		commit=$(git rev-list -n 1 --grep '^fixup!' "$range")
+		if test -n "$commit"
+		then
+			echo >&2 "${RED}Error:${NO_COLOR} Found fixup! commit in $local_ref, not pushing"
+			exit 1
+		fi
+		# Check for FIXUP commit
+		commit=$(git rev-list -n 1 --grep '^FIXUP' "$range")
+		if test -n "$commit"
+		then
+			echo >&2 "${RED}Error:${NO_COLOR} Found FIXUP commit in $local_ref, not pushing"
 			exit 1
 		fi
 	fi
