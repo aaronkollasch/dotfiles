@@ -115,7 +115,14 @@ bindkey -M menuselect '\e' accept-line
 # autoload -U compinit && compinit
 
 # op init
-command -v op &>/dev/null && source ~/.dotfiles/zsh/functions/_op && compdef _op op
+if command -v op &>/dev/null; then
+  _op () {
+    source ~/.dotfiles/zsh/functions/_op
+    # eval "_op() { $(op completion zsh) }"
+    _op "$@"
+  }
+  compdef _op op
+fi
 
 # just init
 if command -v just &>/dev/null && ! command -v _just &>/dev/null; then

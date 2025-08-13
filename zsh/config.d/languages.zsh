@@ -7,7 +7,11 @@ PERL_MM_OPT="INSTALL_BASE=$HOME/.perl5"; export PERL_MM_OPT;
 
 # rbenv init
 if command -v rbenv &>/dev/null; then
-    eval "$(rbenv init - zsh)"
+    export PATH="$HOME/.rbenv/shims:${PATH}"
+    rbenv() {
+        eval "$(rbenv init - zsh)"
+        rbenv "$@"
+    }
 fi
 
 # rustup init
@@ -20,5 +24,9 @@ if [ -d "$HOME/.local/share/bob/nvim-bin" ]; then
     export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 fi
 if command -v bob &>/dev/null; then
-  eval "$(bob complete zsh)"
+  _bob () {
+    eval "_bob() { $(bob complete zsh) }"
+    _bob "$@"
+  }
+  compdef _bob bob
 fi
