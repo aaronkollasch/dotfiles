@@ -1,7 +1,9 @@
 local lsp_zero = require("lsp-zero")
+local automatic_enable = vim.fn.has("nvim-0.11") > 0
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
+    automatic_enable = automatic_enable,
     ensure_installed = {
         "ts_ls",
         "eslint",
