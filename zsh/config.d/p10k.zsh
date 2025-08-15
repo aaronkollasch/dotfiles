@@ -1729,7 +1729,7 @@
     [[ $current_prompt_dir == $last_prompt_dir &&
        $current_python_bin == $last_python_bin &&
        $current_vcs_state == $last_vcs_state ]] &&
-      p10k display '1|2/right'=hide '1|2/left/*'=hide 'empty_line'=hide '2/left/(shell|prompt_char)'=show
+      p10k display '1|2/right'=hide '1|2/left/*'=hide 'empty_line'=hide '2/left/(status|shell|prompt_char)'=show
     last_prompt_dir=$current_prompt_dir
     last_python_bin=$current_python_bin
     last_vcs_state=$current_vcs_state
