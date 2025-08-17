@@ -6,6 +6,10 @@ if [[ $LC_RETRO == yes && -f $HOME/.dotfiles/zsh/repos/powerlevel10k/powerlevel1
 elif [[ -f $HOME/.dotfiles/zsh/repos/powerlevel10k/powerlevel10k.zsh-theme ]]; then
   source "$HOME/.dotfiles/zsh/repos/powerlevel10k/powerlevel10k.zsh-theme"
   source "$HOME/.dotfiles/zsh/config.d/p10k.zsh"
+elif command -v starship &>/dev/null; then
+  # Starship init
+  eval "$(starship init zsh)"
+  # source "$HOME/.dotfiles/zsh/config.d/starship.zsh"
 else
   autoload -Uz vcs_info
   precmd_vcs_info() { vcs_info }
