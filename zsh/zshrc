@@ -57,8 +57,8 @@ mamba "$@"
 source "$HOME/.dotfiles/zsh/config.d/languages.zsh"
 source "$HOME/.dotfiles/zsh/config.d/options.zsh"
 source "$HOME/.dotfiles/zsh/config.d/aliases.zsh"
-source "$HOME/.dotfiles/zsh/config.d/prompt.zsh"
 source "$HOME/.dotfiles/zsh/config.d/term.zsh"
+source "$HOME/.dotfiles/zsh/config.d/prompt.zsh"
 
 # # uncomment to profile zshrc
 # set +x
