@@ -521,6 +521,7 @@
   ##########################[ status: exit code of the last command ]###########################
   typeset -g POWERLEVEL9K_STATUS_FOREGROUND=231
   typeset -g POWERLEVEL9K_STATUS_BACKGROUND=57
+  typeset -g POWERLEVEL9K_STATUS_CONTENT_EXPANSION='%B${P9K_CONTENT}%b'
 
   # Enable OK_PIPE, ERROR_PIPE and ERROR_SIGNAL status states to allow us to enable, disable and
   # style them independently from the regular OK and ERROR state.
