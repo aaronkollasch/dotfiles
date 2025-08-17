@@ -196,10 +196,18 @@
   # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
 
   ################################[ prompt_char: prompt symbol ]################################
+  local prompt_color=69
+  if [[ -n "$SUDO_COMMAND" ]]; then
+    prompt_color=1
+  elif (( P9K_SSH )); then
+    prompt_color=28
+  fi
+  local err_color=57
+
   # Green prompt symbol if the last command succeeded.
-  typeset -g POWERLEVEL9K_PROMPT_CHAR_OK_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=69
+  typeset -g POWERLEVEL9K_PROMPT_CHAR_OK_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=$prompt_color
   # Red prompt symbol if the last command failed.
-  typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=57
+  typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=$err_color
   # Default prompt symbol.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION=''
   # Prompt symbol in command vi mode.
@@ -520,7 +528,7 @@
 
   ##########################[ status: exit code of the last command ]###########################
   typeset -g POWERLEVEL9K_STATUS_FOREGROUND=231
-  typeset -g POWERLEVEL9K_STATUS_BACKGROUND=57
+  typeset -g POWERLEVEL9K_STATUS_BACKGROUND=$err_color
   typeset -g POWERLEVEL9K_STATUS_CONTENT_EXPANSION='%B${P9K_CONTENT}%b'
 
   # Enable OK_PIPE, ERROR_PIPE and ERROR_SIGNAL status states to allow us to enable, disable and
@@ -1667,13 +1675,18 @@
     else
       local state=OK
     fi
-    p10k segment -s $state -f 231 -b 69 -t '  󰏰  '
+    if [[ -n $SUDO_COMMAND ]]; then
+      local prompt_char='  %B#%b  '
+    else
+      local prompt_char='  󰏰  '
+    fi
+    p10k segment -s $state -f 231 -b 69 -t $prompt_char
   }
   function instant_prompt_shell() {
     prompt_shell
   }
-  typeset -g POWERLEVEL9K_SHELL_BACKGROUND=69
-  typeset -g POWERLEVEL9K_SHELL_ERROR_BACKGROUND=57
+  typeset -g POWERLEVEL9K_SHELL_BACKGROUND=$prompt_color
+  typeset -g POWERLEVEL9K_SHELL_ERROR_BACKGROUND=$err_color
 
   # Example of a user-defined prompt segment. Function prompt_example will be called on every
   # prompt if `example` prompt segment is added to POWERLEVEL9K_LEFT_PROMPT_ELEMENTS or
