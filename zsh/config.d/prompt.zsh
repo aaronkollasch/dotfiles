@@ -1,9 +1,9 @@
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-if [[ $LC_RETRO == yes && -d $HOME/.dotfiles/zsh/repos/powerlevel10k ]]; then
+if [[ $LC_RETRO == yes && -f $HOME/.dotfiles/zsh/repos/powerlevel10k/powerlevel10k.zsh-theme ]]; then
   source "$HOME/.dotfiles/zsh/repos/powerlevel10k/powerlevel10k.zsh-theme"
   source "$HOME/.dotfiles/zsh/config.d/p10k-retro.zsh"
-elif [[ -d $HOME/.dotfiles/zsh/repos/powerlevel10k ]]; then
+elif [[ -f $HOME/.dotfiles/zsh/repos/powerlevel10k/powerlevel10k.zsh-theme ]]; then
   source "$HOME/.dotfiles/zsh/repos/powerlevel10k/powerlevel10k.zsh-theme"
   source "$HOME/.dotfiles/zsh/config.d/p10k.zsh"
 else
