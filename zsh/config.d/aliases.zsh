@@ -79,7 +79,16 @@ alias nohist="unsetopt history"
 alias history_clear="history -p"
 alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 alias twork='tmux attach -t work'
-command -v pstree &>/dev/null && { pstree -h 2>&1 || true; } | grep -q 'graphics chars' && alias pstree='pstree -g 2'
+if command -v pstree &>/dev/null; then
+    pstree () {
+        if { pstree --help 2>&1 || true; } | grep -q 'graphics chars'; then
+            alias pstree='pstree -g 2'
+        else
+            unfunction pstree
+        fi
+        pstree "$@"
+    }
+fi
 { command -v sponge &>/dev/null && alias tacat=sponge; } || alias tacat='tac | tac'
 { command -v bat &>/dev/null && alias cat=bat; } || { command -v batcat &>/dev/null && alias cat=batcat && alias bat=batcat; }
 local fd_prefix='LS_COLORS="$(_ls_colors)"'
