@@ -81,12 +81,14 @@ alias fix='reset; stty sane; tput rs1; clear; echo -e "\033c"'
 alias twork='tmux attach -t work'
 if command -v pstree &>/dev/null; then
     pstree () {
-        if { pstree --help 2>&1 || true; } | grep -q 'graphics chars'; then
+        if { command pstree --help 2>&1 || true; } | grep -q 'graphics chars'; then
+            unfunction pstree
             alias pstree='pstree -g 2'
+            command pstree -g 2 "$@"
         else
             unfunction pstree
+            pstree "$@"
         fi
-        pstree "$@"
     }
 fi
 { command -v sponge &>/dev/null && alias tacat=sponge; } || alias tacat='tac | tac'
