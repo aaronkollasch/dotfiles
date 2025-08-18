@@ -7,6 +7,7 @@ fi
 
 # # uncomment to profile zshrc
 # # see https://stackoverflow.com/questions/5014823/how-can-i-profile-a-bash-shell-script-slow-startup
+# # change gsed to sed on linux systems
 # exec 3>&2 2> >( tee /tmp/sample-$$.log |
 #      /opt/homebrew/bin/gsed -u 's/^.*$/now/' |
 #      /opt/homebrew/bin/gdate -f - +%s.%N >/tmp/sample-$$.tim)
