@@ -1,4 +1,3 @@
-local lsp_zero = require("lsp-zero")
 local automatic_enable = vim.fn.has("nvim-0.11") > 0
 
 require("mason").setup({})
@@ -15,120 +14,6 @@ require("mason-lspconfig").setup({
         "bashls",
         "clangd",
     },
-    handlers = {
-        function(server_name)
-            require("lspconfig")[server_name].setup({})
-        end,
-
-        lua_ls = function()
-            -- lua setup
-            require("lspconfig").lua_ls.setup({
-                settings = {
-                    Lua = {
-                        -- Do not send telemetry data containing a randomized but unique identifier
-                        telemetry = {
-                            enable = false,
-                        },
-                        workspace = {
-                            -- Make the server aware of Neovim runtime files
-                            library = vim.api.nvim_get_runtime_file("", true),
-                            checkThirdParty = false,
-                        },
-                    },
-                },
-                commands = {
-                    Format = {
-                        function()
-                            require("stylua-nvim").format_file()
-                        end,
-                    },
-                },
-            })
-        end,
-
-        -- python setup
-        basedpyright = function()
-            require("lspconfig").basedpyright.setup({
-                settings = {
-                    basedpyright = {
-                        analysis = {
-                            typeCheckingMode = "standard",
-                        },
-                    },
-                },
-            })
-        end,
-        ruff = function()
-            require("lspconfig").ruff.setup({
-                init_options = {
-                    settings = {
-                        args = {
-                            "--line-length=120",
-                        },
-                    },
-                },
-            })
-        end,
-
-        clangd = function()
-            local capabilities = lsp_zero.get_capabilities()
-            capabilities.offsetEncoding = { "utf-16" }
-            require("lspconfig").clangd.setup({
-                capabilities = capabilities,
-            })
-        end,
-
-        rust_analyzer = function()
-            -- rust setup
-            require("lspconfig").rust_analyzer.setup({
-                settings = {
-                    -- to enable rust-analyzer settings visit:
-                    -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-                    ["rust-analyzer"] = {
-                        -- enable clippy on save
-                        checkOnSave = {
-                            command = "clippy",
-                        },
-                    },
-                },
-            })
-        end,
-    },
-})
-
--- set basedpyright type checking mode without restarting server
--- see https://github.com/neovim/nvim-lspconfig/blob/01e08d4bf1c35e5126b2ad5209725e4c552289ab/lua/lspconfig/server_configurations/basedpyright.lua#L28-L41
-local function pyright_set_type_checking_mode(mode)
-    local clients = require("lspconfig.util").get_lsp_clients({
-        bufnr = vim.api.nvim_get_current_buf(),
-        name = "basedpyright",
-    })
-    for _, client in ipairs(clients) do
-        if client.settings then
-            client.settings.basedpyright = vim.tbl_deep_extend(
-                "force",
-                client.settings.basedpyright or {},
-                { analysis = { typeCheckingMode = mode } }
-            )
-        else
-            client.config.settings = vim.tbl_deep_extend(
-                "force",
-                client.config.settings,
-                { basedpyright = { analysis = { typeCheckingMode = mode } } }
-            )
-        end
-        client.notify("workspace/didChangeConfiguration", { settings = nil })
-    end
-end
-
-vim.api.nvim_create_user_command("PyrightSetTypeCheckingMode", function(opts)
-    local typeCheckingMode = opts.fargs[1] or "standard"
-    pyright_set_type_checking_mode(typeCheckingMode)
-end, {
-    nargs = 1,
-    complete = function()
-        return { "off", "basic", "standard", "strict", "all" }
-    end,
 })
 
 require("conform").setup({
@@ -155,21 +40,25 @@ vim.lsp.handlers["workspace/diagnostic/refresh"] = function(_, _, ctx)
     return true
 end
 
+local ds = vim.diagnostic.severity
 local sign_icons = {
-    error = "E",
-    warn = "W",
-    hint = "H",
-    info = "I",
+    [ds.ERROR] = "E",
+    [ds.WARN] = "W",
+    [ds.HINT] = "H",
+    [ds.INFO] = "I",
 }
 if require("ak.opts").icons_enabled then
     sign_icons = {
-        error = " ",
-        warn = " ",
-        hint = " ",
-        info = "󰌵",
+        [ds.ERROR] = " ",
+        [ds.WARN] = " ",
+        [ds.HINT] = " ",
+        [ds.INFO] = "󰌵",
     }
 end
-lsp_zero.set_sign_icons(sign_icons)
+vim.diagnostic.config({
+    signs = { text = sign_icons },
+    jump = { float = true },
+})
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -182,8 +71,6 @@ end
 
 -- stylua: ignore start
 map("n", "<leader>e",  vim.diagnostic.open_float, { desc = "Open LSP float" })
-map("n", "[d",         vim.diagnostic.goto_prev,  { desc = "Previous diagnostic" })
-map("n", "]d",         vim.diagnostic.goto_next,  { desc = "Next diagnostic" })
 map("n", "<leader>q",  function()
     require("telescope.builtin").diagnostics()
 end,                                              { desc = "Show diagnostics" })
@@ -194,7 +81,7 @@ end,                                              { desc = "[W]orkspace [D]iagno
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-lsp_zero.on_attach(function(client, bufnr)
+local on_attach = function(client, bufnr)
     local builtin = require("telescope.builtin")
 
     -- Enable completion triggered by <c-x><c-o>
@@ -257,7 +144,22 @@ lsp_zero.on_attach(function(client, bufnr)
             vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
         end
     end
-end)
+end
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("lsp_buf_conf", { clear = true }),
+    callback = function(event_context)
+        local client = vim.lsp.get_client_by_id(event_context.data.client_id)
+        -- vim.print(client.name, client.server_capabilities)
+
+        if not client then
+            return
+        end
+
+        local bufnr = event_context.buf
+
+        on_attach(client, bufnr)
+    end,
+})
 
 local diagnostic_config = {
     virtual_text = {
@@ -274,7 +176,7 @@ vim.diagnostic.config(diagnostic_config)
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp_zero.defaults.cmp_mappings({
+local cmp_mappings = {
     ["<C-k>"] = cmp.mapping.select_prev_item(cmp_select),
     ["<C-j>"] = cmp.mapping.select_next_item(cmp_select),
     ["<C-l>"] = cmp.mapping.confirm({ select = true }),
@@ -332,15 +234,7 @@ local cmp_mappings = lsp_zero.defaults.cmp_mappings({
             fallback()
         end
     end, { "i", "s" }),
-})
-
--- disable <CR> mapping so that <CR> is faster
-cmp_mappings["<CR>"] = nil
-
--- disable completion with tab
--- this helps with copilot setup
-cmp_mappings["<Tab>"] = nil
-cmp_mappings["<S-Tab>"] = nil
+}
 
 local cmp_sources = cmp.config.sources({
     { name = "path" },

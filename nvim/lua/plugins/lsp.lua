@@ -1,17 +1,12 @@
--- LSP support with lsp-zero
 return {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v3.x",
+    "williamboman/mason-lspconfig.nvim",
     dependencies = {
-        -- LSP Support
-        { "neovim/nvim-lspconfig" },
         {
             "williamboman/mason.nvim",
             opts = {
                 PATH = "append",
             },
         },
-        { "williamboman/mason-lspconfig.nvim" },
 
         -- Autocompletion
         { "hrsh7th/nvim-cmp" },
@@ -31,6 +26,7 @@ return {
         -- { "mrcjkb/rustaceanvim" },
         { "stevearc/conform.nvim" },
     },
+    opts = {},
     event = { "BufReadPre", "BufNewFile" },
     cmd = { "Mason", "MasonUpdate", "LspInfo", "LspInstall" },
     config = function()

@@ -96,7 +96,6 @@ return {
         "aaronkollasch/nvim-navbuddy",
         dev = false,
         dependencies = {
-            "neovim/nvim-lspconfig",
             -- "SmiteshP/nvim-navic",
             {
                 "aaronkollasch/nvim-navic",
