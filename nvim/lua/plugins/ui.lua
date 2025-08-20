@@ -34,7 +34,7 @@ return {
                                 "Diagnostic",
                                 "todo",
                             },
-                            namespace = { "diagnostic/sign" },
+                            namespace = { "diagnostic", "diagnostic/sign" },
                             maxwidth = 1,
                             colwidth = 2,
                             auto = false,

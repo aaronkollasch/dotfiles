@@ -57,6 +57,7 @@ if require("ak.opts").icons_enabled then
 end
 vim.diagnostic.config({
     signs = { text = sign_icons },
+    severity_sort = true,
     jump = { float = true },
 })
 
