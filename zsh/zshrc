@@ -50,6 +50,11 @@ fi
 [[ $1 == "__init" ]] || conda "$@"
 }
 
+_conda() {
+    conda __init
+    builtin autoload -XUz
+}
+
 mamba() {
 conda __init
 mamba "$@"
