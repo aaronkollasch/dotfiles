@@ -108,6 +108,10 @@ if [[ -o zle ]]; then
             _cd -/
 
         elif [[ "${words[-1]}" == '' ]]; then
+            # Don't try to show fzf for zsh-autocomplete
+            # shellcheck disable=SC2154
+            [[ "$curcontext" == :complete*:* ]] && return 0
+
             # Show completions for Space-Tab.
             # shellcheck disable=SC2086
             __zoxide_result="$(\command zoxide query --exclude "$(__zoxide_pwd || \builtin true)" --interactive -- ${words[2,-1]})" || __zoxide_result=''
