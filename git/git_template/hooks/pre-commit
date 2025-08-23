@@ -12,7 +12,7 @@ RED='\033[0;31m'
 NO_COLOR='\033[0m'
 
 # check for gitleaks
-gitleaks protect --staged --verbose --redact
+gitleaks git --pre-commit --staged --verbose --redact
 if [[ ${PIPESTATUS[0]} -gt 0 ]]; then
     echo "${RED}Error:${NO_COLOR} gitleaks has detected sensitive information in your changes."
     exit 1

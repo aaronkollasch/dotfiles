@@ -78,8 +78,7 @@ do
 done
 
 # check for gitleaks
-# Adapted from https://github.com/zricethezav/gitleaks/wiki/Scanning
-gitleaks detect --verbose --redact
+gitleaks git --verbose --redact
 if [[ ${PIPESTATUS[0]} -gt 0 ]]; then
     echo "${RED}Error:${NO_COLOR} gitleaks has detected sensitive information in your changes."
     exit 1
