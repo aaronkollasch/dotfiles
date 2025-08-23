@@ -74,14 +74,14 @@ do
 			echo >&2 "${RED}Error:${NO_COLOR} Found FIXUP commit in $local_ref, not pushing"
 			exit 1
 		fi
+
+		# check for gitleaks
+		gitleaks git --verbose --redact --log-opts="--all $range"
+		if [[ ${PIPESTATUS[0]} -gt 0 ]]; then
+		    echo "${RED}Error:${NO_COLOR} gitleaks has detected sensitive information in your changes."
+		    exit 1
+		fi
 	fi
 done
-
-# check for gitleaks
-gitleaks git --verbose --redact
-if [[ ${PIPESTATUS[0]} -gt 0 ]]; then
-    echo "${RED}Error:${NO_COLOR} gitleaks has detected sensitive information in your changes."
-    exit 1
-fi
 
 exit 0
