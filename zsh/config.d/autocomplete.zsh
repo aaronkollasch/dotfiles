@@ -25,7 +25,7 @@ zstyle ':autocomplete:*' insert-unambiguous yes
 zstyle ':autocomplete:*' widget-style menu-select
 zstyle ':autocomplete:*' fzf-completion yes
 zstyle ':autocomplete:*' min-delay 0.1
-zstyle -e ':autocomplete:*:*' list-lines 'reply=( $(( LINES - 3 )) )'
+zstyle -e ':autocomplete:*:*' list-lines 'reply=( ${$(( LINES * 0.5 ))//%.*/} )'
 source ~/.dotfiles/zsh/repos/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source ~/.dotfiles/zsh/repos/fzf-tab/fzf-tab.plugin.zsh
 
