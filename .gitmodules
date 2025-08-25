@@ -10,7 +10,7 @@
 	url = https://github.com/junegunn/fzf
 [submodule "zsh/repos/conda-zsh-completion"]
 	path = zsh/repos/conda-zsh-completion
-	url = https://github.com/conda-incubator/conda-zsh-completion
+	url = https://github.com/aaronkollasch/conda-zsh-completion
 [submodule "zsh/repos/zsh-bash-completions-fallback"]
 	path = zsh/repos/zsh-bash-completions-fallback
 	url = https://github.com/aaronkollasch/zsh-bash-completions-fallback
