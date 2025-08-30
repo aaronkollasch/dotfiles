@@ -37,6 +37,7 @@
     vcs                     # git status
     # =========================[ Line #2 ]=========================
     newline                 # \n
+    background_jobs         # presence of background jobs
     status                  # exit code of the last command
     shell                   # custom prompt_shell
     prompt_char             # prompt symbol
@@ -50,7 +51,6 @@
     # =========================[ Line #1 ]=========================
     # status                  # exit code of the last command
     command_execution_time  # duration of the last command
-    background_jobs         # presence of background jobs
     direnv                  # direnv status (https://direnv.net/)
     asdf                    # asdf version manager (https://github.com/asdf-vm/asdf)
     virtualenv              # python virtual environment (https://docs.python.org/3/library/venv.html)
@@ -582,11 +582,13 @@
 
   #######################[ background_jobs: presence of background jobs ]#######################
   # Don't show the number of background jobs.
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=false
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VERBOSE=true
   # Background jobs color.
-  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=70
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_FOREGROUND=231
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_BACKGROUND=21
   # Custom icon.
-  # typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION='⭐'
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_VISUAL_IDENTIFIER_EXPANSION=''
+  typeset -g POWERLEVEL9K_BACKGROUND_JOBS_CONTENT_EXPANSION=' %B+${P9K_CONTENT}%b '
 
   #######################[ direnv: direnv status (https://direnv.net/) ]########################
   # Direnv color.
@@ -1743,7 +1745,7 @@
     [[ $current_prompt_dir == $last_prompt_dir &&
        $current_python_bin == $last_python_bin &&
        $current_vcs_state == $last_vcs_state ]] &&
-      p10k display '1|2/right'=hide '1|2/left/*'=hide 'empty_line'=hide '2/left/(status|shell|prompt_char)'=show
+      p10k display '1|2/right'=hide '1|2/left/*'=hide 'empty_line'=hide '2/left/(background_jobs|status|shell|prompt_char)'=show
     last_prompt_dir=$current_prompt_dir
     last_python_bin=$current_python_bin
     last_vcs_state=$current_vcs_state
