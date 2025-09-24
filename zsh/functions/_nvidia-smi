@@ -1,0 +1,29 @@
+#compdef nvidia-smi
+
+_nvidia_gpus() {
+    nvidia-smi -L | cut -d' ' -f2-
+}
+
+_nvidia-smi() {
+    local context state state_descr line
+    typeset -A opt_args
+    local -a gpus
+    local all_args="-h --help -i --id --version -L --list-gpus -B --list-excluded-gpus -f --filename -l --loop 1"
+
+    _arguments \
+        "($all_args)"{-h,--help}"[Print usage information and exit]" \
+        "($all_args)--version[Print version information and exit]" \
+        "($all_args)"{-L,--list-gpus}"[Display a list of GPUs connected to the system]" \
+        "($all_args)"{-B,--list-excluded-gpus}"[Display a list of excluded GPUs in the system]" \
+        "(-i --id)"{-i,--id}"[Target a specific GPU]:id:->gpus" \
+        "(-f --filename)"{-f,--filename}"[Log to a specified file, rather than to stdout]:file:_files" \
+        "(-l --loop)"{-l,--loop}"[Probe until Ctrl+C at specified second interval]:time (s):((1 2 5))"
+
+    case $state in
+        gpus)
+            IFS=$'\n' gpus=($(_nvidia_gpus))
+            # see https://unix.stackexchange.com/a/665628
+            _sequence _describe -t gpus "gpu or unit" gpus && return 0
+            ;;
+    esac
+}
