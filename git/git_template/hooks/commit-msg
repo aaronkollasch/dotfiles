@@ -31,7 +31,7 @@ test "" = "$(grep '^Signed-off-by: ' "$1" |
 # see https://gist.github.com/ordnungswidrig/b7f5413bec0b098f5838
 # see https://gist.github.com/tueda/7633695
 my_warned=false
-head -1 "$1" | grep -qe '^..\{50\}' && {
+head -1 "$1" | grep -v '^fixup!\|amend!\|squash!' | grep -qe '^..\{50\}' && {
   echo >&2 "${YELLOW}WARNING:${NO_COLOR} First line exceeds 50 char limit."
   my_warned=true
 }

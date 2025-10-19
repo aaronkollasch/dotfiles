@@ -67,6 +67,13 @@ do
 			echo >&2 "${RED}Error:${NO_COLOR} Found fixup! commit in $local_ref, not pushing"
 			exit 1
 		fi
+		# Check for amend commit
+		commit=$(git rev-list -n 1 --grep '^amend!' "$range")
+		if test -n "$commit"
+		then
+			echo >&2 "${RED}Error:${NO_COLOR} Found amend! commit in $local_ref, not pushing"
+			exit 1
+		fi
 		# Check for FIXUP commit
 		commit=$(git rev-list -n 1 --grep '^FIXUP' "$range")
 		if test -n "$commit"
