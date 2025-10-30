@@ -40,11 +40,14 @@ do
 		if test "$remote_oid" = "$zero"
 		then
 			# New branch, examine all commits
+			# TODO: check if the new branch is a fork of the main branch
+			# in which case we can consider it an update to that branch
 			range="$local_oid"
 		else
 			# Update to existing branch, examine new commits
 			range="$remote_oid..$local_oid"
 		fi
+		echo "Scanning commit range $range"
 
 		# Check for WIP commit
 		commit=$(git rev-list -n 1 --grep '^[Ww][Ii][Pp]' "$range")
@@ -83,7 +86,7 @@ do
 		fi
 
 		# check for gitleaks
-		gitleaks git --verbose --redact --log-opts="--all $range"
+		gitleaks git --verbose --redact --log-opts="$range"
 		if [[ ${PIPESTATUS[0]} -gt 0 ]]; then
 		    echo "${RED}Error:${NO_COLOR} gitleaks has detected sensitive information in your changes."
 		    exit 1
