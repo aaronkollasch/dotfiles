@@ -19,8 +19,7 @@
 # This sample shows how to prevent push of commits where the log message starts
 # with "WIP" (work in progress).
 
-# # variables currently unused
-# remote="$1"
+remote="$1"
 # url="$2"
 
 # Colors
@@ -39,10 +38,15 @@ do
 	else
 		if test "$remote_oid" = "$zero"
 		then
-			# New branch, examine all commits
-			# TODO: check if the new branch is a fork of the main branch
-			# in which case we can consider it an update to that branch
-			range="$local_oid"
+			no_fork=0
+			merge_base="$(git merge-base "refs/remotes/$remote/HEAD" "$local_oid")" || no_fork=1
+			if [[ $no_fork -ne 0 ]]; then
+				# New branch, examine all commits
+				range="$local_oid"
+			else
+				# New branch is a fork of the remote's main branch, examine new commits
+				range="$merge_base..$local_oid"
+			fi
 		else
 			# Update to existing branch, examine new commits
 			range="$remote_oid..$local_oid"
