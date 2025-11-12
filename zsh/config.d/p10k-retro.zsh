@@ -473,6 +473,9 @@
     # *42 if have stashes.
     (( VCS_STATUS_STASHES        )) && res+=" ${stashed}*${VCS_STATUS_STASHES}"
 
+    # Display LOCKED if .git/index.lock file is present
+    [[ -f $(git rev-parse --show-toplevel)/.git/index.lock ]] && res+=" ${conflicted}LOCKED"
+
     typeset -g my_git_format=$res
   }
   functions -M my_git_formatter 2>/dev/null
