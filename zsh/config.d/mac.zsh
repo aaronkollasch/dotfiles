@@ -8,3 +8,9 @@ function tmexclude () {
     sudo tmutil addexclusion -p "$@"
 }
 export tmexclude
+function netstat-mac () {
+    sudo netstat -Watnlv |
+        awk 'NR==1 {print "Proto | Local Address | Foreign Address | pid | name"}
+             /LISTEN/ {"ps -o comm= -p " $9 | getline procname;print cred $1 " | " $4 " | " $5 " | " $9 " | " procname;  }' |
+        column -t -s "|"
+}
