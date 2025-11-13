@@ -62,5 +62,6 @@
     "terminal.integrated.sendKeybindingsToShell": true,
     "cursor.chat.terminalShowHoverHint": false,
     "cursor.terminal.usePreviewBox": true,
-    "terminal.integrated.localEchoLatencyThreshold": 200
+    "terminal.integrated.localEchoLatencyThreshold": 200,
+    "workbench.localHistory.maxFileSize": 1024
 }
