@@ -5476,7 +5476,10 @@
 		<string>Captured Output</string>
 	</array>
 	<key>URLHandlersByGuid</key>
-	<dict/>
+	<dict>
+		<key>ssh</key>
+		<string>1F091D12-9AA2-4BC8-B7D4-C221341A657F</string>
+	</dict>
 	<key>UseBorder</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
