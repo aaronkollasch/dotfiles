@@ -39,17 +39,11 @@
 ; 	cmd = "if command -v nvim &>/dev/null; then nvim -d \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\" -c \"wincmd w\" -c \"wincmd J\"; else vimdiff \"$LOCAL\" \"$MERGED\" \"$BASE\" \"$REMOTE\"; fi"
 
 [interactive]
-#LIGHT
-#	diffFilter = "delta --color-only --features=\"interactive lightmode\""
-#DARK
-	diffFilter = "delta --color-only --features=\"interactive darkmode\""
+	diffFilter = "delta --color-only --features=\"interactive\""
 	singlekey = true
 
 [delta]
-#LIGHT
-#	features = decorations lightmode
-#DARK
-	features = decorations darkmode
+	features = decorations
 	navigate = true
 
 [delta "interactive"]

@@ -2,7 +2,4 @@
 	helper = osxkeychain
 
 [delta]
-#LIGHT
-#	features = decorations lightmode
-#DARK
-	features = decorations darkmode
+	features = decorations

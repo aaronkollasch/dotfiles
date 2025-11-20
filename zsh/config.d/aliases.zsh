@@ -5,28 +5,37 @@ _ls_colors () {
         if ! command -v vivid &>/dev/null; then
             return
         fi
-        if [[ $COLORTERM == "truecolor" ]]; then
-            local gen_path="$HOME/.config/vivid/generated-truecolor"
+        local theme
+        if ! command -v rod &>/dev/null; then
+            theme="catppuccin-latte"
+        elif rod print | grep -q Dark; then
+            theme="catppuccin-frappe"
         else
-            local gen_path="$HOME/.config/vivid/generated-8-bit"
+            theme="catppuccin-latte"
         fi
-        local theme_path="$HOME/.config/vivid/theme"
-        if [[ ! -f "$gen_path" || "$theme_path" -nt "$gen_path" ]]; then
-            local theme
-            theme="$(cat "$theme_path" | grep -v '^#')" || theme="catppuccin-frappe"
-            theme="${theme# *}"
-            if [[ $COLORTERM == "truecolor" ]]; then
-                vivid generate "$theme" > "$gen_path"
-            else
-                vivid -m 8-bit generate "$theme" > "$gen_path"
-            fi
+        if [[ $COLORTERM == "truecolor" ]]; then
+            vivid generate "$theme"
+        else
+            vivid -m 8-bit generate "$theme"
         fi
-        cat "$gen_path"
     else
         printf "$LS_COLORS"
     fi
 }
 zstyle ':completion:*' list-colors ${(s.:.)$(_ls_colors)}
+
+export _ROD_THEME=
+if command -v rod &>/dev/null; then
+    _rod_preexec () {
+        local rod_theme="$(rod print)"
+        if [[ $rod_theme != $_ROD_THEME ]]; then
+            rod env > "$HOME/.config/rod/$rod_theme"
+            export _ROD_THEME="$rod_theme"
+        fi
+        source "$HOME/.config/rod/$rod_theme"
+    }
+    typeset -ga preexec_functions=($preexec_functions _rod_preexec)
+fi
 
 if command -v eza &>/dev/null; then
     alias l="eza"

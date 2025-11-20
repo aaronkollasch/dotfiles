@@ -21,7 +21,7 @@ install_link "$SCRIPT_DIR"/pymol/pymolrc "$HOME"/.pymolrc || retval=$?
 install_link "$SCRIPT_DIR"/git/gitconfig_mac "$HOME"/.gitconfig || retval=$?
 
 create_dir "$HOME"/Library/Application\ Support/iTerm2/Scripts/AutoLaunch || retval=$?
-install_link  "$HOME"/"$SCRIPT_DIR"/iterm2/Scripts/AutoLaunch/switch_automatic.py "$HOME"/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/switch_automatic.py "Installed iTerm2 profile switch script" || retval=$?
+[[ -L "$HOME"/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/switch_automatic.py ]] && unlink "$HOME"/Library/Application\ Support/iTerm2/Scripts/AutoLaunch/switch_automatic.py && "Uninstalled iTerm2 profile switch script"
 
 create_dir "$HOME"/.1password || retval=$?
 install_link "$HOME"/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock "$HOME"/.1password/agent.sock "Installed 1password agent alias" || retval=$?
@@ -51,5 +51,8 @@ create_dir "$HOME"/Library/Application\ Support/VSCodium/User/
 install_link "$HOME"/.dotfiles/vscode/keybindings.json "$HOME"/Library/Application\ Support/VSCodium/User/keybindings.json
 install_link "$HOME"/.dotfiles/vscode/settings.json "$HOME"/Library/Application\ Support/VSCodium/User/settings.json
 command -v codium &>/dev/null && { ./vscode/install.sh || retval=$?; }
+
+create_dir "$HOME"/Library/Application\ Support/rod/ || retval=$?
+install_link "$HOME"/.dotfiles/rod/config.toml "$HOME"/Library/Application\ Support/rod/config.toml || retval=$?
 
 exit "${retval:-0}"

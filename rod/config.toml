@@ -1,0 +1,47 @@
+fallback_to_light = false
+
+[dark.env]
+THEME = "dark"
+BAT_THEME = "OneHalfDark"
+FZF_DEFAULT_OPTS = "--color=dark"
+DELTA_FEATURES='+darkmode'
+
+[light.env]
+THEME = "light"
+BAT_THEME = "OneHalfLight"
+FZF_DEFAULT_OPTS = "--color=light"
+DELTA_FEATURES='+lightmode'
+
+# [cmds.test_cmd.dark]
+# pre_args = []
+# pos_args = ["--color=dark"]
+#
+# [cmds.test_cmd.dark.env]
+# COLOR = "dark"
+#
+# [cmds.test_cmd.light]
+# pre_args = []
+# pos_args = ["--color=dark"]
+#
+# [cmds.test_cmd.light.env]
+# COLOR = "light"
+#
+# [cmds.fzf.dark]
+# pre_args = ["--color=dark"]
+# pos_args = []
+#
+# [cmds.fzf.dark.env]
+#
+# [cmds.fzf.light]
+# pre_args = ["--color=light"]
+# pos_args = []
+#
+# [cmds.fzf.light.env]
+
+# [cmds.bat.dark]
+# pre_args = ["--theme=OneHalfDark"]
+# pos_args = []
+#
+# [cmds.bat.light]
+# pre_args = ["--theme=OneHalfLight"]
+# pos_args = []

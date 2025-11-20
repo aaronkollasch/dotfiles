@@ -432,10 +432,11 @@ let g:edge_transparent_background = 1
 let g:edge_enable_italic = 1
 let g:edge_better_performance = 1
 
-"LIGHT
-" set background=light
-"DARK
- set background=dark
+if $THEME == "light"
+  set background=light
+else
+  set background=dark
+endif
 if $LC_TERMINAL == "cool-retro-term"
   set background=dark
   let g:edge_enable_italic = 0

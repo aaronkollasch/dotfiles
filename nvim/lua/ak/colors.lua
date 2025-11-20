@@ -6,10 +6,11 @@ if has('termguicolors')
   set termguicolors
 endif
 
-"LIGHT
-" set background=light
-"DARK
- set background=dark
+if $THEME == "light"
+  set background=light
+else
+  set background=dark
+endif
 if $LC_TERMINAL == "cool-retro-term"
   set background=dark
   let g:edge_enable_italic = 0

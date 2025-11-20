@@ -2,7 +2,4 @@
 	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
 
 [delta]
-#LIGHT
-#	features = decorations lightmode
-#DARK
-	features = decorations darkmode
+	features = decorations
