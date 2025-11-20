@@ -81,7 +81,7 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
-	pager = "if command -v delta &>/dev/null; then if [ $COLUMNS -ge 150 ]; then delta --side-by-side; else delta; fi; else less; fi"
+	pager = "if command -v delta >/dev/null; then if [ $COLUMNS -ge 150 ]; then delta --side-by-side; else delta; fi; else less; fi"
 [init]
 	templatedir = ~/.git_template
 	defaultBranch = main
