@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+PARAMS=()
+
+while (( "$#" )); do
+  case "$1" in
+    -h|--help)
+      echo "switch_theme [dark|light|auto]"
+      exit
+      ;;
+    -*) # unsupported flags
+      echo "Error: Unsupported flag $1" >&2
+      exit 1
+      ;;
+    *) # preserve positional arguments
+      PARAMS+=("$1")
+      shift
+      ;;
+  esac
+done
+
+# set positional arguments in their proper place
+set -- "${PARAMS[@]}"
+
+if [ $# -eq 0 ]; then
+  echo "switch_theme [dark|light|auto]"
+  exit
+fi
+
+THEME="$1"
+if [[ -d "$HOME/Library/Application Support/" ]]; then
+  ROD_DIR="$HOME/Library/Application Support/rod"
+else
+  ROD_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/rod"
+fi
+mkdir -p "$ROD_DIR"
+OVERRIDE_PATH="$ROD_DIR/override"
+
+case "$THEME" in
+  dark)
+    echo "Dark" > "$OVERRIDE_PATH"
+    ;;
+  light)
+    echo "Light" > "$OVERRIDE_PATH"
+    ;;
+  auto)
+    [[ -f "$OVERRIDE_PATH" ]] && rm "$OVERRIDE_PATH"
+    ;;
+  *)
+    echo "switch_theme [dark|light|auto]"
+    exit
+    ;;
+esac
