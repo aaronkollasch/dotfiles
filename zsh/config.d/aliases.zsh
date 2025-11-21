@@ -24,15 +24,9 @@ _ls_colors () {
 }
 zstyle ':completion:*' list-colors ${(s.:.)$(_ls_colors)}
 
-export _ROD_THEME=
 if command -v rod &>/dev/null; then
     _rod_preexec () {
-        local rod_theme="$(rod print)"
-        if [[ $rod_theme != $_ROD_THEME ]]; then
-            rod env > "$HOME/.config/rod/$rod_theme"
-            export _ROD_THEME="$rod_theme"
-        fi
-        source "$HOME/.config/rod/$rod_theme"
+        rod env | source /dev/fd/0
     }
     typeset -ga preexec_functions=($preexec_functions _rod_preexec)
 fi
