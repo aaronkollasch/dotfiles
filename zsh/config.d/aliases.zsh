@@ -29,6 +29,7 @@ if command -v rod &>/dev/null; then
         rod env | source /dev/fd/0
     }
     typeset -ga preexec_functions=($preexec_functions _rod_preexec)
+    rod env | source /dev/fd/0
 fi
 
 if command -v eza &>/dev/null; then
