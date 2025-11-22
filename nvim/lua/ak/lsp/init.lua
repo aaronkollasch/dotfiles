@@ -16,6 +16,20 @@ require("mason-lspconfig").setup({
     },
 })
 
+-- language-specific customizations
+vim.lsp.config("rust_analyzer", {
+    settings = {
+        ["rust-analyzer"] = {
+            inlayHints = {
+                parameterHints = {
+                    enable = false,
+                },
+            },
+        },
+    },
+})
+
+-- formatters
 require("conform").setup({
     formatters_by_ft = {
         lua = { "stylua" },
