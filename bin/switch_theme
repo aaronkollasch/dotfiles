@@ -45,6 +45,7 @@ case "$THEME" in
     ;;
   auto)
     [[ -f "$OVERRIDE_PATH" ]] && rm "$OVERRIDE_PATH"
+    [[ ! -f "$OVERRIDE_PATH" ]]
     ;;
   *)
     echo "switch_theme [dark|light|auto]"
