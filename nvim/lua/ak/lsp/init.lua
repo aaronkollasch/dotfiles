@@ -86,6 +86,7 @@ end
 
 -- stylua: ignore start
 map("n", "<leader>e",  vim.diagnostic.open_float, { desc = "Open LSP float" })
+map("n", "<leader>id", vim.diagnostic.open_float, { desc = "[I]nspect [D]iagnostics" })
 map("n", "<leader>q",  function()
     require("telescope.builtin").diagnostics()
 end,                                              { desc = "Show diagnostics" })
