@@ -1,68 +1,5 @@
 local icons_enabled = require("ak.opts").icons_enabled
 
-local navic_icons = {}
-if icons_enabled then
-    -- stylua: ignore
-    navic_icons = {
-        File          = "󰈙 ",
-        Module        = " ",
-        Namespace     = "󰌗 ",
-        Package       = " ",
-        Class         = "󰌗 ",
-        Method        = "󰊕 ",
-        Property      = " ",
-        Field         = " ",
-        Constructor   = " ",
-        Enum          = "󰕘 ",
-        Interface     = "󰕘 ",
-        Function      = "󰊕 ",
-        Variable      = "󰫧 ",
-        Constant      = "󰏿 ",
-        String        = "󰀬 ",
-        Number        = "󰎠 ",
-        Boolean       = "◩ ",
-        Array         = "󰅪 ",
-        Object        = "󰅩 ",
-        Key           = "󰌋 ",
-        Null          = "󰟢 ",
-        EnumMember    = " ",
-        Struct        = "󰌗 ",
-        Event         = " ",
-        Operator      = "󰆕 ",
-        TypeParameter = "󰊄 ",
-    }
-else
-    -- stylua: ignore
-    navic_icons = {
-        File          = "",
-        Module        = "",
-        Namespace     = "",
-        Package       = "",
-        Class         = "",
-        Method        = "",
-        Property      = "",
-        Field         = "",
-        Constructor   = "",
-        Enum          = "",
-        Interface     = "",
-        Function      = "",
-        Variable      = "",
-        Constant      = "",
-        String        = "",
-        Number        = "",
-        Boolean       = "",
-        Array         = "",
-        Object        = "",
-        Key           = "",
-        Null          = "",
-        EnumMember    = "",
-        Struct        = "",
-        Event         = "",
-        Operator      = "",
-        TypeParameter = "",
-    }
-end
-
 return {
     -- {
     --     "stevearc/aerial.nvim",
@@ -102,7 +39,9 @@ return {
                 dev = false,
                 lazy = true,
                 opts = {
-                    icons = navic_icons,
+                    icons = {
+                        enabled = icons_enabled,
+                    },
                     lsp = {
                         auto_attach = true,
                         preference = nil,
@@ -137,7 +76,9 @@ return {
                     border = "rounded",
                 },
                 node_markers = node_markers,
-                icons = navic_icons,
+                icons = {
+                    enabled = icons_enabled,
+                },
                 mappings = {
                     ["<C-j>"] = actions.next_sibling(),
                     ["<Down>"] = actions.next_sibling(),
