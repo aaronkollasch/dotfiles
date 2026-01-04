@@ -1,3 +1,5 @@
+local icons_enabled = require("ak.opts").icons_enabled
+
 vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
@@ -38,7 +40,11 @@ vim.opt.splitkeep = "screen"
 
 vim.opt.breakindent = true
 vim.opt.breakindentopt = "list:-1"
-vim.opt.showbreak = "↳ "
+if icons_enabled then
+    vim.opt.showbreak = "↳ "
+else
+    vim.opt.showbreak = "→ "
+end
 
 -- vim.opt.signcolumn = "yes"
 -- if vim.version().major > 0 or vim.version().minor >= 9 then
