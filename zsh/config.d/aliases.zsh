@@ -122,3 +122,8 @@ fi
 command -v op &>/dev/null && source ~/.config/op/plugins.sh
 
 source ~/.dotfiles/zsh/config.d/git.aliases.zsh
+
+# Enable zmv
+autoload -Uz zmv
+alias zcp='zmv -C'  # Copy with patterns
+alias zln='zmv -L'  # Link with patterns
