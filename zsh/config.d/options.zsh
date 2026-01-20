@@ -53,6 +53,18 @@ bindkey -M viins '^xh' _complete_help
 bindkey -M viins '^x^h' _complete_help
 bindkey -M viins '^x?' _complete_debug
 
+# vim edit command
+if command -v nvim &>/dev/null; then
+    EDITOR=nvim
+elif command -v vim &>/dev/null; then
+    EDITOR=vim
+elif command -v vi &>/dev/null; then
+    EDITOR=vi
+fi
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
 # key timeout
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
     # 100ms for key sequences
