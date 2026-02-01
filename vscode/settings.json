@@ -45,6 +45,7 @@
     "vim.startInInsertMode": false,
     "editor.lineNumbers": "relative",
     "editor.mouseWheelScrollSensitivity": 0.7,
+    "editor.find.seedSearchStringFromSelection": "selection",
     "workbench.list.mouseWheelScrollSensitivity": 0.7,
     "terminal.integrated.mouseWheelScrollSensitivity": 0.7,
     "vim.visualstar": true,
