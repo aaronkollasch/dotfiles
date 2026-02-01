@@ -299,6 +299,9 @@ else
   nnoremap <silent> <Leader>f;      :Commands<CR>
   nnoremap <silent> <Leader>f'      :Marks<CR>
 
+  " fm-keymaps
+  nnoremap <leader>fmw :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
   " g-keymaps
   nnoremap <silent> <Leader>gl      :Commits<CR>
   nnoremap <silent> <Leader>gh      :BCommits<CR>
