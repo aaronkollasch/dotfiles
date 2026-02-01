@@ -170,3 +170,19 @@ fi
 if command -v aws_completer &>/dev/null; then
   complete -C aws_completer aws
 fi
+
+# uv init
+if command -v uv &>/dev/null; then
+  _uv () {
+    eval "_uv() { $(uv generate-shell-completion zsh) }"
+    _uv "$@"
+  }
+  compdef _uv uv
+fi
+if command -v uvx &>/dev/null; then
+  _uvx () {
+    eval "_uvx() { $(uvx --generate-shell-completion zsh) }"
+    _uvx "$@"
+  }
+  compdef _uvx uvx
+fi
