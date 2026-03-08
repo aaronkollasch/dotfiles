@@ -46,6 +46,7 @@ return {
 
             -- Actions
             -- stylua: ignore start
+            map("n", "<leader>gb", gs.blame,           { desc = "[G]it [B]lame" })
             map("n", "<leader>hs", gs.stage_hunk,      { desc = "[H]unk [S]tage" })
             map("n", "<leader>hr", gs.reset_hunk,      { desc = "[H]unk [R]eset" })
             map("v", "<leader>hs", function()
