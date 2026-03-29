@@ -147,6 +147,7 @@ defaults write com.apple.preferences.extensions.QuickLook displayOrder -array \
   "com.surteesstudios.Bartender.BartenderQuickLookExtension" \
   "org.sbarex.QLMarkdown.QLExtension"
 defaults write com.apple.preferences.extensions.QuickLook userHasOrdered -bool true
+defaults write com.apple.finder QLInlinePreviewMinimumSupportedSize -int 99999
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
